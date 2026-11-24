@@ -21,3 +21,5 @@
 | [0017](0017-no-mac-app-store-apps.md) | No Mac App Store apps | accepted |
 | [0018](0018-download-link-carries-the-selection.md) | The download link carries the selection, and the file name does not | accepted |
 | [0019](0019-match-the-download-by-quarantine-id.md) | Match the download by its quarantine event ID | accepted |
+| [0020](0020-catalog-generator-in-node-under-catalog.md) | Catalog generator in Node under catalog | accepted |
+| [0021](0021-uninstall-never-touches-user-file-folders.md) | Uninstall never touches user file folders | accepted |
