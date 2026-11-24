@@ -3,7 +3,7 @@
 | ADR | Title | Status |
 |---|---|---|
 | [0001](0001-public-product-built-for-the-owner-first.md) | Public product built for the owner first | accepted |
-| [0002](0002-download-carries-the-selection.md) | The download carries the selection | accepted |
+| [0002](0002-download-carries-the-selection.md) | The download carries the selection | superseded by [0018](0018-download-link-carries-the-selection.md) |
 | [0003](0003-curated-catalog-on-homebrew-cask-data.md) | Curated catalog on Homebrew Cask data | accepted |
 | [0004](0004-uninstall-only-what-settlein-installed.md) | Uninstall only what Settlein installed | accepted |
 | [0005](0005-copy-apps-and-open-pkg-installers.md) | Copy apps and open pkg installers | accepted |
@@ -19,3 +19,4 @@
 | [0015](0015-settlein-publishes-its-own-catalog-file.md) | Settlein publishes its own catalog file | accepted |
 | [0016](0016-astro-for-the-website.md) | Astro for the website | accepted |
 | [0017](0017-no-mac-app-store-apps.md) | No Mac App Store apps | accepted |
+| [0018](0018-download-link-carries-the-selection.md) | The download link carries the selection, and the file name does not | accepted |
