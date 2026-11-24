@@ -1,5 +1,5 @@
 ---
-status: accepted
+status: superseded by [ADR-0018](0018-download-link-carries-the-selection.md)
 date: 2026-11-24
 ---
 # 0002. The download carries the selection
