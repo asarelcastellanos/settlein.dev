@@ -43,6 +43,18 @@ const PROTECTED_ROOTS = new Set([
   "/Library/Caches",
   "/Library/Containers",
   "/Library/Group Containers",
+  "~/Library/Logs",
+  "~/Library/Application Scripts",
+  "~/Library/Saved Application State",
+  "~/Library/HTTPStorages",
+  "~/Library/LaunchAgents",
+  "~/Library/WebKit",
+  "~/Library/Cookies",
+  "/Library/LaunchDaemons",
+  "/Library/LaunchAgents",
+  "/Library/Logs",
+  "/Library/PrivilegedHelperTools",
+  "/Library/Internet Plug-Ins",
 ]);
 
 const nonEmpty = (v) => typeof v === "string" && v.trim() !== "";
@@ -86,11 +98,15 @@ function pathProblem(path) {
     return `path holds #{, \${ or ..: ${path}`;
   }
   if (path.endsWith("/")) return `path ends with /: ${path}`;
+  if (path === "/Users" || path.startsWith("/Users/")) return `path is under /Users: ${path}`;
   if (PROTECTED_ROOTS.has(path)) return `path is a protected root: ${path}`;
   const segments = path.split("/").slice(1);
   if (segments.some((s) => s === "")) return `path has an empty segment: ${path}`;
   if (segments.slice(0, -1).some((s) => s.includes("*"))) {
     return `path has a wildcard before the last segment: ${path}`;
+  }
+  if (path.startsWith("~/") && segments[0].includes("*")) {
+    return `path has a wildcard directly under ~: ${path}`;
   }
   if (path.startsWith("/") && segments.length < 2) return `path is too shallow: ${path}`;
   const parent = path.slice(0, path.lastIndexOf("/"));
@@ -102,11 +118,20 @@ function pathProblem(path) {
 }
 
 function inUserFileFolder(path) {
-  return USER_FILE_FOLDERS.some((root) => path === root || path.startsWith(`${root}/`));
+  const lower = path.toLowerCase();
+  return USER_FILE_FOLDERS.some((root) => {
+    const r = root.toLowerCase();
+    return lower === r || lower.startsWith(`${r}/`);
+  });
 }
 
 function pkgutilEntry(id) {
   if (typeof id !== "string" || !/^[A-Za-z0-9._*-]+$/.test(id)) return null;
+  const star = id.indexOf("*");
+  if (star !== -1) {
+    const literal = id.slice(0, star).split(".").slice(0, -1);
+    if (literal.length < 2 || literal.some((seg) => seg === "")) return null;
+  }
   return { id, pattern: id.includes("*") };
 }
 
@@ -192,15 +217,22 @@ function build(app, cask) {
     }
     bundles = deleteBundles.map((path) => basename(path));
     if (bundles.some((b) => b.includes("*"))) fail(`app bundle name holds a wildcard: ${bundles}`);
-    if (bundles.length === 0) bundles = appBundles;
     if (bundles.length > 0 && app.appBundles) {
       fail("source list appBundles given, but the cask already names a bundle");
     } else if (bundles.length === 0 && app.appBundles) {
       bundles = app.appBundles;
     }
     if (bundles.length === 0) fail("pkg app has no app bundle in the cask or the source list");
-  } else if (app.appBundles) {
-    fail("source list appBundles given for an app that is not a pkg app");
+  } else {
+    if (app.appBundles) fail("source list appBundles given for an app that is not a pkg app");
+    for (const u of stanza(cask, "uninstall")) {
+      for (const from of ["delete", "trash"]) {
+        for (const path of asList(u[from])) {
+          if (typeof path === "string" && path.endsWith(".app")) continue;
+          candidates.push({ path, from });
+        }
+      }
+    }
   }
   const leftoverPaths = [];
   for (const candidate of candidates) {
@@ -221,7 +253,7 @@ function build(app, cask) {
     if (entry) {
       pkgutilIds.push(entry);
     } else {
-      fail(`pkgutil id is not made of A-Z a-z 0-9 . _ * -: ${JSON.stringify(id)}`);
+      fail(`pkgutil id is not made of A-Z a-z 0-9 . _ * - or has fewer than two literal segments before *: ${JSON.stringify(id)}`);
     }
   }
   if (installerType === "pkg" && pkgutilIds.length === 0) fail("pkg app has no pkgutil ids");

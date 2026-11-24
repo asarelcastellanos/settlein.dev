@@ -965,6 +965,14 @@
         {
           "path": "~/Library/Caches/KSCrashReports",
           "from": "rmdir"
+        },
+        {
+          "path": "/Library/PrivilegedHelperTools/com.docker.socket",
+          "from": "delete"
+        },
+        {
+          "path": "/Library/PrivilegedHelperTools/com.docker.vmnetd",
+          "from": "delete"
         }
       ],
       "pkgutilIds": [],
@@ -1505,6 +1513,10 @@
         {
           "path": "~/Library/Saved Application State/com.obsproject.obs-studio.savedState",
           "from": "trash"
+        },
+        {
+          "path": "/Library/CoreMediaIO/Plug-Ins/DAL/obs-mac-virtualcam.plugin",
+          "from": "delete"
         }
       ],
       "pkgutilIds": [],
@@ -1895,6 +1907,14 @@
         {
           "path": "~/Library/Preferences/com.getdropbox.dropbox.plist",
           "from": "trash"
+        },
+        {
+          "path": "/Library/DropboxHelperTools",
+          "from": "delete"
+        },
+        {
+          "path": "/Library/Preferences/com.getdropbox.dropbox.dbkextd.plist",
+          "from": "delete"
         }
       ],
       "pkgutilIds": [],
@@ -2178,6 +2198,10 @@
         {
           "path": "~/Library/Saved Application State/com.valvesoftware.steam.savedState",
           "from": "trash"
+        },
+        {
+          "path": "~/Library/Application Support/Steam/Steam.AppBundle",
+          "from": "delete"
         }
       ],
       "pkgutilIds": [],
@@ -2670,6 +2694,26 @@
         {
           "path": "~/Library/Preferences/com.philandro.anydesk.plist",
           "from": "trash"
+        },
+        {
+          "path": "/Library/LaunchAgents/com.philandro.anydesk.Frontend.plist",
+          "from": "delete"
+        },
+        {
+          "path": "/Library/LaunchAgents/com.philandro.anydesk.Hub.plist",
+          "from": "delete"
+        },
+        {
+          "path": "/Library/LaunchDaemons/com.philandro.anydesk.Helper.plist",
+          "from": "delete"
+        },
+        {
+          "path": "/Library/LaunchDaemons/com.philandro.anydesk.service.plist",
+          "from": "delete"
+        },
+        {
+          "path": "/Library/PrivilegedHelperTools/com.philandro.anydesk.Helper",
+          "from": "delete"
         }
       ],
       "pkgutilIds": [],
