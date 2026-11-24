@@ -1,0 +1,222 @@
+[
+  {
+    "name": "Google Chrome",
+    "category": "Browsers",
+    "token": "google-chrome"
+  },
+  {
+    "name": "Firefox",
+    "category": "Browsers",
+    "token": "firefox"
+  },
+  {
+    "name": "Brave",
+    "category": "Browsers",
+    "token": "brave-browser"
+  },
+  {
+    "name": "Zoom",
+    "category": "Communication",
+    "token": "zoom"
+  },
+  {
+    "name": "Slack",
+    "category": "Communication",
+    "token": "slack"
+  },
+  {
+    "name": "Discord",
+    "category": "Communication",
+    "token": "discord"
+  },
+  {
+    "name": "WhatsApp",
+    "category": "Communication",
+    "token": "whatsapp"
+  },
+  {
+    "name": "Microsoft Teams",
+    "category": "Communication",
+    "token": "microsoft-teams"
+  },
+  {
+    "name": "GitHub Desktop",
+    "category": "Developer tools",
+    "token": "github"
+  },
+  {
+    "name": "Visual Studio Code",
+    "category": "Developer tools",
+    "token": "visual-studio-code"
+  },
+  {
+    "name": "Cursor",
+    "category": "Developer tools",
+    "token": "cursor"
+  },
+  {
+    "name": "Docker Desktop",
+    "category": "Developer tools",
+    "token": "docker-desktop"
+  },
+  {
+    "name": "iTerm2",
+    "category": "Developer tools",
+    "token": "iterm2"
+  },
+  {
+    "name": "Sublime Text",
+    "category": "Developer tools",
+    "token": "sublime-text"
+  },
+  {
+    "name": "Cyberduck",
+    "category": "Developer tools",
+    "token": "cyberduck"
+  },
+  {
+    "name": "Claude",
+    "category": "Developer tools",
+    "token": "claude"
+  },
+  {
+    "name": "ChatGPT",
+    "category": "Developer tools",
+    "token": "chatgpt"
+  },
+  {
+    "name": "Spotify",
+    "category": "Media",
+    "token": "spotify"
+  },
+  {
+    "name": "VLC",
+    "category": "Media",
+    "token": "vlc"
+  },
+  {
+    "name": "Audacity",
+    "category": "Media",
+    "token": "audacity"
+  },
+  {
+    "name": "HandBrake",
+    "category": "Media",
+    "token": "handbrake-app"
+  },
+  {
+    "name": "OBS",
+    "category": "Media",
+    "token": "obs"
+  },
+  {
+    "name": "Plex",
+    "category": "Media",
+    "token": "plex"
+  },
+  {
+    "name": "Blender",
+    "category": "Creative",
+    "token": "blender"
+  },
+  {
+    "name": "GIMP",
+    "category": "Creative",
+    "token": "gimp"
+  },
+  {
+    "name": "Inkscape",
+    "category": "Creative",
+    "token": "inkscape"
+  },
+  {
+    "name": "Sketch",
+    "category": "Creative",
+    "token": "sketch"
+  },
+  {
+    "name": "LibreOffice",
+    "category": "Productivity and storage",
+    "token": "libreoffice"
+  },
+  {
+    "name": "Dropbox",
+    "category": "Productivity and storage",
+    "token": "dropbox"
+  },
+  {
+    "name": "Google Drive",
+    "category": "Productivity and storage",
+    "token": "google-drive"
+  },
+  {
+    "name": "OneDrive",
+    "category": "Productivity and storage",
+    "token": "onedrive"
+  },
+  {
+    "name": "Steam",
+    "category": "Games",
+    "token": "steam"
+  },
+  {
+    "name": "Epic Games Launcher",
+    "category": "Games",
+    "token": "epic-games"
+  },
+  {
+    "name": "1Password",
+    "category": "Security",
+    "token": "1password"
+  },
+  {
+    "name": "Bitwarden",
+    "category": "Security",
+    "token": "bitwarden"
+  },
+  {
+    "name": "AppCleaner",
+    "category": "Utilities",
+    "token": "appcleaner"
+  },
+  {
+    "name": "Caffeine",
+    "category": "Utilities",
+    "token": "caffeine"
+  },
+  {
+    "name": "coconutBattery",
+    "category": "Utilities",
+    "token": "coconutbattery"
+  },
+  {
+    "name": "The Unarchiver",
+    "category": "Utilities",
+    "token": "the-unarchiver"
+  },
+  {
+    "name": "Keka",
+    "category": "Utilities",
+    "token": "keka"
+  },
+  {
+    "name": "balenaEtcher",
+    "category": "Utilities",
+    "token": "balenaetcher"
+  },
+  {
+    "name": "AnyDesk",
+    "category": "Utilities",
+    "token": "anydesk"
+  },
+  {
+    "name": "Tailscale",
+    "category": "Utilities",
+    "token": "tailscale-app"
+  },
+  {
+    "name": "TeamViewer",
+    "category": "Utilities",
+    "token": "teamviewer"
+  }
+]
