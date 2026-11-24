@@ -50,10 +50,6 @@ func selectionFromURL(_ text: String) -> [String]? {
     guard let items = URLComponents(string: text)?.queryItems,
           let value = items.first(where: { $0.name == "apps" })?.value
     else { return nil }
-    return splitSelection(value)
-}
-
-private func splitSelection(_ text: String) -> [String]? {
-    let parts = text.split(separator: ",").map(String.init)
+    let parts = value.split(separator: ",").map(String.init)
     return parts.isEmpty ? nil : parts
 }

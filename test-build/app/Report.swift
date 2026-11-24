@@ -13,13 +13,9 @@ func describeFile(_ path: String) -> [String] {
     lines.append("  com.apple.quarantine: \(attributes.quarantine ?? "absent")")
     for error in attributes.errors { lines.append("  attribute error: \(error)") }
     for (index, value) in (attributes.whereFromsRaw ?? []).enumerated() {
-        lines.append("  selection from kMDItemWhereFroms[\(index)]: \(format(selectionFromURL(value)))")
+        lines.append("  selection from kMDItemWhereFroms[\(index)]: \(selectionFromURL(value)?.joined(separator: ",") ?? "none")")
     }
     return lines
-}
-
-private func format(_ selection: [String]?) -> String {
-    selection.map { $0.joined(separator: ",") } ?? "none"
 }
 
 func buildLocateReport() -> String {
