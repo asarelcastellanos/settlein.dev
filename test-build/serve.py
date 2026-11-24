@@ -8,7 +8,6 @@ from urllib.parse import parse_qs, urlparse
 ROOT = os.path.join(os.path.dirname(os.path.abspath(__file__)), "build")
 FILES = {
     "/Settlein.dmg": ("Settlein.dmg", "application/x-apple-diskimage"),
-    "/Settlein.zip": ("Settlein.zip", "application/zip"),
 }
 EXAMPLE_APPS = "iterm2,rectangle,obsidian"
 VALID = re.compile(r"[a-z0-9-]+(,[a-z0-9-]+)*")
@@ -37,7 +36,6 @@ class Handler(http.server.BaseHTTPRequestHandler):
                     "<!doctype html><title>Settlein test download</title>"
                     f"<h1>Selection: {apps}</h1>"
                     f'<p><a href="/Settlein.dmg?apps={apps}">Download disk image</a></p>'
-                    f'<p><a href="/Settlein.zip?apps={apps}">Download zip</a></p>'
                 ).encode()
             self.send(200, "text/html; charset=utf-8", body)
             return

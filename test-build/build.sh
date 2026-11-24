@@ -31,7 +31,6 @@ codesign --force --timestamp --sign "$identity" "$out/Settlein.dmg"
 xcrun notarytool submit "$out/Settlein.dmg" --keychain-profile "$profile" --wait
 xcrun stapler staple "$out/Settlein.dmg"
 
-ditto -c -k --keepParent "$app" "$out/Settlein.zip"
 rm -rf "$out/dmg-root" "$out/notarize-app.zip"
 
 spctl -a -vv "$app"
