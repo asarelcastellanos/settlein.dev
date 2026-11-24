@@ -248,18 +248,12 @@
       "downloadUrl": "https://cdn.zoom.us/prod/7.2.5.90525/arm64/zoomusInstallerFull.pkg",
       "version": "7.2.5.90525",
       "installerType": "pkg",
-      "appBundles": [],
+      "appBundles": [
+        "zoom.us.app"
+      ],
       "leftoverPaths": [
         {
           "path": "~/.zoomus",
-          "from": "trash"
-        },
-        {
-          "path": "~/Desktop/Zoom",
-          "from": "trash"
-        },
-        {
-          "path": "~/Documents/Zoom",
           "from": "trash"
         },
         {
@@ -345,10 +339,25 @@
         {
           "path": "/Library/Logs/zoomusinstall.log",
           "from": "delete"
+        },
+        {
+          "path": "/Library/Internet Plug-Ins/ZoomUsPlugIn.plugin",
+          "from": "delete"
+        },
+        {
+          "path": "/Library/Logs/DiagnosticReports/zoom.us*",
+          "from": "delete"
+        },
+        {
+          "path": "/Library/PrivilegedHelperTools/us.zoom.ZoomDaemon",
+          "from": "delete"
         }
       ],
       "pkgutilIds": [
-        "us.zoom.pkg.videomeeting"
+        {
+          "id": "us.zoom.pkg.videomeeting",
+          "pattern": false
+        }
       ],
       "sha256": "4c26ebed8bd29ce258ac9dbe0f2b327fad0a0734246ea588339a2cc5fd10533e"
     },
@@ -544,7 +553,9 @@
       "downloadUrl": "https://statics.teams.cdn.office.net/production-osx/26304.1206.5384.1209/MicrosoftTeams.pkg",
       "version": "26304.1206.5384.1209",
       "installerType": "pkg",
-      "appBundles": [],
+      "appBundles": [
+        "Microsoft Teams.app"
+      ],
       "leftoverPaths": [
         {
           "path": "~/Library/Application Scripts/*.com.microsoft.teams",
@@ -613,11 +624,33 @@
         {
           "path": "~/Library/Application Support/Microsoft",
           "from": "rmdir"
+        },
+        {
+          "path": "/Library/Application Support/Microsoft/TeamsUpdaterDaemon",
+          "from": "delete"
+        },
+        {
+          "path": "/Library/Logs/Microsoft/MSTeams",
+          "from": "delete"
+        },
+        {
+          "path": "/Library/Logs/Microsoft/Teams",
+          "from": "delete"
+        },
+        {
+          "path": "/Library/Preferences/com.microsoft.teams.plist",
+          "from": "delete"
         }
       ],
       "pkgutilIds": [
-        "com.microsoft.MSTeamsAudioDevice",
-        "com.microsoft.teams2"
+        {
+          "id": "com.microsoft.MSTeamsAudioDevice",
+          "pattern": false
+        },
+        {
+          "id": "com.microsoft.teams2",
+          "pattern": false
+        }
       ],
       "sha256": "523c173942f1375df8c28fe9721711313cb56456257a180253a80bf27748be83"
     },
@@ -686,10 +719,6 @@
         {
           "path": "~/Library/Saved Application State/com.github.GitHubClient.savedState",
           "from": "trash"
-        },
-        {
-          "path": "~/.config/git",
-          "from": "rmdir"
         }
       ],
       "pkgutilIds": [],
@@ -1412,10 +1441,6 @@
         {
           "path": "~/Library/Saved Application State/org.audacityteam.audacity.savedState",
           "from": "trash"
-        },
-        {
-          "path": "~/Documents/Audacity4",
-          "from": "rmdir"
         }
       ],
       "pkgutilIds": [],
@@ -1581,10 +1606,6 @@
         "Inkscape.app"
       ],
       "leftoverPaths": [
-        {
-          "path": "~/.config/inkscape",
-          "from": "trash"
-        },
         {
           "path": "~/Library/Application Support/Inkscape",
           "from": "trash"
@@ -1885,7 +1906,9 @@
       "downloadUrl": "https://dl.google.com/drive-file-stream/5-percent/GoogleDrive.dmg",
       "version": "134.0.1",
       "installerType": "pkg",
-      "appBundles": [],
+      "appBundles": [
+        "Google Drive.app"
+      ],
       "leftoverPaths": [
         {
           "path": "~/Library/Application Scripts/com.google.drivefs*",
@@ -1925,11 +1948,26 @@
         }
       ],
       "pkgutilIds": [
-        "com.google.drivefs.arm64",
-        "com.google.drivefs.filesystems.dfsfuse.arm64",
-        "com.google.drivefs.filesystems.dfsfuse.x86_64",
-        "com.google.drivefs.shortcuts",
-        "com.google.drivefs.x86_64"
+        {
+          "id": "com.google.drivefs.arm64",
+          "pattern": false
+        },
+        {
+          "id": "com.google.drivefs.filesystems.dfsfuse.arm64",
+          "pattern": false
+        },
+        {
+          "id": "com.google.drivefs.filesystems.dfsfuse.x86_64",
+          "pattern": false
+        },
+        {
+          "id": "com.google.drivefs.shortcuts",
+          "pattern": false
+        },
+        {
+          "id": "com.google.drivefs.x86_64",
+          "pattern": false
+        }
       ],
       "sha256": null
     },
@@ -1939,7 +1977,9 @@
       "downloadUrl": "https://oneclient.sfx.ms/Mac/Installers/26.213.1101.0008/universal/OneDrive.pkg",
       "version": "26.213.1101.0008",
       "installerType": "pkg",
-      "appBundles": [],
+      "appBundles": [
+        "OneDrive.app"
+      ],
       "leftoverPaths": [
         {
           "path": "~/Library/Application Scripts/*.OfficeOneDriveSyncIntegration",
@@ -2084,10 +2124,29 @@
         {
           "path": "~/Library/WebKit/com.microsoft.OneDrive",
           "from": "trash"
+        },
+        {
+          "path": "/Library/LaunchAgents/com.microsoft.OneDriveStandaloneUpdater.plist",
+          "from": "delete"
+        },
+        {
+          "path": "/Library/LaunchDaemons/com.microsoft.OneDriveStandaloneUpdaterDaemon.plist",
+          "from": "delete"
+        },
+        {
+          "path": "/Library/LaunchDaemons/com.microsoft.OneDriveUpdaterDaemon.plist",
+          "from": "delete"
+        },
+        {
+          "path": "/Library/Logs/Microsoft/OneDrive",
+          "from": "delete"
         }
       ],
       "pkgutilIds": [
-        "com.microsoft.OneDrive"
+        {
+          "id": "com.microsoft.OneDrive",
+          "pattern": false
+        }
       ],
       "sha256": "bd70e9cb347c9954be4ab8db4131be8b5d211a7b697a2642f935f230fd71ec90"
     },
@@ -2619,7 +2678,9 @@
       "downloadUrl": "https://pkgs.tailscale.com/stable/Tailscale-1.104.7-macos.pkg",
       "version": "1.104.7",
       "installerType": "pkg",
-      "appBundles": [],
+      "appBundles": [
+        "Tailscale.app"
+      ],
       "leftoverPaths": [
         {
           "path": "/Library/Tailscale",
@@ -2696,10 +2757,21 @@
         {
           "path": "~/Library/Preferences/io.tailscale.ipn.macsys.plist",
           "from": "trash"
+        },
+        {
+          "path": "/usr/local/bin/tailscale",
+          "from": "delete"
+        },
+        {
+          "path": "/usr/local/share/man/man8/tssentineld.8",
+          "from": "delete"
         }
       ],
       "pkgutilIds": [
-        "com.tailscale.ipn.macsys"
+        {
+          "id": "com.tailscale.ipn.macsys",
+          "pattern": false
+        }
       ],
       "sha256": "0ecab60e098d31f9cbd334867474293dc08978154665da75c3f3fe1f8215d6e7"
     },
@@ -2709,7 +2781,9 @@
       "downloadUrl": "https://dl.teamviewer.com/download/version_15x/update/15.82.6/TeamViewer.pkg",
       "version": "15.82.6",
       "installerType": "pkg",
-      "appBundles": [],
+      "appBundles": [
+        "TeamViewer.app"
+      ],
       "leftoverPaths": [
         {
           "path": "/Library/Application Support/TeamViewer",
@@ -2754,14 +2828,33 @@
         {
           "path": "~/Library/WebKit/com.teamviewer.TeamViewer",
           "from": "trash"
+        },
+        {
+          "path": "/Library/Preferences/com.teamviewer*",
+          "from": "delete"
         }
       ],
       "pkgutilIds": [
-        "com.teamviewer.AuthorizationPlugin",
-        "com.teamviewer.AuthorizationResources",
-        "com.teamviewer.remoteaudiodriver",
-        "com.teamviewer.teamviewer.*",
-        "TeamViewerUninstaller"
+        {
+          "id": "com.teamviewer.AuthorizationPlugin",
+          "pattern": false
+        },
+        {
+          "id": "com.teamviewer.AuthorizationResources",
+          "pattern": false
+        },
+        {
+          "id": "com.teamviewer.remoteaudiodriver",
+          "pattern": false
+        },
+        {
+          "id": "com.teamviewer.teamviewer.*",
+          "pattern": true
+        },
+        {
+          "id": "TeamViewerUninstaller",
+          "pattern": false
+        }
       ],
       "sha256": "9acd5a6cefe859e81f85001b1b90279e02495f3829ced8df1a3b9d37f3d5bcf1"
     }

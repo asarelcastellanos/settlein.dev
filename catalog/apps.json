@@ -147,7 +147,10 @@
   {
     "name": "Google Drive",
     "category": "Productivity and storage",
-    "token": "google-drive"
+    "token": "google-drive",
+    "appBundles": [
+      "Google Drive.app"
+    ]
   },
   {
     "name": "OneDrive",
@@ -212,7 +215,10 @@
   {
     "name": "Tailscale",
     "category": "Utilities",
-    "token": "tailscale-app"
+    "token": "tailscale-app",
+    "appBundles": [
+      "Tailscale.app"
+    ]
   },
   {
     "name": "TeamViewer",

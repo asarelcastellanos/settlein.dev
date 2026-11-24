@@ -59,6 +59,13 @@ function readList(text) {
         throw new Error(`source list entry ${i}: missing ${key}`);
       }
     }
+    if (app.appBundles !== undefined) {
+      const ok =
+        Array.isArray(app.appBundles) &&
+        app.appBundles.length > 0 &&
+        app.appBundles.every((b) => nonEmpty(b) && /^[^*/]+\.app$/.test(b));
+      if (!ok) throw new Error(`source list entry ${i}: appBundles must be a list of .app names`);
+    }
     if (seen.has(app.token)) {
       throw new Error(`source list: duplicate token ${app.token}`);
     }
@@ -186,7 +193,14 @@ function build(app, cask) {
     bundles = deleteBundles.map((path) => basename(path));
     if (bundles.some((b) => b.includes("*"))) fail(`app bundle name holds a wildcard: ${bundles}`);
     if (bundles.length === 0) bundles = appBundles;
-    if (bundles.length === 0) fail("pkg app has no app bundle in uninstall delete or app artifact");
+    if (bundles.length > 0 && app.appBundles) {
+      fail("source list appBundles given, but the cask already names a bundle");
+    } else if (bundles.length === 0 && app.appBundles) {
+      bundles = app.appBundles;
+    }
+    if (bundles.length === 0) fail("pkg app has no app bundle in the cask or the source list");
+  } else if (app.appBundles) {
+    fail("source list appBundles given for an app that is not a pkg app");
   }
   const leftoverPaths = [];
   for (const candidate of candidates) {
