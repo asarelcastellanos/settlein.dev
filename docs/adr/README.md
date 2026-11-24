@@ -20,3 +20,4 @@
 | [0016](0016-astro-for-the-website.md) | Astro for the website | accepted |
 | [0017](0017-no-mac-app-store-apps.md) | No Mac App Store apps | accepted |
 | [0018](0018-download-link-carries-the-selection.md) | The download link carries the selection, and the file name does not | accepted |
+| [0019](0019-match-the-download-by-quarantine-id.md) | Match the download by its quarantine event ID | accepted |
