@@ -149,7 +149,10 @@
     "category": "Productivity and storage",
     "token": "google-drive",
     "appBundles": [
-      "Google Drive.app"
+      "Google Drive.app",
+      "Google Docs.app",
+      "Google Sheets.app",
+      "Google Slides.app"
     ]
   },
   {

@@ -1907,7 +1907,10 @@
       "version": "134.0.1",
       "installerType": "pkg",
       "appBundles": [
-        "Google Drive.app"
+        "Google Drive.app",
+        "Google Docs.app",
+        "Google Sheets.app",
+        "Google Slides.app"
       ],
       "leftoverPaths": [
         {
