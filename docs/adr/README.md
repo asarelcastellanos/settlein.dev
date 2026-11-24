@@ -23,3 +23,4 @@
 | [0019](0019-match-the-download-by-quarantine-id.md) | Match the download by its quarantine event ID | accepted |
 | [0020](0020-catalog-generator-in-node-under-catalog.md) | Catalog generator in Node under catalog | accepted |
 | [0021](0021-uninstall-never-touches-user-file-folders.md) | Uninstall never touches user file folders | accepted |
+| [0022](0022-daily-job-commits-catalog-to-a-data-branch.md) | Daily job commits the catalog to a data branch | accepted |
