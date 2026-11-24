@@ -16,7 +16,8 @@ const USER_FILE_FOLDERS = [
   "~/Pictures",
   "~/.config",
 ];
-const PROTECTED_ROOTS = new Set([
+const PROTECTED_ROOTS = new Set(
+  [
   "/",
   "~",
   "~/Library",
@@ -55,7 +56,8 @@ const PROTECTED_ROOTS = new Set([
   "/Library/Logs",
   "/Library/PrivilegedHelperTools",
   "/Library/Internet Plug-Ins",
-]);
+].map((r) => r.toLowerCase()),
+);
 
 const nonEmpty = (v) => typeof v === "string" && v.trim() !== "";
 
@@ -98,8 +100,9 @@ function pathProblem(path) {
     return `path holds #{, \${ or ..: ${path}`;
   }
   if (path.endsWith("/")) return `path ends with /: ${path}`;
-  if (path === "/Users" || path.startsWith("/Users/")) return `path is under /Users: ${path}`;
-  if (PROTECTED_ROOTS.has(path)) return `path is a protected root: ${path}`;
+  const lower = path.toLowerCase();
+  if (lower === "/users" || lower.startsWith("/users/")) return `path is under /Users: ${path}`;
+  if (PROTECTED_ROOTS.has(lower)) return `path is a protected root: ${path}`;
   const segments = path.split("/").slice(1);
   if (segments.some((s) => s === "")) return `path has an empty segment: ${path}`;
   if (segments.slice(0, -1).some((s) => s.includes("*"))) {
@@ -111,7 +114,7 @@ function pathProblem(path) {
   if (path.startsWith("/") && segments.length < 2) return `path is too shallow: ${path}`;
   const parent = path.slice(0, path.lastIndexOf("/"));
   const last = segments[segments.length - 1];
-  if (PROTECTED_ROOTS.has(parent) && /^\**$/.test(last)) {
+  if (PROTECTED_ROOTS.has(parent.toLowerCase()) && /^\**$/.test(last)) {
     return `path matches everything under a protected root: ${path}`;
   }
   return null;
