@@ -20,7 +20,7 @@ Accepted by default, not reviewed by the owner.
 
 Chosen option: "The workflow lives on main, reads the generator from main and pushes the rebuilt file to a `catalog-data` branch", because the daily file never touches main, needs no review step and gives the site deploy (issue #8) one branch to read.
 
-`.github/workflows/catalog.yml` runs at 05:17 UTC and on `workflow_dispatch`. It checks out main for the generator and `catalog-data` into `data/`. It runs `node catalog/generate.mjs catalog/apps.json data/catalog.json`. When `data/catalog.json` differs, it commits and pushes to `catalog-data`. When the generator exits 1, the step fails, the job fails, GitHub emails the owner and nothing is committed. The job holds `contents: write` and nothing else.
+`.github/workflows/catalog.yml` runs at 05:17 UTC and on `workflow_dispatch`. It checks out main for the generator and `catalog-data` into `data/`. It runs `node catalog/generate.mjs catalog/apps.json data/catalog.json`. When `data/catalog.json` differs, it commits and pushes to `catalog-data`. When the generator exits 1, the step fails, the job fails, GitHub emails the owner and nothing is committed. The job holds `contents: write` and nothing else. It pins `actions/checkout` to `3d3c42e5aac5ba805825da76410c181273ba90b1` (v7.0.1) and `actions/setup-node` to `949feb2413d6458794dcd2491c4babbbce0c15c1` (v7.1.0).
 
 The job runs only after `release/v1.0` reaches main, and it needs the `catalog-data` branch to exist. `workflow_dispatch` also needs the workflow file on the default branch ([GitHub docs, manually running a workflow](https://docs.github.com/en/actions/how-tos/manage-workflow-runs/manually-run-a-workflow)). Until then no run exists, so C2's run history cannot exist before the release merge.
 
