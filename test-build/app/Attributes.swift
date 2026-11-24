@@ -46,15 +46,6 @@ func readXattr(_ path: String, _ name: String) -> XattrResult {
     return .success(Data(buffer.prefix(read)))
 }
 
-func selectionFromName(_ fileName: String) -> [String]? {
-    var stem = (fileName as NSString).deletingPathExtension
-    if let range = stem.range(of: #" \(\d+\)$"#, options: .regularExpression) {
-        stem.removeSubrange(range)
-    }
-    guard stem.hasPrefix("Settlein-") else { return nil }
-    return splitSelection(String(stem.dropFirst("Settlein-".count)))
-}
-
 func selectionFromURL(_ text: String) -> [String]? {
     guard let items = URLComponents(string: text)?.queryItems,
           let value = items.first(where: { $0.name == "apps" })?.value

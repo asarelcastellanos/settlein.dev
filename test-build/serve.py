@@ -38,14 +38,13 @@ class Handler(http.server.BaseHTTPRequestHandler):
             if not os.path.isfile(path):
                 self.send(404, "text/plain", b"Run test-build/build.sh first\n")
                 return
-            ext = os.path.splitext(name)[1]
             with open(path, "rb") as handle:
                 body = handle.read()
             self.send(
                 200,
                 mime,
                 body,
-                {"Content-Disposition": f'attachment; filename="Settlein-{apps}{ext}"'},
+                {"Content-Disposition": f'attachment; filename="{name}"'},
             )
             return
         self.send(404, "text/plain", b"Not found\n")

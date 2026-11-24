@@ -12,7 +12,6 @@ func describeFile(_ path: String) -> [String] {
     }
     lines.append("  com.apple.quarantine: \(attributes.quarantine ?? "absent")")
     for error in attributes.errors { lines.append("  attribute error: \(error)") }
-    lines.append("  selection from file name: \(format(selectionFromName((path as NSString).lastPathComponent)))")
     for (index, value) in (attributes.whereFromsRaw ?? []).enumerated() {
         lines.append("  selection from kMDItemWhereFroms[\(index)]: \(format(selectionFromURL(value)))")
     }

@@ -18,7 +18,7 @@ The script compiles the app, signs it with the hardened runtime, notarizes and s
 test-build/serve.py
 ```
 
-Open `http://localhost:8080/?apps=firefox,raycast,vlc` in Safari or Chrome. The page links to `/Settlein.dmg?apps=...` and `/Settlein.zip?apps=...`. The server sends `Content-Disposition: attachment; filename="Settlein-<apps>.dmg"`, so the selection sits in both the file name and the origin URL. Allowed selection characters are `a-z`, `0-9`, `-` and commas.
+Open `http://localhost:8080/?apps=firefox,raycast,vlc` in Safari or Chrome. The page links to `/Settlein.dmg?apps=...` and `/Settlein.zip?apps=...`. The server sends `Content-Disposition: attachment; filename="Settlein.dmg"` (or `Settlein.zip`), so the file name names no apps and the selection sits only in the download URL (ADR-0018). Allowed selection characters are `a-z`, `0-9`, `-` and commas.
 
 ## QA matrix
 
@@ -29,8 +29,9 @@ For each of Safari and Chrome, and for each of the disk image and the zip:
 1. Start the server and download from the page.
 2. Open the app from the mounted disk image (disk image) or from the Downloads folder (zip). Click Open in the first-open dialog.
 3. Copy the report from the window or from `~/Library/Logs/SettleinTestBuild/report-<time>.txt`.
+4. In Finder, select the downloaded file, press Command-I and note what Get Info shows under "Where from".
 
-S1 passes when "selection from file name" or "selection from kMDItemWhereFroms" shows `firefox,raycast,vlc` on a candidate. S2 passes when a candidate lists that file and "content read" says ok. Also open the disk image app after copying it to Downloads, and note any Files and Folders prompt for Downloads.
+S1 passes when "selection from kMDItemWhereFroms[n]" shows `firefox,raycast,vlc` on a candidate and the file name is `Settlein.dmg` or `Settlein.zip` (or `Settlein (1).dmg` and similar). Record the "Where from" text for every run, including runs where S1 fails. S2 passes when a candidate lists that file and "content read" says ok. Also open the disk image app after copying it to Downloads, and note any Files and Folders prompt for Downloads.
 
 S8: in one run, click "Install and remove test app". It downloads AppCleaner, installs it in `/Applications`, then removes it. S8 passes when the report says `remove: ok` and no App Management prompt appears. Check System Settings, Privacy and Security, App Management does not list Settlein Test.
 
