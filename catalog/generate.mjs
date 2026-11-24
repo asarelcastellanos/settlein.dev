@@ -70,13 +70,19 @@ function build(app, cask) {
     if (STORE_HOSTS.includes(host)) fail(`download link is on the Mac App Store: ${url}`);
   }
 
-  const hasApp = stanza(cask, "app").length > 0;
+  const appBundles = stanza(cask, "app");
+  const hasApp = appBundles.length > 0;
   const hasPkg = stanza(cask, "pkg").length > 0;
   let installerType = null;
   if (hasApp !== hasPkg) {
     installerType = hasApp ? "app" : "pkg";
+  } else if (!hasApp) {
+    fail("no app artifact and no pkg artifact");
   } else {
     fail("installer type is not exactly one of copy app and pkg");
+  }
+  if (!appBundles.every((b) => typeof b === "string" && b.endsWith(".app"))) {
+    fail(`app artifact is not a list of .app names: ${JSON.stringify(appBundles)}`);
   }
 
   if (!nonEmpty(arm.version)) fail("missing version");
@@ -87,7 +93,7 @@ function build(app, cask) {
   }
 
   const leftoverPaths = stanza(cask, "zap").flatMap((z) =>
-    ["trash", "delete", "rmdir"].flatMap((k) => asList(z[k])),
+    ["trash", "delete", "rmdir"].flatMap((from) => asList(z[from]).map((path) => ({ path, from }))),
   );
   if (leftoverPaths.length === 0) fail("missing leftover paths (no zap stanza paths)");
 
@@ -103,6 +109,7 @@ function build(app, cask) {
       downloadUrl: url,
       version: arm.version,
       installerType,
+      appBundles,
       leftoverPaths,
       pkgutilIds: installerType === "pkg" ? pkgutilIds : [],
       sha256: sha === "no_check" ? null : sha,
