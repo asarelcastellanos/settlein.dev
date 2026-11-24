@@ -27,4 +27,4 @@ Chosen option: "A Node script with no dependencies, with the source list, script
 * Good, because the generator adds no package to install and no build step.
 * Good, because the generator writes nothing when any entry breaks a rule, so the last good file stays.
 * Bad, because the site build must copy the file into its output, and nothing does that yet.
-* Bad, because the leftover paths merge the `trash`, `delete` and `rmdir` lists of the `zap` stanza, so the Mac app cannot tell a file from a folder.
+* Bad, because leftover paths can hold wildcards and system paths under `/Library`, so the uninstall work must review them before any delete code runs.
