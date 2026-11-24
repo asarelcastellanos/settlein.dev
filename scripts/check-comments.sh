@@ -125,7 +125,7 @@ function extension(name,   n, parts) {
   ext = extension(name)
   skip = (ext == "md" || path ~ /^docs\//)
   hash = (ext == "" || name ~ /^(Dockerfile|Makefile)/ || ext ~ /^(sh|bash|zsh|fish|py|rb|yml|yaml|toml|ini|conf|cfg|env|mk|ps1|r|pl|tf|nix)$/)
-  slash = (ext ~ /^(ts|tsx|js|jsx|mjs|cjs|mts|cts|css|jsonc|json5|go|rs|swift|kt|java|c|h|cpp|hpp|cs|scss|less)$/)
+  slash = (ext ~ /^(ts|tsx|js|jsx|mjs|cjs|mts|cts|astro|html|htm|css|jsonc|json5|go|rs|swift|kt|java|c|h|cpp|hpp|cs|scss|less)$/)
   dash = (ext ~ /^(sql|lua)$/)
   html = (ext ~ /^(html|htm|xml|svg|vue|svelte|astro|tsx|jsx)$/)
   next

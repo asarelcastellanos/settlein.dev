@@ -17,6 +17,6 @@ scripts/check-comments.sh
 scripts/check-skills.sh
 ```
 
-`check-comments.sh` fails if your changes add a code comment to a Swift, shell, HTML, CSS or JavaScript file. It compares your branch with `origin/main`, or with the branch you pass as an argument. `check-skills.sh` checks the files in `skills/`. It passes when that folder does not exist.
+`check-comments.sh` fails if your changes add a code comment to a Swift, shell, HTML, CSS or JavaScript file. It compares your branch with the remote default branch, or with the branch you pass as an argument. `check-skills.sh` checks the files in `skills/`. It passes when that folder does not exist.
 
 GitHub Actions runs both checks on every pull request.
