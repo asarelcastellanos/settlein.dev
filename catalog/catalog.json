@@ -1,0 +1,2909 @@
+{
+  "apps": [
+    {
+      "name": "Google Chrome",
+      "category": "Browsers",
+      "downloadUrl": "https://dl.google.com/chrome/mac/universal/stable/GGRO/googlechrome.dmg",
+      "version": "158.0.8127.89",
+      "installerType": "app",
+      "appBundles": [
+        "Google Chrome.app"
+      ],
+      "leftoverPaths": [
+        {
+          "path": "/Library/Caches/com.google.SoftwareUpdate.*",
+          "from": "trash"
+        },
+        {
+          "path": "/Library/Google/Google Chrome Brand.plist",
+          "from": "trash"
+        },
+        {
+          "path": "/Library/Google/GoogleSoftwareUpdate",
+          "from": "trash"
+        },
+        {
+          "path": "~/Library/Application Support/com.apple.sharedfilelist/com.apple.LSSharedFileList.ApplicationRecentDocuments/com.google.chrome.app.*.sfl*",
+          "from": "trash"
+        },
+        {
+          "path": "~/Library/Application Support/com.apple.sharedfilelist/com.apple.LSSharedFileList.ApplicationRecentDocuments/com.google.chrome.sfl*",
+          "from": "trash"
+        },
+        {
+          "path": "~/Library/Application Support/Google/Chrome",
+          "from": "trash"
+        },
+        {
+          "path": "~/Library/Caches/com.google.Chrome",
+          "from": "trash"
+        },
+        {
+          "path": "~/Library/Caches/com.google.Chrome.helper.*",
+          "from": "trash"
+        },
+        {
+          "path": "~/Library/Caches/com.google.Keystone",
+          "from": "trash"
+        },
+        {
+          "path": "~/Library/Caches/com.google.Keystone.Agent",
+          "from": "trash"
+        },
+        {
+          "path": "~/Library/Caches/com.google.SoftwareUpdate",
+          "from": "trash"
+        },
+        {
+          "path": "~/Library/Caches/Google/Chrome",
+          "from": "trash"
+        },
+        {
+          "path": "~/Library/Google/Google Chrome Brand.plist",
+          "from": "trash"
+        },
+        {
+          "path": "~/Library/Google/GoogleSoftwareUpdate",
+          "from": "trash"
+        },
+        {
+          "path": "~/Library/LaunchAgents/com.google.keystone.agent.plist",
+          "from": "trash"
+        },
+        {
+          "path": "~/Library/LaunchAgents/com.google.keystone.xpcservice.plist",
+          "from": "trash"
+        },
+        {
+          "path": "~/Library/Logs/GoogleSoftwareUpdateAgent.log",
+          "from": "trash"
+        },
+        {
+          "path": "~/Library/Preferences/com.google.Chrome.plist",
+          "from": "trash"
+        },
+        {
+          "path": "~/Library/Preferences/com.google.Keystone.Agent.plist",
+          "from": "trash"
+        },
+        {
+          "path": "~/Library/Saved Application State/com.google.Chrome.app.*.savedState",
+          "from": "trash"
+        },
+        {
+          "path": "~/Library/Saved Application State/com.google.Chrome.savedState",
+          "from": "trash"
+        },
+        {
+          "path": "~/Library/WebKit/com.google.Chrome",
+          "from": "trash"
+        },
+        {
+          "path": "/Library/Google",
+          "from": "rmdir"
+        },
+        {
+          "path": "~/Library/Application Support/Google",
+          "from": "rmdir"
+        },
+        {
+          "path": "~/Library/Caches/Google",
+          "from": "rmdir"
+        },
+        {
+          "path": "~/Library/Google",
+          "from": "rmdir"
+        }
+      ],
+      "pkgutilIds": [],
+      "sha256": null
+    },
+    {
+      "name": "Firefox",
+      "category": "Browsers",
+      "downloadUrl": "https://download-installer.cdn.mozilla.net/pub/firefox/releases/161.0/mac/en-US/Firefox%20161.0.dmg",
+      "version": "161.0",
+      "installerType": "app",
+      "appBundles": [
+        "Firefox.app"
+      ],
+      "leftoverPaths": [
+        {
+          "path": "/Library/Logs/DiagnosticReports/firefox_*",
+          "from": "trash"
+        },
+        {
+          "path": "~/Library/Application Support/com.apple.sharedfilelist/com.apple.LSSharedFileList.ApplicationRecentDocuments/org.mozilla.firefox.sfl*",
+          "from": "trash"
+        },
+        {
+          "path": "~/Library/Application Support/CrashReporter/firefox_*",
+          "from": "trash"
+        },
+        {
+          "path": "~/Library/Application Support/Firefox",
+          "from": "trash"
+        },
+        {
+          "path": "~/Library/Caches/Firefox",
+          "from": "trash"
+        },
+        {
+          "path": "~/Library/Caches/Mozilla/updates/Applications/Firefox",
+          "from": "trash"
+        },
+        {
+          "path": "~/Library/Caches/org.mozilla.crashreporter",
+          "from": "trash"
+        },
+        {
+          "path": "~/Library/Caches/org.mozilla.firefox",
+          "from": "trash"
+        },
+        {
+          "path": "~/Library/Preferences/org.mozilla.crashreporter.plist",
+          "from": "trash"
+        },
+        {
+          "path": "~/Library/Preferences/org.mozilla.firefox.plist",
+          "from": "trash"
+        },
+        {
+          "path": "~/Library/Saved Application State/org.mozilla.firefox.savedState",
+          "from": "trash"
+        },
+        {
+          "path": "~/Library/WebKit/org.mozilla.firefox",
+          "from": "trash"
+        },
+        {
+          "path": "~/Library/Application Support/Mozilla",
+          "from": "rmdir"
+        },
+        {
+          "path": "~/Library/Caches/Mozilla",
+          "from": "rmdir"
+        },
+        {
+          "path": "~/Library/Caches/Mozilla/updates",
+          "from": "rmdir"
+        },
+        {
+          "path": "~/Library/Caches/Mozilla/updates/Applications",
+          "from": "rmdir"
+        }
+      ],
+      "pkgutilIds": [],
+      "sha256": "18f398ada9ba9faa5458dc01c2a68fc7df35517283be2e7a421a0867c5f47f83"
+    },
+    {
+      "name": "Brave",
+      "category": "Browsers",
+      "downloadUrl": "https://updates-cdn.bravesoftware.com/sparkle/Brave-Browser/stable-arm64/200.59/Brave-Browser-arm64.dmg",
+      "version": "1.100.59.0,200.59",
+      "installerType": "app",
+      "appBundles": [
+        "Brave Browser.app"
+      ],
+      "leftoverPaths": [
+        {
+          "path": "~/Library/Application Support/BraveSoftware/Brave-Browser",
+          "from": "trash"
+        },
+        {
+          "path": "~/Library/Caches/BraveSoftware/Brave-Browser",
+          "from": "trash"
+        },
+        {
+          "path": "~/Library/Caches/com.brave.Browser",
+          "from": "trash"
+        },
+        {
+          "path": "~/Library/HTTPStorages/com.brave.Browser",
+          "from": "trash"
+        },
+        {
+          "path": "~/Library/Preferences/com.brave.Browser.plist",
+          "from": "trash"
+        },
+        {
+          "path": "~/Library/Saved Application State/com.brave.Browser.savedState",
+          "from": "trash"
+        },
+        {
+          "path": "~/Library/Application Support/BraveSoftware",
+          "from": "rmdir"
+        },
+        {
+          "path": "~/Library/Caches/BraveSoftware",
+          "from": "rmdir"
+        }
+      ],
+      "pkgutilIds": [],
+      "sha256": "976e78ec17ee5bc5e758acb7a7ece8fbd36ae0134cfd4e523b2f411b4fcefc02"
+    },
+    {
+      "name": "Zoom",
+      "category": "Communication",
+      "downloadUrl": "https://cdn.zoom.us/prod/7.2.5.90525/arm64/zoomusInstallerFull.pkg",
+      "version": "7.2.5.90525",
+      "installerType": "pkg",
+      "appBundles": [
+        "zoom.us.app"
+      ],
+      "leftoverPaths": [
+        {
+          "path": "~/.zoomus",
+          "from": "trash"
+        },
+        {
+          "path": "~/Library/Application Scripts/*.ZoomClient3rd",
+          "from": "trash"
+        },
+        {
+          "path": "~/Library/Application Support/CloudDocs/session/containers/iCloud.us.zoom.videomeetings",
+          "from": "trash"
+        },
+        {
+          "path": "~/Library/Application Support/CloudDocs/session/containers/iCloud.us.zoom.videomeetings.plist",
+          "from": "trash"
+        },
+        {
+          "path": "~/Library/Application Support/com.apple.sharedfilelist/com.apple.LSSharedFileList.ApplicationRecentDocuments/us.zoom*.sfl*",
+          "from": "trash"
+        },
+        {
+          "path": "~/Library/Application Support/CrashReporter/zoom.us*",
+          "from": "trash"
+        },
+        {
+          "path": "~/Library/Application Support/zoom.us",
+          "from": "trash"
+        },
+        {
+          "path": "~/Library/Application Support/ZoomUpdater",
+          "from": "trash"
+        },
+        {
+          "path": "~/Library/Caches/us.zoom.xos",
+          "from": "trash"
+        },
+        {
+          "path": "~/Library/Cookies/us.zoom.xos.binarycookies",
+          "from": "trash"
+        },
+        {
+          "path": "~/Library/Group Containers/*.ZoomClient3rd",
+          "from": "trash"
+        },
+        {
+          "path": "~/Library/HTTPStorages/us.zoom.xos",
+          "from": "trash"
+        },
+        {
+          "path": "~/Library/HTTPStorages/us.zoom.xos.binarycookies",
+          "from": "trash"
+        },
+        {
+          "path": "~/Library/Internet Plug-Ins/ZoomUsPlugIn.plugin",
+          "from": "trash"
+        },
+        {
+          "path": "~/Library/Logs/zoom.us",
+          "from": "trash"
+        },
+        {
+          "path": "~/Library/Logs/zoominstall.log",
+          "from": "trash"
+        },
+        {
+          "path": "~/Library/Logs/ZoomPhone",
+          "from": "trash"
+        },
+        {
+          "path": "~/Library/Preferences/us.zoom.*.plist",
+          "from": "trash"
+        },
+        {
+          "path": "~/Library/Preferences/ZoomChat.plist",
+          "from": "trash"
+        },
+        {
+          "path": "~/Library/Saved Application State/us.zoom.xos.savedState",
+          "from": "trash"
+        },
+        {
+          "path": "~/Library/WebKit/us.zoom.xos",
+          "from": "trash"
+        },
+        {
+          "path": "/Library/Logs/zoomusinstall.log",
+          "from": "delete"
+        },
+        {
+          "path": "/Library/Internet Plug-Ins/ZoomUsPlugIn.plugin",
+          "from": "delete"
+        },
+        {
+          "path": "/Library/Logs/DiagnosticReports/zoom.us*",
+          "from": "delete"
+        },
+        {
+          "path": "/Library/PrivilegedHelperTools/us.zoom.ZoomDaemon",
+          "from": "delete"
+        }
+      ],
+      "pkgutilIds": [
+        {
+          "id": "us.zoom.pkg.videomeeting",
+          "pattern": false
+        }
+      ],
+      "sha256": "4c26ebed8bd29ce258ac9dbe0f2b327fad0a0734246ea588339a2cc5fd10533e"
+    },
+    {
+      "name": "Slack",
+      "category": "Communication",
+      "downloadUrl": "https://downloads.slack-edge.com/desktop-releases/mac/arm64/4.53.292/Slack-4.53.292-macOS.dmg",
+      "version": "4.53.292",
+      "installerType": "app",
+      "appBundles": [
+        "Slack.app"
+      ],
+      "leftoverPaths": [
+        {
+          "path": "/Library/Logs/DiagnosticReports/Slack_*",
+          "from": "trash"
+        },
+        {
+          "path": "~/Library/Application Scripts/com.tinyspeck.slackmacgap",
+          "from": "trash"
+        },
+        {
+          "path": "~/Library/Application Support/com.apple.sharedfilelist/com.apple.LSSharedFileList.ApplicationRecentDocuments/com.tinyspeck.slackmacgap.sfl*",
+          "from": "trash"
+        },
+        {
+          "path": "~/Library/Application Support/Slack",
+          "from": "trash"
+        },
+        {
+          "path": "~/Library/Caches/com.tinyspeck.slackmacgap*",
+          "from": "trash"
+        },
+        {
+          "path": "~/Library/Containers/com.tinyspeck.slackmacgap*",
+          "from": "trash"
+        },
+        {
+          "path": "~/Library/Cookies/com.tinyspeck.slackmacgap.binarycookies",
+          "from": "trash"
+        },
+        {
+          "path": "~/Library/Group Containers/*.com.tinyspeck.slackmacgap",
+          "from": "trash"
+        },
+        {
+          "path": "~/Library/Group Containers/*.slack",
+          "from": "trash"
+        },
+        {
+          "path": "~/Library/HTTPStorages/com.tinyspeck.slackmacgap*",
+          "from": "trash"
+        },
+        {
+          "path": "~/Library/Logs/Slack",
+          "from": "trash"
+        },
+        {
+          "path": "~/Library/Preferences/ByHost/com.tinyspeck.slackmacgap.ShipIt.*.plist",
+          "from": "trash"
+        },
+        {
+          "path": "~/Library/Preferences/com.tinyspeck.slackmacgap*",
+          "from": "trash"
+        },
+        {
+          "path": "~/Library/Saved Application State/com.tinyspeck.slackmacgap.savedState",
+          "from": "trash"
+        },
+        {
+          "path": "~/Library/WebKit/com.tinyspeck.slackmacgap",
+          "from": "trash"
+        }
+      ],
+      "pkgutilIds": [],
+      "sha256": "b358a20e933a889e76faa46c581e3d9c59f036dd3be1692eb593db900646006a"
+    },
+    {
+      "name": "Discord",
+      "category": "Communication",
+      "downloadUrl": "https://stable.dl2.discordapp.net/distro/app/stable/osx/universal/0.0.424/Discord.dmg",
+      "version": "0.0.424",
+      "installerType": "app",
+      "appBundles": [
+        "Discord.app"
+      ],
+      "leftoverPaths": [
+        {
+          "path": "~/Library/Application Support/com.apple.sharedfilelist/com.apple.LSSharedFileList.ApplicationRecentDocuments/com.hnc.discord.sfl*",
+          "from": "trash"
+        },
+        {
+          "path": "~/Library/Application Support/discord",
+          "from": "trash"
+        },
+        {
+          "path": "~/Library/Caches/com.hnc.Discord",
+          "from": "trash"
+        },
+        {
+          "path": "~/Library/Caches/com.hnc.Discord.ShipIt",
+          "from": "trash"
+        },
+        {
+          "path": "~/Library/Cookies/com.hnc.Discord.binarycookies",
+          "from": "trash"
+        },
+        {
+          "path": "~/Library/HTTPStorages/com.hnc.Discord",
+          "from": "trash"
+        },
+        {
+          "path": "~/Library/HTTPStorages/com.hnc.Discord.binarycookies",
+          "from": "trash"
+        },
+        {
+          "path": "~/Library/Preferences/ByHost/com.discord.discord.ShipIt.*.plist",
+          "from": "trash"
+        },
+        {
+          "path": "~/Library/Preferences/com.hnc.Discord.helper.plist",
+          "from": "trash"
+        },
+        {
+          "path": "~/Library/Preferences/com.hnc.Discord.plist",
+          "from": "trash"
+        },
+        {
+          "path": "~/Library/Saved Application State/com.hnc.Discord.savedState",
+          "from": "trash"
+        }
+      ],
+      "pkgutilIds": [],
+      "sha256": "38617824808249eecce6377d6e467936bf695f62662dbcf372e95c930a7b7e4d"
+    },
+    {
+      "name": "WhatsApp",
+      "category": "Communication",
+      "downloadUrl": "https://web.whatsapp.com/desktop/mac_native/release/?version=2.26.47.15&extension=zip&configuration=Release&branch=master&is_buck=true",
+      "version": "26.47.15",
+      "installerType": "app",
+      "appBundles": [
+        "WhatsApp.app"
+      ],
+      "leftoverPaths": [
+        {
+          "path": "~/Library/Application Scripts/group.net.whatsapp.family",
+          "from": "trash"
+        },
+        {
+          "path": "~/Library/Application Scripts/group.net.whatsapp.WhatsApp.private",
+          "from": "trash"
+        },
+        {
+          "path": "~/Library/Application Scripts/group.net.whatsapp.WhatsApp.shared",
+          "from": "trash"
+        },
+        {
+          "path": "~/Library/Application Scripts/group.net.whatsapp.WhatsAppSMB.shared",
+          "from": "trash"
+        },
+        {
+          "path": "~/Library/Application Scripts/net.whatsapp.WhatsApp*",
+          "from": "trash"
+        },
+        {
+          "path": "~/Library/Caches/net.whatsapp.WhatsApp",
+          "from": "trash"
+        },
+        {
+          "path": "~/Library/Containers/net.whatsapp.WhatsApp*",
+          "from": "trash"
+        },
+        {
+          "path": "~/Library/Group Containers/group.com.facebook.family",
+          "from": "trash"
+        },
+        {
+          "path": "~/Library/Group Containers/group.net.whatsapp*",
+          "from": "trash"
+        },
+        {
+          "path": "~/Library/Saved Application State/net.whatsapp.WhatsApp.savedState",
+          "from": "trash"
+        }
+      ],
+      "pkgutilIds": [],
+      "sha256": "48180c607990e4ddac06a4eae8fa5dd9613633f70d834f917ca96a3c159db343"
+    },
+    {
+      "name": "Microsoft Teams",
+      "category": "Communication",
+      "downloadUrl": "https://statics.teams.cdn.office.net/production-osx/26304.1206.5384.1209/MicrosoftTeams.pkg",
+      "version": "26304.1206.5384.1209",
+      "installerType": "pkg",
+      "appBundles": [
+        "Microsoft Teams.app"
+      ],
+      "leftoverPaths": [
+        {
+          "path": "~/Library/Application Scripts/*.com.microsoft.teams",
+          "from": "trash"
+        },
+        {
+          "path": "~/Library/Application Scripts/com.microsoft.teams*",
+          "from": "trash"
+        },
+        {
+          "path": "~/Library/Application Support/com.microsoft.teams",
+          "from": "trash"
+        },
+        {
+          "path": "~/Library/Application Support/Microsoft/Teams",
+          "from": "trash"
+        },
+        {
+          "path": "~/Library/Application Support/Teams",
+          "from": "trash"
+        },
+        {
+          "path": "~/Library/Caches/com.microsoft.teams",
+          "from": "trash"
+        },
+        {
+          "path": "~/Library/Containers/com.microsoft.teams*",
+          "from": "trash"
+        },
+        {
+          "path": "~/Library/Cookies/com.microsoft.teams.binarycookies",
+          "from": "trash"
+        },
+        {
+          "path": "~/Library/Group Containers/*.com.microsoft.teams",
+          "from": "trash"
+        },
+        {
+          "path": "~/Library/HTTPStorages/com.microsoft.teams",
+          "from": "trash"
+        },
+        {
+          "path": "~/Library/HTTPStorages/com.microsoft.teams.binarycookies",
+          "from": "trash"
+        },
+        {
+          "path": "~/Library/Logs/Microsoft Teams Helper (Renderer)",
+          "from": "trash"
+        },
+        {
+          "path": "~/Library/Logs/Microsoft Teams",
+          "from": "trash"
+        },
+        {
+          "path": "~/Library/Preferences/com.microsoft.teams*.plist",
+          "from": "trash"
+        },
+        {
+          "path": "~/Library/Saved Application State/com.microsoft.teams*.savedState",
+          "from": "trash"
+        },
+        {
+          "path": "~/Library/WebKit/com.microsoft.teams",
+          "from": "trash"
+        },
+        {
+          "path": "~/Library/Application Support/Microsoft",
+          "from": "rmdir"
+        },
+        {
+          "path": "/Library/Application Support/Microsoft/TeamsUpdaterDaemon",
+          "from": "delete"
+        },
+        {
+          "path": "/Library/Logs/Microsoft/MSTeams",
+          "from": "delete"
+        },
+        {
+          "path": "/Library/Logs/Microsoft/Teams",
+          "from": "delete"
+        },
+        {
+          "path": "/Library/Preferences/com.microsoft.teams.plist",
+          "from": "delete"
+        }
+      ],
+      "pkgutilIds": [
+        {
+          "id": "com.microsoft.MSTeamsAudioDevice",
+          "pattern": false
+        },
+        {
+          "id": "com.microsoft.teams2",
+          "pattern": false
+        }
+      ],
+      "sha256": "523c173942f1375df8c28fe9721711313cb56456257a180253a80bf27748be83"
+    },
+    {
+      "name": "GitHub Desktop",
+      "category": "Developer tools",
+      "downloadUrl": "https://desktop.githubusercontent.com/releases/3.7.0-f13859b6/GitHubDesktop-arm64.zip",
+      "version": "3.7.0-f13859b6",
+      "installerType": "app",
+      "appBundles": [
+        "GitHub Desktop.app"
+      ],
+      "leftoverPaths": [
+        {
+          "path": "~/Library/Application Support/com.apple.sharedfilelist/com.apple.LSSharedFileList.ApplicationRecentDocuments/com.github.GitHubClient.sfl*",
+          "from": "trash"
+        },
+        {
+          "path": "~/Library/Application Support/com.github.GitHubClient",
+          "from": "trash"
+        },
+        {
+          "path": "~/Library/Application Support/com.github.GitHubClient.ShipIt",
+          "from": "trash"
+        },
+        {
+          "path": "~/Library/Application Support/GitHub Desktop",
+          "from": "trash"
+        },
+        {
+          "path": "~/Library/Application Support/ShipIt_stderr.log",
+          "from": "trash"
+        },
+        {
+          "path": "~/Library/Application Support/ShipIt_stdout.log",
+          "from": "trash"
+        },
+        {
+          "path": "~/Library/Caches/com.github.GitHubClient",
+          "from": "trash"
+        },
+        {
+          "path": "~/Library/Caches/com.github.GitHubClient.ShipIt",
+          "from": "trash"
+        },
+        {
+          "path": "~/Library/HTTPStorages/com.github.GitHubClient",
+          "from": "trash"
+        },
+        {
+          "path": "~/Library/Logs/GitHub Desktop",
+          "from": "trash"
+        },
+        {
+          "path": "~/Library/Preferences/ByHost/com.github.GitHubClient.ShipIt.*.plist",
+          "from": "trash"
+        },
+        {
+          "path": "~/Library/Preferences/com.github.GitHubClient.helper.plist",
+          "from": "trash"
+        },
+        {
+          "path": "~/Library/Preferences/com.github.GitHubClient.plist",
+          "from": "trash"
+        },
+        {
+          "path": "~/Library/Saved Application State/com.github.GitHubClient.savedState",
+          "from": "trash"
+        }
+      ],
+      "pkgutilIds": [],
+      "sha256": "cc41c3cfdae2eaa332ef6547f82c6e672b5a11b0bf637aada2bf2796921eb1a5"
+    },
+    {
+      "name": "Visual Studio Code",
+      "category": "Developer tools",
+      "downloadUrl": "https://update.code.visualstudio.com/1.147.0/darwin-arm64/stable",
+      "version": "1.147.0",
+      "installerType": "app",
+      "appBundles": [
+        "Visual Studio Code.app"
+      ],
+      "leftoverPaths": [
+        {
+          "path": "~/.vscode",
+          "from": "trash"
+        },
+        {
+          "path": "~/Library/Application Support/Code",
+          "from": "trash"
+        },
+        {
+          "path": "~/Library/Application Support/com.apple.sharedfilelist/com.apple.LSSharedFileList.ApplicationRecentDocuments/com.microsoft.vscode.sfl*",
+          "from": "trash"
+        },
+        {
+          "path": "~/Library/Caches/com.microsoft.VSCode",
+          "from": "trash"
+        },
+        {
+          "path": "~/Library/Caches/com.microsoft.VSCode.ShipIt",
+          "from": "trash"
+        },
+        {
+          "path": "~/Library/HTTPStorages/com.microsoft.VSCode",
+          "from": "trash"
+        },
+        {
+          "path": "~/Library/Preferences/ByHost/com.microsoft.VSCode.ShipIt.*.plist",
+          "from": "trash"
+        },
+        {
+          "path": "~/Library/Preferences/com.microsoft.VSCode.helper.plist",
+          "from": "trash"
+        },
+        {
+          "path": "~/Library/Preferences/com.microsoft.VSCode.plist",
+          "from": "trash"
+        },
+        {
+          "path": "~/Library/Saved Application State/com.microsoft.VSCode.savedState",
+          "from": "trash"
+        }
+      ],
+      "pkgutilIds": [],
+      "sha256": "149d944feb599b076b48406b174e1c3cd1d510e9d673854777a20a6f4116a59a"
+    },
+    {
+      "name": "Cursor",
+      "category": "Developer tools",
+      "downloadUrl": "https://downloads.cursor.com/production/0925c4b8226c56947c43f0b555fb98e187a7e029/darwin/arm64/Cursor-darwin-arm64.zip",
+      "version": "3.32.4,0925c4b8226c56947c43f0b555fb98e187a7e029",
+      "installerType": "app",
+      "appBundles": [
+        "Cursor.app"
+      ],
+      "leftoverPaths": [
+        {
+          "path": "~/.cursor",
+          "from": "trash"
+        },
+        {
+          "path": "~/.cursor-tutor",
+          "from": "trash"
+        },
+        {
+          "path": "~/Library/Application Support/Caches/cursor-updater",
+          "from": "trash"
+        },
+        {
+          "path": "~/Library/Application Support/com.apple.sharedfilelist/com.apple.LSSharedFileList.ApplicationRecentDocuments/com.todesktop.230313mzl4w4u92.sfl*",
+          "from": "trash"
+        },
+        {
+          "path": "~/Library/Application Support/Cursor",
+          "from": "trash"
+        },
+        {
+          "path": "~/Library/Caches/com.todesktop.230313mzl4w4u92",
+          "from": "trash"
+        },
+        {
+          "path": "~/Library/Caches/com.todesktop.230313mzl4w4u92.ShipIt",
+          "from": "trash"
+        },
+        {
+          "path": "~/Library/HTTPStorages/com.todesktop.230313mzl4w4u92",
+          "from": "trash"
+        },
+        {
+          "path": "~/Library/Logs/Cursor",
+          "from": "trash"
+        },
+        {
+          "path": "~/Library/Preferences/ByHost/com.todesktop.230313mzl4w4u92.ShipIt.*.plist",
+          "from": "trash"
+        },
+        {
+          "path": "~/Library/Preferences/com.todesktop.230313mzl4w4u92.plist",
+          "from": "trash"
+        },
+        {
+          "path": "~/Library/Saved Application State/com.todesktop.230313mzl4w4u92.savedState",
+          "from": "trash"
+        },
+        {
+          "path": "~/Library/Saved Application State/todesktop.com.ToDesktop-Installer.savedState",
+          "from": "trash"
+        }
+      ],
+      "pkgutilIds": [],
+      "sha256": "2d15a19927fe11ce177c2b67fa890ec43b2950f33b6be5dce770dc4a5c1364ae"
+    },
+    {
+      "name": "Docker Desktop",
+      "category": "Developer tools",
+      "downloadUrl": "https://desktop.docker.com/mac/main/arm64/245822/Docker.dmg",
+      "version": "4.99.0,245822",
+      "installerType": "app",
+      "appBundles": [
+        "Docker.app"
+      ],
+      "leftoverPaths": [
+        {
+          "path": "/usr/local/bin/docker-compose.backup",
+          "from": "trash"
+        },
+        {
+          "path": "/usr/local/bin/docker.backup",
+          "from": "trash"
+        },
+        {
+          "path": "~/.docker",
+          "from": "trash"
+        },
+        {
+          "path": "~/Library/Application Scripts/com.docker.helper",
+          "from": "trash"
+        },
+        {
+          "path": "~/Library/Application Scripts/group.com.docker",
+          "from": "trash"
+        },
+        {
+          "path": "~/Library/Application Support/com.apple.sharedfilelist/com.apple.LSSharedFileList.ApplicationRecentDocuments/com.docker.helper.sfl*",
+          "from": "trash"
+        },
+        {
+          "path": "~/Library/Application Support/com.apple.sharedfilelist/com.apple.LSSharedFileList.ApplicationRecentDocuments/com.electron.dockerdesktop.sfl*",
+          "from": "trash"
+        },
+        {
+          "path": "~/Library/Application Support/com.bugsnag.Bugsnag/com.docker.docker",
+          "from": "trash"
+        },
+        {
+          "path": "~/Library/Application Support/Docker Desktop",
+          "from": "trash"
+        },
+        {
+          "path": "~/Library/Application Support/docker-secrets-engine",
+          "from": "trash"
+        },
+        {
+          "path": "~/Library/Caches/com.docker.docker",
+          "from": "trash"
+        },
+        {
+          "path": "~/Library/Caches/com.plausiblelabs.crashreporter.data/com.docker.docker",
+          "from": "trash"
+        },
+        {
+          "path": "~/Library/Caches/Docker Desktop",
+          "from": "trash"
+        },
+        {
+          "path": "~/Library/Caches/docker-secrets-engine",
+          "from": "trash"
+        },
+        {
+          "path": "~/Library/Caches/KSCrashReports/Docker",
+          "from": "trash"
+        },
+        {
+          "path": "~/Library/Containers/com.docker.docker",
+          "from": "trash"
+        },
+        {
+          "path": "~/Library/Containers/com.docker.helper",
+          "from": "trash"
+        },
+        {
+          "path": "~/Library/Group Containers/group.com.docker",
+          "from": "trash"
+        },
+        {
+          "path": "~/Library/HTTPStorages/com.docker.docker",
+          "from": "trash"
+        },
+        {
+          "path": "~/Library/HTTPStorages/com.docker.docker.binarycookies",
+          "from": "trash"
+        },
+        {
+          "path": "~/Library/Logs/Docker Desktop",
+          "from": "trash"
+        },
+        {
+          "path": "~/Library/Preferences/com.docker.docker.plist",
+          "from": "trash"
+        },
+        {
+          "path": "~/Library/Preferences/com.electron.docker-frontend.plist",
+          "from": "trash"
+        },
+        {
+          "path": "~/Library/Preferences/com.electron.dockerdesktop.plist",
+          "from": "trash"
+        },
+        {
+          "path": "~/Library/Saved Application State/com.electron.docker-frontend.savedState",
+          "from": "trash"
+        },
+        {
+          "path": "~/Library/Saved Application State/com.electron.dockerdesktop.savedState",
+          "from": "trash"
+        },
+        {
+          "path": "~/Library/Caches/com.plausiblelabs.crashreporter.data",
+          "from": "rmdir"
+        },
+        {
+          "path": "~/Library/Caches/KSCrashReports",
+          "from": "rmdir"
+        },
+        {
+          "path": "/Library/PrivilegedHelperTools/com.docker.socket",
+          "from": "delete"
+        },
+        {
+          "path": "/Library/PrivilegedHelperTools/com.docker.vmnetd",
+          "from": "delete"
+        }
+      ],
+      "pkgutilIds": [],
+      "sha256": "0ede7f9917b55c396a17b03c069cadf457a7d21904bc264c6d398fe132da7fb9"
+    },
+    {
+      "name": "iTerm2",
+      "category": "Developer tools",
+      "downloadUrl": "https://iterm2.com/downloads/stable/iTerm2-3_7_9.zip",
+      "version": "3.7.9",
+      "installerType": "app",
+      "appBundles": [
+        "iTerm.app"
+      ],
+      "leftoverPaths": [
+        {
+          "path": "~/Library/Application Scripts/com.googlecode.iterm2.iTermFileProvider",
+          "from": "trash"
+        },
+        {
+          "path": "~/Library/Application Support/com.apple.sharedfilelist/com.apple.LSSharedFileList.ApplicationRecentDocuments/com.googlecode.iterm2.itermai.sfl*",
+          "from": "trash"
+        },
+        {
+          "path": "~/Library/Application Support/com.apple.sharedfilelist/com.apple.LSSharedFileList.ApplicationRecentDocuments/com.googlecode.iterm2.sfl*",
+          "from": "trash"
+        },
+        {
+          "path": "~/Library/Application Support/iTerm",
+          "from": "trash"
+        },
+        {
+          "path": "~/Library/Application Support/iTerm2",
+          "from": "trash"
+        },
+        {
+          "path": "~/Library/Caches/com.googlecode.iterm2",
+          "from": "trash"
+        },
+        {
+          "path": "~/Library/Containers/com.googlecode.iterm2.iTermFileProvider",
+          "from": "trash"
+        },
+        {
+          "path": "~/Library/Containers/iTermAI",
+          "from": "trash"
+        },
+        {
+          "path": "~/Library/Cookies/com.googlecode.iterm2.binarycookies",
+          "from": "trash"
+        },
+        {
+          "path": "~/Library/HTTPStorages/com.googlecode.iterm2",
+          "from": "trash"
+        },
+        {
+          "path": "~/Library/HTTPStorages/com.googlecode.iterm2.binarycookies",
+          "from": "trash"
+        },
+        {
+          "path": "~/Library/Preferences/com.googlecode.iterm2.plist",
+          "from": "trash"
+        },
+        {
+          "path": "~/Library/Preferences/com.googlecode.iterm2.private.plist",
+          "from": "trash"
+        },
+        {
+          "path": "~/Library/Saved Application State/com.googlecode.iterm2*.savedState",
+          "from": "trash"
+        },
+        {
+          "path": "~/Library/WebKit/com.googlecode.iterm2",
+          "from": "trash"
+        }
+      ],
+      "pkgutilIds": [],
+      "sha256": "beb96a1089b061c80e030101947aee13d54ba5e4058ad00b82e79633be29d3d2"
+    },
+    {
+      "name": "Sublime Text",
+      "category": "Developer tools",
+      "downloadUrl": "https://download.sublimetext.com/sublime_text_build_4215_mac.zip",
+      "version": "4215",
+      "installerType": "app",
+      "appBundles": [
+        "Sublime Text.app"
+      ],
+      "leftoverPaths": [
+        {
+          "path": "~/Library/Application Support/com.apple.sharedfilelist/com.apple.LSSharedFileList.ApplicationRecentDocuments/com.sublimetext.4.sfl*",
+          "from": "trash"
+        },
+        {
+          "path": "~/Library/Application Support/Sublime Text (Safe Mode)",
+          "from": "trash"
+        },
+        {
+          "path": "~/Library/Application Support/Sublime Text 3",
+          "from": "trash"
+        },
+        {
+          "path": "~/Library/Application Support/Sublime Text",
+          "from": "trash"
+        },
+        {
+          "path": "~/Library/Caches/com.sublimetext.4",
+          "from": "trash"
+        },
+        {
+          "path": "~/Library/Caches/com.sublimetext.3",
+          "from": "trash"
+        },
+        {
+          "path": "~/Library/Caches/Sublime Text (Safe Mode)",
+          "from": "trash"
+        },
+        {
+          "path": "~/Library/Caches/Sublime Text 3",
+          "from": "trash"
+        },
+        {
+          "path": "~/Library/Caches/Sublime Text",
+          "from": "trash"
+        },
+        {
+          "path": "~/Library/HTTPStorages/com.sublimetext.4",
+          "from": "trash"
+        },
+        {
+          "path": "~/Library/HTTPStorages/com.sublimetext.3",
+          "from": "trash"
+        },
+        {
+          "path": "~/Library/Preferences/com.sublimetext.4.plist",
+          "from": "trash"
+        },
+        {
+          "path": "~/Library/Preferences/com.sublimetext.3.plist",
+          "from": "trash"
+        },
+        {
+          "path": "~/Library/Saved Application State/com.sublimetext.4.savedState",
+          "from": "trash"
+        },
+        {
+          "path": "~/Library/Saved Application State/com.sublimetext.3.savedState",
+          "from": "trash"
+        }
+      ],
+      "pkgutilIds": [],
+      "sha256": "a0263f36660f13981bb25b05e968681429ce5f67134876cd9032ffa82e1904d5"
+    },
+    {
+      "name": "Cyberduck",
+      "category": "Developer tools",
+      "downloadUrl": "https://update.cyberduck.io/Cyberduck-9.6.0.46406.zip",
+      "version": "9.6.0,46406",
+      "installerType": "app",
+      "appBundles": [
+        "Cyberduck.app"
+      ],
+      "leftoverPaths": [
+        {
+          "path": "~/Library/Application Scripts/G69SCX94XU.duck",
+          "from": "trash"
+        },
+        {
+          "path": "~/Library/Application Support/Cyberduck",
+          "from": "trash"
+        },
+        {
+          "path": "~/Library/Caches/ch.sudo.cyberduck",
+          "from": "trash"
+        },
+        {
+          "path": "~/Library/Group Containers/G69SCX94XU.duck",
+          "from": "trash"
+        },
+        {
+          "path": "~/Library/HTTPStorages/ch.sudo.cyberduck",
+          "from": "trash"
+        },
+        {
+          "path": "~/Library/Logs/Cyberduck",
+          "from": "trash"
+        },
+        {
+          "path": "~/Library/Preferences/ch.sudo.cyberduck.plist",
+          "from": "trash"
+        },
+        {
+          "path": "~/Library/Saved Application State/ch.sudo.cyberduck.savedState",
+          "from": "trash"
+        }
+      ],
+      "pkgutilIds": [],
+      "sha256": "a9195fb3dc904265dbb1b238d707e3ac4ac8a1ed356b188464e8773aad3a8ca8"
+    },
+    {
+      "name": "Claude",
+      "category": "Developer tools",
+      "downloadUrl": "https://downloads.claude.ai/releases/darwin/universal/7.37095.0/Claude-bc368c812ec26d3a5740519cc4d5cb69bbe43025.zip",
+      "version": "7.37095.0,bc368c812ec26d3a5740519cc4d5cb69bbe43025",
+      "installerType": "app",
+      "appBundles": [
+        "Claude.app"
+      ],
+      "leftoverPaths": [
+        {
+          "path": "~/Library/Application Support/Claude",
+          "from": "trash"
+        },
+        {
+          "path": "~/Library/Application Support/com.apple.sharedfilelist/com.apple.LSSharedFileList.ApplicationRecentDocuments/com.anthropic.claudefordesktop.sfl*",
+          "from": "trash"
+        },
+        {
+          "path": "~/Library/Caches/com.anthropic.claudefordesktop",
+          "from": "trash"
+        },
+        {
+          "path": "~/Library/Caches/com.anthropic.claudefordesktop.ShipIt",
+          "from": "trash"
+        },
+        {
+          "path": "~/Library/HTTPStorages/com.anthropic.claudefordesktop",
+          "from": "trash"
+        },
+        {
+          "path": "~/Library/Logs/Claude",
+          "from": "trash"
+        },
+        {
+          "path": "~/Library/Preferences/com.anthropic.claudefordesktop.plist",
+          "from": "trash"
+        },
+        {
+          "path": "~/Library/Saved Application State/com.anthropic.claudefordesktop.savedState",
+          "from": "trash"
+        }
+      ],
+      "pkgutilIds": [],
+      "sha256": "800806556cacece6bdacbb9f3aef1849a9ed8d6fc2ee0eb2ed881a098d094eab"
+    },
+    {
+      "name": "ChatGPT",
+      "category": "Developer tools",
+      "downloadUrl": "https://persistent.oaistatic.com/codex-app-prod/ChatGPT-darwin-arm64-26.1120.41243.zip",
+      "version": "26.1120.41243",
+      "installerType": "app",
+      "appBundles": [
+        "ChatGPT.app"
+      ],
+      "leftoverPaths": [
+        {
+          "path": "/Library/Application Support/CodexComputerUseAuthorizationPlugin",
+          "from": "trash"
+        },
+        {
+          "path": "~/Library/Application Scripts/*.com.openai.sky.CUAService",
+          "from": "trash"
+        },
+        {
+          "path": "~/Library/Application Support/Codex",
+          "from": "trash"
+        },
+        {
+          "path": "~/Library/Application Support/com.apple.sharedfilelist/com.apple.LSSharedFileList.ApplicationRecentDocuments/com.openai.codex.sfl*",
+          "from": "trash"
+        },
+        {
+          "path": "~/Library/Application Support/com.openai.codex",
+          "from": "trash"
+        },
+        {
+          "path": "~/Library/Application Support/OpenAI/Codex",
+          "from": "trash"
+        },
+        {
+          "path": "~/Library/Caches/Codex",
+          "from": "trash"
+        },
+        {
+          "path": "~/Library/Caches/com.openai.codex",
+          "from": "trash"
+        },
+        {
+          "path": "~/Library/Caches/com.openai.sky.CUAService",
+          "from": "trash"
+        },
+        {
+          "path": "~/Library/Group Containers/*.com.openai.sky.CUAService",
+          "from": "trash"
+        },
+        {
+          "path": "~/Library/HTTPStorages/com.openai.codex",
+          "from": "trash"
+        },
+        {
+          "path": "~/Library/HTTPStorages/com.openai.codex.binarycookies",
+          "from": "trash"
+        },
+        {
+          "path": "~/Library/HTTPStorages/com.openai.sky.CUAService",
+          "from": "trash"
+        },
+        {
+          "path": "~/Library/HTTPStorages/com.openai.sky.CUAService.binarycookies",
+          "from": "trash"
+        },
+        {
+          "path": "~/Library/Logs/com.openai.codex",
+          "from": "trash"
+        },
+        {
+          "path": "~/Library/Preferences/com.openai.codex.plist",
+          "from": "trash"
+        },
+        {
+          "path": "~/Library/Preferences/com.openai.sky.CUAService.cli.plist",
+          "from": "trash"
+        },
+        {
+          "path": "~/Library/Preferences/com.openai.sky.CUAService.plist",
+          "from": "trash"
+        },
+        {
+          "path": "~/Library/Saved Application State/com.openai.codex.savedState",
+          "from": "trash"
+        },
+        {
+          "path": "~/.codex",
+          "from": "rmdir"
+        }
+      ],
+      "pkgutilIds": [],
+      "sha256": "ef8aad31409e2ee3993a9e740cf3e94e79e2d7219e50f48adea2217d4acf79d4"
+    },
+    {
+      "name": "Spotify",
+      "category": "Media",
+      "downloadUrl": "https://download.scdn.co/SpotifyARM64.dmg",
+      "version": "1.3.10.2586",
+      "installerType": "app",
+      "appBundles": [
+        "Spotify.app"
+      ],
+      "leftoverPaths": [
+        {
+          "path": "~/Library/Application Support/com.apple.sharedfilelist/com.apple.LSSharedFileList.ApplicationRecentDocuments/com.spotify.client.startuphelper.sfl*",
+          "from": "trash"
+        },
+        {
+          "path": "~/Library/Application Support/Spotify",
+          "from": "trash"
+        },
+        {
+          "path": "~/Library/Caches/com.spotify.client",
+          "from": "trash"
+        },
+        {
+          "path": "~/Library/Caches/com.spotify.client.helper",
+          "from": "trash"
+        },
+        {
+          "path": "~/Library/Cookies/com.spotify.client.binarycookies",
+          "from": "trash"
+        },
+        {
+          "path": "~/Library/HTTPStorages/com.spotify.client",
+          "from": "trash"
+        },
+        {
+          "path": "~/Library/HTTPStorages/com.spotify.client.helper",
+          "from": "trash"
+        },
+        {
+          "path": "~/Library/Logs/Spotify",
+          "from": "trash"
+        },
+        {
+          "path": "~/Library/Preferences/com.spotify.client.helper.plist",
+          "from": "trash"
+        },
+        {
+          "path": "~/Library/Preferences/com.spotify.client.plist",
+          "from": "trash"
+        },
+        {
+          "path": "~/Library/Saved Application State/com.spotify.client.savedState",
+          "from": "trash"
+        },
+        {
+          "path": "~/Library/WebKit/com.spotify.client",
+          "from": "trash"
+        }
+      ],
+      "pkgutilIds": [],
+      "sha256": null
+    },
+    {
+      "name": "VLC",
+      "category": "Media",
+      "downloadUrl": "https://get.videolan.org/vlc/3.0.24/macosx/vlc-3.0.24-arm64.dmg",
+      "version": "3.0.24",
+      "installerType": "app",
+      "appBundles": [
+        "VLC.app"
+      ],
+      "leftoverPaths": [
+        {
+          "path": "~/Library/Application Support/com.apple.sharedfilelist/com.apple.LSSharedFileList.ApplicationRecentDocuments/org.videolan.vlc.sfl*",
+          "from": "trash"
+        },
+        {
+          "path": "~/Library/Application Support/org.videolan.vlc",
+          "from": "trash"
+        },
+        {
+          "path": "~/Library/Application Support/VLC",
+          "from": "trash"
+        },
+        {
+          "path": "~/Library/Caches/org.videolan.vlc",
+          "from": "trash"
+        },
+        {
+          "path": "~/Library/HTTPStorages/org.videolan.vlc",
+          "from": "trash"
+        },
+        {
+          "path": "~/Library/Preferences/org.videolan.vlc",
+          "from": "trash"
+        },
+        {
+          "path": "~/Library/Preferences/org.videolan.vlc.plist",
+          "from": "trash"
+        },
+        {
+          "path": "~/Library/Saved Application State/org.videolan.vlc.savedState",
+          "from": "trash"
+        }
+      ],
+      "pkgutilIds": [],
+      "sha256": "64a89d93cdd30b0e97131743e246373db82d6826ea882d265d46d74b136da2b7"
+    },
+    {
+      "name": "Audacity",
+      "category": "Media",
+      "downloadUrl": "https://github.com/audacity/audacity/releases/download/Audacity-4.0.2/audacity-macOS-4.0.2-arm64.dmg",
+      "version": "4.0.2",
+      "installerType": "app",
+      "appBundles": [
+        "Audacity 4.app"
+      ],
+      "leftoverPaths": [
+        {
+          "path": "~/Library/Application Support/audacity",
+          "from": "trash"
+        },
+        {
+          "path": "~/Library/Caches/Audacity",
+          "from": "trash"
+        },
+        {
+          "path": "~/Library/Preferences/org.audacityteam.Audacity4.plist",
+          "from": "trash"
+        },
+        {
+          "path": "~/Library/Preferences/org.audacityteam.audacity.plist",
+          "from": "trash"
+        },
+        {
+          "path": "~/Library/Saved Application State/org.audacityteam.audacity.savedState",
+          "from": "trash"
+        }
+      ],
+      "pkgutilIds": [],
+      "sha256": "fd462da6204cbf9758b44c7ce1c29d5fe5cab4f31ba308d33c125f1b170401c3"
+    },
+    {
+      "name": "HandBrake",
+      "category": "Media",
+      "downloadUrl": "https://handbrake.fr/rotation.php?file=HandBrake-1.11.2.dmg&update=true",
+      "version": "1.11.2",
+      "installerType": "app",
+      "appBundles": [
+        "HandBrake.app"
+      ],
+      "leftoverPaths": [
+        {
+          "path": "~/Library/Application Support/com.apple.sharedfilelist/com.apple.LSSharedFileList.ApplicationRecentDocuments/fr.handbrake.handbrake.sfl*",
+          "from": "trash"
+        },
+        {
+          "path": "~/Library/Application Support/HandBrake",
+          "from": "trash"
+        },
+        {
+          "path": "~/Library/Caches/fr.handbrake.HandBrake",
+          "from": "trash"
+        },
+        {
+          "path": "~/Library/Preferences/fr.handbrake.HandBrake.plist",
+          "from": "trash"
+        },
+        {
+          "path": "~/Library/Saved Application State/fr.handbrake.HandBrake.savedState",
+          "from": "trash"
+        }
+      ],
+      "pkgutilIds": [],
+      "sha256": "4afe27aaa77a7bbb0dcda1a335d96a5f53649f2649fb84de6982ffecc35de9d7"
+    },
+    {
+      "name": "OBS",
+      "category": "Media",
+      "downloadUrl": "https://cdn-fastly.obsproject.com/downloads/obs-studio-33.0.3-macos-apple.dmg",
+      "version": "33.0.3",
+      "installerType": "app",
+      "appBundles": [
+        "OBS.app"
+      ],
+      "leftoverPaths": [
+        {
+          "path": "~/Library/Application Support/obs-studio",
+          "from": "trash"
+        },
+        {
+          "path": "~/Library/HTTPStorages/com.obsproject.obs-studio",
+          "from": "trash"
+        },
+        {
+          "path": "~/Library/Preferences/com.obsproject.obs-studio.plist",
+          "from": "trash"
+        },
+        {
+          "path": "~/Library/Saved Application State/com.obsproject.obs-studio.savedState",
+          "from": "trash"
+        },
+        {
+          "path": "/Library/CoreMediaIO/Plug-Ins/DAL/obs-mac-virtualcam.plugin",
+          "from": "delete"
+        }
+      ],
+      "pkgutilIds": [],
+      "sha256": "92212873b6f84c54285203cac3f846590ac00dfad76b312cf266100ff5edf0c8"
+    },
+    {
+      "name": "Plex",
+      "category": "Media",
+      "downloadUrl": "https://downloads.plex.tv/plex-desktop/1.115.0.426-4e960a1d/macos/Plex-1.115.0.426-4e960a1d-universal.zip",
+      "version": "1.115.0.426,4e960a1d",
+      "installerType": "app",
+      "appBundles": [
+        "Plex.app"
+      ],
+      "leftoverPaths": [
+        {
+          "path": "~/Library/Application Support/Plex",
+          "from": "trash"
+        },
+        {
+          "path": "~/Library/Caches/Plex",
+          "from": "trash"
+        },
+        {
+          "path": "~/Library/Logs/Plex",
+          "from": "trash"
+        }
+      ],
+      "pkgutilIds": [],
+      "sha256": "273fbc9b36938772abc5c5579923d758a6c9c158cd1d9c0f0689627d5f1af14f"
+    },
+    {
+      "name": "Blender",
+      "category": "Creative",
+      "downloadUrl": "https://download.blender.org/release/Blender5.3/blender-5.3.0-macos-arm64.dmg",
+      "version": "5.3.0",
+      "installerType": "app",
+      "appBundles": [
+        "Blender.app"
+      ],
+      "leftoverPaths": [
+        {
+          "path": "~/Library/Application Support/Blender",
+          "from": "trash"
+        },
+        {
+          "path": "~/Library/Caches/Blender",
+          "from": "trash"
+        },
+        {
+          "path": "~/Library/Saved Application State/org.blenderfoundation.blender.savedState",
+          "from": "trash"
+        }
+      ],
+      "pkgutilIds": [],
+      "sha256": "2d802b54766741e612cead50b03ebbc8eb64dadc71eda932573d256b8a784720"
+    },
+    {
+      "name": "GIMP",
+      "category": "Creative",
+      "downloadUrl": "https://download.gimp.org/gimp/v3.2/macos/gimp-3.2.8-arm64.dmg",
+      "version": "3.2.8",
+      "installerType": "app",
+      "appBundles": [
+        "GIMP.app"
+      ],
+      "leftoverPaths": [
+        {
+          "path": "~/Library/Application Support/Gimp",
+          "from": "trash"
+        },
+        {
+          "path": "~/Library/Caches/GIMP",
+          "from": "trash"
+        },
+        {
+          "path": "~/Library/Preferences/org.gimp.gimp-3.2.plist",
+          "from": "trash"
+        },
+        {
+          "path": "~/Library/Preferences/org.gimp.gimp.plist",
+          "from": "trash"
+        },
+        {
+          "path": "~/Library/Saved Application State/org.gimp.gimp-3.2.savedState",
+          "from": "trash"
+        }
+      ],
+      "pkgutilIds": [],
+      "sha256": "06404a375106b7613ba3a14c7d8d9a7cbe18b9b9e2b2050bb72f3162cbcfc395"
+    },
+    {
+      "name": "Inkscape",
+      "category": "Creative",
+      "downloadUrl": "https://media.inkscape.org/dl/resources/file/Inkscape-1.4.4_arm64.dmg",
+      "version": "1.4.4",
+      "installerType": "app",
+      "appBundles": [
+        "Inkscape.app"
+      ],
+      "leftoverPaths": [
+        {
+          "path": "~/Library/Application Support/Inkscape",
+          "from": "trash"
+        },
+        {
+          "path": "~/Library/Application Support/org.inkscape.Inkscape",
+          "from": "trash"
+        },
+        {
+          "path": "~/Library/Caches/org.inkscape.Inkscape*",
+          "from": "trash"
+        },
+        {
+          "path": "~/Library/Preferences/org.inkscape.Inkscape.plist",
+          "from": "trash"
+        },
+        {
+          "path": "~/Library/Saved Application State/org.inkscape.Inkscape.savedState",
+          "from": "trash"
+        }
+      ],
+      "pkgutilIds": [],
+      "sha256": "eacca94ab01e59467cdd5452a2867c3734450f9a4cfb3346956cc9b07f34f3f1"
+    },
+    {
+      "name": "Sketch",
+      "category": "Creative",
+      "downloadUrl": "https://download.sketch.com/sketch-2026.4-238217.zip",
+      "version": "2026.4,238217",
+      "installerType": "app",
+      "appBundles": [
+        "Sketch.app"
+      ],
+      "leftoverPaths": [
+        {
+          "path": "~/Library/Application Support/bugsnag-shared-com.bohemiancoding.sketch3",
+          "from": "trash"
+        },
+        {
+          "path": "~/Library/Application Support/com.apple.sharedfilelist/com.apple.LSSharedFileList.ApplicationRecentDocuments/com.bohemiancoding.sketch3.sfl*",
+          "from": "trash"
+        },
+        {
+          "path": "~/Library/Application Support/com.bohemiancoding.sketch3",
+          "from": "trash"
+        },
+        {
+          "path": "~/Library/Autosave Information/com.bohemiancoding.sketch3.plist",
+          "from": "trash"
+        },
+        {
+          "path": "~/Library/Caches/bugsnag-shared-com.bohemiancoding.sketch3",
+          "from": "trash"
+        },
+        {
+          "path": "~/Library/Caches/com.bohemiancoding.sketch3",
+          "from": "trash"
+        },
+        {
+          "path": "~/Library/Caches/com.plausiblelabs.crashreporter.data/com.bohemiancoding.sketch3",
+          "from": "trash"
+        },
+        {
+          "path": "~/Library/Cookies/com.bohemiancoding.sketch3.binarycookies",
+          "from": "trash"
+        },
+        {
+          "path": "~/Library/HTTPStorages/com.bohemiancoding.sketch3",
+          "from": "trash"
+        },
+        {
+          "path": "~/Library/HTTPStorages/com.bohemiancoding.sketch3.binarycookies",
+          "from": "trash"
+        },
+        {
+          "path": "~/Library/Logs/com.bohemiancoding.sketch3",
+          "from": "trash"
+        },
+        {
+          "path": "~/Library/Preferences/com.bohemiancoding.sketch3.LSSharedFileList.plist",
+          "from": "trash"
+        },
+        {
+          "path": "~/Library/Preferences/com.bohemiancoding.sketch3.plist",
+          "from": "trash"
+        },
+        {
+          "path": "~/Library/Saved Application State/com.bohemiancoding.sketch3.savedState",
+          "from": "trash"
+        }
+      ],
+      "pkgutilIds": [],
+      "sha256": "ce2ed9756fc2fec517bc14cbf5515e8bfc83e23a2e281f228acfe1114f37d06a"
+    },
+    {
+      "name": "LibreOffice",
+      "category": "Productivity and storage",
+      "downloadUrl": "https://download.documentfoundation.org/libreoffice/stable/26.8.3/mac/aarch64/LibreOffice_26.8.3_MacOS_aarch64.dmg",
+      "version": "26.8.3",
+      "installerType": "app",
+      "appBundles": [
+        "LibreOffice.app"
+      ],
+      "leftoverPaths": [
+        {
+          "path": "~/Library/Application Support/com.apple.sharedfilelist/com.apple.LSSharedFileList.ApplicationRecentDocuments/org.libreoffice.script.sfl*",
+          "from": "trash"
+        },
+        {
+          "path": "~/Library/Application Support/LibreOffice",
+          "from": "trash"
+        },
+        {
+          "path": "~/Library/Preferences/org.libreoffice.script.plist",
+          "from": "trash"
+        },
+        {
+          "path": "~/Library/Saved Application State/org.libreoffice.script.savedState",
+          "from": "trash"
+        }
+      ],
+      "pkgutilIds": [],
+      "sha256": "de943203795e5057785f65515063e2db5eb60b0bb6d8e2534fec59e5cc5fb988"
+    },
+    {
+      "name": "Dropbox",
+      "category": "Productivity and storage",
+      "downloadUrl": "https://edge.dropboxstatic.com/dbx-releng/client/Dropbox%20280.4.5053.arm64.dmg",
+      "version": "280.4.5053",
+      "installerType": "app",
+      "appBundles": [
+        "Dropbox.app"
+      ],
+      "leftoverPaths": [
+        {
+          "path": "~/.dropbox",
+          "from": "trash"
+        },
+        {
+          "path": "~/Library/Application Scripts/*.com.getdropbox.dropbox.sync",
+          "from": "trash"
+        },
+        {
+          "path": "~/Library/Application Scripts/com.dropbox.alternatenotificationservice",
+          "from": "trash"
+        },
+        {
+          "path": "~/Library/Application Scripts/com.dropbox.client.crashpad",
+          "from": "trash"
+        },
+        {
+          "path": "~/Library/Application Scripts/com.dropbox.foldertagger",
+          "from": "trash"
+        },
+        {
+          "path": "~/Library/Application Scripts/com.getdropbox.dropbox.fileprovider",
+          "from": "trash"
+        },
+        {
+          "path": "~/Library/Application Scripts/com.getdropbox.dropbox.garcon",
+          "from": "trash"
+        },
+        {
+          "path": "~/Library/Application Scripts/com.getdropbox.dropbox.TransferExtension",
+          "from": "trash"
+        },
+        {
+          "path": "~/Library/Application Support/com.apple.sharedfilelist/com.apple.LSSharedFileList.ApplicationRecentDocuments/com.getdropbox.dropbox.sfl*",
+          "from": "trash"
+        },
+        {
+          "path": "~/Library/Application Support/Dropbox",
+          "from": "trash"
+        },
+        {
+          "path": "~/Library/Application Support/DropboxElectron",
+          "from": "trash"
+        },
+        {
+          "path": "~/Library/Application Support/FileProvider/com.getdropbox.dropbox.fileprovider",
+          "from": "trash"
+        },
+        {
+          "path": "~/Library/Caches/CloudKit/com.apple.bird/iCloud.com.getdropbox.Dropbox",
+          "from": "trash"
+        },
+        {
+          "path": "~/Library/Caches/com.dropbox.DropboxMacUpdate",
+          "from": "trash"
+        },
+        {
+          "path": "~/Library/Caches/com.dropbox.DropboxUpdater",
+          "from": "trash"
+        },
+        {
+          "path": "~/Library/Caches/com.getdropbox.dropbox",
+          "from": "trash"
+        },
+        {
+          "path": "~/Library/Caches/com.getdropbox.DropboxMetaInstaller",
+          "from": "trash"
+        },
+        {
+          "path": "~/Library/Caches/com.plausiblelabs.crashreporter.data/com.dropbox.DropboxMacUpdate",
+          "from": "trash"
+        },
+        {
+          "path": "~/Library/CloudStorage/Dropbox",
+          "from": "trash"
+        },
+        {
+          "path": "~/Library/Containers/com.dropbox.activityprovider",
+          "from": "trash"
+        },
+        {
+          "path": "~/Library/Containers/com.dropbox.alternatenotificationservice",
+          "from": "trash"
+        },
+        {
+          "path": "~/Library/Containers/com.dropbox.foldertagger",
+          "from": "trash"
+        },
+        {
+          "path": "~/Library/Containers/com.getdropbox.dropbox.fileprovider",
+          "from": "trash"
+        },
+        {
+          "path": "~/Library/Containers/com.getdropbox.dropbox.garcon",
+          "from": "trash"
+        },
+        {
+          "path": "~/Library/Containers/com.getdropbox.dropbox.TransferExtension",
+          "from": "trash"
+        },
+        {
+          "path": "~/Library/Dropbox",
+          "from": "trash"
+        },
+        {
+          "path": "~/Library/Dropbox/DropboxMacUpdate.app/Contents/MacOS/DropboxMacUpdate",
+          "from": "trash"
+        },
+        {
+          "path": "~/Library/Group Containers/*.com.getdropbox.dropbox.sync",
+          "from": "trash"
+        },
+        {
+          "path": "~/Library/Group Containers/com.dropbox.client.crashpad",
+          "from": "trash"
+        },
+        {
+          "path": "~/Library/Group Containers/com.getdropbox.dropbox.garcon",
+          "from": "trash"
+        },
+        {
+          "path": "~/Library/HTTPStorages/com.dropbox.DropboxMacUpdate",
+          "from": "trash"
+        },
+        {
+          "path": "~/Library/HTTPStorages/com.getdropbox.dropbox",
+          "from": "trash"
+        },
+        {
+          "path": "~/Library/LaunchAgents/com.dropbox.DropboxMacUpdate.agent.plist",
+          "from": "trash"
+        },
+        {
+          "path": "~/Library/Logs/Dropbox_debug.log",
+          "from": "trash"
+        },
+        {
+          "path": "~/Library/Preferences/com.apple.FileProvider/com.getdropbox.dropbox.fileprovider",
+          "from": "trash"
+        },
+        {
+          "path": "~/Library/Preferences/com.dropbox.DropboxMacUpdate.plist",
+          "from": "trash"
+        },
+        {
+          "path": "~/Library/Preferences/com.dropbox.DropboxMonitor.plist",
+          "from": "trash"
+        },
+        {
+          "path": "~/Library/Preferences/com.dropbox.tungsten.helper.plist",
+          "from": "trash"
+        },
+        {
+          "path": "~/Library/Preferences/com.getdropbox.dropbox.plist",
+          "from": "trash"
+        },
+        {
+          "path": "/Library/DropboxHelperTools",
+          "from": "delete"
+        },
+        {
+          "path": "/Library/Preferences/com.getdropbox.dropbox.dbkextd.plist",
+          "from": "delete"
+        }
+      ],
+      "pkgutilIds": [],
+      "sha256": "fa6e9b1a5f1d78108749d2643e889ad98d67ba90c243e48b516d8491b14e4497"
+    },
+    {
+      "name": "Google Drive",
+      "category": "Productivity and storage",
+      "downloadUrl": "https://dl.google.com/drive-file-stream/5-percent/GoogleDrive.dmg",
+      "version": "134.0.1",
+      "installerType": "pkg",
+      "appBundles": [
+        "Google Drive.app",
+        "Google Docs.app",
+        "Google Sheets.app",
+        "Google Slides.app"
+      ],
+      "leftoverPaths": [
+        {
+          "path": "~/Library/Application Scripts/com.google.drivefs*",
+          "from": "trash"
+        },
+        {
+          "path": "~/Library/Application Scripts/EQHXZ8M8AV.group.com.google.drivefs",
+          "from": "trash"
+        },
+        {
+          "path": "~/Library/Application Support/FileProvider/com.google.drivefs.fpext",
+          "from": "trash"
+        },
+        {
+          "path": "~/Library/Application Support/Google/DriveFS",
+          "from": "trash"
+        },
+        {
+          "path": "~/Library/Caches/com.google.drivefs",
+          "from": "trash"
+        },
+        {
+          "path": "~/Library/Containers/com.google.drivefs*",
+          "from": "trash"
+        },
+        {
+          "path": "~/Library/Group Containers/*group.com.google.drivefs",
+          "from": "trash"
+        },
+        {
+          "path": "~/Library/Preferences/com.google.drivefs*.plist",
+          "from": "trash"
+        },
+        {
+          "path": "~/Library/Preferences/Google Drive File Stream Helper.plist",
+          "from": "trash"
+        }
+      ],
+      "pkgutilIds": [
+        {
+          "id": "com.google.drivefs.arm64",
+          "pattern": false
+        },
+        {
+          "id": "com.google.drivefs.filesystems.dfsfuse.arm64",
+          "pattern": false
+        },
+        {
+          "id": "com.google.drivefs.filesystems.dfsfuse.x86_64",
+          "pattern": false
+        },
+        {
+          "id": "com.google.drivefs.shortcuts",
+          "pattern": false
+        },
+        {
+          "id": "com.google.drivefs.x86_64",
+          "pattern": false
+        }
+      ],
+      "sha256": null
+    },
+    {
+      "name": "OneDrive",
+      "category": "Productivity and storage",
+      "downloadUrl": "https://oneclient.sfx.ms/Mac/Installers/26.213.1101.0008/universal/OneDrive.pkg",
+      "version": "26.213.1101.0008",
+      "installerType": "pkg",
+      "appBundles": [
+        "OneDrive.app"
+      ],
+      "leftoverPaths": [
+        {
+          "path": "~/Library/Application Scripts/*.OfficeOneDriveSyncIntegration",
+          "from": "trash"
+        },
+        {
+          "path": "~/Library/Application Scripts/*.OneDriveStandaloneSuite",
+          "from": "trash"
+        },
+        {
+          "path": "~/Library/Application Scripts/com.microsoft.OneDrive-mac",
+          "from": "trash"
+        },
+        {
+          "path": "~/Library/Application Scripts/com.microsoft.OneDrive.FileProvider",
+          "from": "trash"
+        },
+        {
+          "path": "~/Library/Application Scripts/com.microsoft.OneDrive.FinderSync",
+          "from": "trash"
+        },
+        {
+          "path": "~/Library/Application Scripts/com.microsoft.OneDriveLauncher",
+          "from": "trash"
+        },
+        {
+          "path": "~/Library/Application Support/com.microsoft.OneDrive",
+          "from": "trash"
+        },
+        {
+          "path": "~/Library/Application Support/com.microsoft.OneDriveUpdater",
+          "from": "trash"
+        },
+        {
+          "path": "~/Library/Application Support/FileProvider/com.microsoft.OneDrive.FileProvider",
+          "from": "trash"
+        },
+        {
+          "path": "~/Library/Application Support/OneDrive",
+          "from": "trash"
+        },
+        {
+          "path": "~/Library/Application Support/OneDriveUpdater",
+          "from": "trash"
+        },
+        {
+          "path": "~/Library/Caches/com.microsoft.OneDrive",
+          "from": "trash"
+        },
+        {
+          "path": "~/Library/Caches/com.microsoft.OneDriveStandaloneUpdater",
+          "from": "trash"
+        },
+        {
+          "path": "~/Library/Caches/com.microsoft.OneDriveUpdater",
+          "from": "trash"
+        },
+        {
+          "path": "~/Library/Caches/com.plausiblelabs.crashreporter.data/com.microsoft.OneDrive",
+          "from": "trash"
+        },
+        {
+          "path": "~/Library/Caches/com.plausiblelabs.crashreporter.data/com.microsoft.OneDriveStandaloneUpdater",
+          "from": "trash"
+        },
+        {
+          "path": "~/Library/Caches/com.plausiblelabs.crashreporter.data/com.microsoft.OneDriveUpdater",
+          "from": "trash"
+        },
+        {
+          "path": "~/Library/Caches/OneDrive",
+          "from": "trash"
+        },
+        {
+          "path": "~/Library/Containers/com.microsoft.OneDrive.FileProvider",
+          "from": "trash"
+        },
+        {
+          "path": "~/Library/Containers/com.microsoft.OneDrive.FinderSync",
+          "from": "trash"
+        },
+        {
+          "path": "~/Library/Containers/com.microsoft.OneDriveLauncher",
+          "from": "trash"
+        },
+        {
+          "path": "~/Library/Cookies/com.microsoft.OneDrive.binarycookies",
+          "from": "trash"
+        },
+        {
+          "path": "~/Library/Cookies/com.microsoft.OneDriveUpdater.binarycookies",
+          "from": "trash"
+        },
+        {
+          "path": "~/Library/Group Containers/*.OfficeOneDriveSyncIntegration",
+          "from": "trash"
+        },
+        {
+          "path": "~/Library/Group Containers/*.OneDriveStandaloneSuite",
+          "from": "trash"
+        },
+        {
+          "path": "~/Library/Group Containers/*.OneDriveSyncClientSuite",
+          "from": "trash"
+        },
+        {
+          "path": "~/Library/HTTPStorages/com.microsoft.OneDrive",
+          "from": "trash"
+        },
+        {
+          "path": "~/Library/HTTPStorages/com.microsoft.OneDrive.binarycookies",
+          "from": "trash"
+        },
+        {
+          "path": "~/Library/HTTPStorages/com.microsoft.OneDriveStandaloneUpdater",
+          "from": "trash"
+        },
+        {
+          "path": "~/Library/HTTPStorages/com.microsoft.OneDriveStandaloneUpdater.binarycookies",
+          "from": "trash"
+        },
+        {
+          "path": "~/Library/Logs/OneDrive",
+          "from": "trash"
+        },
+        {
+          "path": "~/Library/Preferences/*.OneDriveStandaloneSuite.plist",
+          "from": "trash"
+        },
+        {
+          "path": "~/Library/Preferences/com.microsoft.OneDrive.plist",
+          "from": "trash"
+        },
+        {
+          "path": "~/Library/Preferences/com.microsoft.OneDriveStandaloneUpdater.plist",
+          "from": "trash"
+        },
+        {
+          "path": "~/Library/Preferences/com.microsoft.OneDriveUpdater.plist",
+          "from": "trash"
+        },
+        {
+          "path": "~/Library/WebKit/com.microsoft.OneDrive",
+          "from": "trash"
+        },
+        {
+          "path": "/Library/LaunchAgents/com.microsoft.OneDriveStandaloneUpdater.plist",
+          "from": "delete"
+        },
+        {
+          "path": "/Library/LaunchDaemons/com.microsoft.OneDriveStandaloneUpdaterDaemon.plist",
+          "from": "delete"
+        },
+        {
+          "path": "/Library/LaunchDaemons/com.microsoft.OneDriveUpdaterDaemon.plist",
+          "from": "delete"
+        },
+        {
+          "path": "/Library/Logs/Microsoft/OneDrive",
+          "from": "delete"
+        }
+      ],
+      "pkgutilIds": [
+        {
+          "id": "com.microsoft.OneDrive",
+          "pattern": false
+        }
+      ],
+      "sha256": "bd70e9cb347c9954be4ab8db4131be8b5d211a7b697a2642f935f230fd71ec90"
+    },
+    {
+      "name": "Steam",
+      "category": "Games",
+      "downloadUrl": "https://client-update.steamstatic.com/appdmg_osx.zip.984652b88a9737e3f4e77c656d9ffa67d5042c2c",
+      "version": "6.1,1791918634,984652b88a9737e3f4e77c656d9ffa67d5042c2c",
+      "installerType": "app",
+      "appBundles": [
+        "Steam.app"
+      ],
+      "leftoverPaths": [
+        {
+          "path": "~/Library/Application Support/Steam",
+          "from": "trash"
+        },
+        {
+          "path": "~/Library/LaunchAgents/com.valvesoftware.steamclean.plist",
+          "from": "trash"
+        },
+        {
+          "path": "~/Library/Preferences/com.valvesoftware.steam.helper.plist",
+          "from": "trash"
+        },
+        {
+          "path": "~/Library/Saved Application State/com.valvesoftware.steam.savedState",
+          "from": "trash"
+        },
+        {
+          "path": "~/Library/Application Support/Steam/Steam.AppBundle",
+          "from": "delete"
+        }
+      ],
+      "pkgutilIds": [],
+      "sha256": "8bf4ce8b4bcbc50f642988c955559f605e7a877372116e7a2b3fd1355004bedb"
+    },
+    {
+      "name": "Epic Games Launcher",
+      "category": "Games",
+      "downloadUrl": "https://epicgames-download1.akamaized.net/Builds/UnrealEngineLauncher/Installers/Mac/EpicInstaller-20.3.3.dmg",
+      "version": "20.3.3",
+      "installerType": "app",
+      "appBundles": [
+        "Epic Games Launcher.app"
+      ],
+      "leftoverPaths": [
+        {
+          "path": "~/Library/Application Support/Epic",
+          "from": "trash"
+        },
+        {
+          "path": "~/Library/Caches/com.epicgames.EpicGamesLauncher",
+          "from": "trash"
+        },
+        {
+          "path": "~/Library/Cookies/com.epicgames.EpicGamesLauncher.binarycookies",
+          "from": "trash"
+        },
+        {
+          "path": "~/Library/HTTPStorages/com.epicgames.CrashReportClient",
+          "from": "trash"
+        },
+        {
+          "path": "~/Library/HTTPStorages/com.epicgames.EpicGamesLauncher",
+          "from": "trash"
+        },
+        {
+          "path": "~/Library/Logs/Unreal Engine/EpicGamesLauncher",
+          "from": "trash"
+        },
+        {
+          "path": "~/Library/Preferences/Unreal Engine/EpicGamesLauncher",
+          "from": "trash"
+        }
+      ],
+      "pkgutilIds": [],
+      "sha256": "d25d7344f3759ef820c3b3f27eab10e86bfaba22788f88d5b917f4937a429076"
+    },
+    {
+      "name": "1Password",
+      "category": "Security",
+      "downloadUrl": "https://downloads.1password.com/mac/1Password-8.12.46-aarch64.zip",
+      "version": "8.12.46",
+      "installerType": "app",
+      "appBundles": [
+        "1Password.app"
+      ],
+      "leftoverPaths": [
+        {
+          "path": "~/Library/Application Scripts/2BUA8C4S2C.com.1password*",
+          "from": "trash"
+        },
+        {
+          "path": "~/Library/Application Scripts/2BUA8C4S2C.com.agilebits",
+          "from": "trash"
+        },
+        {
+          "path": "~/Library/Application Scripts/com.1password.1password-launcher",
+          "from": "trash"
+        },
+        {
+          "path": "~/Library/Application Scripts/com.1password.browser-support",
+          "from": "trash"
+        },
+        {
+          "path": "~/Library/Application Support/1Password",
+          "from": "trash"
+        },
+        {
+          "path": "~/Library/Application Support/Arc/User Data/NativeMessagingHosts/com.1password.1password.json",
+          "from": "trash"
+        },
+        {
+          "path": "~/Library/Application Support/com.apple.sharedfilelist/com.apple.LSSharedFileList.ApplicationRecentDocuments/com.1password.1password.sfl*",
+          "from": "trash"
+        },
+        {
+          "path": "~/Library/Application Support/CrashReporter/1Password*",
+          "from": "trash"
+        },
+        {
+          "path": "~/Library/Application Support/Google/Chrome Beta/NativeMessagingHosts/com.1password.1password.json",
+          "from": "trash"
+        },
+        {
+          "path": "~/Library/Application Support/Google/Chrome Canary/NativeMessagingHosts/com.1password.1password.json",
+          "from": "trash"
+        },
+        {
+          "path": "~/Library/Application Support/Google/Chrome Dev/NativeMessagingHosts/com.1password.1password.json",
+          "from": "trash"
+        },
+        {
+          "path": "~/Library/Application Support/Google/Chrome/NativeMessagingHosts/com.1password.1password.json",
+          "from": "trash"
+        },
+        {
+          "path": "~/Library/Application Support/Microsoft Edge Beta/NativeMessagingHosts/com.1password.1password.json",
+          "from": "trash"
+        },
+        {
+          "path": "~/Library/Application Support/Microsoft Edge Canary/NativeMessagingHosts/com.1password.1password.json",
+          "from": "trash"
+        },
+        {
+          "path": "~/Library/Application Support/Microsoft Edge Dev/NativeMessagingHosts/com.1password.1password.json",
+          "from": "trash"
+        },
+        {
+          "path": "~/Library/Application Support/Microsoft Edge/NativeMessagingHosts/com.1password.1password.json",
+          "from": "trash"
+        },
+        {
+          "path": "~/Library/Application Support/Mozilla/NativeMessagingHosts/com.1password.1password.json",
+          "from": "trash"
+        },
+        {
+          "path": "~/Library/Application Support/Vivaldi/NativeMessagingHosts/com.1password.1password.json",
+          "from": "trash"
+        },
+        {
+          "path": "~/Library/Containers/2BUA8C4S2C.com.1password.browser-helper",
+          "from": "trash"
+        },
+        {
+          "path": "~/Library/Containers/com.1password.1password*",
+          "from": "trash"
+        },
+        {
+          "path": "~/Library/Containers/com.1password.browser-support",
+          "from": "trash"
+        },
+        {
+          "path": "~/Library/Group Containers/2BUA8C4S2C.com.1password",
+          "from": "trash"
+        },
+        {
+          "path": "~/Library/Group Containers/2BUA8C4S2C.com.agilebits",
+          "from": "trash"
+        },
+        {
+          "path": "~/Library/Logs/1Password",
+          "from": "trash"
+        },
+        {
+          "path": "~/Library/Preferences/com.1password.1password.plist",
+          "from": "trash"
+        },
+        {
+          "path": "~/Library/Preferences/group.com.1password.plist",
+          "from": "trash"
+        },
+        {
+          "path": "~/Library/Saved Application State/com.1password.1password.savedState",
+          "from": "trash"
+        }
+      ],
+      "pkgutilIds": [],
+      "sha256": "7f44eecae6a52409748ba5ed6b94d6b383949f628e2cccd3d1e4798fa30461fc"
+    },
+    {
+      "name": "Bitwarden",
+      "category": "Security",
+      "downloadUrl": "https://github.com/bitwarden/clients/releases/download/desktop-v2026.11.0/bit-Bitwarden-2026.11.0-universal.dmg",
+      "version": "2026.11.0",
+      "installerType": "app",
+      "appBundles": [
+        "Bitwarden.app"
+      ],
+      "leftoverPaths": [
+        {
+          "path": "~/Library/Application Scripts/com.bitwarden.desktop.autofill-extension",
+          "from": "trash"
+        },
+        {
+          "path": "~/Library/Application Scripts/LTZ2PFU5D6.com.bitwarden.desktop",
+          "from": "trash"
+        },
+        {
+          "path": "~/Library/Application Support/Bitwarden",
+          "from": "trash"
+        },
+        {
+          "path": "~/Library/Application Support/com.apple.sharedfilelist/com.apple.LSSharedFileList.ApplicationRecentDocuments/com.bitwarden.desktop.sfl*",
+          "from": "trash"
+        },
+        {
+          "path": "~/Library/Caches/com.bitwarden.desktop",
+          "from": "trash"
+        },
+        {
+          "path": "~/Library/Caches/com.bitwarden.desktop.ShipIt",
+          "from": "trash"
+        },
+        {
+          "path": "~/Library/Containers/com.bitwarden.desktop.autofill-extension",
+          "from": "trash"
+        },
+        {
+          "path": "~/Library/Group Containers/LTZ2PFU5D6.com.bitwarden.desktop",
+          "from": "trash"
+        },
+        {
+          "path": "~/Library/Logs/Bitwarden",
+          "from": "trash"
+        },
+        {
+          "path": "~/Library/Preferences/ByHost/com.bitwarden.desktop.ShipIt.*.plist",
+          "from": "trash"
+        },
+        {
+          "path": "~/Library/Preferences/com.bitwarden.desktop.helper.plist",
+          "from": "trash"
+        },
+        {
+          "path": "~/Library/Preferences/com.bitwarden.desktop.plist",
+          "from": "trash"
+        },
+        {
+          "path": "~/Library/Saved Application State/com.bitwarden.desktop.savedState",
+          "from": "trash"
+        }
+      ],
+      "pkgutilIds": [],
+      "sha256": "c6d90fe5054874736fb0b59967340f3b911e60cfd502b82d9196c50568bf2bd3"
+    },
+    {
+      "name": "AppCleaner",
+      "category": "Utilities",
+      "downloadUrl": "https://www.freemacsoft.net/downloads/AppCleaner_3.7.zip",
+      "version": "3.7",
+      "installerType": "app",
+      "appBundles": [
+        "AppCleaner.app"
+      ],
+      "leftoverPaths": [
+        {
+          "path": "~/Library/Caches/net.freemacsoft.AppCleaner",
+          "from": "trash"
+        },
+        {
+          "path": "~/Library/HTTPStorages/net.freemacsoft.AppCleaner",
+          "from": "trash"
+        },
+        {
+          "path": "~/Library/Preferences/net.freemacsoft.AppCleaner-SmartDelete.plist",
+          "from": "trash"
+        },
+        {
+          "path": "~/Library/Preferences/net.freemacsoft.AppCleaner.plist",
+          "from": "trash"
+        },
+        {
+          "path": "~/Library/Saved Application State/net.freemacsoft.AppCleaner.savedState",
+          "from": "trash"
+        }
+      ],
+      "pkgutilIds": [],
+      "sha256": "3d7fa6146fb57da955dca408587fc658ac14aeb86eda7907763ae66397c9e65e"
+    },
+    {
+      "name": "Caffeine",
+      "category": "Utilities",
+      "downloadUrl": "https://github.com/IntelliScape/caffeine/releases/download/1.1.4/Caffeine.dmg",
+      "version": "1.1.4",
+      "installerType": "app",
+      "appBundles": [
+        "Caffeine.app"
+      ],
+      "leftoverPaths": [
+        {
+          "path": "~/Library/Application Support/com.intelliscapesolutions.caffeine",
+          "from": "trash"
+        },
+        {
+          "path": "~/Library/Caches/com.intelliscapesolutions.caffeine",
+          "from": "trash"
+        },
+        {
+          "path": "~/Library/HTTPStorages/com.intelliscapesolutions.caffeine.binarycookies",
+          "from": "trash"
+        },
+        {
+          "path": "~/Library/Preferences/com.intelliscapesolutions.caffeine.plist",
+          "from": "trash"
+        }
+      ],
+      "pkgutilIds": [],
+      "sha256": "1ad34c3299a0c866873c4feb432c3e11186375adb6f43c5f481ae9d46d06d723"
+    },
+    {
+      "name": "coconutBattery",
+      "category": "Utilities",
+      "downloadUrl": "https://www.coconut-flavour.com/downloads/coconutBattery_441_275.zip",
+      "version": "4.4.1,275",
+      "installerType": "app",
+      "appBundles": [
+        "coconutBattery.app"
+      ],
+      "leftoverPaths": [
+        {
+          "path": "~/Library/Application Scripts/R5SC3K86L5.com.coconut-flavour.coconutBattery",
+          "from": "trash"
+        },
+        {
+          "path": "~/Library/Application Support/coconutBattery",
+          "from": "trash"
+        },
+        {
+          "path": "~/Library/Application Support/com.apple.sharedfilelist/com.apple.LSSharedFileList.ApplicationRecentDocuments/com.coconut-flavour.coconutbattery.sfl*",
+          "from": "trash"
+        },
+        {
+          "path": "~/Library/Caches/com.coconut-flavour.coconutBattery*",
+          "from": "trash"
+        },
+        {
+          "path": "~/Library/Group Containers/*.coconut-flavour.coconutBattery",
+          "from": "trash"
+        },
+        {
+          "path": "~/Library/Preferences/com.coconut-flavour.coconutBattery-Menu.plist",
+          "from": "trash"
+        },
+        {
+          "path": "~/Library/Preferences/com.coconut-flavour.coconutBattery.plist",
+          "from": "trash"
+        },
+        {
+          "path": "~/Library/Saved Application State/com.coconut-flavour.coconutBattery.savedState",
+          "from": "trash"
+        },
+        {
+          "path": "~/Library/WebKit/com.coconut-flavour.coconutBattery",
+          "from": "trash"
+        }
+      ],
+      "pkgutilIds": [],
+      "sha256": "4aff5e5a481fc0878250f80436fa952fbdc12bad44e8597e62ea6bb9a9988de0"
+    },
+    {
+      "name": "The Unarchiver",
+      "category": "Utilities",
+      "downloadUrl": "https://dl.devmate.com/com.macpaw.site.theunarchiver/147/1742287964/TheUnarchiver-147.zip",
+      "version": "4.3.9,147,1742287964",
+      "installerType": "app",
+      "appBundles": [
+        "The Unarchiver.app"
+      ],
+      "leftoverPaths": [
+        {
+          "path": "~/Library/Caches/cx.c3.theunarchiver",
+          "from": "trash"
+        },
+        {
+          "path": "~/Library/Cookies/cx.c3.theunarchiver.binarycookies",
+          "from": "trash"
+        },
+        {
+          "path": "~/Library/Preferences/cx.c3.theunarchiver.plist",
+          "from": "trash"
+        },
+        {
+          "path": "~/Library/Saved Application State/cx.c3.theunarchiver.savedState",
+          "from": "trash"
+        }
+      ],
+      "pkgutilIds": [],
+      "sha256": "d0d8dd2e028519ece5eeb0f018b3392f67e1c85053472ccbbaee64e87f173a28"
+    },
+    {
+      "name": "Keka",
+      "category": "Utilities",
+      "downloadUrl": "https://github.com/aonez/Keka/releases/download/v1.6.8/Keka-1.6.8.dmg",
+      "version": "1.6.8",
+      "installerType": "app",
+      "appBundles": [
+        "Keka.app"
+      ],
+      "leftoverPaths": [
+        {
+          "path": "~/Library/Application Scripts/*.group.com.aone.keka",
+          "from": "trash"
+        },
+        {
+          "path": "~/Library/Application Scripts/com.aone.keka",
+          "from": "trash"
+        },
+        {
+          "path": "~/Library/Application Scripts/com.aone.keka.KekaFinderIntegration",
+          "from": "trash"
+        },
+        {
+          "path": "~/Library/Application Support/com.apple.sharedfilelist/com.apple.LSSharedFileList.ApplicationRecentDocuments/com.aone.keka.sfl*",
+          "from": "trash"
+        },
+        {
+          "path": "~/Library/Application Support/Keka",
+          "from": "trash"
+        },
+        {
+          "path": "~/Library/Caches/com.aone.keka",
+          "from": "trash"
+        },
+        {
+          "path": "~/Library/Containers/com.aone.keka",
+          "from": "trash"
+        },
+        {
+          "path": "~/Library/Containers/com.aone.keka.KekaFinderIntegration",
+          "from": "trash"
+        },
+        {
+          "path": "~/Library/Group Containers/*.group.com.aone.keka",
+          "from": "trash"
+        },
+        {
+          "path": "~/Library/Preferences/com.aone.keka.plist",
+          "from": "trash"
+        },
+        {
+          "path": "~/Library/Saved Application State/com.aone.keka.savedState",
+          "from": "trash"
+        }
+      ],
+      "pkgutilIds": [],
+      "sha256": "25a4daf0492b7e3bca043c8a7ba1ae97507dd8dbf872811daf74b01f16a12125"
+    },
+    {
+      "name": "balenaEtcher",
+      "category": "Utilities",
+      "downloadUrl": "https://github.com/balena-io/etcher/releases/download/v2.1.9/balenaEtcher-2.1.9-arm64.dmg",
+      "version": "2.1.9",
+      "installerType": "app",
+      "appBundles": [
+        "balenaEtcher.app"
+      ],
+      "leftoverPaths": [
+        {
+          "path": "~/Library/Application Support/balenaEtcher",
+          "from": "trash"
+        },
+        {
+          "path": "~/Library/Application Support/com.apple.sharedfilelist/com.apple.LSSharedFileList.ApplicationRecentDocuments/io.balena.etcher.sfl*",
+          "from": "trash"
+        },
+        {
+          "path": "~/Library/Preferences/io.balena.etcher.helper.plist",
+          "from": "trash"
+        },
+        {
+          "path": "~/Library/Preferences/io.balena.etcher.plist",
+          "from": "trash"
+        },
+        {
+          "path": "~/Library/Saved Application State/io.balena.etcher.savedState",
+          "from": "trash"
+        }
+      ],
+      "pkgutilIds": [],
+      "sha256": "44baa43cc425e6e236a7e6fc405fe9562e4955ddedc6e6f27e22d6e5905759fe"
+    },
+    {
+      "name": "AnyDesk",
+      "category": "Utilities",
+      "downloadUrl": "https://download.anydesk.com/anydesk.dmg",
+      "version": "9.8.1",
+      "installerType": "app",
+      "appBundles": [
+        "AnyDesk.app"
+      ],
+      "leftoverPaths": [
+        {
+          "path": "/etc/anydesk",
+          "from": "trash"
+        },
+        {
+          "path": "~/.anydesk",
+          "from": "trash"
+        },
+        {
+          "path": "~/Library/Preferences/com.philandro.anydesk.plist",
+          "from": "trash"
+        },
+        {
+          "path": "/Library/LaunchAgents/com.philandro.anydesk.Frontend.plist",
+          "from": "delete"
+        },
+        {
+          "path": "/Library/LaunchAgents/com.philandro.anydesk.Hub.plist",
+          "from": "delete"
+        },
+        {
+          "path": "/Library/LaunchDaemons/com.philandro.anydesk.Helper.plist",
+          "from": "delete"
+        },
+        {
+          "path": "/Library/LaunchDaemons/com.philandro.anydesk.service.plist",
+          "from": "delete"
+        },
+        {
+          "path": "/Library/PrivilegedHelperTools/com.philandro.anydesk.Helper",
+          "from": "delete"
+        }
+      ],
+      "pkgutilIds": [],
+      "sha256": null
+    },
+    {
+      "name": "Tailscale",
+      "category": "Utilities",
+      "downloadUrl": "https://pkgs.tailscale.com/stable/Tailscale-1.104.7-macos.pkg",
+      "version": "1.104.7",
+      "installerType": "pkg",
+      "appBundles": [
+        "Tailscale.app"
+      ],
+      "leftoverPaths": [
+        {
+          "path": "/Library/Tailscale",
+          "from": "trash"
+        },
+        {
+          "path": "~/Library/Application Scripts/*.io.tailscale.ipn.macsys",
+          "from": "trash"
+        },
+        {
+          "path": "~/Library/Application Scripts/group.W5364U7YZB.io.tailscale.shared",
+          "from": "trash"
+        },
+        {
+          "path": "~/Library/Application Scripts/io.tailscale.ipn.macsys",
+          "from": "trash"
+        },
+        {
+          "path": "~/Library/Application Scripts/io.tailscale.ipn.macsys.login-item-helper",
+          "from": "trash"
+        },
+        {
+          "path": "~/Library/Application Scripts/io.tailscale.ipn.macsys.share-extension",
+          "from": "trash"
+        },
+        {
+          "path": "~/Library/Application Scripts/io.tailscale.ipn.macsys.widgets",
+          "from": "trash"
+        },
+        {
+          "path": "~/Library/Caches/io.tailscale.ipn.macsys",
+          "from": "trash"
+        },
+        {
+          "path": "~/Library/Containers/io.tailscale.ipn.macos.network-extension",
+          "from": "trash"
+        },
+        {
+          "path": "~/Library/Containers/io.tailscale.ipn.macsys",
+          "from": "trash"
+        },
+        {
+          "path": "~/Library/Containers/io.tailscale.ipn.macsys.login-item-helper",
+          "from": "trash"
+        },
+        {
+          "path": "~/Library/Containers/io.tailscale.ipn.macsys.share-extension",
+          "from": "trash"
+        },
+        {
+          "path": "~/Library/Containers/io.tailscale.ipn.macsys.widgets",
+          "from": "trash"
+        },
+        {
+          "path": "~/Library/Containers/Tailscale",
+          "from": "trash"
+        },
+        {
+          "path": "~/Library/Group Containers/*.io.tailscale.ipn.macsys",
+          "from": "trash"
+        },
+        {
+          "path": "~/Library/Group Containers/group.W5364U7YZB.io.tailscale.shared",
+          "from": "trash"
+        },
+        {
+          "path": "~/Library/HTTPStorages/io.tailscale.ipn.macsys",
+          "from": "trash"
+        },
+        {
+          "path": "~/Library/HTTPStorages/io.tailscale.ipn.macsys.binarycookies",
+          "from": "trash"
+        },
+        {
+          "path": "~/Library/Preferences/io.tailscale.ipn.macsys.plist",
+          "from": "trash"
+        },
+        {
+          "path": "/usr/local/bin/tailscale",
+          "from": "delete"
+        },
+        {
+          "path": "/usr/local/share/man/man8/tssentineld.8",
+          "from": "delete"
+        }
+      ],
+      "pkgutilIds": [
+        {
+          "id": "com.tailscale.ipn.macsys",
+          "pattern": false
+        }
+      ],
+      "sha256": "0ecab60e098d31f9cbd334867474293dc08978154665da75c3f3fe1f8215d6e7"
+    },
+    {
+      "name": "TeamViewer",
+      "category": "Utilities",
+      "downloadUrl": "https://dl.teamviewer.com/download/version_15x/update/15.82.6/TeamViewer.pkg",
+      "version": "15.82.6",
+      "installerType": "pkg",
+      "appBundles": [
+        "TeamViewer.app"
+      ],
+      "leftoverPaths": [
+        {
+          "path": "/Library/Application Support/TeamViewer",
+          "from": "trash"
+        },
+        {
+          "path": "~/Library/Application Support/TeamViewer",
+          "from": "trash"
+        },
+        {
+          "path": "~/Library/Caches/com.teamviewer.TeamViewer",
+          "from": "trash"
+        },
+        {
+          "path": "~/Library/Caches/TeamViewer",
+          "from": "trash"
+        },
+        {
+          "path": "~/Library/Cookies/com.teamviewer.TeamViewer.binarycookies",
+          "from": "trash"
+        },
+        {
+          "path": "~/Library/HTTPStorages/com.teamviewer.TeamViewer",
+          "from": "trash"
+        },
+        {
+          "path": "~/Library/HTTPStorages/com.teamviewer.TeamViewer.binarycookies",
+          "from": "trash"
+        },
+        {
+          "path": "~/Library/Logs/TeamViewer",
+          "from": "trash"
+        },
+        {
+          "path": "~/Library/Preferences/com.teamviewer*",
+          "from": "trash"
+        },
+        {
+          "path": "~/Library/Saved Application State/com.teamviewer.TeamViewer.savedState",
+          "from": "trash"
+        },
+        {
+          "path": "~/Library/WebKit/com.teamviewer.TeamViewer",
+          "from": "trash"
+        },
+        {
+          "path": "/Library/Preferences/com.teamviewer*",
+          "from": "delete"
+        }
+      ],
+      "pkgutilIds": [
+        {
+          "id": "com.teamviewer.AuthorizationPlugin",
+          "pattern": false
+        },
+        {
+          "id": "com.teamviewer.AuthorizationResources",
+          "pattern": false
+        },
+        {
+          "id": "com.teamviewer.remoteaudiodriver",
+          "pattern": false
+        },
+        {
+          "id": "com.teamviewer.teamviewer.*",
+          "pattern": true
+        },
+        {
+          "id": "TeamViewerUninstaller",
+          "pattern": false
+        }
+      ],
+      "sha256": "9acd5a6cefe859e81f85001b1b90279e02495f3829ced8df1a3b9d37f3d5bcf1"
+    }
+  ]
+}
