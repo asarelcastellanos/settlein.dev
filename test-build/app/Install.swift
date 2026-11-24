@@ -10,27 +10,36 @@ func runInstallRemoveTest() async -> String {
     let fileManager = FileManager.default
     let work = fileManager.temporaryDirectory.appendingPathComponent("settlein-s8-\(UUID().uuidString)")
     defer { try? fileManager.removeItem(at: work) }
+    let targetFolder = "/Applications"
+    guard fileManager.isWritableFile(atPath: targetFolder) else {
+        lines.append("S8 not run: /Applications not writable by this user")
+        return lines.joined(separator: "\n") + "\n"
+    }
     do {
         try fileManager.createDirectory(at: work, withIntermediateDirectories: true)
         let (temporary, _) = try await URLSession.shared.download(from: sourceURL)
         let zip = work.appendingPathComponent("app.zip")
         try fileManager.moveItem(at: temporary, to: zip)
         let digest = SHA256.hash(data: try Data(contentsOf: zip)).map { String(format: "%02x", $0) }.joined()
-        lines.append("sha256 matches Homebrew cask: \(digest == sourceSHA256)")
+        let matches = digest == sourceSHA256
+        lines.append("sha256 matches Homebrew cask: \(matches)")
+        guard matches else {
+            lines.append("S8 stopped before install: SHA-256 \(digest) does not match the pinned value")
+            return lines.joined(separator: "\n") + "\n"
+        }
         let unpacked = work.appendingPathComponent("unpacked")
         let ditto = runTool("/usr/bin/ditto", ["-x", "-k", zip.path, unpacked.path])
         lines.append("unzip status: \(ditto.status)")
+        guard ditto.status == 0 else {
+            lines.append("S8 stopped before install: unzip failed, \(ditto.output.prefix(200))")
+            return lines.joined(separator: "\n") + "\n"
+        }
         let staged = unpacked.appendingPathComponent(bundleName)
 
         let signature = runTool("/usr/bin/codesign", ["-dv", staged.path])
         let team = signature.output.split(separator: "\n").first { $0.hasPrefix("TeamIdentifier=") }
         lines.append("downloaded app \(team.map(String.init) ?? "TeamIdentifier unknown")")
 
-        var targetFolder = "/Applications"
-        if !fileManager.isWritableFile(atPath: targetFolder) {
-            targetFolder = NSHomeDirectory() + "/Applications"
-            try fileManager.createDirectory(atPath: targetFolder, withIntermediateDirectories: true)
-        }
         let target = targetFolder + "/" + bundleName
         lines.append("install target: \(target)")
         if fileManager.fileExists(atPath: target) {
@@ -42,6 +51,14 @@ func runInstallRemoveTest() async -> String {
             lines.append("install: ok")
         } catch {
             lines.append("install: failed, \(describe(error))")
+            if fileManager.fileExists(atPath: target) {
+                do {
+                    try fileManager.removeItem(atPath: target)
+                    lines.append("partial bundle removed")
+                } catch {
+                    lines.append("partial bundle removal failed, \(describe(error))")
+                }
+            }
             return lines.joined(separator: "\n") + "\n"
         }
         do {

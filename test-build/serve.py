@@ -10,13 +10,15 @@ FILES = {
     "/Settlein.dmg": ("Settlein.dmg", "application/x-apple-diskimage"),
     "/Settlein.zip": ("Settlein.zip", "application/zip"),
 }
-DEFAULT_APPS = "firefox,raycast,vlc"
+EXAMPLE_APPS = "iterm2,rectangle,obsidian"
 VALID = re.compile(r"[a-z0-9-]+(,[a-z0-9-]+)*")
 
 
 def clean(query):
-    value = parse_qs(query).get("apps", [DEFAULT_APPS])[0]
-    return value if VALID.fullmatch(value) else DEFAULT_APPS
+    values = parse_qs(query).get("apps")
+    if values and VALID.fullmatch(values[0]):
+        return values[0]
+    return None
 
 
 class Handler(http.server.BaseHTTPRequestHandler):
@@ -24,15 +26,25 @@ class Handler(http.server.BaseHTTPRequestHandler):
         url = urlparse(self.path)
         apps = clean(url.query)
         if url.path == "/":
-            body = (
-                "<!doctype html><title>Settlein test download</title>"
-                f"<h1>Selection: {apps}</h1>"
-                f'<p><a href="/Settlein.dmg?apps={apps}">Download disk image</a></p>'
-                f'<p><a href="/Settlein.zip?apps={apps}">Download zip</a></p>'
-            ).encode()
+            if apps is None:
+                body = (
+                    "<!doctype html><title>Settlein test download</title>"
+                    "<h1>Choose a selection</h1>"
+                    f'<p><a href="/?apps={EXAMPLE_APPS}">Example: {EXAMPLE_APPS}</a></p>'
+                ).encode()
+            else:
+                body = (
+                    "<!doctype html><title>Settlein test download</title>"
+                    f"<h1>Selection: {apps}</h1>"
+                    f'<p><a href="/Settlein.dmg?apps={apps}">Download disk image</a></p>'
+                    f'<p><a href="/Settlein.zip?apps={apps}">Download zip</a></p>'
+                ).encode()
             self.send(200, "text/html; charset=utf-8", body)
             return
         if url.path in FILES:
+            if apps is None:
+                self.send(400, "text/plain", b"Missing or invalid apps\n")
+                return
             name, mime = FILES[url.path]
             path = os.path.join(ROOT, name)
             if not os.path.isfile(path):
@@ -62,5 +74,5 @@ class Handler(http.server.BaseHTTPRequestHandler):
 if __name__ == "__main__":
     port = int(sys.argv[1]) if len(sys.argv) > 1 else 8080
     server = http.server.ThreadingHTTPServer(("127.0.0.1", port), Handler)
-    print(f"Open http://localhost:{port}/?apps={DEFAULT_APPS}")
+    print(f"Open http://localhost:{port}/?apps={EXAMPLE_APPS}")
     server.serve_forever()

@@ -71,7 +71,7 @@ func downloadsCandidates() -> (paths: [String], note: String) {
     let folder = NSHomeDirectory() + "/Downloads"
     do {
         let names = try FileManager.default.contentsOfDirectory(atPath: folder)
-        let hits = names.filter { $0.lowercased().hasPrefix("settlein") }.sorted()
+        let hits = names.filter { $0.range(of: #"^Settlein( \([0-9]+\))?\.(dmg|zip)$"#, options: .regularExpression) != nil }.sorted()
         return (hits.map { folder + "/" + $0 }, "listed \(names.count) entries in \(folder)")
     } catch {
         return ([], "cannot list \(folder): \(error.localizedDescription)")
