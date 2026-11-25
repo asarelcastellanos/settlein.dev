@@ -4,8 +4,6 @@ date: 2026-11-24
 ---
 # 0024. App shell structure and development inputs
 
-Accepted by default, not reviewed by the owner.
-
 ## Context and problem statement
 
 Issue #9 builds the Mac app shell before the website serves the catalog (#8) and before the handoff delivers a selection (#12, #13). The shell must fetch the catalog only from settlein.dev (C5), yet QA needs a catalog and a selection to see the confirmation screen. An outside designer restyles the screens later (ADR-0023).
