@@ -6,7 +6,7 @@ final class SameHostOnly: NSObject, URLSessionTaskDelegate {
         willPerformHTTPRedirection response: HTTPURLResponse,
         newRequest request: URLRequest
     ) async -> URLRequest? {
-        request.url?.host() == CatalogClient.host ? request : nil
+        request.url?.scheme == "https" && request.url?.host() == CatalogClient.host ? request : nil
     }
 }
 

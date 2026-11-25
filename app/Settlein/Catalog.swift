@@ -104,11 +104,44 @@ enum CatalogParser {
             guard let entry = item as? [String: Any], Set(entry.keys) == leftoverKeys else {
                 throw CatalogError(reason: "\(at) leftoverPaths entry has a missing or unknown key")
             }
-            _ = try text(entry["path"], "\(at) leftover path")
+            let path = try text(entry["path"], "\(at) leftover path")
+            if let problem = pathProblem(path) { throw CatalogError(reason: "\(at) leftover path \(problem)") }
             guard let from = entry["from"] as? String, leftoverActions.contains(from) else {
                 throw CatalogError(reason: "\(at) leftover from is not delete, trash or rmdir")
             }
         }
+    }
+
+    private static let protectedRoots: Set<String> = [
+        "/", "~", "~/library", "/library", "/applications", "/system", "/usr", "/etc", "/private",
+        "/var", "/users", "/opt", "/bin", "/sbin", "/tmp", "/volumes",
+        "~/library/application support", "~/library/preferences", "~/library/caches",
+        "~/library/containers", "~/library/group containers",
+        "/library/application support", "/library/preferences", "/library/caches",
+        "/library/containers", "/library/group containers",
+        "~/library/logs", "~/library/application scripts", "~/library/saved application state",
+        "~/library/httpstorages", "~/library/launchagents", "~/library/webkit", "~/library/cookies",
+        "/library/launchdaemons", "/library/launchagents", "/library/logs",
+        "/library/privilegedhelpertools", "/library/internet plug-ins",
+    ]
+
+    private static func pathProblem(_ path: String) -> String? {
+        guard path.hasPrefix("~/") || path.hasPrefix("/") else { return "must start with ~/ or /" }
+        if path.contains("#{") || path.contains("${") || path.contains("..") { return "holds #{, ${ or .." }
+        if path.hasSuffix("/") { return "ends with /" }
+        let lower = path.lowercased()
+        if lower == "/users" || lower.hasPrefix("/users/") { return "is under /Users" }
+        if protectedRoots.contains(lower) { return "is a protected root" }
+        let segments = Array(path.split(separator: "/", omittingEmptySubsequences: false).dropFirst())
+        if segments.contains(where: { $0.isEmpty }) { return "has an empty segment" }
+        if segments.dropLast().contains(where: { $0.contains("*") }) { return "has a wildcard before the last segment" }
+        if path.hasPrefix("~/"), segments[0].contains("*") { return "has a wildcard directly under ~" }
+        if path.hasPrefix("/"), segments.count < 2 { return "is too shallow" }
+        let parent = path[..<path.range(of: "/", options: .backwards)!.lowerBound].lowercased()
+        if protectedRoots.contains(parent), segments[segments.count - 1].allSatisfy({ $0 == "*" }) {
+            return "matches everything under a protected root"
+        }
+        return nil
     }
 
     private static func checkPkgutilIds(_ value: Any?, _ at: String) throws {
