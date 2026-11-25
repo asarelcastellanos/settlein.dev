@@ -171,7 +171,7 @@ Open to you.
 - Color.
 - Motion.
 
-The wireframes are grey boxes. They show what a screen holds and imply no layout. Depart from them freely when a claim still holds.
+Depart from the wireframes when a claim still holds.
 
 Platform constraints.
 
