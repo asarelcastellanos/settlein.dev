@@ -39,7 +39,7 @@ export function loadCatalog() {
       fail(`${sourcePath} has an entry without a name or token`);
     }
     if (tokenByName.has(entry.name)) fail(`${sourcePath} lists "${entry.name}" twice`);
-    tokenByName.set(entry.name, entry.token);
+    tokenByName.set(entry.name, { token: entry.token, category: entry.category });
   }
 
   const seen = new Set();
@@ -49,8 +49,12 @@ export function loadCatalog() {
     if (typeof app.category !== "string" || !app.category.trim()) {
       fail(`catalog app "${app.name}" has no category`);
     }
-    const token = tokenByName.get(app.name);
-    if (!token) fail(`catalog app "${app.name}" has no matching entry in ${sourcePath}`);
+    const sourceEntry = tokenByName.get(app.name);
+    if (!sourceEntry) fail(`catalog app "${app.name}" has no matching entry in ${sourcePath}`);
+    if (sourceEntry.category !== app.category) {
+      fail(`"${app.name}" is in category "${sourceEntry.category}" in ${sourcePath} but "${app.category}" in ${catalogPath}`);
+    }
+    const token = sourceEntry.token;
     if (seen.has(app.name)) fail(`catalog app "${app.name}" appears twice`);
     seen.add(app.name);
     if (!groups.has(app.category)) groups.set(app.category, []);
