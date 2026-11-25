@@ -8,11 +8,12 @@ enum ItemState: Equatable {
     case installing
     case done
     case refused(String)
-    case notBuilt
+    case opening
+    case waitingInInstaller
 
     var isActive: Bool {
         switch self {
-        case .downloading, .verifying, .installing: return true
+        case .downloading, .verifying, .installing, .opening: return true
         default: return false
         }
     }
@@ -45,18 +46,15 @@ final class InstallRun {
 
     func start() async {
         guard !finished else { return }
+        Installer.removeStalePackages()
         for index in items.indices {
             let app = items[index].app
-            guard app.installerType == .app else {
-                items[index].state = .notBuilt
-                continue
-            }
             items[index].state = .downloading(nil)
             do {
                 try await Installer.install(app, into: folder) { [weak self] step in
                     Task { @MainActor in self?.update(index, step) }
                 }
-                items[index].state = .done
+                items[index].state = app.installerType == .pkg ? .waitingInInstaller : .done
             } catch let refusal as Refusal {
                 items[index].state = .refused(refusal.reason)
             } catch {
@@ -72,6 +70,7 @@ final class InstallRun {
         case .downloading(let fraction): items[index].state = .downloading(fraction)
         case .verifying: items[index].state = .verifying
         case .installing: items[index].state = .installing
+        case .opening: items[index].state = .opening
         }
     }
 }

@@ -1,6 +1,6 @@
 # Settlein app
 
-SwiftUI app for Apple silicon on macOS 26 and later. This app fetches the catalog, shows the confirmation screen, and installs the approved copy apps. Pkg apps show "Not built yet" until issue #11.
+SwiftUI app for Apple silicon on macOS 26 and later. This app fetches the catalog, shows the confirmation screen, and installs the approved copy apps. Pkg apps are downloaded and verified, then opened in Apple's Installer for the person. The opened package stays in a `settlein-pkg-*` folder in the temporary folder. Settlein removes folders older than 24 hours when the next run starts.
 
 ## Build
 
@@ -17,7 +17,7 @@ xcodebuild -project Settlein.xcodeproj -scheme Settlein -configuration Debug bui
 Debug builds accept two launch arguments. Release builds ignore them.
 
 ```sh
-open -n Settlein.app --args -catalogFile /path/to/catalog.json -selection "google-chrome,firefox,tailscale"
+open -n Settlein.app --args -catalogFile /path/to/catalog.json -selection "google-chrome,firefox,tailscale-app"
 ```
 
-`-selection` takes Homebrew cask tokens separated by commas. Tokens the catalog does not hold are dropped. With no `-catalogFile` the app requests `https://settlein.dev/catalog.json` and nothing else.
+`-selection` takes catalog `token` values, which are Homebrew cask tokens, separated by commas. The confirmation screen marks pkg apps such as `tailscale-app` as opening Apple's Installer. Tokens the catalog does not hold are dropped. With no `-catalogFile` the app requests `https://settlein.dev/catalog.json` and nothing else.
