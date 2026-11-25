@@ -27,3 +27,4 @@
 | [0023](0023-designer-returns-figma-and-design-md.md) | Designer returns Figma and DESIGN.md | accepted |
 | [0025](0025-selection-names-apps-by-homebrew-token.md) | The selection names apps by Homebrew token | accepted |
 | [0026](0026-bundle-app-icons-in-the-repo.md) | Bundle app icons in the repo | accepted |
+| [0027](0027-settlein-opens-to-the-installed-list.md) | Settlein opens to the installed list | accepted |
