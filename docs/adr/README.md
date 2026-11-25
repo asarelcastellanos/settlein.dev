@@ -26,3 +26,4 @@
 | [0022](0022-daily-job-commits-catalog-to-a-data-branch.md) | Daily job commits the catalog to a data branch | accepted |
 | [0024](0024-app-shell-structure-and-dev-inputs.md) | App shell structure and development inputs | accepted |
 | [0029](0029-copy-app-install-pipeline.md) | Copy app install pipeline | accepted |
+| [0030](0030-pkg-install-pipeline.md) | Pkg install pipeline | accepted |

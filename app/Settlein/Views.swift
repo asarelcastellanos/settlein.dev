@@ -153,7 +153,8 @@ struct RunRowView: View {
         case .installing: "Installing"
         case .done: "Done"
         case .refused: "Refused"
-        case .notBuilt: "Skipped"
+        case .opening: "Opening"
+        case .waitingInInstaller: "In Installer"
         }
     }
 
@@ -166,7 +167,8 @@ struct RunRowView: View {
         case .installing: "Installing"
         case .done: "Done"
         case .refused(let reason): "Refused. \(reason)"
-        case .notBuilt: "Not built yet. Settlein cannot install this app yet"
+        case .opening: "Opening in Apple's Installer"
+        case .waitingInInstaller: "Verified. Waiting in Apple's Installer"
         }
     }
 }
@@ -183,14 +185,14 @@ struct FinishedView: View {
     }
 
     private var installed: [CatalogApp] { apps { $0 == .done } }
-    private var notBuilt: [CatalogApp] { apps { $0 == .notBuilt } }
+    private var waiting: [CatalogApp] { apps { $0 == .waitingInInstaller } }
 
     var body: some View {
         VStack(alignment: .leading, spacing: 12) {
             Text(summary).font(.title2)
             List {
                 section("Installed in \(run.folder.path)", installed.map { ($0.name, nil) })
-                section("Not built yet", notBuilt.map { ($0.name, "Settlein cannot install this app yet") })
+                section("Opened in Apple's Installer", waiting.map { ($0.name, "Verified. Settlein cannot tell whether you finished the install") })
                 section("Skipped, already installed", run.skipped.map { ($0.name, nil) })
                 section("Refused", refused.map { item in
                     if case .refused(let reason) = item.state { (item.app.name, reason) } else { (item.app.name, nil) }
@@ -206,7 +208,7 @@ struct FinishedView: View {
     }
 
     private var summary: String {
-        "\(installed.count) installed, \(notBuilt.count) not built yet, \(run.skipped.count) skipped, \(refused.count) refused"
+        "\(installed.count) installed, \(waiting.count) opened in Apple's Installer, \(run.skipped.count) skipped, \(refused.count) refused"
     }
 
     @ViewBuilder

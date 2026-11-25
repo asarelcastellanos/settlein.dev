@@ -1,6 +1,6 @@
 # Settlein app
 
-SwiftUI app for Apple silicon on macOS 26 and later. This app fetches the catalog, shows the confirmation screen, and installs the approved copy apps. Pkg apps show "Not built yet" until issue #11.
+SwiftUI app for Apple silicon on macOS 26 and later. This app fetches the catalog, shows the confirmation screen, and installs the approved copy apps. Pkg apps are downloaded and verified, then opened in Apple's Installer for the person. The opened package stays in a `settlein-pkg-*` folder in the temporary folder. Settlein removes folders older than 24 hours when the next run starts.
 
 ## Build
 

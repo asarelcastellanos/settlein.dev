@@ -12,10 +12,67 @@ enum Archive {
         return try await fromDiskImage(file, names: names, workFolder: workFolder, unpacked: unpacked)
     }
 
-    private static func isZip(_ file: URL) throws -> Bool {
+    static func package(in file: URL, workFolder: URL) async throws -> URL {
+        let unpacked = workFolder.appending(path: "unpacked", directoryHint: .isDirectory)
+        try FileManager.default.createDirectory(at: unpacked, withIntermediateDirectories: true)
+        if try startsWith(file, Data([0x78, 0x61, 0x72, 0x21])) {
+            let direct = unpacked.appending(path: "installer.pkg")
+            try FileManager.default.moveItem(at: file, to: direct)
+            return direct
+        }
+        if try isZip(file) {
+            let result = await Tools.run("/usr/bin/ditto", ["-x", "-k", file.path, unpacked.path])
+            guard result.status == 0 else { throw Refusal(reason: "The download is not a readable zip file") }
+            return try onlyPackage(in: [unpacked])
+        }
+        let mounts = workFolder.appending(path: "mounts", directoryHint: .isDirectory)
+        try FileManager.default.createDirectory(at: mounts, withIntermediateDirectories: true)
+        let attach = await Tools.run("/usr/bin/hdiutil", [
+            "attach", "-nobrowse", "-readonly", "-noautoopen", "-plist", "-mountrandom", mounts.path, file.path,
+        ])
+        let points = mountPoints(attach.output)
+        let copy: URL
+        do {
+            guard attach.status == 0, !points.isEmpty else {
+                throw Refusal(reason: "The download is not a package, a zip file or a disk image Settlein can open")
+            }
+            let source = try onlyPackage(in: points.map { URL(filePath: $0) })
+            copy = unpacked.appending(path: source.lastPathComponent)
+            let result = await Tools.run("/usr/bin/ditto", [source.path, copy.path])
+            guard result.status == 0 else { throw Refusal(reason: "Settlein could not copy the package out of the disk image") }
+        } catch {
+            try detachAll(points)
+            throw error
+        }
+        try detachAll(points)
+        return copy
+    }
+
+    private static func onlyPackage(in folders: [URL]) throws -> URL {
+        var found: [URL] = []
+        for folder in folders {
+            let entries = (try? FileManager.default.contentsOfDirectory(at: folder, includingPropertiesForKeys: nil)) ?? []
+            for entry in entries where entry.pathExtension.lowercased() == "pkg" {
+                let values = try? entry.resourceValues(forKeys: [.isRegularFileKey, .isSymbolicLinkKey])
+                if values?.isRegularFile == true, values?.isSymbolicLink != true { found.append(entry) }
+            }
+        }
+        guard found.count == 1, let package = found.first else {
+            throw Refusal(reason: found.isEmpty
+                ? "The download does not hold an installer package"
+                : "The download holds more than one installer package")
+        }
+        return package
+    }
+
+    private static func startsWith(_ file: URL, _ prefix: Data) throws -> Bool {
         let handle = try FileHandle(forReadingFrom: file)
         defer { try? handle.close() }
-        return try handle.read(upToCount: 4) == Data([0x50, 0x4B, 0x03, 0x04])
+        return try handle.read(upToCount: prefix.count) == prefix
+    }
+
+    private static func isZip(_ file: URL) throws -> Bool {
+        try startsWith(file, Data([0x50, 0x4B, 0x03, 0x04]))
     }
 
     private static func fromDiskImage(
