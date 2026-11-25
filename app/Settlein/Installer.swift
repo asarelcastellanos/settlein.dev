@@ -75,10 +75,11 @@ enum Installer {
     static func removeStalePackages() {
         let fileManager = FileManager.default
         let entries = (try? fileManager.contentsOfDirectory(
-            at: fileManager.temporaryDirectory, includingPropertiesForKeys: [.contentModificationDateKey])) ?? []
+            at: fileManager.temporaryDirectory, includingPropertiesForKeys: [.contentModificationDateKey, .isDirectoryKey, .isSymbolicLinkKey])) ?? []
         for entry in entries where entry.lastPathComponent.hasPrefix(keptPrefix) {
-            let modified = (try? entry.resourceValues(forKeys: [.contentModificationDateKey]))?.contentModificationDate
-            if let modified, Date().timeIntervalSince(modified) > keptLifetime {
+            let values = try? entry.resourceValues(forKeys: [.contentModificationDateKey, .isDirectoryKey, .isSymbolicLinkKey])
+            guard values?.isDirectory == true, values?.isSymbolicLink != true else { continue }
+            if let modified = values?.contentModificationDate, Date().timeIntervalSince(modified) > keptLifetime {
                 try? fileManager.removeItem(at: entry)
             }
         }

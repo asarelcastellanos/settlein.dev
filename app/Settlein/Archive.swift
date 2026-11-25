@@ -16,14 +16,17 @@ enum Archive {
         let unpacked = workFolder.appending(path: "unpacked", directoryHint: .isDirectory)
         try FileManager.default.createDirectory(at: unpacked, withIntermediateDirectories: true)
         if try startsWith(file, Data([0x78, 0x61, 0x72, 0x21])) {
-            let direct = unpacked.appending(path: "installer.pkg")
-            try FileManager.default.moveItem(at: file, to: direct)
-            return direct
+            let fixed = workFolder.appending(path: "installer.pkg")
+            try FileManager.default.moveItem(at: file, to: fixed)
+            return fixed
         }
         if try isZip(file) {
             let result = await Tools.run("/usr/bin/ditto", ["-x", "-k", file.path, unpacked.path])
             guard result.status == 0 else { throw Refusal(reason: "The download is not a readable zip file") }
-            return try onlyPackage(in: [unpacked])
+            let source = try onlyPackage(in: [unpacked])
+            let fixed = workFolder.appending(path: "installer.pkg")
+            try FileManager.default.moveItem(at: source, to: fixed)
+            return fixed
         }
         let mounts = workFolder.appending(path: "mounts", directoryHint: .isDirectory)
         try FileManager.default.createDirectory(at: mounts, withIntermediateDirectories: true)
@@ -37,7 +40,7 @@ enum Archive {
                 throw Refusal(reason: "The download is not a package, a zip file or a disk image Settlein can open")
             }
             let source = try onlyPackage(in: points.map { URL(filePath: $0) })
-            copy = unpacked.appending(path: source.lastPathComponent)
+            copy = workFolder.appending(path: "installer.pkg")
             let result = await Tools.run("/usr/bin/ditto", [source.path, copy.path])
             guard result.status == 0 else { throw Refusal(reason: "Settlein could not copy the package out of the disk image") }
         } catch {
