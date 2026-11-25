@@ -71,8 +71,6 @@ struct AppRowView: View {
             Spacer()
             if row.installed {
                 Label("Already installed", systemImage: "checkmark.circle")
-            } else if row.app.installerType == .pkg {
-                Label("Opens Apple's Installer", systemImage: "shippingbox")
             }
         }
     }
