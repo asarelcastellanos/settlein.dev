@@ -25,3 +25,5 @@
 | [0021](0021-uninstall-never-touches-user-file-folders.md) | Uninstall never touches user file folders | accepted |
 | [0022](0022-daily-job-commits-catalog-to-a-data-branch.md) | Daily job commits the catalog to a data branch | accepted |
 | [0023](0023-designer-returns-figma-and-design-md.md) | Designer returns Figma and DESIGN.md | accepted |
+| [0025](0025-selection-names-apps-by-homebrew-token.md) | The selection names apps by Homebrew token | accepted |
+| [0026](0026-bundle-app-icons-in-the-repo.md) | Bundle app icons in the repo | accepted |
