@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>A5 Uninstall | Settlein wireframe</title>
+<style>
+:root{--bg:#f2f2f2;--panel:#fff;--sunk:#e6e6e6;--box:#d4d4d4;--line:#8a8a8a;--text:#1f1f1f;--muted:#575757;--focus:#000;--warn:#e0e0e0;color-scheme:light}
+@media (prefers-color-scheme:dark){:root:not([data-theme]){--bg:#1b1b1b;--panel:#262626;--sunk:#141414;--box:#444;--line:#8c8c8c;--text:#ececec;--muted:#b0b0b0;--focus:#fff;--warn:#3a3a3a;color-scheme:dark}}
+:root[data-theme=dark]{--bg:#1b1b1b;--panel:#262626;--sunk:#141414;--box:#444;--line:#8c8c8c;--text:#ececec;--muted:#b0b0b0;--focus:#fff;--warn:#3a3a3a;color-scheme:dark}
+:root[data-theme=light]{color-scheme:light}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--text);font:16px/1.5 system-ui,-apple-system,"Segoe UI",sans-serif}
+::selection{background:var(--line);color:var(--bg)}
+:focus-visible{outline:3px solid var(--focus);outline-offset:2px}
+a{color:var(--text)}
+button{font:inherit;color:var(--text);background:var(--box);border:1px solid var(--line);border-radius:6px;padding:.5rem 1rem;min-height:44px;cursor:pointer}
+button:hover{background:var(--line);color:var(--bg)}
+button:disabled{opacity:.5;cursor:not-allowed}
+button.primary{background:var(--text);color:var(--bg);border-color:var(--text)}
+button.primary:hover{background:var(--muted)}
+.meta{background:var(--panel);border-bottom:1px solid var(--line);padding:.75rem 1rem}
+.meta-top{display:flex;gap:1rem;align-items:center;justify-content:space-between;flex-wrap:wrap}
+.meta h1{font-size:1.25rem;margin:.25rem 0}
+.meta p{margin:0;color:var(--muted);max-width:70ch}
+.sid{font-weight:700;border:1px solid var(--line);border-radius:4px;padding:0 .4rem;margin-right:.5rem}
+.states{display:flex;gap:.5rem;flex-wrap:wrap;align-items:center;margin-top:.75rem;font-size:.875rem}
+.states a{border:1px solid var(--line);border-radius:999px;padding:.25rem .75rem;text-decoration:none;display:inline-block}
+.states a:hover{background:var(--line);color:var(--bg)}
+.wrap{padding:1rem;max-width:1280px;margin:0 auto}
+.frame-label{font-size:.875rem;color:var(--muted);margin:1.5rem 0 .5rem}
+.region{border:2px dashed var(--line);border-radius:6px;padding:.75rem;position:relative;background:var(--panel)}
+.region>.rl{display:block;font-size:.8125rem;color:var(--muted);margin-bottom:.5rem}
+.slot{background:var(--box);border:1px solid var(--line);display:grid;place-items:center;text-align:center;color:var(--muted);font-size:.875rem;padding:.5rem;min-height:48px}
+.win{width:min(100%,var(--w,900px));border:1px solid var(--line);border-radius:12px;background:var(--panel);overflow:hidden;margin:0 auto 0 0}
+.win-bar{display:flex;gap:.5rem;align-items:center;padding:.5rem .75rem;background:var(--box);border-bottom:1px solid var(--line)}
+.win-bar i{width:12px;height:12px;border-radius:50%;background:var(--line);display:block}
+.win-bar b{flex:1;text-align:center;font-weight:600;font-size:.875rem;margin-right:36px}
+.win-body{padding:1rem;min-height:var(--h,420px);display:flex;flex-direction:column;gap:.75rem}
+.win-foot{margin-top:auto;display:flex;gap:.75rem;justify-content:flex-end;flex-wrap:wrap}
+.ico{width:48px;height:48px;background:var(--box);border:1px solid var(--line);border-radius:10px;flex:none}
+.rows{list-style:none;margin:0;padding:0;border:1px solid var(--line);border-radius:6px}
+.rows li{display:flex;gap:.75rem;align-items:center;padding:.5rem .75rem;border-top:1px solid var(--line);flex-wrap:wrap}
+.rows li:first-child{border-top:0}
+.rows .grow{flex:1;min-width:10rem}
+.rows small,.muted{color:var(--muted)}
+.tag{border:1px solid var(--line);border-radius:4px;padding:0 .4rem;font-size:.8125rem;background:var(--sunk);display:inline-block}
+.bar{display:block;height:8px;background:var(--sunk);border:1px solid var(--line);border-radius:4px;overflow:hidden;margin-top:.25rem;width:100%}
+.bar span{display:block;height:100%;background:var(--line)}
+.note{border:1px solid var(--line);background:var(--warn);border-radius:6px;padding:.75rem}
+.empty{border:2px dashed var(--line);border-radius:6px;padding:2rem 1rem;text-align:center;color:var(--muted)}
+.themebtn{min-height:36px;padding:.25rem .75rem;font-size:.875rem}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
+</style>
+</head>
+<body>
+<header class="meta">
+<div class="meta-top"><a href="index.html">All wireframes</a><button id="themebtn" class="themebtn" type="button">Theme</button></div>
+<h1><span class="sid">A5</span>Uninstall</h1>
+<p>Confirm, removing and removed states. A pkg app triggers the macOS password prompt (C29, C30, C31).</p>
+<nav class="states" aria-label="States"><strong>States</strong><a href="#f1">Confirm</a><a href="#f2">Removing</a><a href="#f3">Removed</a><a href="#f4">Pkg app note</a></nav>
+</header>
+<main class="wrap">
+<h2 class="frame-label" id="f1">Confirm</h2><div class="win" style="--w:700px;--h:440px"><div class="win-bar" aria-hidden="true"><i></i><i></i><i></i><b>Settlein</b></div><div class="win-body"><div class="region"><span class="rl">Heading</span><strong>Uninstall Slack?</strong></div><div class="region"><span class="rl">What gets removed: the app and its leftovers, only paths the catalog lists</span><ul class="rows"><li>App: /Applications/Slack.app</li><li>Leftover: ~/Library/Application Support/Slack</li><li>Leftover: ~/Library/Caches/com.tinyspeck.slackmacgap</li><li>Leftover: ~/Library/Preferences/com.tinyspeck.slackmacgap.plist</li></ul></div><div class="win-foot"><button type="button">Cancel</button><button type="button" class="primary">Uninstall</button></div></div></div>
+<h2 class="frame-label" id="f2">Removing</h2><div class="win" style="--w:700px;--h:240px"><div class="win-bar" aria-hidden="true"><i></i><i></i><i></i><b>Settlein</b></div><div class="win-body"><strong>Removing Slack</strong><div class="region"><span class="rl">Progress</span><span class="bar"><span style="width:55%"></span></span><small class="muted">Removing leftovers</small></div></div></div>
+<h2 class="frame-label" id="f3">Removed</h2><div class="win" style="--w:700px;--h:240px"><div class="win-bar" aria-hidden="true"><i></i><i></i><i></i><b>Settlein</b></div><div class="win-body"><strong>Slack removed</strong><div class="slot">Slot: confirmation, count of removed paths</div><div class="win-foot"><button type="button" class="primary">Done</button></div></div></div>
+<h2 class="frame-label" id="f4">Pkg app: note box (shown on the confirm screen for Zoom, Microsoft Teams, Google Drive, OneDrive, Tailscale, TeamViewer)</h2><div class="win" style="--w:700px;--h:460px"><div class="win-bar" aria-hidden="true"><i></i><i></i><i></i><b>Settlein</b></div><div class="win-body"><strong>Uninstall Zoom?</strong><div class="region"><span class="rl">What gets removed: bundle, leftovers and system files under /Library</span><ul class="rows"><li>App: /Applications/zoom.us.app</li><li>Leftover: ~/Library/Application Support/zoom.us</li><li>System file: /Library/Internet Plug-Ins/ZoomUsPlugIn.plugin</li></ul></div><div class="note"><strong>Note box.</strong> macOS asks for your admin password once. That prompt is a macOS system window, not ours. Slot for the exact wording.</div><div class="win-foot"><button type="button">Cancel</button><button type="button" class="primary">Uninstall</button></div></div></div>
+</main>
+<script>
+(function(){var r=document.documentElement,b=document.getElementById('themebtn');if(!b)return;
+function cur(){return r.getAttribute('data-theme')||(matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light')}
+function show(){b.textContent='Theme: '+cur()+'. Switch'}
+b.addEventListener('click',function(){r.setAttribute('data-theme',cur()==='dark'?'light':'dark');show()});show()})();
+</script>
+</body>
+</html>
