@@ -1,0 +1,305 @@
+{
+  "icons": {
+    "1password": {
+      "name": "1Password",
+      "sourceUrl": "https://downloads.1password.com/mac/1Password-8.12.46-aarch64.zip",
+      "version": "8.12.46",
+      "sha256": "7f44eecae6a52409748ba5ed6b94d6b383949f628e2cccd3d1e4798fa30461fc",
+      "bundle": "1Password.app"
+    },
+    "anydesk": {
+      "name": "AnyDesk",
+      "sourceUrl": "https://download.anydesk.com/anydesk.dmg",
+      "version": "9.8.1",
+      "sha256": "b2ce747fc441e4d4331c26c0d0b562b22090d6fd08fa86db6d086dc8b5197db1",
+      "bundle": "AnyDesk.app"
+    },
+    "appcleaner": {
+      "name": "AppCleaner",
+      "sourceUrl": "https://www.freemacsoft.net/downloads/AppCleaner_3.7.zip",
+      "version": "3.7",
+      "sha256": "3d7fa6146fb57da955dca408587fc658ac14aeb86eda7907763ae66397c9e65e",
+      "bundle": "AppCleaner.app"
+    },
+    "audacity": {
+      "name": "Audacity",
+      "sourceUrl": "https://github.com/audacity/audacity/releases/download/Audacity-4.0.2/audacity-macOS-4.0.2-arm64.dmg",
+      "version": "4.0.2",
+      "sha256": "fd462da6204cbf9758b44c7ce1c29d5fe5cab4f31ba308d33c125f1b170401c3",
+      "bundle": "Audacity 4.app"
+    },
+    "balenaetcher": {
+      "name": "balenaEtcher",
+      "sourceUrl": "https://github.com/balena-io/etcher/releases/download/v2.1.9/balenaEtcher-2.1.9-arm64.dmg",
+      "version": "2.1.9",
+      "sha256": "44baa43cc425e6e236a7e6fc405fe9562e4955ddedc6e6f27e22d6e5905759fe",
+      "bundle": "balenaEtcher.app"
+    },
+    "bitwarden": {
+      "name": "Bitwarden",
+      "sourceUrl": "https://github.com/bitwarden/clients/releases/download/desktop-v2026.11.0/bit-Bitwarden-2026.11.0-universal.dmg",
+      "version": "2026.11.0",
+      "sha256": "c6d90fe5054874736fb0b59967340f3b911e60cfd502b82d9196c50568bf2bd3",
+      "bundle": "Bitwarden.app"
+    },
+    "blender": {
+      "name": "Blender",
+      "sourceUrl": "https://download.blender.org/release/Blender5.3/blender-5.3.0-macos-arm64.dmg",
+      "version": "5.3.0",
+      "sha256": "2d802b54766741e612cead50b03ebbc8eb64dadc71eda932573d256b8a784720",
+      "bundle": "Blender.app"
+    },
+    "brave-browser": {
+      "name": "Brave",
+      "sourceUrl": "https://updates-cdn.bravesoftware.com/sparkle/Brave-Browser/stable-arm64/200.59/Brave-Browser-arm64.dmg",
+      "version": "1.100.59.0,200.59",
+      "sha256": "976e78ec17ee5bc5e758acb7a7ece8fbd36ae0134cfd4e523b2f411b4fcefc02",
+      "bundle": "Brave Browser.app"
+    },
+    "caffeine": {
+      "name": "Caffeine",
+      "sourceUrl": "https://github.com/IntelliScape/caffeine/releases/download/1.1.4/Caffeine.dmg",
+      "version": "1.1.4",
+      "sha256": "1ad34c3299a0c866873c4feb432c3e11186375adb6f43c5f481ae9d46d06d723",
+      "bundle": "Caffeine.app"
+    },
+    "chatgpt": {
+      "name": "ChatGPT",
+      "sourceUrl": "https://persistent.oaistatic.com/codex-app-prod/ChatGPT-darwin-arm64-26.1120.50957.zip",
+      "version": "26.1120.50957",
+      "sha256": "2c16671fcaad5291a2f6be135e1282961d5342639c3db55514a1af1a881dde6f",
+      "bundle": "ChatGPT.app"
+    },
+    "claude": {
+      "name": "Claude",
+      "sourceUrl": "https://downloads.claude.ai/releases/darwin/universal/7.37095.0/Claude-bc368c812ec26d3a5740519cc4d5cb69bbe43025.zip",
+      "version": "7.37095.0,bc368c812ec26d3a5740519cc4d5cb69bbe43025",
+      "sha256": "800806556cacece6bdacbb9f3aef1849a9ed8d6fc2ee0eb2ed881a098d094eab",
+      "bundle": "Claude.app"
+    },
+    "coconutbattery": {
+      "name": "coconutBattery",
+      "sourceUrl": "https://www.coconut-flavour.com/downloads/coconutBattery_441_275.zip",
+      "version": "4.4.1,275",
+      "sha256": "4aff5e5a481fc0878250f80436fa952fbdc12bad44e8597e62ea6bb9a9988de0",
+      "bundle": "coconutBattery.app"
+    },
+    "cursor": {
+      "name": "Cursor",
+      "sourceUrl": "https://downloads.cursor.com/production/0925c4b8226c56947c43f0b555fb98e187a7e029/darwin/arm64/Cursor-darwin-arm64.zip",
+      "version": "3.32.4,0925c4b8226c56947c43f0b555fb98e187a7e029",
+      "sha256": "2d15a19927fe11ce177c2b67fa890ec43b2950f33b6be5dce770dc4a5c1364ae",
+      "bundle": "Cursor.app"
+    },
+    "cyberduck": {
+      "name": "Cyberduck",
+      "sourceUrl": "https://update.cyberduck.io/Cyberduck-9.6.0.46406.zip",
+      "version": "9.6.0,46406",
+      "sha256": "a9195fb3dc904265dbb1b238d707e3ac4ac8a1ed356b188464e8773aad3a8ca8",
+      "bundle": "Cyberduck.app"
+    },
+    "discord": {
+      "name": "Discord",
+      "sourceUrl": "https://stable.dl2.discordapp.net/distro/app/stable/osx/universal/0.0.424/Discord.dmg",
+      "version": "0.0.424",
+      "sha256": "38617824808249eecce6377d6e467936bf695f62662dbcf372e95c930a7b7e4d",
+      "bundle": "Discord.app"
+    },
+    "docker-desktop": {
+      "name": "Docker Desktop",
+      "sourceUrl": "https://desktop.docker.com/mac/main/arm64/245822/Docker.dmg",
+      "version": "4.99.0,245822",
+      "sha256": "0ede7f9917b55c396a17b03c069cadf457a7d21904bc264c6d398fe132da7fb9",
+      "bundle": "Docker.app"
+    },
+    "dropbox": {
+      "name": "Dropbox",
+      "sourceUrl": "https://edge.dropboxstatic.com/dbx-releng/client/Dropbox%20280.4.5053.arm64.dmg",
+      "version": "280.4.5053",
+      "sha256": "fa6e9b1a5f1d78108749d2643e889ad98d67ba90c243e48b516d8491b14e4497",
+      "bundle": "Dropbox.app"
+    },
+    "epic-games": {
+      "name": "Epic Games Launcher",
+      "sourceUrl": "https://epicgames-download1.akamaized.net/Builds/UnrealEngineLauncher/Installers/Mac/EpicInstaller-20.3.3.dmg",
+      "version": "20.3.3",
+      "sha256": "d25d7344f3759ef820c3b3f27eab10e86bfaba22788f88d5b917f4937a429076",
+      "bundle": "Epic Games Launcher.app"
+    },
+    "firefox": {
+      "name": "Firefox",
+      "sourceUrl": "https://download-installer.cdn.mozilla.net/pub/firefox/releases/161.0/mac/en-US/Firefox%20161.0.dmg",
+      "version": "161.0",
+      "sha256": "18f398ada9ba9faa5458dc01c2a68fc7df35517283be2e7a421a0867c5f47f83",
+      "bundle": "Firefox.app"
+    },
+    "gimp": {
+      "name": "GIMP",
+      "sourceUrl": "https://download.gimp.org/gimp/v3.2/macos/gimp-3.2.8-arm64.dmg",
+      "version": "3.2.8",
+      "sha256": "06404a375106b7613ba3a14c7d8d9a7cbe18b9b9e2b2050bb72f3162cbcfc395",
+      "bundle": "GIMP.app"
+    },
+    "github": {
+      "name": "GitHub Desktop",
+      "sourceUrl": "https://desktop.githubusercontent.com/releases/3.7.0-f13859b6/GitHubDesktop-arm64.zip",
+      "version": "3.7.0-f13859b6",
+      "sha256": "cc41c3cfdae2eaa332ef6547f82c6e672b5a11b0bf637aada2bf2796921eb1a5",
+      "bundle": "GitHub Desktop.app"
+    },
+    "google-chrome": {
+      "name": "Google Chrome",
+      "sourceUrl": "https://dl.google.com/chrome/mac/universal/stable/GGRO/googlechrome.dmg",
+      "version": "158.0.8127.89",
+      "sha256": "b7b8c9169275631c1065b865ba2e64bf0f620fa4e507b72c1b5abb5383d2b0f1",
+      "bundle": "Google Chrome.app"
+    },
+    "google-drive": {
+      "name": "Google Drive",
+      "sourceUrl": "https://dl.google.com/drive-file-stream/5-percent/GoogleDrive.dmg",
+      "version": "134.0.1",
+      "sha256": "81133901d4dc794c5f736e862af69a89a34b5d79feab975e0b13fbd09fc1dcc0",
+      "bundle": "Google Drive.app"
+    },
+    "handbrake-app": {
+      "name": "HandBrake",
+      "sourceUrl": "https://handbrake.fr/rotation.php?file=HandBrake-1.11.2.dmg&update=true",
+      "version": "1.11.2",
+      "sha256": "4afe27aaa77a7bbb0dcda1a335d96a5f53649f2649fb84de6982ffecc35de9d7",
+      "bundle": "HandBrake.app"
+    },
+    "iterm2": {
+      "name": "iTerm2",
+      "sourceUrl": "https://iterm2.com/downloads/stable/iTerm2-3_7_9.zip",
+      "version": "3.7.9",
+      "sha256": "beb96a1089b061c80e030101947aee13d54ba5e4058ad00b82e79633be29d3d2",
+      "bundle": "iTerm.app"
+    },
+    "keka": {
+      "name": "Keka",
+      "sourceUrl": "https://github.com/aonez/Keka/releases/download/v1.6.8/Keka-1.6.8.dmg",
+      "version": "1.6.8",
+      "sha256": "25a4daf0492b7e3bca043c8a7ba1ae97507dd8dbf872811daf74b01f16a12125",
+      "bundle": "Keka.app"
+    },
+    "libreoffice": {
+      "name": "LibreOffice",
+      "sourceUrl": "https://download.documentfoundation.org/libreoffice/stable/26.8.3/mac/aarch64/LibreOffice_26.8.3_MacOS_aarch64.dmg",
+      "version": "26.8.3",
+      "sha256": "de943203795e5057785f65515063e2db5eb60b0bb6d8e2534fec59e5cc5fb988",
+      "bundle": "LibreOffice.app"
+    },
+    "microsoft-teams": {
+      "name": "Microsoft Teams",
+      "sourceUrl": "https://statics.teams.cdn.office.net/production-osx/26304.1206.5384.1209/MicrosoftTeams.pkg",
+      "version": "26304.1206.5384.1209",
+      "sha256": "523c173942f1375df8c28fe9721711313cb56456257a180253a80bf27748be83",
+      "bundle": "Microsoft Teams.app"
+    },
+    "obs": {
+      "name": "OBS",
+      "sourceUrl": "https://cdn-fastly.obsproject.com/downloads/obs-studio-33.0.3-macos-apple.dmg",
+      "version": "33.0.3",
+      "sha256": "92212873b6f84c54285203cac3f846590ac00dfad76b312cf266100ff5edf0c8",
+      "bundle": "OBS.app"
+    },
+    "onedrive": {
+      "name": "OneDrive",
+      "sourceUrl": "https://oneclient.sfx.ms/Mac/Installers/26.213.1101.0008/universal/OneDrive.pkg",
+      "version": "26.213.1101.0008",
+      "sha256": "bd70e9cb347c9954be4ab8db4131be8b5d211a7b697a2642f935f230fd71ec90",
+      "bundle": "OneDrive.app"
+    },
+    "plex": {
+      "name": "Plex",
+      "sourceUrl": "https://downloads.plex.tv/plex-desktop/1.115.0.426-4e960a1d/macos/Plex-1.115.0.426-4e960a1d-universal.zip",
+      "version": "1.115.0.426,4e960a1d",
+      "sha256": "273fbc9b36938772abc5c5579923d758a6c9c158cd1d9c0f0689627d5f1af14f",
+      "bundle": "Plex.app"
+    },
+    "sketch": {
+      "name": "Sketch",
+      "sourceUrl": "https://download.sketch.com/sketch-2026.4-238217.zip",
+      "version": "2026.4,238217",
+      "sha256": "ce2ed9756fc2fec517bc14cbf5515e8bfc83e23a2e281f228acfe1114f37d06a",
+      "bundle": "Sketch.app"
+    },
+    "slack": {
+      "name": "Slack",
+      "sourceUrl": "https://downloads.slack-edge.com/desktop-releases/mac/arm64/4.53.292/Slack-4.53.292-macOS.dmg",
+      "version": "4.53.292",
+      "sha256": "b358a20e933a889e76faa46c581e3d9c59f036dd3be1692eb593db900646006a",
+      "bundle": "Slack.app"
+    },
+    "spotify": {
+      "name": "Spotify",
+      "sourceUrl": "https://download.scdn.co/SpotifyARM64.dmg",
+      "version": "1.3.10.2586",
+      "sha256": "8344d3307e53736d803642be4fb37f6c0253850b525b9ee5f8f3e2bbf8c32d93",
+      "bundle": "Spotify.app"
+    },
+    "steam": {
+      "name": "Steam",
+      "sourceUrl": "https://client-update.steamstatic.com/appdmg_osx.zip.984652b88a9737e3f4e77c656d9ffa67d5042c2c",
+      "version": "6.1,1791918634,984652b88a9737e3f4e77c656d9ffa67d5042c2c",
+      "sha256": "8bf4ce8b4bcbc50f642988c955559f605e7a877372116e7a2b3fd1355004bedb",
+      "bundle": "Steam.app"
+    },
+    "sublime-text": {
+      "name": "Sublime Text",
+      "sourceUrl": "https://download.sublimetext.com/sublime_text_build_4215_mac.zip",
+      "version": "4215",
+      "sha256": "a0263f36660f13981bb25b05e968681429ce5f67134876cd9032ffa82e1904d5",
+      "bundle": "Sublime Text.app"
+    },
+    "tailscale-app": {
+      "name": "Tailscale",
+      "sourceUrl": "https://pkgs.tailscale.com/stable/Tailscale-1.104.7-macos.pkg",
+      "version": "1.104.7",
+      "sha256": "0ecab60e098d31f9cbd334867474293dc08978154665da75c3f3fe1f8215d6e7",
+      "bundle": "Tailscale.app"
+    },
+    "teamviewer": {
+      "name": "TeamViewer",
+      "sourceUrl": "https://dl.teamviewer.com/download/version_15x/update/15.82.6/TeamViewer.pkg",
+      "version": "15.82.6",
+      "sha256": "9acd5a6cefe859e81f85001b1b90279e02495f3829ced8df1a3b9d37f3d5bcf1",
+      "bundle": "TeamViewer.app"
+    },
+    "the-unarchiver": {
+      "name": "The Unarchiver",
+      "sourceUrl": "https://dl.devmate.com/com.macpaw.site.theunarchiver/147/1742287964/TheUnarchiver-147.zip",
+      "version": "4.3.9,147,1742287964",
+      "sha256": "d0d8dd2e028519ece5eeb0f018b3392f67e1c85053472ccbbaee64e87f173a28",
+      "bundle": "The Unarchiver.app"
+    },
+    "visual-studio-code": {
+      "name": "Visual Studio Code",
+      "sourceUrl": "https://update.code.visualstudio.com/1.147.0/darwin-arm64/stable",
+      "version": "1.147.0",
+      "sha256": "149d944feb599b076b48406b174e1c3cd1d510e9d673854777a20a6f4116a59a",
+      "bundle": "Visual Studio Code.app"
+    },
+    "vlc": {
+      "name": "VLC",
+      "sourceUrl": "https://get.videolan.org/vlc/3.0.24/macosx/vlc-3.0.24-arm64.dmg",
+      "version": "3.0.24",
+      "sha256": "64a89d93cdd30b0e97131743e246373db82d6826ea882d265d46d74b136da2b7",
+      "bundle": "VLC.app"
+    },
+    "whatsapp": {
+      "name": "WhatsApp",
+      "sourceUrl": "https://web.whatsapp.com/desktop/mac_native/release/?version=2.26.47.15&extension=zip&configuration=Release&branch=master&is_buck=true",
+      "version": "26.47.15",
+      "sha256": "48180c607990e4ddac06a4eae8fa5dd9613633f70d834f917ca96a3c159db343",
+      "bundle": "WhatsApp.app"
+    },
+    "zoom": {
+      "name": "Zoom",
+      "sourceUrl": "https://cdn.zoom.us/prod/7.2.5.90525/arm64/zoomusInstallerFull.pkg",
+      "version": "7.2.5.90525",
+      "sha256": "4c26ebed8bd29ce258ac9dbe0f2b327fad0a0734246ea588339a2cc5fd10533e",
+      "bundle": "zoom.us.app"
+    }
+  }
+}
