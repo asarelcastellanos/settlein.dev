@@ -27,16 +27,28 @@ enum Archive {
             "attach", "-nobrowse", "-readonly", "-noautoopen", "-plist", "-mountrandom", mounts.path, file.path,
         ])
         let points = mountPoints(attach.output)
-        defer { for point in points { detach(point) } }
-        guard attach.status == 0, !points.isEmpty else {
-            throw Refusal(reason: "The download is not a zip file or a disk image Settlein can open")
+        let copies: [URL]
+        do {
+            guard attach.status == 0, !points.isEmpty else {
+                throw Refusal(reason: "The download is not a zip file or a disk image Settlein can open")
+            }
+            copies = try await copyBundles(names, from: points, to: unpacked)
+        } catch {
+            try detachAll(points)
+            throw error
         }
+        try detachAll(points)
+        return copies
+    }
+
+    private static func copyBundles(_ names: [String], from points: [String], to unpacked: URL) async throws -> [URL] {
         var copies: [URL] = []
         for name in names {
             guard let source = points.map({ URL(filePath: $0).appending(path: name) })
-                .first(where: { FileManager.default.fileExists(atPath: $0.path) }) else {
+                .first(where: { exists($0) }) else {
                 throw Refusal(reason: "The download does not hold \(name)")
             }
+            try requirePlainBundle(source, name: name)
             let copy = unpacked.appending(path: name)
             let result = await Tools.run("/usr/bin/ditto", [source.path, copy.path])
             guard result.status == 0 else { throw Refusal(reason: "Settlein could not copy \(name) out of the disk image") }
@@ -45,13 +57,34 @@ enum Archive {
         return copies
     }
 
+    private static func detachAll(_ points: [String]) throws {
+        for point in points where !detach(point, arguments: ["detach", point]) && !detach(point, arguments: ["detach", "-force", point]) {
+            throw Refusal(reason: "Settlein could not eject the disk image at \(point)")
+        }
+    }
+
     private static func locate(_ names: [String], in folder: URL) throws -> [URL] {
         try names.map { name in
             let url = folder.appending(path: name)
-            guard FileManager.default.fileExists(atPath: url.path) else {
+            guard exists(url) else {
                 throw Refusal(reason: "The download does not hold \(name)")
             }
+            try requirePlainBundle(url, name: name)
             return url
+        }
+    }
+
+    private static func exists(_ url: URL) -> Bool {
+        (try? url.resourceValues(forKeys: [.isSymbolicLinkKey]).isSymbolicLink) != nil
+    }
+
+    private static func requirePlainBundle(_ url: URL, name: String) throws {
+        let values = try? url.resourceValues(forKeys: [.isSymbolicLinkKey, .isDirectoryKey])
+        if values?.isSymbolicLink == true {
+            throw Refusal(reason: "\(name) in the download is a link, not an app")
+        }
+        if values?.isDirectory != true {
+            throw Refusal(reason: "\(name) in the download is not an app bundle")
         }
     }
 
@@ -63,13 +96,14 @@ enum Archive {
         return entities.compactMap { $0["mount-point"] as? String }
     }
 
-    private static func detach(_ point: String) {
+    private static func detach(_ point: String, arguments: [String]) -> Bool {
         let process = Process()
         process.executableURL = URL(filePath: "/usr/bin/hdiutil")
-        process.arguments = ["detach", "-force", point]
+        process.arguments = arguments
         process.standardOutput = FileHandle.nullDevice
         process.standardError = FileHandle.nullDevice
-        try? process.run()
+        do { try process.run() } catch { return false }
         process.waitUntilExit()
+        return process.terminationStatus == 0
     }
 }

@@ -55,11 +55,16 @@ enum Installer {
             for bundle in bundles {
                 try quarantine(bundle, source: source)
                 let target = folder.appending(path: bundle.lastPathComponent)
-                try fileManager.moveItem(at: bundle, to: target)
                 placed.append(target)
+                try fileManager.moveItem(at: bundle, to: target)
             }
         } catch {
-            for target in placed { try? fileManager.removeItem(at: target) }
+            let last = placed.last
+            let existed = last != nil && (error as NSError).code == NSFileWriteFileExistsError
+            for target in placed where !(existed && target == last) { try? fileManager.removeItem(at: target) }
+            if existed, let last {
+                throw Refusal(reason: "\(last.lastPathComponent) already exists in \(folder.path)")
+            }
             throw Refusal(reason: "Settlein could not write to \(folder.path). \(error.localizedDescription)")
         }
     }
