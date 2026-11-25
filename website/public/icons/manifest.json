@@ -168,6 +168,13 @@
       "sha256": "4afe27aaa77a7bbb0dcda1a335d96a5f53649f2649fb84de6982ffecc35de9d7",
       "bundle": "HandBrake.app"
     },
+    "inkscape": {
+      "name": "Inkscape",
+      "sourceUrl": "https://media.inkscape.org/dl/resources/file/Inkscape-1.4.4_arm64.dmg",
+      "version": "1.4.4",
+      "sha256": "eacca94ab01e59467cdd5452a2867c3734450f9a4cfb3346956cc9b07f34f3f1",
+      "bundle": "Inkscape.app"
+    },
     "iterm2": {
       "name": "iTerm2",
       "sourceUrl": "https://iterm2.com/downloads/stable/iTerm2-3_7_9.zip",

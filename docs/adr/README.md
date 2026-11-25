@@ -24,3 +24,4 @@
 | [0020](0020-catalog-generator-in-node-under-catalog.md) | Catalog generator in Node under catalog | accepted |
 | [0021](0021-uninstall-never-touches-user-file-folders.md) | Uninstall never touches user file folders | accepted |
 | [0022](0022-daily-job-commits-catalog-to-a-data-branch.md) | Daily job commits the catalog to a data branch | accepted |
+| [0031](0031-extract-icons-from-vendor-downloads-with-a-script.md) | Extract icons from vendor downloads with a script | accepted |
