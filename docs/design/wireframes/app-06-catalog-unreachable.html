@@ -60,11 +60,12 @@ button.primary:hover{background:var(--muted)}
 <div class="meta-top"><a href="index.html">All wireframes</a><button id="themebtn" class="themebtn" type="button">Theme</button></div>
 <h1><span class="sid">A6</span>Catalog unreachable</h1>
 <p>The catalog fetch from settlein.dev failed. The person can retry.</p>
-<nav class="states" aria-label="States"><strong>States</strong><a href="#f1">Failed</a><a href="#f2">Retrying</a></nav>
+<nav class="states" aria-label="States"><strong>States</strong><a href="#f1">Offline</a><a href="#f2">Site error</a><a href="#f3">Retrying</a></nav>
 </header>
 <main class="wrap">
-<h2 class="frame-label" id="f1">Failed</h2><div class="win" style="--w:700px;--h:320px"><div class="win-bar" aria-hidden="true"><i></i><i></i><i></i><b>Settlein</b></div><div class="win-body"><div class="empty"><strong>Cannot reach the catalog</strong><br>Slot for the reason in plain words and what to check, for example the connection.</div><div class="win-foot"><button type="button" class="primary">Try again</button></div></div></div>
-<h2 class="frame-label" id="f2">Retrying</h2><div class="win" style="--w:700px;--h:320px"><div class="win-bar" aria-hidden="true"><i></i><i></i><i></i><b>Settlein</b></div><div class="win-body"><div class="empty"><strong>Trying again</strong><br>Slot for progress.</div><div class="win-foot"><button type="button" class="primary" disabled>Try again</button></div></div></div>
+<h2 class="frame-label" id="f1">Offline</h2><div class="win" style="--w:700px;--h:320px"><div class="win-bar" aria-hidden="true"><i></i><i></i><i></i><b>Settlein</b></div><div class="win-body"><div class="empty"><strong>Cannot reach the catalog</strong><br>Slot for the reason in plain words: this Mac appears to be offline. Say what to check, for example the connection.</div><div class="win-foot"><button type="button">Close</button><button type="button" class="primary">Try again</button></div></div></div>
+<h2 class="frame-label" id="f2">Site error: settlein.dev answered with an error</h2><div class="win" style="--w:700px;--h:320px"><div class="win-bar" aria-hidden="true"><i></i><i></i><i></i><b>Settlein</b></div><div class="win-body"><div class="empty"><strong>The catalog did not load</strong><br>Slot for the reason in plain words: the site answered with an error. Say what to do next, for example try again later.</div><div class="win-foot"><button type="button">Close</button><button type="button" class="primary">Try again</button></div></div></div>
+<h2 class="frame-label" id="f3">Retrying</h2><div class="win" style="--w:700px;--h:320px"><div class="win-bar" aria-hidden="true"><i></i><i></i><i></i><b>Settlein</b></div><div class="win-body"><div class="empty"><strong>Trying again</strong><br>Slot for progress.</div><div class="win-foot"><button type="button">Close</button><button type="button" class="primary" disabled>Try again</button></div></div></div>
 </main>
 <script>
 (function(){var r=document.documentElement,b=document.getElementById('themebtn');if(!b)return;
