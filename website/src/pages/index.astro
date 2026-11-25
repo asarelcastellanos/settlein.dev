@@ -87,7 +87,6 @@ const total = groups.reduce((sum, group) => sum + group.apps.length, 0);
 
       button.addEventListener("click", () => {
         const ticked = boxes.filter((box) => box.checked).map((box) => box.value);
-        if (ticked.length === 0) return;
         const target = new URL(button.dataset.handoffTarget!, location.href);
         target.searchParams.set("apps", ticked.join(","));
         location.href = target.href;
