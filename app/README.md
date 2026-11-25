@@ -17,7 +17,7 @@ xcodebuild -project Settlein.xcodeproj -scheme Settlein -configuration Debug bui
 Debug builds accept two launch arguments. Release builds ignore them.
 
 ```sh
-open -n Settlein.app --args -catalogFile /path/to/catalog.json -selection "google-chrome,firefox,tailscale"
+open -n Settlein.app --args -catalogFile /path/to/catalog.json -selection "google-chrome,firefox,tailscale-app"
 ```
 
-`-selection` takes Homebrew cask tokens separated by commas. Tokens the catalog does not hold are dropped. With no `-catalogFile` the app requests `https://settlein.dev/catalog.json` and nothing else.
+`-selection` takes catalog `token` values, which are Homebrew cask tokens, separated by commas. The confirmation screen marks pkg apps such as `tailscale-app` as opening Apple's Installer. Tokens the catalog does not hold are dropped. With no `-catalogFile` the app requests `https://settlein.dev/catalog.json` and nothing else.
