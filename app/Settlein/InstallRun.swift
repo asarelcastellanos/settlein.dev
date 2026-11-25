@@ -18,7 +18,7 @@ enum ItemState: Equatable {
     }
 }
 
-struct RunItem: Identifiable, Equatable {
+struct RunItem: Identifiable {
     let app: CatalogApp
     var state: ItemState
 

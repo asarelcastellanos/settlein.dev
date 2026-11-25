@@ -1,11 +1,11 @@
 import CoreServices
 import Foundation
 
-struct Refusal: Error, Equatable {
+struct Refusal: Error {
     let reason: String
 }
 
-enum InstallStep: Equatable {
+enum InstallStep {
     case downloading(Double?)
     case verifying
     case installing
