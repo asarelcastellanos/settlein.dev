@@ -25,3 +25,4 @@
 | [0021](0021-uninstall-never-touches-user-file-folders.md) | Uninstall never touches user file folders | accepted |
 | [0022](0022-daily-job-commits-catalog-to-a-data-branch.md) | Daily job commits the catalog to a data branch | accepted |
 | [0024](0024-app-shell-structure-and-dev-inputs.md) | App shell structure and development inputs | accepted |
+| [0028](0028-copy-app-install-pipeline.md) | Copy app install pipeline | accepted |
