@@ -6,6 +6,8 @@
 
 **Confirmation screen.** The screen in the Settlein app that shows the selection and waits for the person to approve it before anything downloads.
 
+**Design handoff package.** The brief and grey-box wireframes in `docs/design/` that an outside designer reads to design the website, the Mac app, the icon and the DMG window.
+
 **Handoff.** The step where the website tells the Settlein app which apps the person ticked.
 
 **Leftovers.** The support files, caches and preferences an app leaves on the Mac after its bundle is gone.
