@@ -17,7 +17,7 @@ xcodebuild -project Settlein.xcodeproj -scheme Settlein -configuration Debug bui
 Debug builds accept two launch arguments. Release builds ignore them.
 
 ```sh
-open -n Settlein.app --args -catalogFile /path/to/catalog.json -selection "Google Chrome,Firefox,Tailscale"
+open -n Settlein.app --args -catalogFile /path/to/catalog.json -selection "google-chrome,firefox,tailscale"
 ```
 
-`-selection` takes catalog app names separated by commas. Names the catalog does not hold are dropped. With no `-catalogFile` the app requests `https://settlein.dev/catalog.json` and nothing else.
+`-selection` takes Homebrew cask tokens separated by commas. Tokens the catalog does not hold are dropped. With no `-catalogFile` the app requests `https://settlein.dev/catalog.json` and nothing else.

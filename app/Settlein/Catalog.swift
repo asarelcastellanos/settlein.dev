@@ -7,6 +7,7 @@ enum InstallerType: String {
 
 struct CatalogApp: Identifiable, Equatable {
     let name: String
+    let token: String
     let category: String
     let downloadURL: URL
     let version: String
@@ -25,7 +26,7 @@ enum CatalogParser {
     static let maxBytes = 2_000_000
 
     private static let appKeys: Set<String> = [
-        "name", "category", "downloadUrl", "version", "installerType",
+        "name", "token", "category", "downloadUrl", "version", "installerType",
         "appBundles", "leftoverPaths", "pkgutilIds", "sha256",
     ]
     private static let leftoverKeys: Set<String> = ["path", "from"]
@@ -42,10 +43,14 @@ enum CatalogParser {
             throw CatalogError(reason: "apps is not a non-empty list")
         }
         var seen = Set<String>()
+        var seenTokens = Set<String>()
         var apps: [CatalogApp] = []
         for (index, item) in list.enumerated() {
             let app = try parseApp(item, index: index)
             guard seen.insert(app.name).inserted else { throw CatalogError(reason: "duplicate app \(app.name)") }
+            guard seenTokens.insert(app.token).inserted else {
+                throw CatalogError(reason: "app \(index) token \(app.token) is a duplicate")
+            }
             apps.append(app)
         }
         return apps
@@ -56,6 +61,10 @@ enum CatalogParser {
         guard let dict = item as? [String: Any] else { throw CatalogError(reason: "\(at) is not an object") }
         guard Set(dict.keys) == appKeys else { throw CatalogError(reason: "\(at) has a missing or unknown key") }
         let name = try text(dict["name"], "\(at) name")
+        let token = try text(dict["token"], "\(at) token")
+        guard token.range(of: "^[a-z0-9-]+$", options: .regularExpression) != nil else {
+            throw CatalogError(reason: "\(at) token is not a-z, 0-9 and -")
+        }
         let category = try text(dict["category"], "\(at) category")
         let version = try text(dict["version"], "\(at) version")
         let urlText = try text(dict["downloadUrl"], "\(at) downloadUrl")
@@ -72,7 +81,7 @@ enum CatalogParser {
         try checkLeftovers(dict["leftoverPaths"], at)
         try checkPkgutilIds(dict["pkgutilIds"], at)
         return CatalogApp(
-            name: name, category: category, downloadURL: url, version: version,
+            name: name, token: token, category: category, downloadURL: url, version: version,
             installerType: type, appBundles: bundles, sha256: try checksum(dict["sha256"], at)
         )
     }
