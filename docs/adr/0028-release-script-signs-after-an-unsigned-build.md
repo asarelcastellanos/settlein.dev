@@ -2,7 +2,7 @@
 status: accepted
 date: 2026-11-24
 ---
-# 0029. Release script signs after an unsigned build
+# 0028. Release script signs after an unsigned build
 
 Accepted by default, not reviewed by the owner.
 
