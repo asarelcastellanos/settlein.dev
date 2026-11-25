@@ -25,3 +25,4 @@
 | [0021](0021-uninstall-never-touches-user-file-folders.md) | Uninstall never touches user file folders | accepted |
 | [0022](0022-daily-job-commits-catalog-to-a-data-branch.md) | Daily job commits the catalog to a data branch | accepted |
 | [0023](0023-designer-returns-figma-and-design-md.md) | Designer returns Figma and DESIGN.md | accepted |
+| [0028](0028-release-script-signs-after-an-unsigned-build.md) | Release script signs after an unsigned build | accepted |
