@@ -24,10 +24,7 @@ enum CatalogClient {
     }
 
     private static func fetch() async throws -> Data {
-        let config = URLSessionConfiguration.ephemeral
-        config.timeoutIntervalForRequest = 15
-        config.requestCachePolicy = .reloadIgnoringLocalCacheData
-        let session = URLSession(configuration: config, delegate: SameHostOnly(), delegateQueue: nil)
+        let session = URLSession(configuration: Network.configuration(timeout: 15), delegate: SameHostOnly(), delegateQueue: nil)
         defer { session.finishTasksAndInvalidate() }
         let (data, response) = try await session.data(from: url)
         guard let http = response as? HTTPURLResponse, http.statusCode == 200, http.url?.host() == host else {

@@ -8,13 +8,13 @@ struct Row: Identifiable, Equatable {
     var id: String { app.id }
 }
 
-enum Screen: Equatable {
+enum Screen {
     case loading
     case unreachable(String)
     case nothingSelected
     case confirm([Row])
     case allInstalled
-    case approved(toInstall: [CatalogApp], skipped: [CatalogApp])
+    case installing(InstallRun)
 }
 
 @MainActor
@@ -34,10 +34,10 @@ final class AppModel {
 
     func approve() {
         guard case .confirm(let rows) = screen else { return }
-        screen = .approved(
+        screen = .installing(InstallRun(
             toInstall: rows.filter { !$0.installed }.map(\.app),
             skipped: rows.filter(\.installed).map(\.app)
-        )
+        ))
     }
 
     private func show(_ chosen: [CatalogApp]) {

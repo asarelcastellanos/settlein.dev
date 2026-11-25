@@ -28,8 +28,9 @@ struct RootView: View {
             ConfirmationView(rows: rows, approve: model.approve)
         case .allInstalled:
             MessageView(title: "Nothing to install", detail: "Every selected app is already installed.")
-        case .approved(let toInstall, let skipped):
-            ApprovedView(toInstall: toInstall, skipped: skipped)
+        case .installing(let run):
+            InstallView(run: run)
+                .task { await run.start() }
         }
     }
 }
@@ -109,18 +110,116 @@ struct MessageView: View {
     }
 }
 
-struct ApprovedView: View {
-    let toInstall: [CatalogApp]
-    let skipped: [CatalogApp]
+struct InstallView: View {
+    let run: InstallRun
 
     var body: some View {
-        VStack(spacing: 12) {
-            Text("Approved").font(.title2)
-            Text("Installing is not built yet. Nothing was downloaded or changed.")
-                .foregroundStyle(.secondary)
-            Text("\(toInstall.count) to install, \(skipped.count) already installed")
-            Button("Close") { NSApplication.shared.terminate(nil) }.keyboardShortcut(.defaultAction)
+        if run.finished {
+            FinishedView(run: run)
+        } else {
+            VStack(alignment: .leading, spacing: 12) {
+                Text("Installing").font(.title2)
+                ProgressView(value: Double(run.settled), total: Double(run.items.count))
+                Text("\(run.settled) of \(run.items.count) done").foregroundStyle(.secondary)
+                List(run.items) { RunRowView(item: $0) }
+            }
+            .padding()
+        }
+    }
+}
+
+struct RunRowView: View {
+    let item: RunItem
+
+    var body: some View {
+        VStack(alignment: .leading, spacing: 4) {
+            HStack {
+                Text(item.app.name)
+                Spacer()
+                Text(tag).font(.caption)
+            }
+            if case .downloading(let fraction?) = item.state {
+                ProgressView(value: fraction)
+            }
+            Text(detail).font(.caption).foregroundStyle(.secondary)
+        }
+    }
+
+    private var tag: String {
+        switch item.state {
+        case .waiting: "Waiting"
+        case .downloading: "Downloading"
+        case .verifying: "Verifying"
+        case .installing: "Installing"
+        case .done: "Done"
+        case .refused: "Refused"
+        case .notBuilt: "Skipped"
+        }
+    }
+
+    private var detail: String {
+        switch item.state {
+        case .waiting: "Waiting"
+        case .downloading(let fraction?): "Downloading, \(Int(fraction * 100))%"
+        case .downloading(nil): "Downloading"
+        case .verifying: "Verifying"
+        case .installing: "Installing"
+        case .done: "Done"
+        case .refused(let reason): "Refused. \(reason)"
+        case .notBuilt: "Not built yet. Settlein cannot install this app yet"
+        }
+    }
+}
+
+struct FinishedView: View {
+    let run: InstallRun
+
+    private func apps(_ match: (ItemState) -> Bool) -> [CatalogApp] {
+        run.items.filter { match($0.state) }.map(\.app)
+    }
+
+    private var refused: [RunItem] {
+        run.items.filter { if case .refused = $0.state { true } else { false } }
+    }
+
+    private var installed: [CatalogApp] { apps { $0 == .done } }
+    private var notBuilt: [CatalogApp] { apps { $0 == .notBuilt } }
+
+    var body: some View {
+        VStack(alignment: .leading, spacing: 12) {
+            Text(summary).font(.title2)
+            List {
+                section("Installed in \(run.folder.path)", installed.map { ($0.name, nil) })
+                section("Not built yet", notBuilt.map { ($0.name, "Settlein cannot install this app yet") })
+                section("Skipped, already installed", run.skipped.map { ($0.name, nil) })
+                section("Refused", refused.map { item in
+                    if case .refused(let reason) = item.state { (item.app.name, reason) } else { (item.app.name, nil) }
+                })
+            }
+            HStack {
+                Spacer()
+                Button("Done") { NSApplication.shared.terminate(nil) }
+                    .keyboardShortcut(.defaultAction)
+            }
         }
         .padding()
+    }
+
+    private var summary: String {
+        "\(installed.count) installed, \(notBuilt.count) not built yet, \(run.skipped.count) skipped, \(refused.count) refused"
+    }
+
+    @ViewBuilder
+    private func section(_ title: String, _ rows: [(String, String?)]) -> some View {
+        if !rows.isEmpty {
+            Section(title) {
+                ForEach(rows, id: \.0) { name, detail in
+                    VStack(alignment: .leading) {
+                        Text(name)
+                        if let detail { Text(detail).font(.caption).foregroundStyle(.secondary) }
+                    }
+                }
+            }
+        }
     }
 }

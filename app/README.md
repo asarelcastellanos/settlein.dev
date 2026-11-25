@@ -1,6 +1,6 @@
 # Settlein app
 
-SwiftUI app for Apple silicon on macOS 26 and later. This shell fetches the catalog and shows the confirmation screen. Approve downloads nothing yet.
+SwiftUI app for Apple silicon on macOS 26 and later. This app fetches the catalog, shows the confirmation screen, and installs the approved copy apps. Pkg apps show "Not built yet" until issue #11.
 
 ## Build
 
