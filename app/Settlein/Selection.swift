@@ -10,10 +10,10 @@ enum Selection {
         return []
     }
 
-    static func resolve(_ names: [String], in catalog: [CatalogApp]) -> [CatalogApp] {
+    static func resolve(_ tokens: [String], in catalog: [CatalogApp]) -> [CatalogApp] {
         var chosen: [CatalogApp] = []
-        for name in names {
-            guard let app = catalog.first(where: { $0.name.caseInsensitiveCompare(name) == .orderedSame }),
+        for token in tokens {
+            guard let app = catalog.first(where: { $0.token == token }),
                   !chosen.contains(app) else { continue }
             chosen.append(app)
         }
