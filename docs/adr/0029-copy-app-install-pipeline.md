@@ -2,7 +2,7 @@
 status: accepted
 date: 2026-11-24
 ---
-# 0028. Copy app install pipeline
+# 0029. Copy app install pipeline
 
 Accepted by default, not reviewed by the owner.
 
