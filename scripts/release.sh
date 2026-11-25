@@ -30,15 +30,18 @@ out_created=0
 mkdir -p "$out"
 out=$(cd "$out" && pwd)
 
-work=$(mktemp -d "$out/.work.XXXXXX")
+work=""
 cleanup() {
   status=$?
-  rm -rf "$work"
+  if [ -n "$work" ]; then
+    rm -rf "$work"
+  fi
   if [ "$status" -ne 0 ] && [ "$out_created" = 1 ]; then
     rm -rf "$out"
   fi
 }
 trap cleanup EXIT
+work=$(mktemp -d "$out/.work.XXXXXX")
 
 notarize() {
   local result
@@ -50,7 +53,6 @@ notarize() {
 if [[ "$input" == *.app ]]; then
   ditto "$input" "$work/Settlein.app"
 else
-  [ -f "$input/project.yml" ] || { echo "No project.yml in $input" >&2; exit 2; }
   ditto "$input" "$work/src"
   (cd "$work/src" && xcodegen generate --quiet)
   xcodebuild -project "$work/src/Settlein.xcodeproj" -scheme Settlein \
