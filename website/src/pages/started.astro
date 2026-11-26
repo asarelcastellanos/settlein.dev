@@ -96,15 +96,13 @@ for (const group of loadCatalog()) for (const app of group.apps) names[app.token
         if (busy) return;
         busy = true;
         const before = root.dataset.state;
-        root.dataset.state = "checking";
+        if (before !== "started") root.dataset.state = "checking";
         retry.disabled = true;
         again.setAttribute("aria-disabled", "true");
         let ok = false;
         const reveal = setTimeout(() => {
-          if (root.dataset.state === "checking") {
-            status.textContent = "Getting your download ready.";
-            status.classList.add("shown");
-          }
+          status.textContent = "Getting your download ready.";
+          status.classList.add("shown");
         }, 300);
         try {
           const response = await fetch(downloadUrl, {
