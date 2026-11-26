@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>W3 After the download click | Settlein wireframe</title>
+<style>
+:root{--bg:#f2f2f2;--panel:#fff;--sunk:#e6e6e6;--box:#d4d4d4;--line:#8a8a8a;--text:#1f1f1f;--muted:#575757;--focus:#000;--warn:#e0e0e0;color-scheme:light}
+@media (prefers-color-scheme:dark){:root:not([data-theme]){--bg:#1b1b1b;--panel:#262626;--sunk:#141414;--box:#444;--line:#8c8c8c;--text:#ececec;--muted:#b0b0b0;--focus:#fff;--warn:#3a3a3a;color-scheme:dark}}
+:root[data-theme=dark]{--bg:#1b1b1b;--panel:#262626;--sunk:#141414;--box:#444;--line:#8c8c8c;--text:#ececec;--muted:#b0b0b0;--focus:#fff;--warn:#3a3a3a;color-scheme:dark}
+:root[data-theme=light]{color-scheme:light}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--text);font:16px/1.5 system-ui,-apple-system,"Segoe UI",sans-serif}
+::selection{background:var(--line);color:var(--bg)}
+:focus-visible{outline:3px solid var(--focus);outline-offset:2px}
+a{color:var(--text)}
+button{font:inherit;color:var(--text);background:var(--box);border:1px solid var(--line);border-radius:6px;padding:.5rem 1rem;min-height:44px;cursor:pointer}
+button:hover{background:var(--line);color:var(--bg)}
+button:disabled{opacity:.5;cursor:not-allowed}
+button.primary{background:var(--text);color:var(--bg);border-color:var(--text)}
+button.primary:hover{background:var(--muted)}
+.meta{background:var(--panel);border-bottom:1px solid var(--line);padding:.75rem 1rem}
+.meta-top{display:flex;gap:1rem;align-items:center;justify-content:space-between;flex-wrap:wrap}
+.meta h1{font-size:1.25rem;margin:.25rem 0}
+.meta p{margin:0;color:var(--muted);max-width:70ch}
+.sid{font-weight:700;border:1px solid var(--line);border-radius:4px;padding:0 .4rem;margin-right:.5rem}
+.states{display:flex;gap:.5rem;flex-wrap:wrap;align-items:center;margin-top:.75rem;font-size:.875rem}
+.states a{border:1px solid var(--line);border-radius:999px;padding:.25rem .75rem;text-decoration:none;display:inline-block}
+.states a:hover{background:var(--line);color:var(--bg)}
+.wrap{padding:1rem;max-width:1280px;margin:0 auto}
+.frame-label{font-size:.875rem;color:var(--muted);margin:1.5rem 0 .5rem}
+.region{border:2px dashed var(--line);border-radius:6px;padding:.75rem;position:relative;background:var(--panel)}
+.region>.rl{display:block;font-size:.8125rem;color:var(--muted);margin-bottom:.5rem}
+.slot{background:var(--box);border:1px solid var(--line);display:grid;place-items:center;text-align:center;color:var(--muted);font-size:.875rem;padding:.5rem;min-height:48px}
+.win{width:min(100%,var(--w,900px));border:1px solid var(--line);border-radius:12px;background:var(--panel);overflow:hidden;margin:0 auto 0 0}
+.win-bar{display:flex;gap:.5rem;align-items:center;padding:.5rem .75rem;background:var(--box);border-bottom:1px solid var(--line)}
+.win-bar i{width:12px;height:12px;border-radius:50%;background:var(--line);display:block}
+.win-bar b{flex:1;text-align:center;font-weight:600;font-size:.875rem;margin-right:36px}
+.win-body{padding:1rem;min-height:var(--h,420px);display:flex;flex-direction:column;gap:.75rem}
+.win-foot{margin-top:auto;display:flex;gap:.75rem;justify-content:flex-end;flex-wrap:wrap}
+.ico{width:48px;height:48px;background:var(--box);border:1px solid var(--line);border-radius:10px;flex:none}
+.rows{list-style:none;margin:0;padding:0;border:1px solid var(--line);border-radius:6px}
+.rows li{display:flex;gap:.75rem;align-items:center;padding:.5rem .75rem;border-top:1px solid var(--line);flex-wrap:wrap}
+.rows li:first-child{border-top:0}
+.rows .grow{flex:1;min-width:10rem}
+.rows small,.muted{color:var(--muted)}
+.tag{border:1px solid var(--line);border-radius:4px;padding:0 .4rem;font-size:.8125rem;background:var(--sunk);display:inline-block}
+.bar{display:block;height:8px;background:var(--sunk);border:1px solid var(--line);border-radius:4px;overflow:hidden;margin-top:.25rem;width:100%}
+.bar span{display:block;height:100%;background:var(--line)}
+.note{border:1px solid var(--line);background:var(--warn);border-radius:6px;padding:.75rem}
+.empty{border:2px dashed var(--line);border-radius:6px;padding:2rem 1rem;text-align:center;color:var(--muted)}
+.themebtn{min-height:36px;padding:.25rem .75rem;font-size:.875rem}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
+
+.site{background:var(--panel);border:1px solid var(--line);border-radius:6px;display:flex;flex-direction:column;gap:1rem;padding:1rem;padding-bottom:6rem}
+.site-head{display:flex;align-items:center;gap:1rem;flex-wrap:wrap}
+.site-head .slot{width:160px;min-height:40px}
+.site-head p{margin:0;flex:1;min-width:16rem;max-width:65ch}
+.cat h2{font-size:1.0625rem;margin:.5rem 0}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(96px,1fr));gap:.5rem}
+.app{position:relative;display:flex;flex-direction:column;align-items:center;gap:.25rem;padding:.5rem .25rem;border:2px solid transparent;border-radius:8px;text-align:center;font-size:.875rem;line-height:1.25;cursor:pointer;min-height:44px}
+.app:hover{background:var(--sunk)}
+.app .ico{width:56px;height:56px}
+.app input{position:absolute;top:.375rem;left:.375rem;width:20px;height:20px;margin:0;accent-color:var(--text);cursor:pointer}
+.app:has(input:checked){border-color:var(--text);background:var(--sunk)}
+.app:has(input:focus-visible){outline:3px solid var(--focus);outline-offset:2px}
+.site-foot{display:flex;gap:1rem;justify-content:space-between;flex-wrap:wrap;border-top:1px solid var(--line);padding-top:.75rem}
+.site-foot .slot{min-width:200px}
+.sticky{position:fixed;left:0;right:0;bottom:0;background:var(--panel);border-top:2px solid var(--line);padding:.75rem 1rem;display:flex;gap:1rem;align-items:center;justify-content:space-between;flex-wrap:wrap;z-index:5}
+.sticky .count{font-weight:700}
+.sticky .rl{font-size:.8125rem;color:var(--muted);width:100%}
+@media (max-width:480px){.sticky button{flex:1}.wrap{padding:.5rem}}
+</style>
+</head>
+<body>
+<header class="meta">
+<div class="meta-top"><a href="index.html">All wireframes</a><button id="themebtn" class="themebtn" type="button">Theme</button></div>
+<h1><span class="sid">W3</span>After the download click</h1>
+<p>Open question, spec does not define this. The state of the page after the person clicks Download Settlein.</p>
+
+<nav class="states" aria-label="States"><strong>States</strong><a href="#f1">Download started</a><a href="#f2">Settlein already installed</a></nav>
+</header>
+<main class="wrap">
+<h2 class="frame-label" id="f1">Download started</h2><div class="site" style="padding-bottom:1rem"><div class="region site-head"><span class="rl sr">Header</span><div class="slot">Header: wordmark slot</div><p>Settlein installs the Mac apps you tick, in one go, on a new Mac. Tick apps, download Settlein, approve the list.</p></div><div class="note"><strong>Open question, spec does not define this.</strong> What the page shows after the click is for the designer to propose. The owner decides.</div><div class="region"><span class="rl">Slot: guidance to open the downloaded Settlein</span><div class="slot" style="min-height:160px">Guidance slot: "open the downloaded Settlein" (text, steps or an image, designer decides)</div></div><div class="region"><span class="rl">Slot: summary of the selection that was sent</span><div class="slot sel" style="min-height:80px">Selection summary slot (optional)</div></div><div class="region"><span class="rl">Slot: way back to the catalog</span><a href="web-02-catalog-selected.html" class="back">Back to the catalog</a></div><footer class="region site-foot"><span class="slot">Footer slot: open source link (GitHub repository, MIT)</span><span class="slot">Footer slot: other links, if any</span></footer></div>
+<h2 class="frame-label" id="f2">Settlein already installed, the app opens instead</h2><div class="site" style="padding-bottom:1rem"><div class="region site-head"><span class="rl sr">Header</span><div class="slot">Header: wordmark slot</div><p>Settlein installs the Mac apps you tick, in one go, on a new Mac. Tick apps, download Settlein, approve the list.</p></div><div class="note"><strong>Open question, spec does not define this.</strong> The page cannot know whether Settlein is installed, so this frame shows only the slot for what the person sees while the app opens. The owner decides.</div><div class="region"><span class="rl">Slot: state while Settlein opens</span><div class="slot" style="min-height:160px">Slot: what the page shows while the app opens, and what it shows if the app does not open</div></div><div class="region"><span class="rl">Slot: summary of the selection that was sent</span><div class="slot sel" style="min-height:80px">Selection summary slot (optional)</div></div><div class="region"><span class="rl">Slot: way back to the catalog</span><a href="web-02-catalog-selected.html" class="back">Back to the catalog</a></div><footer class="region site-foot"><span class="slot">Footer slot: open source link (GitHub repository, MIT)</span><span class="slot">Footer slot: other links, if any</span></footer></div>
+</main>
+<script>
+(function(){var r=document.documentElement,b=document.getElementById('themebtn');if(!b)return;
+function cur(){return r.getAttribute('data-theme')||(matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light')}
+function show(){b.textContent='Theme: '+cur()+'. Switch'}
+b.addEventListener('click',function(){r.setAttribute('data-theme',cur()==='dark'?'light':'dark');show()});show()})();
+(function(){var q=location.search;[].forEach.call(document.querySelectorAll('a.back'),function(a){a.href='web-02-catalog-selected.html'+q})})();</script>
+</body>
+</html>

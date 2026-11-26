@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="color-scheme" content="light dark">
-<title>Settlein plan v1.0</title>
+<title>Studio 201 plan v1.0</title>
 <style>
 :root{--bg:#FFFFFF;--fg:#151515;--muted:#5C5C5C;--line:#8A8A8A;--fill:#F3F3F3;--strong:#151515;--on-strong:#FFFFFF;
   --f:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;--m:ui-monospace,Menlo,Consolas,monospace}
@@ -37,7 +37,7 @@ td:first-child{font-weight:600}
 .diagram .box{fill:var(--fill);stroke:var(--line);stroke-width:1.5}
 .diagram .first .box{fill:var(--strong);stroke:var(--strong)}
 .diagram .t1{fill:var(--fg);font-size:13px;font-weight:600}
-.diagram .t2{fill:var(--muted);font-size:12px;font-family:var(--m)}
+.diagram .t2{fill:var(--muted);font-size:11px;font-family:var(--m)}
 .diagram .first .t1,.diagram .first .t2{fill:var(--on-strong)}
 .diagram .seq{stroke:var(--muted);stroke-width:1.5;fill:none}
 .diagram .dep{stroke:var(--strong);stroke-width:1.75;stroke-dasharray:5 3;fill:none}
@@ -60,9 +60,9 @@ ul.plain{margin:0;padding-left:1.2em;display:flex;flex-direction:column;gap:6px;
 <div class="wrap">
 
 <header>
-  <h1>Settlein plan, v1.0</h1>
-  <p>Settlein is a website, a native Mac app and a catalog of 44 apps. The site lets a person tick apps, and the Mac app confirms, downloads, verifies and installs them, and later removes them. No code is written in the planning session. Building starts in a later session with step 1 of the build order.</p>
-  <p class="note">Status: Approved 2026-11-24, building not started. Spec: <a href="../spec/v1.0.md">spec v1.0</a>. Grill record: <a href="../grill/2026-11-24-settlein-v0.1.md">2026-11-24-settlein-v0.1</a>.</p>
+  <h1>Studio 201 plan, v1.0</h1>
+  <p>Foundation, the test build and the catalog are done. Website logic (#6, #7, #69, #80) sits on <code>feature/website</code>. Copy and pkg installs (#9, #10, #11) sit on <code>feature/install</code>. The release script (#16) sits on <code>feature/distribution</code>. None of them has merged into <code>release/v1.0</code>. This amendment adds the final design and the decisions from the 2026-11-25 grill.</p>
+  <p class="note">Status: approved 2026-11-25, amendment 2 of the plan approved 2026-11-24. Spec: <a href="../spec/v1.0.md">v1.0</a>. Grill records: <a href="../grill/2026-11-24-settlein-v0.1.md">2026-11-24-settlein-v0.1</a> and <a href="../grill/2026-11-25-design-handoff-v2.md">2026-11-25-design-handoff-v2</a>.</p>
 </header>
 
 <section>
@@ -70,14 +70,14 @@ ul.plain{margin:0;padding-left:1.2em;display:flex;flex-direction:column;gap:6px;
   <div class="t" tabindex="0" role="region" aria-label="What it adds"><table>
     <thead><tr><th scope="col">Part</th><th scope="col">What it is</th><th scope="col">Claims</th></tr></thead>
     <tbody>
-      <tr><td>Repository</td><td>One public GitHub repo named <code>settlein.dev</code> with an MIT licence, the branch flow and the checks.</td><td>C34</td></tr>
-      <tr><td>Test build</td><td>A throwaway signed app and a test download page. It settles assumptions S1, S2 and S8 before the real features depend on them.</td><td>none</td></tr>
-      <tr><td>Catalog</td><td>A catalog file with the 44 approved apps, and a daily job that rebuilds it from Homebrew Cask data.</td><td>C1, C2, C3, C4</td></tr>
-      <tr><td>Website</td><td>One Astro page on Cloudflare Pages at settlein.dev. It shows the catalog, keeps ticked apps in the page address and starts the download.</td><td>C6 to C14</td></tr>
-      <tr><td>Mac app, install</td><td>A Swift and SwiftUI app. It shows the confirmation screen, downloads, verifies and installs copy apps, and opens pkg installers.</td><td>C5, C18 to C27</td></tr>
-      <tr><td>Handoff</td><td>The download that carries the selection, and the <code>settlein://</code> link for a Mac that already has Settlein.</td><td>C15, C16, C17</td></tr>
-      <tr><td>Mac app, uninstall</td><td>The list of apps Settlein installed and their removal with leftovers. Pkg apps ask for the admin password.</td><td>C28 to C31</td></tr>
-      <tr><td>Distribution</td><td>Developer ID signing, notarization, the release build and Sparkle updates.</td><td>C32, C33</td></tr>
+      <tr><td>Logic merge</td><td>Review the three open feature branches for logic and merge them into <code>release/v1.0</code>. QA skips UI claims that the redesign replaces.</td><td>C5, C7, C8, C11, C20 to C24</td></tr>
+      <tr><td>Design system and rename</td><td>The handoff (without screenshots) in <code>docs/design/</code>, its tokens in the website and the app, the icon, favicons, wordmark and disk image background, and the rename to SettleIn with bundle ID <code>dev.settlein.SettleIn</code>.</td><td>C57</td></tr>
+      <tr><td>Website design</td><td>The scroll-story home, the full-screen picker with category checkboxes and the floating bar, the phone view, the unknown-app notice, the no-JavaScript line, the after-download page, the footer, the footer pages and the release notes timeline. Light only.</td><td>C6, C9, C10, C12, C35 to C45</td></tr>
+      <tr><td>App design</td><td>The launch logic, Pick apps, the Installing screen with Cancel and Change selection, the Finished screen with the Installer group, the offline screen, the menu bar, centred panels and the animated icon. Light only. The confirmation screen is removed.</td><td>C16, C19, C25, C46 to C54</td></tr>
+      <tr><td>Handoff</td><td>The <code>/dl</code> disk image on Cloudflare Pages that carries the selection, and the <code>settlein://</code> link for a Mac that already has SettleIn.</td><td>C15, C17</td></tr>
+      <tr><td>Uninstall</td><td>The installed list, uninstall to the Trash, the admin prompt for pkg apps and the explanation for standard users.</td><td>C28 to C31, C56</td></tr>
+      <tr><td>Distribution</td><td>Signing, notarization, the disk image window, Sparkle, and a macOS 26 build in CI.</td><td>C26, C32, C33, C55</td></tr>
+      <tr><td>Deploy</td><td>The site on settlein.dev with cookieless analytics, after <code>release/v1.0</code> merges into main.</td><td>C13, C14</td></tr>
     </tbody>
   </table></div>
   <p class="hint">Scroll the table sideways to see every column.</p>
@@ -88,50 +88,58 @@ ul.plain{margin:0;padding-left:1.2em;display:flex;flex-direction:column;gap:6px;
   <div class="diagram">
     <svg viewBox="0 0 360 584" role="img" aria-labelledby="order-title order-desc">
       <title id="order-title">Build order</title>
-      <desc id="order-desc">Eight features from top to bottom in build order. Foundation, Test build, Catalog, Website, Install, Handoff, Uninstall, Distribution. A dashed arrow points from each feature to a feature it depends on.</desc>
+      <desc id="order-desc">Eight steps from top to bottom: 1 Logic merge, 2 Design system and rename, 3 Website design, 4 App design, 5 Handoff, 6 Uninstall, 7 Distribution, 8 Deploy. Solid arrows join each step to the next. Dashed arrows run from a step to the steps it depends on. Design system depends on Logic merge. Website design and App design depend on Design system. Handoff depends on Website design and App design. Uninstall depends on App design. Distribution depends on Design system and App design. Deploy depends on no feature step.</desc>
       <defs>
         <marker id="ah" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path class="head" d="M0 0L10 5L0 10z"/></marker>
         <marker id="ahd" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path class="head-dep" d="M0 0L10 5L0 10z"/></marker>
       </defs>
       <g class="first" transform="translate(48 8)">
         <rect class="box" width="300" height="52" rx="4"/>
-        <text class="t1" x="12" y="21">1. Foundation</text>
-        <text class="t2" x="12" y="39">feature/foundation, C34</text>
+        <text class="t1" x="12" y="19">1. Logic merge</text>
+        <text class="t2" x="12" y="33">feature/website, /install, /distribution</text>
+        <text class="t2" x="12" y="46">C5, C7, C8, C11, C20 to C24</text>
       </g>
       <g transform="translate(48 80)">
         <rect class="box" width="300" height="52" rx="4"/>
-        <text class="t1" x="12" y="21">2. Test build</text>
-        <text class="t2" x="12" y="39">feature/test-build, no claim</text>
+        <text class="t1" x="12" y="19">2. Design system and rename</text>
+        <text class="t2" x="12" y="33">feature/design-system</text>
+        <text class="t2" x="12" y="46">C57</text>
       </g>
       <g transform="translate(48 152)">
         <rect class="box" width="300" height="52" rx="4"/>
-        <text class="t1" x="12" y="21">3. Catalog</text>
-        <text class="t2" x="12" y="39">feature/catalog, C1 to C4</text>
+        <text class="t1" x="12" y="19">3. Website design</text>
+        <text class="t2" x="12" y="33">feature/website-design</text>
+        <text class="t2" x="12" y="46">C6, C9, C10, C12, C35 to C45</text>
       </g>
       <g transform="translate(48 224)">
         <rect class="box" width="300" height="52" rx="4"/>
-        <text class="t1" x="12" y="21">4. Website</text>
-        <text class="t2" x="12" y="39">feature/website, C6 to C14</text>
+        <text class="t1" x="12" y="19">4. App design</text>
+        <text class="t2" x="12" y="33">feature/app-design</text>
+        <text class="t2" x="12" y="46">C16, C19, C25, C46 to C54</text>
       </g>
       <g transform="translate(48 296)">
         <rect class="box" width="300" height="52" rx="4"/>
-        <text class="t1" x="12" y="21">5. Install</text>
-        <text class="t2" x="12" y="39">feature/install, C5, C18 to C27</text>
+        <text class="t1" x="12" y="19">5. Handoff</text>
+        <text class="t2" x="12" y="33">feature/handoff</text>
+        <text class="t2" x="12" y="46">C15, C17</text>
       </g>
       <g transform="translate(48 368)">
         <rect class="box" width="300" height="52" rx="4"/>
-        <text class="t1" x="12" y="21">6. Handoff</text>
-        <text class="t2" x="12" y="39">feature/handoff, C15 to C17</text>
+        <text class="t1" x="12" y="19">6. Uninstall</text>
+        <text class="t2" x="12" y="33">feature/uninstall</text>
+        <text class="t2" x="12" y="46">C28 to C31, C56</text>
       </g>
       <g transform="translate(48 440)">
         <rect class="box" width="300" height="52" rx="4"/>
-        <text class="t1" x="12" y="21">7. Uninstall</text>
-        <text class="t2" x="12" y="39">feature/uninstall, C28 to C31</text>
+        <text class="t1" x="12" y="19">7. Distribution</text>
+        <text class="t2" x="12" y="33">feature/distribution-2</text>
+        <text class="t2" x="12" y="46">C26, C32, C33, C55</text>
       </g>
       <g transform="translate(48 512)">
         <rect class="box" width="300" height="52" rx="4"/>
-        <text class="t1" x="12" y="21">8. Distribution</text>
-        <text class="t2" x="12" y="39">feature/distribution, C32, C33</text>
+        <text class="t1" x="12" y="19">8. Deploy</text>
+        <text class="t2" x="12" y="33">Issue #8</text>
+        <text class="t2" x="12" y="46">C13, C14</text>
       </g>
       <path class="seq" d="M198 60V80" marker-end="url(#ah)"/>
       <path class="seq" d="M198 132V152" marker-end="url(#ah)"/>
@@ -140,20 +148,18 @@ ul.plain{margin:0;padding-left:1.2em;display:flex;flex-direction:column;gap:6px;
       <path class="seq" d="M198 348V368" marker-end="url(#ah)"/>
       <path class="seq" d="M198 420V440" marker-end="url(#ah)"/>
       <path class="seq" d="M198 492V512" marker-end="url(#ah)"/>
-      <path class="dep" d="M48 106H38V22H46" marker-end="url(#ahd)"/>
-      <path class="dep" d="M48 178H32V34H46" marker-end="url(#ahd)"/>
-      <path class="dep" d="M48 250H38V166H46" marker-end="url(#ahd)"/>
-      <path class="dep" d="M48 322H26V178H46" marker-end="url(#ahd)"/>
-      <path class="dep" d="M48 386H8V94H46" marker-end="url(#ahd)"/>
-      <path class="dep" d="M48 400H32V250H46" marker-end="url(#ahd)"/>
-      <path class="dep" d="M48 414H38V310H46" marker-end="url(#ahd)"/>
-      <path class="dep" d="M48 458H20V322H46" marker-end="url(#ahd)"/>
-      <path class="dep" d="M48 472H2V106H46" marker-end="url(#ahd)"/>
-      <path class="dep" d="M48 538H14V334H46" marker-end="url(#ahd)"/>
+      <path class="dep" d="M48 106C30 106 30 34 46 34" marker-end="url(#ahd)"/>
+      <path class="dep" d="M48 178C30 178 30 106 46 106" marker-end="url(#ahd)"/>
+      <path class="dep" d="M48 250C16 250 16 106 46 106" marker-end="url(#ahd)"/>
+      <path class="dep" d="M48 322C16 322 16 178 46 178" marker-end="url(#ahd)"/>
+      <path class="dep" d="M48 322C30 322 30 250 46 250" marker-end="url(#ahd)"/>
+      <path class="dep" d="M48 394C16 394 16 250 46 250" marker-end="url(#ahd)"/>
+      <path class="dep" d="M48 466C3 466 3 106 46 106" marker-end="url(#ahd)"/>
+      <path class="dep" d="M48 466C3 466 3 250 46 250" marker-end="url(#ahd)"/>
     </svg>
   </div>
   <div class="legend"><span>Solid arrow: next in order.</span><span>Dashed arrow: depends on.</span><span>Filled box: first.</span></div>
-  <p>Handoff depends on Test build, Website and Install. Uninstall depends on Install and Test build. Distribution depends on Install. The owner reads the Test build result before step 5 starts. Each feature branch comes from <code>release/v1.0</code>. Each issue branch comes from its feature branch. Only <code>release/v1.0</code> merges into main, after the owner approves the review package.</p>
+  <p>Steps 3, 4 and 6 can run side by side once step 2 merges. Each feature branch comes from <code>release/v1.0</code>. Each issue branch comes from its feature branch. Only <code>release/v1.0</code> merges into main, after the owner approves the review package.</p>
 </section>
 
 <section>
@@ -161,28 +167,27 @@ ul.plain{margin:0;padding-left:1.2em;display:flex;flex-direction:column;gap:6px;
   <div class="t" tabindex="0" role="region" aria-label="Who builds what"><table>
     <thead><tr><th scope="col">Feature</th><th scope="col">Claims</th><th scope="col">Builds it</th><th scope="col">Checks it</th></tr></thead>
     <tbody>
-      <tr><td>Foundation</td><td>C34</td><td>coder</td><td>reviewer, then qa-runner</td></tr>
-      <tr><td>Test build</td><td>none (S1, S2, S8)</td><td>coder</td><td>qa-runner reports the result to the owner</td></tr>
-      <tr><td>Catalog</td><td>C1, C2, C3, C4</td><td>coder</td><td>reviewer, then qa-runner</td></tr>
-      <tr><td>Website</td><td>C6 to C14</td><td>ui-builder</td><td>design-critic, reviewer, then qa-runner</td></tr>
-      <tr><td>Install</td><td>C5, C18 to C27</td><td>coder</td><td>reviewer, then qa-runner</td></tr>
-      <tr><td>Handoff</td><td>C15, C16, C17</td><td>coder for the app, ui-builder for the site's button</td><td>reviewer, then qa-runner</td></tr>
-      <tr><td>Uninstall</td><td>C28 to C31</td><td>coder</td><td>reviewer, then qa-runner</td></tr>
-      <tr><td>Distribution</td><td>C32, C33</td><td>coder</td><td>reviewer, then qa-runner</td></tr>
+      <tr><td>Logic merge</td><td>C5, C7, C8, C11, C20 to C24</td><td>coder for review fixes</td><td>reviewer, then qa-runner</td></tr>
+      <tr><td>Design system and rename</td><td>C57</td><td>mechanic for the copy, coder for tokens and rename</td><td>reviewer, then qa-runner</td></tr>
+      <tr><td>Website design</td><td>C6, C9, C10, C12, C35 to C45</td><td>ui-builder</td><td>design-critic, reviewer, then qa-runner</td></tr>
+      <tr><td>App design</td><td>C16, C19, C25, C46 to C54</td><td>coder</td><td>design-critic on screenshots, reviewer, then qa-runner</td></tr>
+      <tr><td>Handoff</td><td>C15, C17</td><td>coder for the app, ui-builder for <code>/dl</code> and the site's button</td><td>reviewer, then qa-runner</td></tr>
+      <tr><td>Uninstall</td><td>C28 to C31, C56</td><td>coder</td><td>reviewer, then qa-runner</td></tr>
+      <tr><td>Distribution</td><td>C26, C32, C33, C55</td><td>coder</td><td>reviewer, then qa-runner</td></tr>
+      <tr><td>Deploy</td><td>C13, C14</td><td>owner merges, qa-runner proves</td><td>qa-runner</td></tr>
     </tbody>
   </table></div>
   <p class="hint">Scroll the table sideways to see every column.</p>
-  <p>The owner does four things that no agent can do.</p>
+  <p>The owner still does these things that no agent can do.</p>
   <div class="t" tabindex="0" role="region" aria-label="Owner tasks"><table>
     <thead><tr><th scope="col">Task</th><th scope="col">Needed before</th></tr></thead>
     <tbody>
-      <tr><td>Enrol in the Apple Developer Program and create a Developer ID certificate.</td><td>Test build</td></tr>
-      <tr><td>Create a Cloudflare account and point settlein.dev at it.</td><td>Website</td></tr>
-      <tr><td>Say which Mac or virtual machine runs macOS 26, and allow a standard user account for QA.</td><td>Install</td></tr>
-      <tr><td>Generate the Sparkle signing key and store it somewhere safe.</td><td>Distribution</td></tr>
+      <tr><td>Send the Google Form address for Suggest an app.</td><td>Website design merges</td></tr>
+      <tr><td>Generate the Sparkle signing key.</td><td>Distribution</td></tr>
+      <tr><td>Fill [VERSION] and [RELEASE DATE] in the release notes.</td><td>Release</td></tr>
+      <tr><td>Approve the review package and merge <code>release/v1.0</code> into main.</td><td>Deploy</td></tr>
     </tbody>
   </table></div>
-  <p class="hint">Scroll the table sideways to see every column.</p>
 </section>
 
 <section>
@@ -190,165 +195,69 @@ ul.plain{margin:0;padding-left:1.2em;display:flex;flex-direction:column;gap:6px;
   <p>Each card is a decision with real options. The chosen option is marked and has a heavy border. Cards run in number order.</p>
   <div class="cards">
     <article class="card">
-      <h3>0001. Public product built for the owner first</h3>
+      <h3>ADR-0033. Final design handoff replaces the Figma plan</h3>
       <ul class="opts">
-        <li class="chosen"><span class="tag">Chosen</span>Public, built for the owner first</li>
-        <li><span class="tag">Considered</span>Only the owner</li>
-        <li><span class="tag">Considered</span>Public, broad from day one</li>
+        <li class="chosen"><span class="tag">Chosen</span>Commit the handoff without the screenshots to <code>docs/design/</code> and leave the screenshots in the owner's Downloads</li>
+        <li><span class="tag">Considered</span>Commit the whole handoff, screenshots included</li>
+        <li><span class="tag">Considered</span>Ask the designer to redo the handoff in Figma</li>
       </ul>
-      <p><span class="lbl">Why</span>The owner wants a better service than macapps.link, and the owner's own new-Mac setup gives the first catalog a concrete test.</p>
-      <p class="note"><a href="../adr/0001-public-product-built-for-the-owner-first.md">ADR-0001</a></p>
+      <p><span class="lbl">Why</span>The owner said everything except screenshots, so clones stay small and the text, tokens and assets live next to the code.</p>
+      <p class="note"><a href="../adr/0033-final-design-handoff-replaces-the-figma-plan.md">ADR-0033</a></p>
     </article>
     <article class="card">
-      <h3>0002. The download carries the selection</h3>
+      <h3>ADR-0034. Install starts without a confirmation screen</h3>
       <ul class="opts">
-        <li class="chosen"><span class="tag">Chosen</span>The download carries the selection, as Ninite does on Windows</li>
-        <li><span class="tag">Considered</span>A settlein:// link that opens the app after a separate install</li>
-        <li><span class="tag">Considered</span>A short code the person types into the app</li>
-        <li><span class="tag">Considered</span>A checklist inside the app, with the website optional</li>
+        <li class="chosen"><span class="tag">Chosen</span>Start installing as soon as SettleIn opens with a selection, with Cancel and Change selection always on the Installing screen</li>
+        <li><span class="tag">Considered</span>Keep the confirmation screen from C18</li>
+        <li><span class="tag">Considered</span>Show the selection for a few seconds with a countdown, then start</li>
       </ul>
-      <p><span class="lbl">Why</span>It takes one click and no typing on a Mac that has nothing installed.</p>
-      <p class="note"><a href="../adr/0002-download-carries-the-selection.md">ADR-0002</a></p>
+      <p><span class="lbl">Why</span>The owner decided it in the handoff, and the signature, notarization and checksum checks still refuse bad downloads.</p>
+      <p class="note"><a href="../adr/0034-install-starts-without-a-confirmation-screen.md">ADR-0034</a></p>
     </article>
     <article class="card">
-      <h3>0003. Curated catalog on Homebrew Cask data</h3>
+      <h3>ADR-0035. Pick apps inside the app</h3>
       <ul class="opts">
-        <li class="chosen"><span class="tag">Chosen</span>A curated list whose download data comes from Homebrew Cask</li>
-        <li><span class="tag">Considered</span>All of Homebrew Cask with search</li>
-        <li><span class="tag">Considered</span>A catalog maintained fully by hand</li>
+        <li class="chosen"><span class="tag">Chosen</span>An in-app picker, with launch logic: a selection goes to Installing, no selection and nothing installed goes to Pick apps, anything else goes to the installed list</li>
+        <li><span class="tag">Considered</span>Keep the browser hand-off from C16 and ADR-0027</li>
       </ul>
-      <p><span class="lbl">Why</span>The owner chooses which apps appear while Homebrew's contributors keep links, versions and checksums current.</p>
-      <p class="note"><a href="../adr/0003-curated-catalog-on-homebrew-cask-data.md">ADR-0003</a></p>
+      <p><span class="lbl">Why</span>The owner decided it in the handoff, so a person can add apps later without the website.</p>
+      <p class="note"><a href="../adr/0035-pick-apps-inside-the-app.md">ADR-0035</a></p>
     </article>
     <article class="card">
-      <h3>0004. Uninstall only what Settlein installed</h3>
+      <h3>ADR-0036. Uninstall moves files to the Trash</h3>
       <ul class="opts">
-        <li class="chosen"><span class="tag">Chosen</span>Remove apps Settlein installed, with their support files</li>
-        <li><span class="tag">Considered</span>Remove any app on the Mac, with its support files</li>
-        <li><span class="tag">Considered</span>Move the app bundle to the Trash and leave support files</li>
+        <li class="chosen"><span class="tag">Chosen</span>Move the bundle and leftovers to the person's Trash</li>
+        <li><span class="tag">Considered</span>Delete them permanently</li>
       </ul>
-      <p><span class="lbl">Why</span>Settlein then deletes only paths the catalog names for an app it put on the Mac.</p>
-      <p class="note"><a href="../adr/0004-uninstall-only-what-settlein-installed.md">ADR-0004</a></p>
+      <p><span class="lbl">Why</span>The owner chose it, so a person who removed the wrong app can put it back from the Trash.</p>
+      <p class="note"><a href="../adr/0036-uninstall-moves-files-to-the-trash.md">ADR-0036</a></p>
     </article>
     <article class="card">
-      <h3>0005. Copy apps and open pkg installers</h3>
+      <h3>ADR-0037. Standard users cannot remove pkg apps</h3>
       <ul class="opts">
-        <li class="chosen"><span class="tag">Chosen</span>Copy .app bundles, and open each .pkg in Apple's Installer for the person</li>
-        <li><span class="tag">Considered</span>Install only copy-to-Applications apps</li>
-        <li><span class="tag">Considered</span>Install both unattended through a privileged helper</li>
+        <li class="chosen"><span class="tag">Chosen</span>Show a panel saying an administrator must remove the app, with no password prompt</li>
+        <li><span class="tag">Considered</span>Show the macOS prompt anyway, so an administrator can type their name and password</li>
       </ul>
-      <p><span class="lbl">Why</span>The catalog can hold apps such as Zoom without Settlein running any code as root during an install.</p>
-      <p class="note"><a href="../adr/0005-copy-apps-and-open-pkg-installers.md">ADR-0005</a></p>
+      <p><span class="lbl">Why</span>The owner chose it, so a standard user never sees a prompt they cannot complete.</p>
+      <p class="note"><a href="../adr/0037-standard-users-cannot-remove-pkg-apps.md">ADR-0037</a></p>
     </article>
     <article class="card">
-      <h3>0006. The website is the only catalog interface</h3>
+      <h3>ADR-0038. Rename the app to SettleIn with a capital I</h3>
       <ul class="opts">
-        <li class="chosen"><span class="tag">Chosen</span>The app opens the website, and the site hands the selection back through a settlein:// link</li>
-        <li><span class="tag">Considered</span>A full checklist inside the app</li>
-        <li><span class="tag">Considered</span>A short code typed into the app</li>
+        <li class="chosen"><span class="tag">Chosen</span>Rename the display name, product name, disk image and bundle ID, with bundle ID <code>dev.settlein.SettleIn</code></li>
+        <li><span class="tag">Considered</span>Rename only the display name and keep <code>dev.settlein.Settlein</code></li>
       </ul>
-      <p><span class="lbl">Why</span>The app is installed by then, so the link works, and only one catalog interface exists.</p>
-      <p class="note"><a href="../adr/0006-website-is-the-only-catalog-interface.md">ADR-0006</a></p>
+      <p><span class="lbl">Why</span>The owner chose it, and nothing has shipped yet, so the name, file names and identifier can match before a bundle ID change would break updates.</p>
+      <p class="note"><a href="../adr/0038-rename-the-app-to-settlein-with-a-capital-i.md">ADR-0038</a></p>
     </article>
     <article class="card">
-      <h3>0007. Free and open source</h3>
+      <h3>ADR-0039. Website and app are light only</h3>
       <ul class="opts">
-        <li class="chosen"><span class="tag">Chosen</span>Free and open source</li>
-        <li><span class="tag">Considered</span>Free, closed source</li>
-        <li><span class="tag">Considered</span>Paid</li>
+        <li class="chosen"><span class="tag">Chosen</span>Light only, with the Mac app forced to light through <code>.preferredColorScheme(.light)</code> on the root view</li>
+        <li><span class="tag">Considered</span>Follow the system appearance with the reserved dark values</li>
       </ul>
-      <p><span class="lbl">Why</span>Anyone can read what the installer does, and a free product avoids the open question about commercial use of Homebrew's data.</p>
-      <p class="note"><a href="../adr/0007-free-and-open-source.md">ADR-0007</a></p>
-    </article>
-    <article class="card">
-      <h3>0008. Swift and SwiftUI for the Mac app</h3>
-      <ul class="opts">
-        <li class="chosen"><span class="tag">Chosen</span>Swift and SwiftUI</li>
-        <li><span class="tag">Considered</span>Tauri</li>
-        <li><span class="tag">Considered</span>Electron</li>
-      </ul>
-      <p><span class="lbl">Why</span>The security and file APIs the app needs are native Swift calls, and the download stays at a few megabytes.</p>
-      <p class="note"><a href="../adr/0008-swift-and-swiftui-for-the-mac-app.md">ADR-0008</a></p>
-    </article>
-    <article class="card">
-      <h3>0009. The selection lives in the URL</h3>
-      <ul class="opts">
-        <li class="chosen"><span class="tag">Chosen</span>The page address holds the selection, for example ?apps=firefox,raycast</li>
-        <li><span class="tag">Considered</span>Accounts with saved lists</li>
-        <li><span class="tag">Considered</span>No saved selection</li>
-      </ul>
-      <p><span class="lbl">Why</span>A bookmark or a pasted link restores the selection with no account and no stored data.</p>
-      <p class="note"><a href="../adr/0009-selection-lives-in-the-url.md">ADR-0009</a></p>
-    </article>
-    <article class="card">
-      <h3>0010. Admin password to remove pkg apps</h3>
-      <ul class="opts">
-        <li class="chosen"><span class="tag">Chosen</span>Run the removal as root after one macOS admin password prompt</li>
-        <li><span class="tag">Considered</span>Remove what Settlein can reach and list the rest for the person</li>
-        <li><span class="tag">Considered</span>Offer no uninstall for .pkg apps</li>
-      </ul>
-      <p><span class="lbl">Why</span>The owner wants uninstall to leave nothing behind.</p>
-      <p class="note"><a href="../adr/0010-admin-password-to-remove-pkg-apps.md">ADR-0010</a></p>
-    </article>
-    <article class="card">
-      <h3>0011. Signature always, checksum when present</h3>
-      <ul class="opts">
-        <li class="chosen"><span class="tag">Chosen</span>Require a valid Developer ID signature and notarization for every app, and a matching checksum when Homebrew gives one</li>
-        <li><span class="tag">Considered</span>Require both for every app</li>
-        <li><span class="tag">Considered</span>Trust the checksum alone</li>
-      </ul>
-      <p><span class="lbl">Why</span>The signature check covers every app, including the ones with a fixed download link.</p>
-      <p class="note"><a href="../adr/0011-signature-always-checksum-when-present.md">ADR-0011</a></p>
-    </article>
-    <article class="card">
-      <h3>0012. Cloudflare Pages hosting</h3>
-      <ul class="opts">
-        <li class="chosen"><span class="tag">Chosen</span>Cloudflare Pages</li>
-        <li><span class="tag">Considered</span>GitHub Pages</li>
-        <li><span class="tag">Considered</span>Vercel</li>
-      </ul>
-      <p><span class="lbl">Why</span>It serves static files and edge functions for free with no bandwidth charge, and its cookieless Web Analytics meets the analytics answer.</p>
-      <p class="note"><a href="../adr/0012-cloudflare-pages-hosting.md">ADR-0012</a></p>
-    </article>
-    <article class="card">
-      <h3>0013. One public repository</h3>
-      <ul class="opts">
-        <li class="chosen"><span class="tag">Chosen</span>One public repository named settlein.dev under the owner's GitHub account, with an MIT licence</li>
-        <li><span class="tag">Considered</span>One private repository made public at release</li>
-        <li><span class="tag">Considered</span>Separate repositories for the site, the app and the catalog</li>
-      </ul>
-      <p><span class="lbl">Why</span>A change to the catalog format reaches the site and the app in one pull request.</p>
-      <p class="note"><a href="../adr/0013-one-public-repository.md">ADR-0013</a></p>
-    </article>
-    <article class="card">
-      <h3>0014. Sparkle updates for the Settlein app</h3>
-      <ul class="opts">
-        <li class="chosen"><span class="tag">Chosen</span>Automatic updates with Sparkle</li>
-        <li><span class="tag">Considered</span>A notice on launch that links to the download</li>
-        <li><span class="tag">Considered</span>No update mechanism in the first version</li>
-      </ul>
-      <p><span class="lbl">Why</span>A fix to the installer reaches every Mac without the person downloading Settlein again.</p>
-      <p class="note"><a href="../adr/0014-sparkle-updates-for-the-settlein-app.md">ADR-0014</a></p>
-    </article>
-    <article class="card">
-      <h3>0015. Settlein publishes its own catalog file</h3>
-      <ul class="opts">
-        <li class="chosen"><span class="tag">Chosen</span>A scheduled job builds a small Settlein catalog file from Homebrew once a day, and the site and the app read only that file</li>
-        <li><span class="tag">Considered</span>The app and the site call Homebrew's API directly</li>
-        <li><span class="tag">Considered</span>A catalog file written by hand into each release</li>
-      </ul>
-      <p><span class="lbl">Why</span>A change or outage at Homebrew then breaks one job instead of every installed app.</p>
-      <p class="note"><a href="../adr/0015-settlein-publishes-its-own-catalog-file.md">ADR-0015</a></p>
-    </article>
-    <article class="card">
-      <h3>0016. Astro for the website</h3>
-      <ul class="opts">
-        <li class="chosen"><span class="tag">Chosen</span>Astro</li>
-        <li><span class="tag">Considered</span>Hand-written HTML, CSS and JavaScript with no build step</li>
-        <li><span class="tag">Considered</span>Next.js</li>
-      </ul>
-      <p><span class="lbl">Why</span>It renders the catalog to static HTML at build time and ships only the small script the checklist needs.</p>
-      <p class="note"><a href="../adr/0016-astro-for-the-website.md">ADR-0016</a></p>
+      <p><span class="lbl">Why</span>The owner decided it in the handoff, so each screen is built and checked once.</p>
+      <p class="note"><a href="../adr/0039-website-and-app-are-light-only.md">ADR-0039</a></p>
     </article>
   </div>
 </section>
@@ -358,67 +267,103 @@ ul.plain{margin:0;padding-left:1.2em;display:flex;flex-direction:column;gap:6px;
   <p>A Q is a question from the grill record. Each card is an answer that chose between real options.</p>
   <div class="cards">
     <article class="card">
-      <h3>Q7. Mac App Store apps left out</h3>
+      <h3>Q1. Link names an app the catalog lacks</h3>
       <ul class="opts">
-        <li class="chosen"><span class="tag">Chosen</span>Leave them out of the first version.</li>
-        <li><span class="tag">Considered</span>Open the App Store page for the person</li>
+        <li class="chosen"><span class="tag">Chosen</span>Tick the known apps and show a dismissible notice with the count left out.</li>
+        <li><span class="tag">Considered</span>Tick the known apps silently.</li>
       </ul>
-      <p><span class="lbl">Why</span>A third-party app can open an App Store page but cannot start the install without private or root mechanisms.</p>
-      <p class="note"><a href="../grill/2026-11-24-settlein-v0.1.md">Grill record, Q7</a></p>
+      <p><span class="lbl">Why</span>The owner picked the notice, so the website tells the person that part of the link was skipped.</p>
+      <p class="note"><a href="../grill/2026-11-25-design-handoff-v2.md">Grill record, Q1</a></p>
     </article>
     <article class="card">
-      <h3>Q11. No updating of installed apps</h3>
+      <h3>Q2. How the Finished screen shows pkg apps</h3>
       <ul class="opts">
-        <li class="chosen"><span class="tag">Chosen</span>No, install and uninstall only.</li>
-        <li><span class="tag">Considered</span>Update installed apps</li>
+        <li class="chosen"><span class="tag">Chosen</span>Their own "Check in Apple's Installer" group.</li>
+        <li><span class="tag">Considered</span>Mark pkg apps as installed.</li>
       </ul>
-      <p><span class="lbl">Why</span>The first version stays at install and uninstall.</p>
-      <p class="note"><a href="../grill/2026-11-24-settlein-v0.1.md">Grill record, Q11</a></p>
+      <p><span class="lbl">Why</span>The owner chose the separate group, so a pkg app is not reported as installed before the person has checked Apple's Installer.</p>
+      <p class="note"><a href="../grill/2026-11-25-design-handoff-v2.md">Grill record, Q2</a></p>
     </article>
     <article class="card">
-      <h3>Q15. Apple silicon, macOS 27 and 26</h3>
+      <h3>Q3. A standard user removes a pkg app</h3>
       <ul class="opts">
-        <li class="chosen"><span class="tag">Chosen</span>Apple silicon, current macOS and one before. The owner's Mac runs macOS 27.2.1, so that means macOS 27 and macOS 26.</li>
-        <li><span class="tag">Considered</span>Intel Macs</li>
+        <li class="chosen"><span class="tag">Chosen</span>SettleIn explains that an administrator must remove it and shows no password prompt.</li>
+        <li><span class="tag">Considered</span>Show the macOS prompt anyway.</li>
       </ul>
-      <p><span class="lbl">Why</span>The owner chose current macOS and one before on Apple silicon, and Intel Macs are out of v1.0.</p>
-      <p class="note"><a href="../grill/2026-11-24-settlein-v0.1.md">Grill record, Q15</a></p>
+      <p><span class="lbl">Why</span>The owner chose the explanation, as recorded in ADR-0037.</p>
+      <p class="note"><a href="../grill/2026-11-25-design-handoff-v2.md">Grill record, Q3</a></p>
     </article>
     <article class="card">
-      <h3>Q18. Cookieless analytics on the website only</h3>
+      <h3>Q4. Where uninstalled files go</h3>
       <ul class="opts">
-        <li class="chosen"><span class="tag">Chosen</span>Web analytics, privacy first, on the website only.</li>
-        <li><span class="tag">Considered</span>Analytics in the Mac app</li>
+        <li class="chosen"><span class="tag">Chosen</span>To the Trash.</li>
+        <li><span class="tag">Considered</span>Delete permanently.</li>
       </ul>
-      <p><span class="lbl">Why</span>The owner wants privacy-first analytics on the website only, and the app sends nothing.</p>
-      <p class="note"><a href="../grill/2026-11-24-settlein-v0.1.md">Grill record, Q18</a></p>
+      <p><span class="lbl">Why</span>The owner chose the Trash, as recorded in ADR-0036.</p>
+      <p class="note"><a href="../grill/2026-11-25-design-handoff-v2.md">Grill record, Q4</a></p>
     </article>
     <article class="card">
-      <h3>Q19. Skip apps already installed</h3>
+      <h3>Q6. Checkbox border colour</h3>
       <ul class="opts">
-        <li class="chosen"><span class="tag">Chosen</span>Skip it and say so.</li>
-        <li><span class="tag">Considered</span>Install it again</li>
+        <li class="chosen"><span class="tag">Chosen</span>#7E869E, which passes the 3:1 control contrast rule.</li>
+        <li><span class="tag">Considered</span>Keep #A9B0C6 as drawn.</li>
       </ul>
-      <p><span class="lbl">Why</span>A ticked app that is already on the Mac is skipped and the app says so.</p>
-      <p class="note"><a href="../grill/2026-11-24-settlein-v0.1.md">Grill record, Q19</a></p>
+      <p><span class="lbl">Why</span>The owner chose the colour that passes the 3:1 control contrast rule.</p>
+      <p class="note"><a href="../grill/2026-11-25-design-handoff-v2.md">Grill record, Q6</a></p>
     </article>
     <article class="card">
-      <h3>Q25. Quiet, Mac-native site</h3>
+      <h3>Q7. Apps with no published SHA-256</h3>
       <ul class="opts">
-        <li class="chosen"><span class="tag">Chosen</span>Quiet and Mac-native. One page, a grid of app icons grouped by category, a sticky bar with the count of ticked apps and the download button, light and dark themes that follow the system.</li>
+        <li class="chosen"><span class="tag">Chosen</span>Keep signature-only checks, so C23 stays as written.</li>
+        <li><span class="tag">Considered</span>The catalog computes its own hash.</li>
       </ul>
-      <p><span class="lbl">Why</span>The owner described the site as quiet and Mac-native.</p>
-      <p class="note"><a href="../grill/2026-11-24-settlein-v0.1.md">Grill record, Q25</a></p>
+      <p><span class="lbl">Why</span>The owner answered yes to keeping C23 as written for the 4 apps with no published SHA-256.</p>
+      <p class="note"><a href="../grill/2026-11-25-design-handoff-v2.md">Grill record, Q7</a></p>
     </article>
     <article class="card">
-      <h3>Q27. Install location by user type</h3>
+      <h3>Q8. What goes into docs/design</h3>
       <ul class="opts">
-        <li class="chosen"><span class="tag">Chosen</span>Admin users install to /Applications. Standard users install to ~/Applications.</li>
-        <li><span class="tag">Considered</span>Always /Applications</li>
-        <li><span class="tag">Considered</span>Always ~/Applications</li>
+        <li class="chosen"><span class="tag">Chosen</span>Everything except screenshots, which stay where they are.</li>
+        <li><span class="tag">Considered</span>Commit everything, including screenshots.</li>
       </ul>
-      <p><span class="lbl">Why</span>A standard user can write only to ~/Applications, while an admin user can write to /Applications.</p>
-      <p class="note"><a href="../grill/2026-11-24-settlein-v0.1.md">Grill record, Q27</a></p>
+      <p><span class="lbl">Why</span>The owner asked to leave the screenshots out of the repo, as recorded in ADR-0033.</p>
+      <p class="note"><a href="../grill/2026-11-25-design-handoff-v2.md">Grill record, Q8</a></p>
+    </article>
+    <article class="card">
+      <h3>Q9. What happens to feature/website and feature/install</h3>
+      <ul class="opts">
+        <li class="chosen"><span class="tag">Chosen</span>Review their logic and merge them into release/v1.0, skipping QA on UI claims the redesign replaces, then build the redesign on new feature branches from release.</li>
+        <li><span class="tag">Considered</span>Redesign on the same branches.</li>
+      </ul>
+      <p><span class="lbl">Why</span>The owner chose to merge the finished logic first, so the redesign starts from a release branch that holds it.</p>
+      <p class="note"><a href="../grill/2026-11-25-design-handoff-v2.md">Grill record, Q9</a></p>
+    </article>
+    <article class="card">
+      <h3>Q10. Bundle ID after the rename</h3>
+      <ul class="opts">
+        <li class="chosen"><span class="tag">Chosen</span><code>dev.settlein.SettleIn</code>.</li>
+        <li><span class="tag">Considered</span>Keep <code>dev.settlein.Settlein</code>.</li>
+      </ul>
+      <p><span class="lbl">Why</span>The owner chose the full rename, as recorded in ADR-0038.</p>
+      <p class="note"><a href="../grill/2026-11-25-design-handoff-v2.md">Grill record, Q10</a></p>
+    </article>
+    <article class="card">
+      <h3>Q12. Error copy for the after-download page</h3>
+      <ul class="opts">
+        <li class="chosen"><span class="tag">Chosen</span>Name settlein.dev and offer Try again only. The "Get it from GitHub" button is dropped.</li>
+        <li><span class="tag">Considered</span>Name settlein.dev and keep a GitHub fallback button.</li>
+      </ul>
+      <p><span class="lbl">Why</span>The owner dropped the button because the disk image comes from settlein.dev/dl, not from GitHub.</p>
+      <p class="note"><a href="../grill/2026-11-25-design-handoff-v2.md">Grill record, Q12</a></p>
+    </article>
+    <article class="card">
+      <h3>Q13. The RSS feed on the release notes page</h3>
+      <ul class="opts">
+        <li class="chosen"><span class="tag">Chosen</span>Drop RSS for v1.0 and remove the "Follow changes with RSS" line.</li>
+        <li><span class="tag">Considered</span>Build the RSS feed.</li>
+      </ul>
+      <p><span class="lbl">Why</span>The owner dropped RSS for v1.0, so the page no longer promises a feed.</p>
+      <p class="note"><a href="../grill/2026-11-25-design-handoff-v2.md">Grill record, Q13</a></p>
     </article>
   </div>
 </section>
@@ -426,16 +371,16 @@ ul.plain{margin:0;padding-left:1.2em;display:flex;flex-direction:column;gap:6px;
 <section>
   <h2>Risks</h2>
   <ul class="plain">
-    <li><strong>The download cannot carry the selection (S1, S2).</strong> C15 fails as written. The owner then picks a fallback in a new ADR that supersedes ADR-0002. The likely fallback is a plain download followed by the <code>settlein://</code> link, which costs one extra click.</li>
-    <li><strong>macOS requires the App Management permission to remove an app (S8).</strong> C29 needs a new claim for a one-time step in System Settings, and the uninstall screen must guide the person through it.</li>
-    <li><strong>Apple enrolment takes days.</strong> The test build and every signed build wait for it. Catalog and Website can proceed meanwhile.</li>
-    <li><strong>Homebrew changes its JSON format or states terms that forbid reuse.</strong> The daily job fails or the catalog needs a new source. The site and the app keep working from the last good catalog file.</li>
-    <li><strong>A catalog fact is wrong.</strong> The researcher read each cask through a summarising tool. The catalog job reads the raw JSON and must refuse an entry that breaks the rules, and QA installs every one of the 44 apps.</li>
-    <li><strong>A vendor releases a new version before the daily job runs.</strong> The checksum fails and that app does not install until the next run. The app must name the reason so the person can retry later.</li>
-    <li><strong>Leftover data misses paths or names a wrong one.</strong> A miss leaves files behind. A wrong path under the root step could delete system files. C31 limits deletion to listed paths, and each pkg entry's paths get a review before release.</li>
-    <li><strong>A pkg install is cancelled in Apple's Installer.</strong> Settlein cannot see the outcome directly and must check for the app afterwards.</li>
+    <li><strong>The download cannot carry the selection (S1, S2).</strong> C15 fails as written. The owner picks a fallback in a new ADR that supersedes ADR-0018. The likely fallback is a plain download followed by the <code>settlein://</code> link, which costs one extra click.</li>
+    <li><strong>macOS requires the App Management permission to move an app to the Trash (S8, S16).</strong> C29 needs a new claim for a one-time step in System Settings.</li>
+    <li><strong>The scroll-story zoom stutters on slow Macs or phones.</strong> C35 fails on those devices. The ui-builder uses transforms only and honours Reduce Motion, and QA records it at 1440 and 375 px.</li>
+    <li><strong>The picker exists twice, in Astro and SwiftUI.</strong> The two drift apart. Both read the same catalog file and the same tokens from <code>docs/design/tokens/</code>.</li>
+    <li><strong>The rename misses a path.</strong> A script or Info.plist still says Settlein, and C57 fails. The reviewer greps for <code>Settlein</code> outside <code>settlein.dev</code>.</li>
+    <li><strong>Pixel matching takes many rounds (C45, C53).</strong> Review loops run long. The design-critic compares against the screenshots once per screen, and live content differences are allowed.</li>
+    <li><strong>A link someone else sent starts installing at once (ADR-0034).</strong> The person sees the installs begin and can Cancel. Every app is still a catalog app that passes the checks.</li>
+    <li><strong>The handoff screenshots live only in the owner's Downloads.</strong> Agents cannot check a screen if the zip moves. Agents read it from <code>~/Downloads/SettleIn-handoff.zip</code> and the owner keeps it there until release.</li>
+    <li><strong>No macOS 26 machine exists.</strong> C26 is proved in CI on <code>macos-26</code> with no clicked-through install, unless the owner sets up a VM.</li>
     <li><strong>The Sparkle key is lost.</strong> Existing installs can never update again. The owner keeps a backup.</li>
-    <li><strong>No macOS 26 machine exists.</strong> C26 is proved on macOS 27 only, and the spec must say so.</li>
   </ul>
 </section>
 
