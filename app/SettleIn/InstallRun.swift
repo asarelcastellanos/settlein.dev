@@ -1,5 +1,6 @@
 import Foundation
 import Observation
+import SwiftUI
 
 enum ItemState: Equatable {
     case waiting
@@ -73,14 +74,25 @@ final class InstallRun {
                 try await Installer.install(app, into: folder) { [weak self] step in
                     Task { @MainActor in self?.update(index, step) }
                 }
-                items[index].state = app.installerType == .pkg ? .waitingInInstaller : .done
+                conclude(index, app.installerType == .pkg ? .waitingInInstaller : .done)
             } catch let refusal as Refusal {
-                items[index].state = .refused(refusal.reason)
+                conclude(index, .refused(refusal.reason))
             } catch {
-                items[index].state = .refused("SettleIn could not finish. \(error.localizedDescription)")
+                conclude(index, .refused("SettleIn could not finish. \(error.localizedDescription)"))
             }
         }
         finished = true
+    }
+
+    private func conclude(_ index: Int, _ state: ItemState) {
+        items[index].state = state
+        let name = items[index].app.name
+        switch state {
+        case .done: announce("\(name), Done")
+        case .refused(let reason): announce("\(name), Refused. \(RunText.refusal(reason, short: false))")
+        case .waitingInInstaller: announce("\(name). Finish the steps in Apple’s Installer, then come back")
+        default: break
+        }
     }
 
     private func update(_ index: Int, _ step: InstallStep) {

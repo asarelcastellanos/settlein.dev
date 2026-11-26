@@ -1,7 +1,7 @@
 import AppKit
 import SwiftUI
 
-private func announce(_ text: String) {
+func announce(_ text: String) {
     var message = AttributedString(text)
     message.accessibilitySpeechAnnouncementPriority = .low
     AccessibilityNotification.Announcement(message).post()
@@ -58,17 +58,6 @@ struct InstallView: View {
                     .focused(opener, equals: .cancel)
                     .focusRing()
                     .disabled(!model.canAsk)
-            }
-        }
-        .onChange(of: run.items.map(\.state)) { old, new in
-            for index in new.indices where index < old.count && old[index] != new[index] {
-                let name = run.items[index].app.name
-                switch new[index] {
-                case .done: announce("\(name), Done")
-                case .refused(let reason): announce("\(name), Refused. \(RunText.refusal(reason, short: false))")
-                case .waitingInInstaller: announce("\(name). Finish the steps in Apple’s Installer, then come back")
-                default: break
-                }
             }
         }
     }
