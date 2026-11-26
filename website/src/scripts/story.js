@@ -78,6 +78,22 @@ export function initStory() {
     if (!on) syncTwin();
   }
 
+  function hold() {
+    if (!live) {
+      picker.style.removeProperty("transform");
+      picker.style.removeProperty("--lift");
+      return;
+    }
+    const lift = window.scrollY - stage.offsetTop - window.innerHeight;
+    if (lift < 0) {
+      picker.style.transform = `translateY(${lift}px)`;
+      picker.style.setProperty("--lift", `${lift}px`);
+    } else {
+      picker.style.removeProperty("transform");
+      picker.style.removeProperty("--lift");
+    }
+  }
+
   function paint() {
     if (!geo) return;
     const e = ease(clamp((z - ZOOM_START) / (ZOOM_END - ZOOM_START)));
@@ -89,7 +105,8 @@ export function initStory() {
     const away = clamp(z / COPY_END);
     copy.style.opacity = String(1 - away);
     copy.style.transform = `translateX(${-40 * away}px)`;
-    setLive(z >= 1);
+    setLive(z >= ZOOM_END);
+    hold();
   }
 
   function aim() {
@@ -125,6 +142,8 @@ export function initStory() {
     root.classList.remove("story-on");
     live = false;
     picker.classList.remove("live");
+    picker.style.removeProperty("transform");
+    picker.style.removeProperty("--lift");
     pin.classList.remove("gone");
     for (const el of [win, demo, twin, copy, slot]) el.removeAttribute("style");
     twin.replaceChildren();
@@ -136,7 +155,9 @@ export function initStory() {
   }
 
   window.addEventListener("scroll", () => {
-    if (root.classList.contains("story-on")) aim();
+    if (!root.classList.contains("story-on")) return;
+    hold();
+    aim();
   }, { passive: true });
   window.addEventListener("resize", () => {
     if (root.classList.contains("story-on")) {
@@ -147,6 +168,7 @@ export function initStory() {
   picker.addEventListener("focusin", (event) => {
     if (!root.classList.contains("story-on") || z >= 1) return;
     const focused = event.target;
+    if (live && !focused.matches(":focus-visible")) return;
     reveal();
     focused.scrollIntoView({ block: "nearest" });
   });
