@@ -4,7 +4,6 @@ date: 2026-11-24
 ---
 # 0029. Copy app install pipeline
 
-Accepted by default, not reviewed by the owner.
 
 ## Context and problem statement
 
