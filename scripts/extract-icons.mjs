@@ -14,7 +14,7 @@ function run(cmd, args, options = {}) {
   return execFileSync(cmd, args, { encoding: "utf8", stdio: ["pipe", "pipe", "pipe"], maxBuffer: 64 * 1024 * 1024, ...options });
 }
 
-async function download(url, file) {
+function download(url, file) {
   if (!url.startsWith("https://")) throw new Error(`download URL is not https: ${url}`);
   try {
     run("curl", ["--fail", "--silent", "--show-error", "--location", "--proto", "=https", "--proto-redir", "=https", "--retry", "10", "--retry-all-errors", "--retry-delay", "3", "--output", file, "--", url]);
@@ -152,7 +152,7 @@ async function processApp(app, scratch) {
   mkdirSync(content);
   let mountPoint = null;
   try {
-    const sha256 = await download(app.downloadUrl, archive);
+    const sha256 = download(app.downloadUrl, archive);
     if (app.sha256 && app.sha256.toLowerCase() !== sha256) {
       throw new Error(`SHA-256 mismatch: catalog ${app.sha256}, download ${sha256}`);
     }
