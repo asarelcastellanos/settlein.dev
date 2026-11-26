@@ -90,7 +90,39 @@ const total = groups.reduce((sum, group) => sum + group.apps.length, 0);
         button.disabled = ticked === 0;
       }
 
-      boxes.forEach((box) => box.addEventListener("change", update));
+      function writeAddress() {
+        const ticked = boxes.filter((box) => box.checked).map((box) => box.value);
+        const params = new URLSearchParams(location.search);
+        params.delete("apps");
+        const query = [params.toString(), ticked.length ? `apps=${ticked.join(",")}` : ""]
+          .filter(Boolean)
+          .join("&");
+        const next = `${location.pathname}${query ? `?${query}` : ""}${location.hash}`;
+        if (next !== `${location.pathname}${location.search}${location.hash}`) {
+          history.replaceState(history.state, "", next);
+        }
+      }
+
+      function readAddress() {
+        const wanted = new Set(
+          (new URLSearchParams(location.search).get("apps") ?? "").split(",").filter(Boolean),
+        );
+        boxes.forEach((box) => {
+          box.checked = wanted.has(box.value);
+        });
+        update();
+        writeAddress();
+      }
+
+      boxes.forEach((box) =>
+        box.addEventListener("change", () => {
+          update();
+          writeAddress();
+        }),
+      );
+      window.addEventListener("pageshow", (event) => {
+        if (event.persisted) readAddress();
+      });
 
       button.addEventListener("click", () => {
         const ticked = boxes.filter((box) => box.checked).map((box) => box.value);
@@ -99,7 +131,7 @@ const total = groups.reduce((sum, group) => sum + group.apps.length, 0);
         location.href = target.href;
       });
 
-      update();
+      readAddress();
     </script>
   </body>
 </html>
