@@ -1,10 +1,28 @@
 import SwiftUI
 
+struct SeparatorStyle: ShapeStyle {
+    func resolve(in environment: EnvironmentValues) -> some ShapeStyle {
+        environment.colorSchemeContrast == .increased ? Color.SI.textSecondary : Color.SI.separator
+    }
+}
+
+struct CheckboxEdgeStyle: ShapeStyle {
+    func resolve(in environment: EnvironmentValues) -> some ShapeStyle {
+        environment.colorSchemeContrast == .increased ? Color.SI.textPrimary : Color.SI.checkboxEdge
+    }
+}
+
 struct WindowGround: View {
+    @Environment(\.accessibilityReduceTransparency) private var reduceTransparency
+
     var body: some View {
-        Rectangle().fill(.ultraThinMaterial)
-            .overlay(Color.SI.surfaceWindow)
-            .ignoresSafeArea()
+        if reduceTransparency {
+            Color.SI.groundBase.overlay(Color.SI.surfaceWindow).ignoresSafeArea()
+        } else {
+            Rectangle().fill(.ultraThinMaterial)
+                .overlay(Color.SI.surfaceWindow)
+                .ignoresSafeArea()
+        }
     }
 }
 
@@ -42,7 +60,7 @@ struct SecondaryButtonStyle: ButtonStyle {
                 RoundedRectangle(cornerRadius: SIRadius.button)
                     .fill(configuration.isPressed ? Color.SI.rowHover : Color.white)
             )
-            .overlay(RoundedRectangle(cornerRadius: SIRadius.button).stroke(Color.SI.separator, lineWidth: 1))
+            .overlay(RoundedRectangle(cornerRadius: SIRadius.button).stroke(SeparatorStyle(), lineWidth: 1))
             .scaleEffect(configuration.isPressed ? 0.94 : 1)
             .animation(.easeOut(duration: 0.12), value: configuration.isPressed)
     }
@@ -80,7 +98,7 @@ struct SquareCheckbox: View {
             .fill(isOn ? Color.SI.accent : Color.white)
             .overlay(
                 RoundedRectangle(cornerRadius: SIRadius.checkbox)
-                    .stroke(isOn ? Color.SI.accent : Color.SI.checkboxEdge, lineWidth: 1.5)
+                    .stroke(isOn ? AnyShapeStyle(Color.SI.accent) : AnyShapeStyle(CheckboxEdgeStyle()), lineWidth: 1.5)
             )
             .overlay {
                 if isOn {
@@ -94,12 +112,20 @@ struct SquareCheckbox: View {
 
 struct GlassBar<Content: View>: View {
     @ViewBuilder let content: Content
+    @Environment(\.accessibilityReduceTransparency) private var reduceTransparency
 
     var body: some View {
         HStack(spacing: 14) { content }
             .padding(.horizontal, SISpace.s3)
             .frame(height: 64)
-            .glassEffect(.regular, in: .rect(cornerRadius: SIRadius.panel))
+            .background {
+                if reduceTransparency {
+                    RoundedRectangle(cornerRadius: SIRadius.panel)
+                        .fill(Color.white)
+                        .overlay(RoundedRectangle(cornerRadius: SIRadius.panel).stroke(SeparatorStyle(), lineWidth: 1))
+                }
+            }
+            .glassEffect(reduceTransparency ? .identity : .regular, in: .rect(cornerRadius: SIRadius.panel))
             .padding(.horizontal, SISpace.s4)
             .padding(.bottom, SISpace.s4)
     }

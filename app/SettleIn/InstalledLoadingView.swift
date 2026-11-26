@@ -23,7 +23,7 @@ struct InstalledLoadingView: View {
                                 Spacer()
                             }
                             .frame(height: 68)
-                            if index < 3 { Divider().overlay(Color.SI.separator) }
+                            if index < 3 { Divider().overlay(SeparatorStyle()) }
                         }
                     }
                 }

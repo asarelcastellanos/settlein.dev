@@ -25,7 +25,7 @@ struct InstalledView: View {
                     VStack(spacing: 0) {
                         ForEach(rows) { row in
                             InstalledRowView(row: row)
-                            if row.id != rows.last?.id { Divider().overlay(Color.SI.separator) }
+                            if row.id != rows.last?.id { Divider().overlay(SeparatorStyle()) }
                         }
                     }
                 }
