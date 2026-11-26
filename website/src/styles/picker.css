@@ -425,8 +425,6 @@ html:not(.js) .cat-head {
 
   .bar {
     bottom: 12px;
-    flex-direction: column;
-    align-items: stretch;
     gap: var(--space-3);
     margin: var(--space-4) 8px 0;
   }
@@ -444,12 +442,13 @@ html:not(.js) .cat-head {
     display: none;
   }
 
-  .bar-actions {
-    margin: 0;
+  .tally {
+    flex: 1;
   }
 
-  .bar-actions .btn-primary {
-    flex: 1;
+  .bar-actions {
+    flex: none;
+    margin: 0;
   }
 }
 
