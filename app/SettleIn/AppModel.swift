@@ -99,7 +99,10 @@ final class AppModel {
 
     func launch() async { await open(.launch) }
 
-    func openPick(ticked: [String] = []) { Task { await open(.pick(ticked)) } }
+    func openPick(ticked: [String] = []) {
+        if case .pick = screen { return }
+        Task { await open(.pick(ticked)) }
+    }
 
     func openInstalled() { Task { await open(.installed) } }
 
