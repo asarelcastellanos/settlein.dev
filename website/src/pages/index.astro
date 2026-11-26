@@ -1,7 +1,9 @@
 ---
 import "../styles/global.css";
 import { loadCatalog } from "../lib/catalog.js";
-import { DOWNLOAD_HANDOFF_PLACEHOLDER } from "../lib/handoff.js";
+import Header from "../components/Header.astro";
+import Hero from "../components/Hero.astro";
+import Picker from "../components/Picker.astro";
 
 const groups = loadCatalog();
 const total = groups.reduce((sum, group) => sum + group.apps.length, 0);
@@ -24,121 +26,25 @@ const total = groups.reduce((sum, group) => sum + group.apps.length, 0);
     <title>SettleIn. Set up a new Mac in one go.</title>
     <meta
       name="description"
-      content="Tick the Mac apps you want, download SettleIn, and approve the list."
+      content="Tick the Mac apps you want, download SettleIn, and it installs them all in one go."
     />
+    <script is:inline>
+      document.documentElement.classList.add("js");
+      if (
+        matchMedia("(min-width: 900px) and (min-height: 640px) and (prefers-reduced-motion: no-preference)").matches
+      ) {
+        document.documentElement.classList.add("story-on");
+      }
+    </script>
   </head>
   <body>
-    <main class="page">
-      <header class="intro">
-        <h1>SettleIn</h1>
-        <p>
-          SettleIn installs the Mac apps you tick, in one go, on a new Mac. Tick apps, download
-          SettleIn, approve the list.
-        </p>
-      </header>
-
-      <div id="catalog" aria-label={`Catalog, ${total} apps`} role="group">
-        {
-          groups.map((group) => (
-            <section class="category" aria-labelledby={`category-${group.id}`}>
-              <h2 id={`category-${group.id}`}>{group.category}</h2>
-              <ul class="grid">
-                {group.apps.map((app, index) => (
-                  <li>
-                    <label class="app">
-                      <input type="checkbox" name="app" value={app.token} />
-                      <img
-                        class="icon"
-                        src={`/icons/${app.token}-128.png`}
-                        srcset={`/icons/${app.token}-256.png 2x`}
-                        width="56"
-                        height="56"
-                        alt=""
-                        loading={group.first && index < 12 ? "eager" : "lazy"}
-                        decoding="async"
-                      />
-                      <span class="name">{app.name}</span>
-                    </label>
-                  </li>
-                ))}
-              </ul>
-            </section>
-          ))
-        }
-      </div>
-
-      <footer class="site-foot">
-        <p>Free and open source.</p>
-      </footer>
+    <Header />
+    <main>
+      <Hero />
+      <Picker groups={groups} total={total} />
     </main>
-
-    <div class="bar" role="region" aria-label="Selection">
-      <p class="count" id="count" role="status">No apps ticked</p>
-      <button
-        class="download"
-        id="download"
-        type="button"
-        disabled
-        data-handoff-target={DOWNLOAD_HANDOFF_PLACEHOLDER}
-      >
-        Download SettleIn
-      </button>
-    </div>
-
     <script>
-      const boxes = Array.from(document.querySelectorAll<HTMLInputElement>('input[name="app"]'));
-      const count = document.getElementById("count")!;
-      const button = document.getElementById("download") as HTMLButtonElement;
-
-      function update() {
-        const ticked = boxes.filter((box) => box.checked).length;
-        count.textContent =
-          ticked === 0 ? "No apps ticked" : `${ticked} ${ticked === 1 ? "app" : "apps"} ticked`;
-        button.disabled = ticked === 0;
-      }
-
-      function writeAddress() {
-        const ticked = boxes.filter((box) => box.checked).map((box) => box.value);
-        const params = new URLSearchParams(location.search);
-        params.delete("apps");
-        const query = [params.toString(), ticked.length ? `apps=${ticked.join(",")}` : ""]
-          .filter(Boolean)
-          .join("&");
-        const next = `${location.pathname}${query ? `?${query}` : ""}${location.hash}`;
-        if (next !== `${location.pathname}${location.search}${location.hash}`) {
-          history.replaceState(history.state, "", next);
-        }
-      }
-
-      function readAddress() {
-        const wanted = new Set(
-          (new URLSearchParams(location.search).get("apps") ?? "").split(",").filter(Boolean),
-        );
-        boxes.forEach((box) => {
-          box.checked = wanted.has(box.value);
-        });
-        update();
-        writeAddress();
-      }
-
-      boxes.forEach((box) =>
-        box.addEventListener("change", () => {
-          update();
-          writeAddress();
-        }),
-      );
-      window.addEventListener("pageshow", (event) => {
-        if (event.persisted) readAddress();
-      });
-
-      button.addEventListener("click", () => {
-        const ticked = boxes.filter((box) => box.checked).map((box) => box.value);
-        const target = new URL(button.dataset.handoffTarget!, location.href);
-        target.searchParams.set("apps", ticked.join(","));
-        location.href = target.href;
-      });
-
-      readAddress();
+      import "../scripts/home.js";
     </script>
   </body>
 </html>
