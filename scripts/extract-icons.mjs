@@ -11,6 +11,22 @@ const only = process.argv.slice(4);
 const sizes = JSON.parse(readFileSync(join(root, "catalog/icon-sizes.json"), "utf8"));
 
 const stuckMounts = [];
+let activeMount = null;
+let activeScratch = null;
+
+const tick = () => new Promise((done) => setImmediate(done));
+
+function onSignal(signal) {
+  if (activeMount) {
+    try {
+      detach(activeMount);
+    } catch (error) {
+      console.error(error.message);
+    }
+  }
+  if (activeScratch && !stuckMounts.length) rmSync(activeScratch, { recursive: true, force: true });
+  process.exit(signal === "SIGINT" ? 130 : 143);
+}
 
 function detach(mountPoint) {
   try {
@@ -168,6 +184,7 @@ async function processApp(app, scratch) {
   let mountPoint = null;
   try {
     const sha256 = download(app.downloadUrl, archive);
+    await tick();
     if (app.sha256 && app.sha256.toLowerCase() !== sha256) {
       throw new Error(`SHA-256 mismatch: catalog ${app.sha256}, download ${sha256}`);
     }
@@ -186,12 +203,15 @@ async function processApp(app, scratch) {
     } else {
       const target = join(work, "mount");
       mkdirSync(target);
-      mountPoint = target;
       run("hdiutil", ["attach", "-nobrowse", "-readonly", "-noautoopen", "-mountpoint", target, archive], { input: "Y\n" });
+      mountPoint = target;
+      activeMount = target;
       base = target;
     }
+    await tick();
     const bundle = locateBundle(base, bundleName, work);
     if (!bundle) throw new Error(`${bundleName} not found in the download`);
+    await tick();
     const rendered = render(bundle, work, app.token);
     const staged = rendered.map(([size, file]) => {
       const target = join(outDir, `${app.token}-${size}.png`);
@@ -202,7 +222,10 @@ async function processApp(app, scratch) {
     for (const [temp, target] of staged) renameSync(temp, target);
     return { name: app.name, sourceUrl: app.downloadUrl, version: app.version, sha256, bundle: bundleName };
   } finally {
-    if (mountPoint) detach(mountPoint);
+    if (mountPoint) {
+      detach(mountPoint);
+      activeMount = null;
+    }
     rmSync(work, { recursive: true, force: true });
   }
 }
@@ -213,10 +236,14 @@ const manifestPath = join(outDir, "manifest.json");
 const manifest = existsSync(manifestPath) ? JSON.parse(readFileSync(manifestPath, "utf8")) : { icons: {} };
 const scratch = mkdtempSync("/private/tmp/settlein-icons-");
 const failures = [];
+activeScratch = scratch;
+process.on("SIGINT", onSignal);
+process.on("SIGTERM", onSignal);
 
 try {
   for (const app of catalog.apps) {
     if (only.length && !only.includes(app.token)) continue;
+    await tick();
     try {
       manifest.icons[app.token] = await processApp(app, scratch);
       console.log(`ok    ${app.token}`);
