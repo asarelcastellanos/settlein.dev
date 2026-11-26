@@ -97,8 +97,8 @@ struct RunRowView: View {
         case .installing: "Installing"
         case .done: "Done"
         case .refused(let reason): "Refused. \(reason)"
-        case .opening: "Opening in Apple's Installer"
-        case .waitingInInstaller: "Verified. Waiting in Apple's Installer"
+        case .opening: "Opening in Apple’s Installer"
+        case .waitingInInstaller: "Verified. Waiting in Apple’s Installer"
         }
     }
 }
@@ -126,7 +126,7 @@ struct FinishedView: View {
             }
             List {
                 section("Installed in \(run.folder.path)", installed.map { ($0.name, nil) })
-                section("Opened in Apple's Installer", waiting.map { ($0.name, "Verified. SettleIn cannot tell whether you finished the install") })
+                section("Opened in Apple’s Installer", waiting.map { ($0.name, "Verified. SettleIn cannot tell whether you finished the install") })
                 section("Skipped, already installed", run.skipped.map { ($0.name, nil) })
                 section("Refused", refused.map { item in
                     if case .refused(let reason) = item.state { (item.app.name, reason) } else { (item.app.name, nil) }
@@ -142,7 +142,7 @@ struct FinishedView: View {
     }
 
     private var summary: String {
-        "\(installed.count) installed, \(waiting.count) opened in Apple's Installer, \(run.skipped.count) skipped, \(refused.count) refused"
+        "\(installed.count) installed, \(waiting.count) opened in Apple’s Installer, \(run.skipped.count) skipped, \(refused.count) refused"
     }
 
     @ViewBuilder
