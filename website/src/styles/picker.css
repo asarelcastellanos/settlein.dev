@@ -189,7 +189,7 @@ html:not(.js) .cat-head {
 }
 
 .row:has(:checked):hover {
-  background: #d9e0ff;
+  background: color-mix(in srgb, var(--accent) 6%, var(--accent-tint));
 }
 
 .row .icon {
