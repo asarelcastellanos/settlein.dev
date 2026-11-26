@@ -36,13 +36,20 @@ const total = groups.reduce((sum, group) => sum + group.apps.length, 0);
             <section class="category" aria-labelledby={`category-${group.id}`}>
               <h2 id={`category-${group.id}`}>{group.category}</h2>
               <ul class="grid">
-                {group.apps.map((app) => (
+                {group.apps.map((app, index) => (
                   <li>
                     <label class="app">
                       <input type="checkbox" name="app" value={app.token} />
-                      <span class="icon" aria-hidden="true">
-                        {app.name.charAt(0).toUpperCase()}
-                      </span>
+                      <img
+                        class="icon"
+                        src={`/icons/${app.token}-128.png`}
+                        srcset={`/icons/${app.token}-256.png 2x`}
+                        width="56"
+                        height="56"
+                        alt=""
+                        loading={group.first && index < 12 ? "eager" : "lazy"}
+                        decoding="async"
+                      />
                       <span class="name">{app.name}</span>
                     </label>
                   </li>
