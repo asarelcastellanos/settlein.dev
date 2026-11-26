@@ -473,6 +473,10 @@ html:not(.js) .after-failed {
 }
 
 @media (max-width: 640px) {
+  .tabs button {
+    hyphens: auto;
+  }
+
   .after {
     padding-top: 96px;
   }
