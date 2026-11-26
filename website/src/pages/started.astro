@@ -95,6 +95,8 @@ for (const group of loadCatalog()) for (const app of group.apps) names[app.token
       async function start() {
         if (busy) return;
         busy = true;
+        const before = root.dataset.state;
+        root.dataset.state = "checking";
         retry.disabled = true;
         again.setAttribute("aria-disabled", "true");
         let ok = false;
@@ -124,7 +126,6 @@ for (const group of loadCatalog()) for (const app of group.apps) names[app.token
           link.remove();
         }
         clearTimeout(reveal);
-        const before = root.dataset.state;
         root.dataset.state = ok ? "started" : "failed";
         document.title = ok ? "Your download has started. SettleIn" : "The download didn’t start. SettleIn";
         status.classList.remove("shown");
