@@ -91,6 +91,7 @@ const { groups, total } = Astro.props;
       </button>
     </div>
   </div>
+  <p class="sr-only" id="copy-status" role="status"></p>
   <div class="copy-fail" id="copy-fail" hidden>
     <p>Couldn’t copy. Press and hold the link to copy it.</p>
     <input id="copy-field" type="text" readonly aria-label="Link to this selection" />

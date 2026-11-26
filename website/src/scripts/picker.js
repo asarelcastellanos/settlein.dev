@@ -15,6 +15,7 @@ export function initPicker() {
   const copy = document.getElementById("copy");
   const copyLabel = document.getElementById("copy-label");
   const copyTick = copy.querySelector(".tick");
+  const copyStatus = document.getElementById("copy-status");
   const copyFail = document.getElementById("copy-fail");
   const copyField = document.getElementById("copy-field");
   const selectAll = document.getElementById("select-all");
@@ -140,6 +141,7 @@ export function initPicker() {
     copyTick.hidden = true;
     copyLabel.textContent = "Copy link";
     copyFail.hidden = true;
+    copyStatus.textContent = "";
   }
 
   async function copyLink() {
@@ -149,6 +151,7 @@ export function initPicker() {
     } catch {
       copyField.value = url;
       copyFail.hidden = false;
+      copyStatus.textContent = "Couldn’t copy. Press and hold the link to copy it.";
       copyField.focus();
       copyField.select();
       return;
@@ -157,6 +160,7 @@ export function initPicker() {
     copy.classList.add("copied");
     copyTick.hidden = false;
     copyLabel.textContent = "Link copied";
+    copyStatus.textContent = "Link copied";
     clearTimeout(copyTimer);
     copyTimer = setTimeout(resetCopy, 2000);
   }
