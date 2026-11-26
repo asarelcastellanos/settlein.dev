@@ -80,6 +80,9 @@ function readList(text) {
         app.appBundles.every((b) => nonEmpty(b) && /^[^*/]+\.app$/.test(b));
       if (!ok) throw new Error(`source list entry ${i}: appBundles must be a list of .app names`);
     }
+    if (!/^[a-z0-9-]+$/.test(app.token)) {
+      throw new Error(`source list entry ${i}: token ${JSON.stringify(app.token)} must use only a-z, 0-9 and -`);
+    }
     if (seen.has(app.token)) {
       throw new Error(`source list: duplicate token ${app.token}`);
     }
@@ -266,6 +269,7 @@ function build(app, cask) {
     problems,
     skipped,
     entry: {
+      token: app.token,
       name: app.name,
       category: app.category,
       downloadUrl: url,

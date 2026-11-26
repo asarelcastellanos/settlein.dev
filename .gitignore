@@ -2,3 +2,4 @@ test-build/build/
 .DS_Store
 xcuserdata/
 app/Settlein.xcodeproj/
+release/
