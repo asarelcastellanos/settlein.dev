@@ -23,7 +23,7 @@ enum IconLoader {
     }
 
     private static func fetch(_ file: String) async -> Data? {
-        let session = URLSession(configuration: Network.configuration(timeout: 15), delegate: SameHostOnly(), delegateQueue: nil)
+        let session = URLSession(configuration: Network.configuration(timeout: 15), delegate: SameHostOnly(host: CatalogClient.host), delegateQueue: nil)
         defer { session.finishTasksAndInvalidate() }
         guard let url = URL(string: "https://\(CatalogClient.host)/icons/\(file)"),
               let (data, response) = try? await session.data(from: url),
