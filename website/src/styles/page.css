@@ -326,8 +326,10 @@ html:not(.js) .after-failed {
   width: min(560px, 100%);
   padding: 18px 22px 10px;
   border-radius: 20px;
-  background: var(--surface-window);
-  box-shadow: var(--e-window);
+  background: var(--surface-panel);
+  box-shadow: var(--e-panel);
+  -webkit-backdrop-filter: blur(24px);
+  backdrop-filter: blur(24px);
   text-align: left;
 }
 

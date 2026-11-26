@@ -38,6 +38,7 @@
   --r-row: 9px;
   --r-button: 10px;
   --r-panel: 20px;
+  --e-panel: 0 0 0 1px #DCE1EE, 0 24px 60px rgba(10,15,40,.30);
   --e-window: 0 0 0 1px #DCE1EE, 0 30px 80px rgba(20,30,80,.22);
   --font: -apple-system, BlinkMacSystemFont, "SF Pro Text", Inter, system-ui, sans-serif;
   --mono: ui-monospace, "SF Mono", Menlo, monospace;
