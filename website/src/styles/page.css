@@ -172,7 +172,7 @@
 }
 
 .kind-catalog {
-  color: #0f7a6a;
+  color: var(--text-secondary);
 }
 
 .kind-notice {
