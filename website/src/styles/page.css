@@ -478,3 +478,32 @@ html:not(.js) .after-failed {
   font-size: 18px;
   line-height: 28px;
 }
+
+.after-checking {
+  display: none;
+}
+
+.after[data-state="checking"] .after-checking {
+  display: flex;
+}
+
+html:not(.js) .after-checking {
+  display: none;
+}
+
+.after-checking h1,
+#after-status:not(.shown) {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+#after-status {
+  margin: 0;
+  color: var(--text-secondary);
+  font-size: 18px;
+  line-height: 28px;
+}

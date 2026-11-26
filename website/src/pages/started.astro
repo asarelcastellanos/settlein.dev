@@ -14,6 +14,12 @@ for (const group of loadCatalog()) for (const app of group.apps) names[app.token
   <section class="after" id="after" data-state="checking" data-download={DOWNLOAD_PATH}>
     <img class="after-icon" src="/settlein-icon.svg" width="108" height="108" alt="" />
 
+    <div class="after-checking">
+      <h1>Your download</h1>
+    </div>
+
+    <p id="after-status" role="status"></p>
+
     <div class="after-started">
       <h1 id="started-title" tabindex="-1">Your download has started.</h1>
       <div class="after-list">
@@ -57,6 +63,7 @@ for (const group of loadCatalog()) for (const app of group.apps) names[app.token
     const retry = document.getElementById("retry");
     const downloadPath = root.dataset.download;
     const heading = document.getElementById("started-title");
+    const status = document.getElementById("after-status");
 
     const tokens = [
       ...new Set((new URLSearchParams(location.search).get("apps") ?? "").split(",").filter(Boolean)),
@@ -91,6 +98,12 @@ for (const group of loadCatalog()) for (const app of group.apps) names[app.token
         retry.disabled = true;
         again.setAttribute("aria-disabled", "true");
         let ok = false;
+        const reveal = setTimeout(() => {
+          if (root.dataset.state === "checking") {
+            status.textContent = "Getting your download ready.";
+            status.classList.add("shown");
+          }
+        }, 300);
         try {
           const response = await fetch(downloadUrl, {
             method: "HEAD",
@@ -110,8 +123,12 @@ for (const group of loadCatalog()) for (const app of group.apps) names[app.token
           link.click();
           link.remove();
         }
+        clearTimeout(reveal);
         const before = root.dataset.state;
         root.dataset.state = ok ? "started" : "failed";
+        document.title = ok ? "Your download has started. SettleIn" : "The download didn’t start. SettleIn";
+        status.classList.remove("shown");
+        status.textContent = ok ? "Your download has started." : "";
         busy = false;
         retry.disabled = false;
         again.removeAttribute("aria-disabled");
