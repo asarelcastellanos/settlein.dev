@@ -25,3 +25,4 @@
 | [0021](0021-uninstall-never-touches-user-file-folders.md) | Uninstall never touches user file folders | accepted |
 | [0022](0022-daily-job-commits-catalog-to-a-data-branch.md) | Daily job commits the catalog to a data branch | accepted |
 | [0031](0031-extract-icons-from-vendor-downloads-with-a-script.md) | Extract icons from vendor downloads with a script | accepted |
+| [0032](0032-reject-symlinked-icon-files-in-every-archive-kind.md) | Reject symlinked icon files in every archive kind | accepted |
