@@ -4,6 +4,7 @@ import { loadCatalog } from "../lib/catalog.js";
 import Header from "../components/Header.astro";
 import Hero from "../components/Hero.astro";
 import Picker from "../components/Picker.astro";
+import Footer from "../components/Footer.astro";
 
 const groups = loadCatalog();
 const total = groups.reduce((sum, group) => sum + group.apps.length, 0);
@@ -43,6 +44,7 @@ const total = groups.reduce((sum, group) => sum + group.apps.length, 0);
       <Hero />
       <Picker groups={groups} total={total} />
     </main>
+    <Footer />
     <script>
       import "../scripts/home.js";
     </script>

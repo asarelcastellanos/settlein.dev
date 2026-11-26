@@ -1,0 +1,32 @@
+---
+import Page from "../layouts/Page.astro";
+import InfoRow from "../components/InfoRow.astro";
+---
+
+<Page
+  title="What SettleIn sends"
+  description="SettleIn sends nothing about you or your Mac."
+>
+  <div class="page-head">
+    <h1>What SettleIn sends</h1>
+    <p>Nothing about you or your Mac.</p>
+  </div>
+  <div class="info-list">
+    <InfoRow icon="monitor" title="The Mac app">
+      <p>It sends no data about you or your Mac to any server.</p>
+    </InfoRow>
+    <InfoRow icon="globe" title="Who it talks to">
+      <p><span class="domain">settlein.dev</span>, to read the catalog.</p>
+      <p>Each app’s own download server, for the apps you pick.</p>
+      <p>The SettleIn update feed, to check for a new version.</p>
+    </InfoRow>
+    <InfoRow icon="window" title="The website">
+      <p>settlein.dev counts visits with Cloudflare Web Analytics, which is cookieless.</p>
+      <p>It sets no cookies and shows no ads.</p>
+    </InfoRow>
+    <InfoRow icon="link" title="Your app list">
+      <p>It lives in the page address, so you can bookmark it or send it to yourself.</p>
+      <p>When you download SettleIn, the list travels in the download link.</p>
+    </InfoRow>
+  </div>
+</Page>
