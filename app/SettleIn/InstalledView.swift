@@ -83,7 +83,7 @@ struct InstalledRowView: View {
 
     var body: some View {
         HStack(spacing: SISpace.s3) {
-            AppTile(name: row.app.name)
+            AppTile(name: row.app.name, token: row.app.token)
             VStack(alignment: .leading, spacing: 2) {
                 Text(row.app.name)
                     .font(.system(size: 15, weight: .semibold))

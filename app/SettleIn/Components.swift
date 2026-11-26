@@ -50,15 +50,25 @@ struct SecondaryButtonStyle: ButtonStyle {
 
 struct AppTile: View {
     let name: String
+    let token: String
     var size: CGFloat = 34
+    @State private var icon: NSImage?
 
     var body: some View {
-        Text(String(name.prefix(2)))
-            .font(.system(size: size * 0.32, weight: .semibold))
-            .foregroundStyle(Color.SI.textSecondary)
-            .frame(width: size, height: size)
-            .background(RoundedRectangle(cornerRadius: size * 0.2237).fill(Color.SI.iconPlaceholder))
-            .accessibilityHidden(true)
+        Group {
+            if let icon {
+                Image(nsImage: icon).resizable().scaledToFit()
+            } else {
+                Text(String(name.prefix(2)))
+                    .font(.system(size: size * 0.32, weight: .semibold))
+                    .foregroundStyle(Color.SI.textSecondary)
+                    .frame(width: size, height: size)
+                    .background(RoundedRectangle(cornerRadius: size * 0.2237).fill(Color.SI.iconPlaceholder))
+            }
+        }
+        .frame(width: size, height: size)
+        .task(id: token) { icon = await IconLoader.image(token: token) }
+        .accessibilityHidden(true)
     }
 }
 

@@ -114,7 +114,7 @@ struct PickRow: View {
             } else {
                 SquareCheckbox(isOn: isOn)
             }
-            AppTile(name: app.name)
+            AppTile(name: app.name, token: app.token)
             Text(app.name)
                 .font(.system(size: 15, weight: .medium))
                 .foregroundStyle(installed ? Color.SI.textSecondary : Color.SI.textPrimary)
@@ -147,7 +147,7 @@ struct PickBar: View {
             HStack(spacing: SISpace.s2) {
                 ForEach(0..<3, id: \.self) { index in
                     if index < tickedApps.count {
-                        AppTile(name: tickedApps[index].name, size: 42)
+                        AppTile(name: tickedApps[index].name, token: tickedApps[index].token, size: 42)
                     } else {
                         RoundedRectangle(cornerRadius: 10)
                             .strokeBorder(Color.SI.checkboxEdge.opacity(0.5), style: StrokeStyle(lineWidth: 1, dash: [3, 3]))
