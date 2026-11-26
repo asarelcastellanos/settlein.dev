@@ -138,7 +138,7 @@ export function initPicker() {
   function resetCopy() {
     clearTimeout(copyTimer);
     copy.classList.remove("copied");
-    copyTick.hidden = true;
+    copyTick.setAttribute("hidden", "");
     copyLabel.textContent = "Copy link";
     copyFail.hidden = true;
     copyStatus.textContent = "";
@@ -158,7 +158,7 @@ export function initPicker() {
     }
     copyFail.hidden = true;
     copy.classList.add("copied");
-    copyTick.hidden = false;
+    copyTick.removeAttribute("hidden");
     copyLabel.textContent = "Link copied";
     copyStatus.textContent = "Link copied";
     clearTimeout(copyTimer);
