@@ -1,0 +1,598 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>SettleIn catalog opened from a link</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+.pop1{transform-box:fill-box;transform-origin:center;animation:popIn 900ms cubic-bezier(.34,1.45,.64,1) both}
+@keyframes popIn{0%{transform:translate(var(--dx),var(--dy)) rotate(var(--r)) scale(.25);opacity:0}15%{opacity:1}100%{transform:none;opacity:1}}
+@media (prefers-reduced-motion:reduce){.pop1{animation:none}}
+.mob-only{display:none}
+.pickscroll{scrollbar-width:thin;scrollbar-color:var(--box-edge) transparent}
+.pickscroll::-webkit-scrollbar{width:10px}.pickscroll::-webkit-scrollbar-thumb{background:var(--box-edge);border-radius:10px;border:3px solid transparent;background-clip:content-box}
+@media (max-width:640px){.mob-only{display:flex!important}.desk-only{display:none!important}.pinbox{padding:16px!important;gap:24px!important}.herotext h1{font-size:40px!important}.herotext h1 span{white-space:normal!important}.win.win{height:auto!important;border-radius:20px!important;overflow:clip!important}.win .picker{position:static!important}.pickscroll{overflow:visible!important}.cta{padding:20px 18px 14px!important}.cta h2{font-size:28px!important;line-height:34px!important}.selbar{position:sticky!important;left:auto!important;right:auto!important;bottom:12px!important;margin:0 10px 10px!important;z-index:3}.pickin>div>div{padding:16px 10px 24px!important}.pickin [style*="columns"]{padding:8px 6px 24px!important;columns:1!important}}
+.ghmark{display:inline-block;width:20px;height:20px;flex:none;background:currentColor;-webkit-mask:url(/_blob/aad7e8b094dc7054fddcc9d3a2d99900) center/contain no-repeat;mask:url(/_blob/aad7e8b094dc7054fddcc9d3a2d99900) center/contain no-repeat}
+.foot a{color:var(--text2)!important;text-decoration:none}
+.foot a:hover{color:var(--text)!important;text-decoration:underline}
+
+a{color:#3048D6}a:hover{color:#1A1D2B}
+.sl{font-family:-apple-system,BlinkMacSystemFont,"SF Pro Text",Inter,system-ui,sans-serif;-webkit-font-smoothing:antialiased}
+.sl a{color:var(--accent-text)}.sl a:hover{color:var(--text)}
+.mono{font-family:ui-monospace,SFMono-Regular,"JetBrains Mono",Menlo,monospace}
+.tlink{display:inline-flex;align-items:center;gap:8px;min-height:44px;color:var(--text)!important;font-size:15px;font-weight:600;text-decoration:none;border:0;border-bottom:1.5px solid transparent;background:transparent;font-family:inherit;cursor:pointer;padding:0}
+.tlink:hover{border-bottom-color:currentColor}
+.tlink:focus-visible,.btn:focus-visible,.tab:focus-visible,.src:focus-visible,.wbtn:focus-visible{outline:3px solid var(--focus);outline-offset:2px}
+.app{display:flex;align-items:center;gap:12px;padding:4px 10px;border-radius:9px;cursor:pointer;min-height:var(--row-h,32px);box-sizing:border-box;transition:background-color 120ms ease-out}
+.app:hover{background:var(--row-hover)}
+.app[data-on="yes"]{background:var(--accent-tint)}
+.app:has(.cb:focus-visible){outline:3px solid var(--focus);outline-offset:1px}
+.cb{position:absolute;opacity:0;width:1px;height:1px;margin:0;pointer-events:none}
+.box{width:16px;height:16px;border-radius:4px;border:1.5px solid var(--box-edge);background:var(--box-bg);display:grid;place-items:center;color:transparent;box-sizing:border-box;flex:none;transition:background-color 160ms cubic-bezier(.2,.8,.2,1),border-color 160ms}
+.app:hover .box{border-color:var(--accent-text)}
+.app[data-on="yes"] .box,.src[aria-pressed="true"] .box,.drow[data-on="yes"] .box{background:var(--accent);border-color:var(--accent);color:#FFFFFF}
+.drow{display:flex;align-items:center;gap:10px;padding:7px 10px;border-radius:7px;transition:background-color 300ms ease}
+.drow .box{transition:background-color 300ms ease,border-color 300ms ease,transform 400ms cubic-bezier(.34,1.5,.64,1)}
+.drow[data-on="yes"] .box{transform:scale(1.08)}
+.drow[data-on="yes"]{background:var(--accent-tint)}
+.catall{display:flex;align-items:center;gap:12px;padding:5px 10px;border-radius:8px;cursor:pointer;min-height:32px;box-sizing:border-box;transition:background-color 120ms ease-out}
+.catall:hover{background:var(--row-hover)}
+.catall:hover .box{border-color:var(--accent-text)}
+.catall:has(.cb:focus-visible){outline:3px solid var(--focus);outline-offset:1px}
+.catall .dash{display:none}
+.catall[data-state="all"] .box{background:var(--accent);border-color:var(--accent);color:#FFFFFF}
+.catact{margin-left:auto;flex:none;white-space:nowrap;font-size:12px;font-weight:600;color:var(--accent-text);padding:2px 8px;border-radius:6px;opacity:.85;transition:opacity 120ms,background-color 120ms}
+.catall:hover .catact{opacity:1;background:var(--accent-tint)}
+.catall[data-state="all"] .catact{color:var(--text2);opacity:1}
+.catn{font-size:12px;color:var(--text2)}
+.bulk{min-height:36px;cursor:pointer}
+.bulk:hover{background:var(--row-hover)}
+.bulk[disabled]{opacity:.45;cursor:default}
+.cat{break-inside:avoid;display:flex;flex-direction:column;gap:2px;margin:0 0 22px}
+.src{display:flex;align-items:center;gap:10px;width:100%;min-height:38px;padding:0 10px;border-radius:9px;border:0;background:transparent;color:var(--text);font:inherit;font-size:14px;font-weight:500;text-align:left;cursor:pointer}
+.src:hover{background:var(--row-hover)}
+.tab{flex:1;min-height:44px;border:0;background:transparent;color:var(--text2);font:inherit;font-size:13px;font-weight:600;cursor:pointer;border-bottom:2px solid transparent;padding:0 4px;transition:color 200ms,border-color 200ms}
+.tab:hover{color:var(--text)}
+.tab[aria-selected="true"]{color:var(--text);border-bottom-color:var(--accent)}
+.btn{will-change:transform;display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:44px;padding:0 20px;border-radius:10px;background:var(--accent);color:#FFFFFF!important;font-size:15px;line-height:20px;font-weight:600;border:0;font-family:inherit;text-decoration:none;cursor:pointer;white-space:nowrap;transition:transform 220ms cubic-bezier(.22,1,.36,1),filter 220ms,opacity 350ms ease}
+.btn{background:linear-gradient(180deg,var(--accent-hi),var(--accent))!important;box-shadow:inset 0 1px 0 rgba(255,255,255,.38),inset 0 -1px 0 rgba(0,0,0,.12),0 6px 18px var(--accent-glow)}
+.btn:hover{filter:brightness(1.08)}
+.gloss{background:var(--gloss);box-shadow:var(--gloss-shadow);backdrop-filter:blur(30px) saturate(200%);-webkit-backdrop-filter:blur(30px) saturate(200%);position:relative;isolation:isolate}
+.gloss::before{content:"";position:absolute;inset:0;border-radius:inherit;background:linear-gradient(180deg,var(--gloss-shine),transparent 55%);pointer-events:none;z-index:-1}
+.btn[data-press="yes"],.wbtn[data-press="yes"]{transform:scale(.94);filter:brightness(.9)}
+.wbtn{min-height:32px;padding:0 14px;border-radius:7px;border:1px solid var(--sep);background:var(--box-bg);color:var(--text);font:inherit;font-size:13px;font-weight:500;transition:transform 120ms ease-out,filter 120ms}
+.wbtn.primary{background:var(--accent);border-color:var(--accent);color:#FFFFFF}
+.dpane{position:absolute;inset:0;display:flex;flex-direction:column;padding:20px 24px;gap:12px;transition:opacity 450ms ease,transform 650ms cubic-bezier(.22,1,.36,1);will-change:opacity,transform}
+.ease{transition:opacity 350ms ease,transform 500ms cubic-bezier(.34,1.3,.64,1),background-color 350ms ease,color 300ms ease,width 500ms cubic-bezier(.22,1,.36,1)}
+.pop{animation:popIn 320ms cubic-bezier(.34,1.4,.64,1)}
+@keyframes paneIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+@keyframes popIn{from{opacity:0;transform:scale(.6) translateY(8px)}to{opacity:1;transform:none}}
+.steps li{transition:color 200ms}
+@media (max-width:899px){.stage{height:auto!important}.pin{position:static!important;height:auto!important;overflow:visible!important}.pinbox{display:flex;flex-direction:column;gap:28px;padding-top:24px!important;padding-bottom:24px!important}.herotext,.turn{position:static!important;transform:none!important;opacity:1!important;visibility:visible!important;width:auto!important}.dwin{display:none!important}.win{position:relative!important;left:auto!important;top:auto!important;transform:none!important;opacity:1!important;visibility:visible!important;width:auto!important;height:720px!important;border-radius:14px!important}.demo{display:none!important}.picker,.turn{opacity:1!important;visibility:visible!important;transform:none!important}.tbar{display:none!important}.win{border-radius:14px!important}.pickin{width:auto!important}}
+@media (max-width:640px){.dock-icons{display:none!important}.sidebar{display:none!important}}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
+</style>
+</helmet>
+<div class="sl" style="min-height: 100vh; overflow-x: clip; color: var(--text); background: {{ground}}; background-attachment: fixed; --panel: {{c.panel}}; --win: {{c.win}}; --side: {{c.side}}; --row-hover: {{c.rowHover}}; --sep: {{c.sep}}; --text: {{c.text}}; --text2: {{c.text2}}; --accent: {{c.accent}}; --accent-text: {{c.accentText}}; --accent-tint: {{c.accentTint}}; --focus: {{c.focus}}; --ph: {{c.ph}}; --box-edge: {{c.boxEdge}}; --box-bg: {{c.boxBg}}; --bar: {{c.bar}}; --success: {{c.success}}; --accent-hi: {{c.accentHi}}; --accent-glow: {{c.accentGlow}}; --gloss: {{c.gloss}}; --gloss-shine: {{c.glossShine}}; --gloss-shadow: {{c.glossShadow}}; --warning: {{c.warning}}">
+
+<div style="display: flex; align-items: center; gap: 12px; padding: 7px 24px; background: var(--panel); border-bottom: 1px solid var(--sep); font-size: 12px; color: var(--text2)">
+<span style="font-weight: 600; text-transform: uppercase; letter-spacing: .04em">Address</span>
+<span class="mono" style="font-size: 13px; color: var(--text); overflow-wrap: anywhere">{{address}}</span>
+<span style="margin-left: auto">Wireframe aid, not part of the page</span>
+</div>
+
+<div style="max-width: 1280px; margin: 0 auto; padding: 0 28px; display: flex; flex-direction: column">
+
+<header style="display: flex; align-items: center; gap: 12px; padding: 16px 0">
+<span style="display: flex; align-items: center; gap: 10px">
+<span aria-hidden="true" style="width: 32px; height: 32px; display: grid; place-items: center; flex: none"><svg width="40" height="40" viewBox="0 0 1024 1024" aria-hidden="true" style="flex: none; display: block; margin: -4px"><defs><linearGradient id="wlhbg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#5B7BFF"></stop><stop offset="1" stop-color="#8A5CF0"></stop></linearGradient><linearGradient id="wlhsh" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FFFFFF" stop-opacity=".38"></stop><stop offset="1" stop-color="#FFFFFF" stop-opacity="0"></stop></linearGradient><linearGradient id="wlhtr" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FFFFFF" stop-opacity=".5"></stop><stop offset="1" stop-color="#FFFFFF" stop-opacity="0"></stop></linearGradient></defs><rect x="100" y="112" width="824" height="824" rx="185" fill="#000" opacity=".18"></rect><rect x="100" y="100" width="824" height="824" rx="185" fill="url(#wlhbg)"></rect><g transform="translate(0 -55)"><path d="M300 604 L512 526 L724 604 L512 682 Z" fill="#FFFFFF" stroke="#FFFFFF" stroke-width="14" stroke-linejoin="round"></path><path d="M326 604 L512 536 L698 604 L512 672 Z" fill="#0B1030" fill-opacity=".30"></path><g transform="translate(328 430) rotate(-28)"><g class="pop1" style="--dx:81px;--dy:240px;--r:28deg;animation-delay:0.00s"><rect x="-64" y="-56" width="128" height="128" rx="30" fill="#0B1030" fill-opacity="0.16"></rect><rect x="-64" y="-64" width="128" height="128" rx="30" fill="#FFFFFF" fill-opacity="1"></rect></g></g><g transform="translate(512 330) rotate(0)"><g class="pop1" style="--dx:0px;--dy:274px;--r:0deg;animation-delay:0.12s"><rect x="-64" y="-56" width="128" height="128" rx="30" fill="#0B1030" fill-opacity="0.16"></rect><rect x="-64" y="-64" width="128" height="128" rx="30" fill="#FFFFFF" fill-opacity="1"></rect></g></g><g transform="translate(696 430) rotate(28)"><g class="pop1" style="--dx:-81px;--dy:240px;--r:-28deg;animation-delay:0.24s"><rect x="-64" y="-56" width="128" height="128" rx="30" fill="#0B1030" fill-opacity="0.16"></rect><rect x="-64" y="-64" width="128" height="128" rx="30" fill="#FFFFFF" fill-opacity="1"></rect></g></g><path d="M300 604 L512 682 L512 862 L300 784 Z" fill="#FFFFFF" stroke="#FFFFFF" stroke-width="14" stroke-linejoin="round"></path><path d="M724 604 L512 682 L512 862 L724 784 Z" fill="#FFFFFF" stroke="#FFFFFF" stroke-width="14" stroke-linejoin="round"></path><path d="M724 604 L512 682 L512 862 L724 784 Z" fill="#0B1030" fill-opacity=".09"></path></g><rect x="100" y="100" width="824" height="412" rx="185" fill="url(#wlhsh)"></rect><rect x="101.5" y="101.5" width="821" height="821" rx="183.5" fill="none" stroke="#FFFFFF" stroke-opacity=".28" stroke-width="3"></rect></svg></span>
+<span style="font-size: 20px; font-weight: 700; letter-spacing: -0.015em">SettleIn</span>
+</span>
+<nav aria-label="Site" style="margin-left: auto">
+<a class="tlink" href="#" aria-label="SettleIn source code on GitHub (opens in a new tab)"><span class="ghmark" aria-hidden="true"></span>GitHub<svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M4 2.5h5.5V8M9.2 2.8 2.8 9.2" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg></a>
+</nav>
+</header>
+
+<section id="stage" class="stage" style="position: relative; height: {{stageH}}; margin: 0 -28px">
+<div class="pin" style="position: sticky; top: 0; height: {{pinH}}; overflow: hidden">
+<div class="pinbox" style="position: relative; height: 100%; max-width: 1280px; margin: 0 auto; padding: 0 28px; box-sizing: border-box">
+
+<div class="herotext" style="position: absolute; left: {{textL}}; top: {{textT}}; width: {{textW}}; display: flex; flex-direction: column; gap: 22px; opacity: {{textOp}}; transform: translateY(-50%) translateX({{textX}}); visibility: {{textVis}}; transition: {{fadeTrans}}">
+
+<span class="mob-only" style="margin-bottom: 4px"><span aria-hidden="true" style="width: 84px; height: 84px; display: grid; place-items: center; flex: none"><svg width="104" height="104" viewBox="0 0 1024 1024" aria-hidden="true" style="flex: none; display: block; margin: -10px"><defs><linearGradient id="wlmbg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#5B7BFF"></stop><stop offset="1" stop-color="#8A5CF0"></stop></linearGradient><linearGradient id="wlmsh" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FFFFFF" stop-opacity=".38"></stop><stop offset="1" stop-color="#FFFFFF" stop-opacity="0"></stop></linearGradient><linearGradient id="wlmtr" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FFFFFF" stop-opacity=".5"></stop><stop offset="1" stop-color="#FFFFFF" stop-opacity="0"></stop></linearGradient></defs><rect x="100" y="112" width="824" height="824" rx="185" fill="#000" opacity=".18"></rect><rect x="100" y="100" width="824" height="824" rx="185" fill="url(#wlmbg)"></rect><g transform="translate(0 -55)"><path d="M300 604 L512 526 L724 604 L512 682 Z" fill="#FFFFFF" stroke="#FFFFFF" stroke-width="14" stroke-linejoin="round"></path><path d="M326 604 L512 536 L698 604 L512 672 Z" fill="#0B1030" fill-opacity=".30"></path><g transform="translate(328 430) rotate(-28)"><g class="pop1" style="--dx:81px;--dy:240px;--r:28deg;animation-delay:0.00s"><rect x="-64" y="-56" width="128" height="128" rx="30" fill="#0B1030" fill-opacity="0.16"></rect><rect x="-64" y="-64" width="128" height="128" rx="30" fill="#FFFFFF" fill-opacity="1"></rect></g></g><g transform="translate(512 330) rotate(0)"><g class="pop1" style="--dx:0px;--dy:274px;--r:0deg;animation-delay:0.12s"><rect x="-64" y="-56" width="128" height="128" rx="30" fill="#0B1030" fill-opacity="0.16"></rect><rect x="-64" y="-64" width="128" height="128" rx="30" fill="#FFFFFF" fill-opacity="1"></rect></g></g><g transform="translate(696 430) rotate(28)"><g class="pop1" style="--dx:-81px;--dy:240px;--r:-28deg;animation-delay:0.24s"><rect x="-64" y="-56" width="128" height="128" rx="30" fill="#0B1030" fill-opacity="0.16"></rect><rect x="-64" y="-64" width="128" height="128" rx="30" fill="#FFFFFF" fill-opacity="1"></rect></g></g><path d="M300 604 L512 682 L512 862 L300 784 Z" fill="#FFFFFF" stroke="#FFFFFF" stroke-width="14" stroke-linejoin="round"></path><path d="M724 604 L512 682 L512 862 L724 784 Z" fill="#FFFFFF" stroke="#FFFFFF" stroke-width="14" stroke-linejoin="round"></path><path d="M724 604 L512 682 L512 862 L724 784 Z" fill="#0B1030" fill-opacity=".09"></path></g><rect x="100" y="100" width="824" height="412" rx="185" fill="url(#wlmsh)"></rect><rect x="101.5" y="101.5" width="821" height="821" rx="183.5" fill="none" stroke="#FFFFFF" stroke-opacity=".28" stroke-width="3"></rect></svg></span></span>
+<h1 style="margin: 0; font-size: clamp(38px, 4.4vw, 62px); line-height: 1.04; font-weight: 800; letter-spacing: -0.035em"><span style="display: block; white-space: nowrap">Your new Mac,</span><span style="display: block; white-space: nowrap">Settled In.</span></h1>
+<p style="margin: 0; font-size: 20px; line-height: 30px; color: var(--text2)">SettleIn installs every app, all in one go.</p>
+<ol class="steps" style="position: relative; margin: 8px 0 0; padding: 0; list-style: none; display: flex; flex-direction: column; border-left: 2px solid var(--sep)">
+<span aria-hidden="true" style="position: absolute; left: -2px; top: 0; width: 2px; height: 48px; border-radius: 2px; background: var(--accent); transform: translateY({{stepY}}px); transition: transform 600ms cubic-bezier(.22,1,.36,1)"></span>
+<sc-for list="{{steps}}" as="s" hint-placeholder-count="3">
+<li style="height: 48px; box-sizing: border-box; display: flex; align-items: center; padding: 0 0 0 16px; font-size: 17px; line-height: 24px; font-weight: 500; color: {{s.color}}; transition: color 400ms ease">
+{{s.line}}
+</li>
+</sc-for>
+</ol>
+<div style="display: flex; gap: 20px; align-items: center">
+<button class="tlink" type="button" onClick="{{goPicker}}">Choose your apps<svg width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M8 3v10M4 9l4 4 4-4" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"></path></svg></button>
+<button class="tlink desk-only" type="button" onClick="{{togglePlay}}" style="font-size: 13px; color: var(--text2)!important">{{playLabel}}</button>
+</div>
+</div>
+
+
+
+<div class="dwin" aria-hidden="true" style="position: absolute; left: {{heroLpx}}; top: {{heroTpx}}; width: {{heroWpx}}; height: {{heroHpx}}; opacity: {{demoOp}}; visibility: {{demoVis}}; transition: {{fadeTrans}}; border-radius: 14px; overflow: hidden; background: var(--win); box-shadow: 0 0 0 1px var(--sep), 0 30px 80px rgba(20,30,80,.22); backdrop-filter: blur(30px) saturate(160%); -webkit-backdrop-filter: blur(30px) saturate(160%); display: flex; flex-direction: column">
+<div class="tbar" style="position: relative; height: 44px; overflow: hidden; flex: none; display: flex; align-items: center; gap: 8px; padding: 0 14px; border-bottom: 1px solid var(--sep)">
+<span aria-hidden="true" style="display: flex; gap: 8px; flex: none"><span style="width: 12px; height: 12px; border-radius: 50%; background: #FF5F57; box-shadow: inset 0 0 0 .5px #E0443E"></span><span style="width: 12px; height: 12px; border-radius: 50%; background: #FEBC2E; box-shadow: inset 0 0 0 .5px #DEA123"></span><span style="width: 12px; height: 12px; border-radius: 50%; background: #28C840; box-shadow: inset 0 0 0 .5px #1AAB29"></span></span>
+<div class="demo" aria-hidden="true" style="flex: 1; display: flex; justify-content: center; margin-right: 52px; "><span style="display: inline-flex; align-items: center; gap: 6px; font-size: 13px; font-weight: 600"><span aria-hidden="true" style="width: 16px; height: 16px; display: grid; place-items: center; flex: none"><svg width="20" height="20" viewBox="0 0 1024 1024" aria-hidden="true" style="flex: none; display: block; margin: -2px"><defs><linearGradient id="wlwbg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#5B7BFF"></stop><stop offset="1" stop-color="#8A5CF0"></stop></linearGradient><linearGradient id="wlwsh" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FFFFFF" stop-opacity=".38"></stop><stop offset="1" stop-color="#FFFFFF" stop-opacity="0"></stop></linearGradient><linearGradient id="wlwtr" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FFFFFF" stop-opacity=".5"></stop><stop offset="1" stop-color="#FFFFFF" stop-opacity="0"></stop></linearGradient></defs><rect x="100" y="112" width="824" height="824" rx="185" fill="#000" opacity=".18"></rect><rect x="100" y="100" width="824" height="824" rx="185" fill="url(#wlwbg)"></rect><g transform="translate(0 -55)"><path d="M300 604 L512 526 L724 604 L512 682 Z" fill="#FFFFFF" stroke="#FFFFFF" stroke-width="14" stroke-linejoin="round"></path><path d="M326 604 L512 536 L698 604 L512 672 Z" fill="#0B1030" fill-opacity=".30"></path><g transform="translate(328 430) rotate(-28) scale(1)"><rect x="-64" y="-56" width="128" height="128" rx="30" fill="#0B1030" fill-opacity="0.16"></rect><rect x="-64" y="-64" width="128" height="128" rx="30" fill="#FFFFFF" fill-opacity="1"></rect></g><g transform="translate(512 330) rotate(0) scale(1)"><rect x="-64" y="-56" width="128" height="128" rx="30" fill="#0B1030" fill-opacity="0.16"></rect><rect x="-64" y="-64" width="128" height="128" rx="30" fill="#FFFFFF" fill-opacity="1"></rect></g><g transform="translate(696 430) rotate(28) scale(1)"><rect x="-64" y="-56" width="128" height="128" rx="30" fill="#0B1030" fill-opacity="0.16"></rect><rect x="-64" y="-64" width="128" height="128" rx="30" fill="#FFFFFF" fill-opacity="1"></rect></g><path d="M300 604 L512 682 L512 862 L300 784 Z" fill="#FFFFFF" stroke="#FFFFFF" stroke-width="14" stroke-linejoin="round"></path><path d="M724 604 L512 682 L512 862 L724 784 Z" fill="#FFFFFF" stroke="#FFFFFF" stroke-width="14" stroke-linejoin="round"></path><path d="M724 604 L512 682 L512 862 L724 784 Z" fill="#0B1030" fill-opacity=".09"></path></g><rect x="100" y="100" width="824" height="412" rx="185" fill="url(#wlwsh)"></rect><rect x="101.5" y="101.5" width="821" height="821" rx="183.5" fill="none" stroke="#FFFFFF" stroke-opacity=".28" stroke-width="3"></rect></svg></span>SettleIn</span></div>
+
+</div>
+<div style="position: relative; flex: 1; min-height: 0">
+<div class="demo" aria-hidden="true" style="position: absolute; inset: 0; display: flex; flex-direction: column; ">
+<div style="position: relative; flex: 1; min-height: 0; overflow: hidden">
+
+<div class="dpane" style="opacity: {{p0.op}}; transform: {{p0.tf}}; padding-bottom: 84px">
+<strong style="font-size: 18px">Choose your apps</strong>
+<div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 4px 16px">
+<sc-for list="{{demoPick}}" as="d" hint-placeholder-count="8">
+<div class="drow" data-on="{{d.on}}"><span class="box"><svg width="10" height="10" viewBox="0 0 12 12" fill="none"><path d="M2.5 6.2 5 8.6 9.5 3.6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg></span><span style="width: 24px; height: 24px; border-radius: 6px; background: var(--ph); color: var(--text2); display: grid; place-items: center; font-size: 9px; font-weight: 700">{{d.init}}</span><span style="font-size: 14px; font-weight: 500">{{d.name}}</span></div>
+</sc-for>
+</div>
+</div>
+
+<div class="dpane" style="opacity: {{p1.op}}; transform: {{p1.tf}}; flex-direction: row; gap: 16px">
+<div style="flex: 1.6; min-width: 0; display: flex; flex-direction: column; gap: 10px">
+<div style="display: flex; justify-content: space-between; align-items: baseline"><strong style="font-size: 18px">Installing 5 apps</strong><span style="font-size: 13px; color: var(--text2)">{{doneText}}</span></div>
+<span style="display: block; height: 4px; border-radius: 2px; background: var(--row-hover); overflow: hidden"><span class="ease" style="display: block; height: 100%; border-radius: 2px; background: var(--accent); width: {{overallW}}"></span></span>
+<div style="border-radius: 10px; box-shadow: 0 0 0 1px var(--sep); background: var(--box-bg)">
+<sc-for list="{{demo}}" as="d" hint-placeholder-count="5">
+<div style="display: flex; align-items: center; gap: 12px; padding: 8px 14px; border-top: 1px solid var(--sep); background: {{d.rowBg}}; transition: background-color 400ms ease">
+<span style="width: 28px; height: 28px; border-radius: 7px; background: var(--ph); color: var(--text2); display: grid; place-items: center; font-size: 10px; font-weight: 700; flex: none">{{d.init}}</span>
+<span style="flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 5px"><span style="font-size: 14px; font-weight: 500">{{d.name}}</span><span style="display: block; height: 4px; border-radius: 2px; background: var(--row-hover); overflow: hidden; opacity: {{d.barOp}}; transition: opacity 350ms ease"><span style="display: block; height: 100%; background: var(--accent); width: {{d.barW}}; transition: width {{d.barDur}} cubic-bezier(.4,0,.2,1)"></span></span></span>
+<span style="font-size: 12px; font-weight: 600; color: {{d.color}}; white-space: nowrap; transition: color 350ms ease">{{d.status}}</span>
+</div>
+</sc-for>
+</div>
+</div>
+<div style="flex: 1; min-width: 0; align-self: flex-start; margin-top: 52px; display: flex; flex-direction: column; gap: 10px; padding: 14px; border-radius: 10px; background: var(--side); box-shadow: 0 0 0 1px var(--sep)">
+<span style="font-size: 11px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; color: var(--text2)">Checking {{checking}}</span>
+<sc-for list="{{checks}}" as="k" hint-placeholder-count="3">
+<span style="display: flex; gap: 8px; align-items: flex-start; font-size: 13px; line-height: 18px"><span style="width: 16px; height: 16px; border-radius: 50%; background: {{k.bg}}; color: #FFFFFF; display: grid; place-items: center; flex: none; transition: background-color 350ms ease {{k.delay}}"><svg width="9" height="9" viewBox="0 0 12 12" fill="none"><path d="M2.5 6.2 5 8.6 9.5 3.6" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"></path></svg></span>{{k.label}}</span>
+</sc-for>
+</div>
+</div>
+
+<div class="dpane" style="opacity: {{p2.op}}; transform: {{p2.tf}}; gap: 12px">
+<div style="display: flex; flex-direction: column; gap: 2px"><strong style="font-size: 18px">Installed by SettleIn</strong><span style="font-size: 13px; color: var(--text2)">Uninstall removes the app and its leftovers.</span></div>
+<div style="border-radius: 10px; box-shadow: 0 0 0 1px var(--sep); background: var(--box-bg)">
+<sc-for list="{{demo}}" as="d" hint-placeholder-count="5">
+<div style="display: flex; align-items: center; gap: 12px; padding: 8px 10px 8px 14px; border-top: 1px solid var(--sep); opacity: {{d.uOp}}; background: {{d.uBg}}; transition: opacity 500ms ease, background-color 400ms ease">
+<span style="width: 28px; height: 28px; border-radius: 7px; background: var(--ph); color: var(--text2); display: grid; place-items: center; font-size: 10px; font-weight: 700; flex: none">{{d.init}}</span>
+<span style="flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 3px"><span style="font-size: 14px; font-weight: 500">{{d.name}}</span><span style="font-size: 12px; color: {{d.uSubColor}}; transition: color 300ms ease">{{d.uSub}}</span><span style="display: block; height: 3px; border-radius: 2px; background: var(--row-hover); overflow: hidden; opacity: {{d.uBarOp}}; transition: opacity 300ms ease"><span style="display: block; height: 100%; background: var(--accent); width: {{d.uBarW}}; transition: width {{d.uBarDur}} cubic-bezier(.4,0,.2,1)"></span></span></span>
+<span class="wbtn" data-press="{{d.uPress}}" style="display: inline-flex; align-items: center; opacity: {{d.uBtnOp}}; transition: transform 220ms cubic-bezier(.22,1,.36,1), filter 220ms, opacity 300ms ease">Uninstall</span>
+</div>
+</sc-for>
+</div>
+</div>
+</div>
+<div class="gloss" style="position: absolute; left: 14px; right: 14px; bottom: 14px; display: flex; align-items: center; gap: 12px; min-height: 56px; padding: 8px 8px 8px 14px; box-sizing: border-box; border-radius: 18px; opacity: {{demoBarOp}}; transform: translateY({{demoBarY}}); transition: opacity 400ms ease, transform 500ms cubic-bezier(.22,1,.36,1)">
+<span class="dock-icons" style="display: flex; gap: 6px"><sc-for list="{{demoDock}}" as="d" hint-placeholder-count="5"><span class="ease" style="width: 30px; height: 30px; border-radius: 7px; background: var(--ph); color: var(--text2); display: grid; place-items: center; font-size: 10px; font-weight: 700; opacity: {{d.op}}; transform: {{d.tf}}">{{d.init}}</span></sc-for></span>
+<strong style="flex: 1; font-size: 14px">{{demoCountText}}</strong>
+<span class="btn" data-press="{{dlPress}}" style="min-height: 38px; font-size: 14px; opacity: {{dlOp}}; transform: {{dlTf}}">Download SettleIn</span>
+</div>
+</div>
+</div>
+</div>
+<div id="apps" class="win" style="position: absolute; left: {{pickL}}; top: {{pickT}}; width: {{pickW}}; height: {{pickH}}; transform-origin: 0 0; transform: translate({{tx}}, {{ty}}) scale({{sc}}); opacity: {{pickOp}}; visibility: {{pickVis}}; border-radius: {{pickR}}; overflow: hidden; background: var(--win); box-shadow: {{pickShadow}}; transition: {{winTrans}}; will-change: transform, opacity">
+<div class="picker" style="position: absolute; inset: 0; display: flex; flex-direction: column; ">
+<div class="cta" style="flex: none; display: flex; align-items: center; justify-content: space-between; gap: 16px; flex-wrap: wrap; padding: 24px 32px 18px; border-bottom: 1px solid var(--sep)">
+<div style="display: flex; flex-direction: column; gap: 6px"><h2 id="apps-h" style="margin: 0; font-size: 36px; line-height: 42px; font-weight: 800; letter-spacing: -0.03em">Pick the apps for your Mac.</h2>
+<p class="mob-only" style="margin: 0; font-size: 15px; line-height: 22px; color: var(--text2)">SettleIn runs on a Mac. Pick your apps here, copy the link, and open it on your Mac.</p></div>
+<div style="display: flex; gap: 8px">
+<button class="wbtn bulk" type="button" onClick="{{selectAll}}" disabled="{{allOn}}">Select all</button>
+<button class="wbtn bulk" type="button" onClick="{{clearSel}}" disabled="{{noSel}}">Deselect all</button>
+</div>
+</div>
+<div class="pickscroll" style="flex: 1; min-height: 0; overflow-x: hidden; overflow-y: auto; overscroll-behavior: contain">
+<div class="pickin" style="width: 100%; min-height: 100%; display: flex; flex-direction: column; --row-h: {{rowH}}; --ico: {{icoS}}">
+<div style="display: flex; flex: 1">
+<div style="flex: 1; min-width: 0; overflow: hidden; display: flex; flex-direction: column">
+<sc-if value="{{showNotice}}" hint-placeholder-val="{{ false }}">
+<div role="status" style="display: flex; align-items: center; gap: 10px; margin: 14px 16px 0; padding: 6px 6px 6px 12px; border-radius: 8px; background: var(--accent-tint); font-size: 13px; line-height: 18px">
+<span style="flex: 1">{{noticeText}}</span>
+<button class="wbtn" type="button" onClick="{{dismiss}}" style="cursor: pointer">Dismiss</button>
+</div>
+</sc-if>
+<sc-if value="{{hiddenTicked}}" hint-placeholder-val="{{ false }}">
+<p style="margin: 14px 20px 0; font-size: 12px; color: var(--text2)">{{hiddenText}}</p>
+</sc-if>
+<div style="flex: 1; min-width: 0; padding: 24px 32px 112px; columns: 4 240px; column-gap: 36px">
+<sc-for list="{{cats}}" as="cat" hint-placeholder-count="9">
+<div class="cat" role="group" aria-labelledby="{{cat.id}}">
+<h3 id="{{cat.id}}" style="margin: 0 0 4px; font-size: 13px; line-height: 20px; font-weight: 700; color: var(--text)">
+<label class="catall" data-state="{{cat.state}}" title="{{cat.hint}}">
+<input class="cb" type="checkbox" checked="{{cat.all}}" onChange="{{cat.toggleAll}}" aria-label="{{cat.hint}}">
+<span class="box" aria-hidden="true"><svg class="tick" width="10" height="10" viewBox="0 0 12 12" fill="none"><path d="M2.5 6.2 5 8.6 9.5 3.6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg><svg class="dash" width="10" height="10" viewBox="0 0 12 12" fill="none"><path d="M3 6h6" stroke="currentColor" stroke-width="2" stroke-linecap="round"></path></svg></span>
+<span style="flex: 0 1 auto; min-width: 0; white-space: nowrap; overflow: hidden; text-overflow: ellipsis">{{cat.name}}</span>
+<span class="catact">{{cat.action}}</span>
+</label>
+</h3>
+<sc-for list="{{cat.apps}}" as="app" hint-placeholder-count="4">
+<label class="app" data-on="{{app.on}}">
+<input class="cb" type="checkbox" checked="{{app.ticked}}" onChange="{{app.pick}}">
+<span class="box" aria-hidden="true"><svg width="10" height="10" viewBox="0 0 12 12" fill="none"><path d="M2.5 6.2 5 8.6 9.5 3.6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg></span>
+<span aria-hidden="true" style="width: var(--ico); height: var(--ico); border-radius: 22.37%; background: var(--ph); color: var(--text2); display: grid; place-items: center; font-size: 11px; font-weight: 700; flex: none">{{app.init}}</span>
+<span style="font-size: 15px; line-height: 20px; font-weight: 500">{{app.name}}</span>
+</label>
+</sc-for>
+</div>
+</sc-for>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="gloss selbar" role="region" aria-label="Your selection" style="position: absolute; left: 24px; right: 24px; bottom: 24px; box-sizing: border-box; display: flex; align-items: center; gap: 14px; min-height: 64px; padding: 10px 10px 10px 16px; border-radius: 22px">
+<span class="dock-icons" style="display: flex; gap: 6px">
+<sc-if value="{{noSel}}" hint-placeholder-val="{{ true }}">
+<span style="width: 32px; height: 32px; border-radius: 8px; border: 1.5px dashed var(--box-edge); box-sizing: border-box"></span>
+<span style="width: 32px; height: 32px; border-radius: 8px; border: 1.5px dashed var(--box-edge); box-sizing: border-box"></span>
+<span style="width: 32px; height: 32px; border-radius: 8px; border: 1.5px dashed var(--box-edge); box-sizing: border-box"></span>
+</sc-if>
+<sc-for list="{{dockIcons}}" as="d" hint-placeholder-count="0">
+<span class="pop" title="{{d.name}}" style="width: 32px; height: 32px; border-radius: 8px; background: var(--ph); color: var(--text2); display: grid; place-items: center; font-size: 11px; font-weight: 700">{{d.init}}</span>
+</sc-for>
+<sc-if value="{{hasMore}}" hint-placeholder-val="{{ false }}">
+<span style="width: 32px; height: 32px; border-radius: 8px; box-shadow: inset 0 0 0 1.5px var(--box-edge); color: var(--text2); display: grid; place-items: center; font-size: 11px; font-weight: 700">{{more}}</span>
+</sc-if>
+</span>
+<span style="flex: 1; min-width: 0; display: flex; flex-direction: column">
+<strong aria-live="polite" style="font-size: 15px; line-height: 20px">{{countText}}</strong>
+<sc-if value="{{noSel}}" hint-placeholder-val="{{ true }}"><span style="font-size: 13px; line-height: 18px; color: var(--text2)"><span class="desk-only">Tick an app above to start</span><span class="mob-only">Tick apps, then copy the link for your Mac</span></span></sc-if>
+</span>
+<sc-if value="{{hasSel}}" hint-placeholder-val="{{ false }}">
+<button class="btn mob-only" type="button" onClick="{{copyLink}}">{{copyLabel}}</button>
+<a class="btn pop desk-only" href="After.dc.html"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M8 2.5v8M4.5 7.2 8 10.7l3.5-3.5M3 13.5h10" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"></path></svg>Download SettleIn</a>
+</sc-if>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+</section>
+
+<footer class="foot" style="display: flex; flex-direction: column; gap: 32px; padding: 56px 0 32px; margin-top: 24px; border-top: 1px solid var(--sep); font-size: 14px; line-height: 20px; color: var(--text2)">
+<div style="display: flex; gap: 48px; flex-wrap: wrap; justify-content: space-between">
+<div style="display: flex; flex-direction: column; gap: 12px; max-width: 340px">
+<a href="Catalog.dc.html" style="display: flex; align-items: center; gap: 10px; text-decoration: none!important; color: var(--text)!important"><span aria-hidden="true" style="width: 28px; height: 28px; display: grid; place-items: center; flex: none"><svg width="35" height="35" viewBox="0 0 1024 1024" aria-hidden="true" style="flex: none; display: block; margin: -3px"><defs><linearGradient id="wlfbg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#5B7BFF"></stop><stop offset="1" stop-color="#8A5CF0"></stop></linearGradient><linearGradient id="wlfsh" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FFFFFF" stop-opacity=".38"></stop><stop offset="1" stop-color="#FFFFFF" stop-opacity="0"></stop></linearGradient><linearGradient id="wlftr" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FFFFFF" stop-opacity=".5"></stop><stop offset="1" stop-color="#FFFFFF" stop-opacity="0"></stop></linearGradient></defs><rect x="100" y="112" width="824" height="824" rx="185" fill="#000" opacity=".18"></rect><rect x="100" y="100" width="824" height="824" rx="185" fill="url(#wlfbg)"></rect><g transform="translate(0 -55)"><path d="M300 604 L512 526 L724 604 L512 682 Z" fill="#FFFFFF" stroke="#FFFFFF" stroke-width="14" stroke-linejoin="round"></path><path d="M326 604 L512 536 L698 604 L512 672 Z" fill="#0B1030" fill-opacity=".30"></path><g transform="translate(328 430) rotate(-28) scale(1)"><rect x="-64" y="-56" width="128" height="128" rx="30" fill="#0B1030" fill-opacity="0.16"></rect><rect x="-64" y="-64" width="128" height="128" rx="30" fill="#FFFFFF" fill-opacity="1"></rect></g><g transform="translate(512 330) rotate(0) scale(1)"><rect x="-64" y="-56" width="128" height="128" rx="30" fill="#0B1030" fill-opacity="0.16"></rect><rect x="-64" y="-64" width="128" height="128" rx="30" fill="#FFFFFF" fill-opacity="1"></rect></g><g transform="translate(696 430) rotate(28) scale(1)"><rect x="-64" y="-56" width="128" height="128" rx="30" fill="#0B1030" fill-opacity="0.16"></rect><rect x="-64" y="-64" width="128" height="128" rx="30" fill="#FFFFFF" fill-opacity="1"></rect></g><path d="M300 604 L512 682 L512 862 L300 784 Z" fill="#FFFFFF" stroke="#FFFFFF" stroke-width="14" stroke-linejoin="round"></path><path d="M724 604 L512 682 L512 862 L724 784 Z" fill="#FFFFFF" stroke="#FFFFFF" stroke-width="14" stroke-linejoin="round"></path><path d="M724 604 L512 682 L512 862 L724 784 Z" fill="#0B1030" fill-opacity=".09"></path></g><rect x="100" y="100" width="824" height="412" rx="185" fill="url(#wlfsh)"></rect><rect x="101.5" y="101.5" width="821" height="821" rx="183.5" fill="none" stroke="#FFFFFF" stroke-opacity=".28" stroke-width="3"></rect></svg></span><span style="font-size: 17px; font-weight: 700">SettleIn</span></a>
+<span>Sets up your new Mac in one go. Free and open source.</span>
+<a href="#" aria-label="SettleIn on GitHub (opens in a new tab)" style="display: inline-flex; align-items: center; gap: 8px; align-self: flex-start; min-height: 40px; color: var(--text)!important; font-weight: 600"><span class="ghmark" aria-hidden="true"></span>Star SettleIn on GitHub<svg width="11" height="11" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M4 2.5h5.5V8M9.2 2.8 2.8 9.2" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg></a>
+</div>
+<div style="display: flex; gap: 48px; flex-wrap: wrap">
+<nav aria-label="SettleIn" style="display: flex; flex-direction: column; gap: 6px; min-width: 150px"><span style="font-size: 13px; font-weight: 700; color: var(--text)">SettleIn</span><ul style="margin: 0; padding: 0; list-style: none; display: flex; flex-direction: column"><li><a href="Releases.dc.html" style="display: inline-flex; align-items: center; gap: 6px; min-height: 32px">Release notes</a></li></ul></nav>
+<nav aria-label="Open source" style="display: flex; flex-direction: column; gap: 6px; min-width: 150px"><span style="font-size: 13px; font-weight: 700; color: var(--text)">Open source</span><ul style="margin: 0; padding: 0; list-style: none; display: flex; flex-direction: column"><li><a href="#" style="display: inline-flex; align-items: center; gap: 6px; min-height: 32px">Source code <svg width="11" height="11" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M4 2.5h5.5V8M9.2 2.8 2.8 9.2" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg></a></li><li><a href="#" style="display: inline-flex; align-items: center; gap: 6px; min-height: 32px">Report a problem <svg width="11" height="11" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M4 2.5h5.5V8M9.2 2.8 2.8 9.2" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg></a></li><li><a href="#suggest-form" style="display: inline-flex; align-items: center; gap: 6px; min-height: 32px">Suggest an app <svg width="11" height="11" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M4 2.5h5.5V8M9.2 2.8 2.8 9.2" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg></a></li></ul></nav>
+<nav aria-label="Trust" style="display: flex; flex-direction: column; gap: 6px; min-width: 150px"><span style="font-size: 13px; font-weight: 700; color: var(--text)">Trust</span><ul style="margin: 0; padding: 0; list-style: none; display: flex; flex-direction: column"><li><a href="Verify.dc.html" style="display: inline-flex; align-items: center; gap: 6px; min-height: 32px">How apps are verified</a></li><li><a href="Privacy.dc.html" style="display: inline-flex; align-items: center; gap: 6px; min-height: 32px">What SettleIn sends</a></li></ul></nav>
+</div>
+</div>
+<div style="display: flex; gap: 16px; flex-wrap: wrap; justify-content: space-between; padding-top: 20px; border-top: 1px solid var(--sep); font-size: 13px">
+<span>© 2026 SettleIn contributors</span>
+<span>Not affiliated with Apple. App names and icons belong to their owners.</span>
+</div>
+</footer>
+</div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"ground":{"editor":"enum","options":["aurora","sunrise","lagoon"],"default":"aurora"},"preset":{"editor":"enum","options":["none","one","many","link","unknown"],"default":"unknown"},"filterPreset":{"editor":"enum","options":["none","work"],"default":"none"},"autoplay":{"editor":"boolean","default":true},"progress":{"editor":"enum","options":["0","1"],"default":"1"},"$preview":{"width":1440,"height":1090}}'>
+class Component extends DCLogic {
+  constructor(props) {
+    super(props);
+    this.state = { sel: null, filters: null, dismissed: false, f: 0, paused: false, grow: 1 };
+  }
+  componentDidMount() {
+    const reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    this._reduce = reduce;
+    if (!reduce && (this.props.autoplay ?? true)) {
+      this._t = setInterval(() => {
+        if (this.state.paused || this._progress > 0.02) return;
+        this.setState({ f: (this.state.f + 1) % 33 });
+      }, 450);
+    } else {
+      this.setState({ paused: true });
+    }
+    this._onScroll = () => {
+      if (this._raf) return;
+      this._raf = requestAnimationFrame(() => { this._raf = 0; this._measure(); });
+    };
+    this._animate = () => {
+      const cur = this.state.p || 0, t = this._target || 0;
+      const next = Math.abs(t - cur) < 0.0015 ? t : cur + (t - cur) * 0.2;
+      this.setState({ p: next });
+      this._raf2 = next !== t ? requestAnimationFrame(this._animate) : 0;
+    };
+    this._measure = () => {
+      const iw = window.innerWidth, ih = window.innerHeight;
+      const scrolly = !this._reduce && iw >= 900 && ih < 1060;
+      const W = Math.min(1280, iw) - 56;
+      const IW = iw;
+      const vh = scrolly ? Math.max(640, ih) : 900;
+      let p = this.state.p || 0;
+      if (scrolly) {
+        const el = document.getElementById('stage');
+        if (el) {
+          const span = el.offsetHeight - vh;
+          p = span > 0 ? Math.max(0, Math.min(1, -el.getBoundingClientRect().top / span)) : 0;
+        }
+      }
+      const g = this.state.geo;
+      if (!g || g.W !== W || g.iw !== IW || g.vh !== vh || g.scrolly !== scrolly) this.setState({ geo: { W, iw: IW, vh, scrolly } });
+      this._target = p;
+      if (!scrolly) return;
+      if (!this._raf2) this._raf2 = requestAnimationFrame(this._animate);
+    };
+    document.addEventListener('scroll', this._onScroll, true);
+    window.addEventListener('resize', this._onScroll);
+    this._measure();
+  }
+  componentWillUnmount() {
+    clearInterval(this._t);
+    cancelAnimationFrame(this._raf);
+    cancelAnimationFrame(this._raf2);
+    document.removeEventListener('scroll', this._onScroll, true);
+    window.removeEventListener('resize', this._onScroll);
+  }
+  renderVals() {
+    const dark = false;
+    const groundName = this.props.ground ?? 'aurora';
+    const preset = this.props.preset ?? 'unknown';
+    const filterPreset = this.props.filterPreset ?? 'none';
+    const LIGHT = { accentHi: '#5F7DFF', accentGlow: 'rgba(58,91,239,.32)', gloss: 'linear-gradient(180deg, rgba(255,255,255,.78), rgba(244,246,255,.55))', glossShine: 'rgba(255,255,255,.65)', glossShadow: 'inset 0 1px 0 rgba(255,255,255,.95), inset 0 0 0 .5px rgba(255,255,255,.7), 0 0 0 .5px rgba(20,30,80,.14), 0 2px 6px rgba(20,30,80,.08), 0 20px 50px rgba(20,30,80,.22)', panel: '#FFFFFFB8', win: '#FFFFFFD9', side: '#F1F3FA', rowHover: '#E6EAF5', sep: '#DCE1EE', text: '#1A1D2B', text2: '#545A6E', accent: '#3A5BEF', accentText: '#3048D6', accentTint: '#E3E8FF', focus: '#3A5BEF', ph: '#E1E5F1', boxEdge: '#A9B0C6', boxBg: '#FFFFFF', bar: '#F6F7FCE6', success: '#1A7F37', warning: '#8A5A00' };
+    const DARK = { accentHi: '#6A84FF', accentGlow: 'rgba(67,97,238,.45)', gloss: 'linear-gradient(180deg, rgba(70,82,130,.55), rgba(28,35,60,.55))', glossShine: 'rgba(255,255,255,.10)', glossShadow: 'inset 0 1px 0 rgba(255,255,255,.20), inset 0 0 0 .5px rgba(255,255,255,.10), 0 0 0 .5px rgba(0,0,0,.5), 0 2px 6px rgba(0,0,0,.3), 0 20px 50px rgba(0,0,0,.55)', panel: '#1A2138B8', win: '#161C30E0', side: '#1B2238', rowHover: '#232B45', sep: '#2A3250', text: '#F2F4FB', text2: '#A7AEC6', accent: '#4361EE', accentText: '#9AAEFF', accentTint: '#24306A', focus: '#9AAEFF', ph: '#2A3250', boxEdge: '#5D6685', boxBg: '#141A2E', bar: '#1A2138E6', success: '#3FB950', warning: '#D29922' };
+    const c = dark ? DARK : LIGHT;
+    const GROUNDS = {
+      aurora: { light: ['#EEF1F8', 'rgba(110,140,255,.38)', 'rgba(185,130,255,.30)', 'rgba(80,200,230,.22)'], dark: ['#0F1424', 'rgba(70,100,255,.34)', 'rgba(150,80,230,.28)', 'rgba(40,170,200,.16)'] },
+      sunrise: { light: ['#F7F1EE', 'rgba(255,160,120,.36)', 'rgba(255,120,170,.26)', 'rgba(255,205,110,.30)'], dark: ['#1A1220', 'rgba(255,110,90,.26)', 'rgba(210,70,150,.26)', 'rgba(255,170,60,.14)'] },
+      lagoon: { light: ['#EDF5F5', 'rgba(60,200,190,.32)', 'rgba(90,150,255,.28)', 'rgba(150,230,170,.26)'], dark: ['#0C181C', 'rgba(30,170,160,.28)', 'rgba(50,110,230,.26)', 'rgba(90,200,130,.14)'] }
+    };
+    const g = (GROUNDS[groundName] || GROUNDS.aurora)[dark ? 'dark' : 'light'];
+    const ground = 'radial-gradient(900px 600px at 8% -5%, ' + g[1] + ', transparent 70%), radial-gradient(800px 600px at 95% 10%, ' + g[2] + ', transparent 70%), radial-gradient(1000px 700px at 60% 105%, ' + g[3] + ', transparent 70%), ' + g[0];
+    const CATS = [
+      ['Browsers', [['Google Chrome','google-chrome'],['Firefox','firefox'],['Brave','brave-browser']]],
+      ['Communication', [['Zoom','zoom'],['Slack','slack'],['Discord','discord'],['WhatsApp','whatsapp'],['Microsoft Teams','microsoft-teams']]],
+      ['Developer tools', [['GitHub Desktop','github'],['Visual Studio Code','visual-studio-code'],['Cursor','cursor'],['Docker Desktop','docker-desktop'],['iTerm2','iterm2'],['Sublime Text','sublime-text'],['Cyberduck','cyberduck'],['Claude','claude'],['ChatGPT','chatgpt']]],
+      ['Media', [['Spotify','spotify'],['VLC','vlc'],['Audacity','audacity'],['HandBrake','handbrake-app'],['OBS','obs'],['Plex','plex']]],
+      ['Creative', [['Blender','blender'],['GIMP','gimp'],['Inkscape','inkscape'],['Sketch','sketch']]],
+      ['Productivity and storage', [['LibreOffice','libreoffice'],['Dropbox','dropbox'],['Google Drive','google-drive'],['OneDrive','onedrive']]],
+      ['Games', [['Steam','steam'],['Epic Games Launcher','epic-games']]],
+      ['Security', [['1Password','1password'],['Bitwarden','bitwarden']]],
+      ['Utilities', [['AppCleaner','appcleaner'],['Caffeine','caffeine'],['coconutBattery','coconutbattery'],['The Unarchiver','the-unarchiver'],['Keka','keka'],['balenaEtcher','balenaetcher'],['AnyDesk','anydesk'],['Tailscale','tailscale-app'],['TeamViewer','teamviewer']]]
+    ];
+    const PRESETS = {
+      none: [],
+      one: ['firefox'],
+      many: ['google-chrome','slack','zoom','visual-studio-code','cursor','spotify','vlc','dropbox','1password','the-unarchiver'],
+      link: ['firefox','slack','vlc'],
+      unknown: ['firefox','slack','vlc','notanapp']
+    };
+    const FILTER_PRESETS = { none: [], work: ['Communication', 'Developer tools', 'Productivity and storage'] };
+    const all = [];
+    const names = {};
+    CATS.forEach(([, apps]) => apps.forEach(([n, t]) => { all.push(t); names[t] = n; }));
+    const initials = (n) => { const w = n.split(' '); return w.length > 1 ? (w[0][0] + w[1][0]).toUpperCase() : n[0].toUpperCase() + n[1]; };
+    const st = this.state || {};
+
+    // Autoplay demo, 450 ms frames: 0-8 choose, 9-24 verify, 25-32 uninstall.
+    const f = st.f || 0;
+    const START = [0, 9, 25];
+    const stage = f >= 25 ? 2 : f >= 9 ? 1 : 0;
+    const go = (i) => this.setState({ f: START[i] });
+    const pane = (i) => ({ op: i === stage ? 1 : 0, tf: i === stage ? 'none' : (i < stage ? 'translateY(-16px) scale(.985)' : 'translateY(16px) scale(.985)') });
+    const DEMO = [['Firefox', false], ['Slack', false], ['Visual Studio Code', false], ['Zoom', true], ['Spotify', false]];
+    const pickOrder = DEMO.map((d) => d[0]);
+    const pickList = ['Firefox', 'Google Chrome', 'Slack', 'Discord', 'Visual Studio Code', 'Docker Desktop', 'Zoom', 'Spotify'];
+    const ticked = stage === 0 ? Math.max(0, Math.min(f, 5)) : 5;
+    const demoPick = pickList.map((n) => ({ name: n, init: initials(n), on: pickOrder.indexOf(n) > -1 && pickOrder.indexOf(n) < ticked ? 'yes' : 'no' }));
+    const k = f - 9;
+    const u = f - 25;
+    const phase = (i) => (stage < 1 ? 'wait' : stage > 1 ? 'done' : k < 3 * i ? 'wait' : k < 3 * i + 2 ? 'down' : k === 3 * i + 2 ? 'verify' : 'done');
+    const demo = DEMO.map(([n, pkg], i) => {
+      const ph = phase(i);
+      const done = ph === 'done';
+      return {
+        name: n, init: initials(n),
+        approveNote: pkg ? 'Opens in Apple\u2019s Installer' : 'Will install',
+        status: ph === 'wait' ? 'Waiting' : ph === 'down' ? 'Downloading' : ph === 'verify' ? 'Verifying' : (pkg ? 'Opened in Apple\u2019s Installer' : 'Done'),
+        color: done ? (pkg ? c.warning : c.success) : ph === 'verify' ? c.accentText : c.text2,
+        rowBg: ph === 'verify' ? c.accentTint : 'transparent',
+        barOp: ph === 'down' || ph === 'verify' ? 1 : 0,
+        barW: ph === 'wait' ? '0%' : '100%',
+        barDur: ph === 'down' ? '850ms' : '0ms',
+        doneOp: stage === 2 ? 1 : 0,
+        doneTf: stage === 2 ? 'none' : 'translateY(10px)',
+        delay: stage === 2 ? (150 + i * 80) + 'ms' : '0ms',
+        uOp: stage === 2 && i === 2 && u >= 6 ? 0.45 : 1,
+        uBg: stage === 2 && i === 2 && u >= 2 && u < 6 ? c.accentTint : 'transparent',
+        uSub: i === 2 && stage === 2 && u >= 6 ? 'Removed, leftovers included' : i === 2 && stage === 2 && u >= 3 ? 'Removing leftovers\u2026' : pkg ? 'Removal asks for your admin password' : 'Installed by SettleIn',
+        uSubColor: i === 2 && stage === 2 && u >= 6 ? c.success : c.text2,
+        uBarOp: i === 2 && stage === 2 && u >= 3 && u < 6 ? 1 : 0,
+        uBarW: i === 2 && stage === 2 && u >= 3 ? '100%' : '0%',
+        uBarDur: i === 2 && stage === 2 && u >= 3 && u < 6 ? '1300ms' : '0ms',
+        uPress: i === 2 && stage === 2 && u === 2 ? 'yes' : 'no',
+        uBtnOp: i === 2 && stage === 2 && u >= 3 ? 0 : 1
+      };
+    });
+    const doneN = DEMO.filter((d, i) => phase(i) === 'done').length;
+    const vIdx = stage === 1 ? Math.max(0, Math.min(4, Math.floor(Math.max(k, 0) / 3))) : 0;
+    const checksOn = stage === 1 && (phase(vIdx) === 'verify' || phase(vIdx) === 'done');
+    const STEPS = [
+      ['Choose', 'Select from a curated set.'],
+      ['Verify', 'We verify the signature.'],
+      ['Done', 'Uninstall whenever you want.']
+    ];
+    const steps = STEPS.map(([title, line], i) => ({ title, line, color: i === stage ? c.text : c.text2 }));
+    const tabs = ['Choose', 'Verify', 'Done'].map((label, i) => ({ label, color: stage === i ? c.text : c.text2, go: () => go(i) }));
+    const dockShown = stage === 0 ? ticked : 5;
+    const demoVals = {
+      steps, tabs,
+      stepY: stage * 48,
+      tabX: (stage * 100) + '%',
+      p0: pane(0), p1: pane(1), p2: pane(2),
+      demoPick, demo,
+      demoDock: DEMO.map(([n], i) => ({ init: initials(n), op: i < dockShown ? 1 : 0, tf: i < dockShown ? 'none' : 'scale(.5) translateY(10px)' })),
+      demoBarOp: stage === 0 ? 1 : 0,
+      demoBarY: stage === 0 ? '0px' : '18px',
+      demoCountText: dockShown + (dockShown === 1 ? ' app selected' : ' apps selected'),
+      dlOp: dockShown > 0 ? 1 : 0,
+      dlTf: dockShown > 0 ? 'none' : 'translateY(8px)',
+      dlPress: f === 8 ? 'yes' : 'no',
+      doneText: doneN + ' of 5 done',
+      overallW: (doneN * 20) + '%',
+      doneScale: stage === 2 ? 1 : 0.6,
+      checking: DEMO[vIdx][0],
+      checks: ['Developer ID signature', 'Notarized by Apple', 'SHA-256 matches the catalog'].map((label, i) => ({ label, bg: checksOn ? c.success : c.boxEdge, delay: checksOn ? (i * 120) + 'ms' : '0ms' }))
+    };
+
+    // Interactive picker
+    const fromAddress = PRESETS[preset] || [];
+    const known = fromAddress.filter((t) => all.includes(t));
+    const unknown = fromAddress.filter((t) => !all.includes(t));
+    const sel = st.sel || known;
+    const filters = [];
+    const toggle = (t) => {
+      const cur = (this.state && this.state.sel) || known;
+      this.setState({ sel: cur.includes(t) ? cur.filter((x) => x !== t) : cur.concat([t]) });
+    };
+    const toggleFilter = (name) => {
+      const cur = (this.state && this.state.filters) || FILTER_PRESETS[filterPreset] || [];
+      this.setState({ filters: cur.includes(name) ? cur.filter((x) => x !== name) : cur.concat([name]) });
+    };
+    const shown = CATS.filter(([name]) => !filters.length || filters.includes(name));
+    const cats = shown.map(([name, apps]) => ({
+      name,
+      id: 'cat-' + name.toLowerCase().replace(/[^a-z]+/g, '-'),
+      apps: apps.map(([an, t]) => ({ name: an, init: initials(an), on: sel.includes(t) ? 'yes' : 'no', ticked: sel.includes(t), pick: () => toggle(t) })),
+      ...(() => {
+        const ts = apps.map((x) => x[1]);
+        const n = ts.filter((t) => sel.includes(t)).length;
+        const state = n === 0 ? 'none' : n === ts.length ? 'all' : 'some';
+        return {
+          state,
+          all: state === 'all',
+          count: n && n < ts.length ? n + ' of ' + ts.length : '',
+          action: state === 'all' ? 'Deselect all' : 'Select all',
+          hint: (state === 'all' ? 'Deselect all ' : 'Select all ') + name + ' apps',
+          toggleAll: () => {
+            const cur = (this.state && this.state.sel) || known;
+            this.setState({ sel: state === 'all' ? cur.filter((t) => !ts.includes(t)) : cur.concat(ts.filter((t) => !cur.includes(t))) });
+          }
+        };
+      })()
+    }));
+    const filterRows = CATS.map(([name, apps]) => {
+      const n = apps.filter(([, t]) => sel.includes(t)).length;
+      return { name, pressed: filters.includes(name) ? 'true' : 'false', meta: n ? n + '/' + apps.length : String(apps.length), toggle: () => toggleFilter(name) };
+    });
+    const hiddenN = filters.length ? CATS.filter(([name]) => !filters.includes(name)).reduce((n, [, apps]) => n + apps.filter(([, t]) => sel.includes(t)).length, 0) : 0;
+    const ordered = all.filter((t) => sel.includes(t));
+    const count = sel.length;
+    const geo = st.geo || { W: 1224, iw: 1440, vh: 900, scrolly: false };
+    const scrolly = geo.scrolly;
+    const pStatic = st.pStatic != null ? st.pStatic : Number(this.props.progress ?? 1);
+    const p = scrolly ? (st.p || 0) : pStatic;
+    this._progress = p;
+    const cl = (x) => Math.max(0, Math.min(1, x));
+    const ease = (x) => (x < 0.5 ? 4 * x * x * x : 1 - Math.pow(-2 * x + 2, 3) / 2);
+    const e = ease(cl(p / 0.6));
+    const fadeIn = cl(p / 0.12);
+    const tOut = cl(p / 0.3);
+    const W = geo.W, vh = geo.vh;
+    const iwv = geo.iw || (W + 56);
+    const off = Math.round((iwv - Math.min(1280, iwv)) / 2);
+    const textWpx = Math.min(470, Math.round(W * 0.4));
+    const heroW = Math.min(660, Math.round(W * 0.52)), heroH = 460, gap = 80;
+    const gx = 28 + Math.max(0, Math.round((W - (textWpx + gap + heroW)) / 2));
+    const midY = Math.round((vh - 110) / 2);
+    const heroL = gx + textWpx + gap, heroT = midY - heroH / 2;
+    const pad = 20;
+    const appW = iwv - pad * 2, appH = vh - pad * 2, appL = -off + pad;
+    const s0 = heroW / appW;
+    const tx0 = heroL - appL, ty0 = heroT + heroH / 2 - (appH * s0) / 2 - pad;
+    const sc = s0 + (1 - s0) * e;
+    const ez = 'cubic-bezier(.22,1,.36,1)';
+    const geoVals = {
+      stageH: (scrolly ? Math.round(vh * 2.0) : vh) + 'px',
+      pinH: vh + 'px',
+      textW: textWpx + 'px',
+      textL: gx + 'px',
+      textT: midY + 'px',
+      textOp: (1 - tOut).toFixed(3),
+      textX: Math.round(-40 * tOut) + 'px',
+      textVis: tOut > 0.98 ? 'hidden' : 'visible',
+      turnOp: '1', turnY: '0px',
+      heroLpx: heroL + 'px', heroTpx: heroT + 'px', heroWpx: heroW + 'px', heroHpx: heroH + 'px',
+      demoOp: (1 - fadeIn).toFixed(3), demoVis: fadeIn > 0.98 ? 'hidden' : 'visible',
+      pickOp: fadeIn.toFixed(3), pickVis: fadeIn < 0.02 ? 'hidden' : 'visible',
+      rowH: Math.max(32, Math.min(44, Math.floor((vh - 360) / 15))) + 'px',
+      icoS: Math.max(22, Math.min(30, Math.floor((vh - 360) / 15) - 12)) + 'px',
+      pickL: appL + 'px', pickW: appW + 'px', pickT: pad + 'px', pickH: appH + 'px',
+      tx: (tx0 * (1 - e)).toFixed(1) + 'px', ty: (ty0 * (1 - e)).toFixed(1) + 'px', sc: sc.toFixed(4),
+      pickR: ((14 * (1 - e) + 18 * e) / sc).toFixed(1) + 'px',
+      pickShadow: '0 0 0 ' + (1 / sc).toFixed(2) + 'px ' + c.sep + ', 0 30px 90px rgba(20,30,80,.22)',
+      winTrans: scrolly ? 'none' : 'transform 900ms ' + ez + ', border-radius 900ms ' + ez + ', opacity 400ms ease',
+      fadeTrans: scrolly ? 'none' : 'opacity 400ms ease, transform 700ms ' + ez
+    };
+    const goPicker = () => {
+      if (scrolly) {
+        const el = document.getElementById('stage');
+        const se = document.scrollingElement || document.documentElement;
+        if (el) se.scrollTo({ top: se.scrollTop + el.getBoundingClientRect().top + (el.offsetHeight - vh) * 0.75, behavior: 'smooth' });
+      } else if (window.innerWidth < 900) {
+        const el = document.getElementById('apps');
+        if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      } else {
+        this.setState({ pStatic: 1 });
+      }
+    };
+    return {
+      c, ground,
+      ...demoVals,
+      togglePlay: () => this.setState({ paused: !this.state.paused }),
+      playLabel: st.paused ? 'Play demo' : 'Pause demo',
+      ...geoVals,
+      goPicker,
+      cats,
+      filters: filterRows,
+      filtering: filters.length > 0,
+      showAll: () => this.setState({ filters: [] }),
+      clearSel: () => this.setState({ sel: [] }),
+      selectAll: () => this.setState({ sel: all.slice() }),
+      allOn: sel.length === all.length,
+      hiddenTicked: hiddenN > 0,
+      hiddenText: (hiddenN === 1 ? '1 ticked app is' : hiddenN + ' ticked apps are') + ' in hidden categories and stays selected.',
+      address: 'settlein.dev/' + (count ? '?apps=' + ordered.join(',') : ''),
+      countText: count === 1 ? '1 app selected' : count + ' apps selected',
+      hasSel: count > 0,
+      noSel: count === 0,
+      dockIcons: sel.slice(0, 7).map((t) => ({ name: names[t], init: initials(names[t]) })),
+      hasMore: count > 7,
+      more: '+' + (count - 7),
+      showNotice: unknown.length > 0 && !st.dismissed,
+      noticeText: (unknown.length === 1 ? 'This link named 1 app' : 'This link named ' + unknown.length + ' apps') + ' SettleIn no longer offers, so it was left out.',
+      dismiss: () => this.setState({ dismissed: true }),
+      copyLabel: st.copied ? 'Link copied' : 'Copy link',
+      copyLink: () => {
+        const url = 'https://' + 'settlein.dev/' + (ordered.length ? '?apps=' + ordered.join(',') : '');
+        try { navigator.clipboard.writeText(url); } catch (e) {}
+        this.setState({ copied: true });
+        clearTimeout(this._ct); this._ct = setTimeout(() => this.setState({ copied: false }), 2000);
+      }
+    };
+  }
+}
+</script>
+</body>
+</html>

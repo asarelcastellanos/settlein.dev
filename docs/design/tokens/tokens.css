@@ -1,0 +1,83 @@
+:root {
+  /* Light ships. Dark is reserved: see DESIGN.md. */
+  --ground-base: #EEF1F8;
+  --ground-glow-blue: #6E8CFF61;
+  --ground-glow-violet: #B982FF4C;
+  --ground-glow-cyan: #50C8E638;
+  --surface-panel: #FFFFFFB8;
+  --surface-window: #FFFFFFD9;
+  --surface-side: #F1F3FA;
+  --row-hover: #E6EAF5;
+  --separator: #DCE1EE;
+  --text-primary: #1A1D2B;
+  --text-secondary: #545A6E;
+  --accent: #3A5BEF;
+  --accent-hi: #5F7DFF;
+  --accent-text: #3048D6;
+  --accent-tint: #E3E8FF;
+  --focus-ring: #3A5BEF;
+  --checkbox-edge: #7E869E;
+  --icon-placeholder: #E1E5F1;
+  --success: #1A7F37;
+  --warning: #8A5A00;
+  --warning-tint: #FFF4DC;
+  --danger: #C4161C;
+  --danger-tint: #FDE8E8;
+  --destructive: #D92D2D;
+  --disabled: #DCE1EE;
+  --disabled-text: #7E8499;
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 24px;
+  --space-6: 32px;
+  --space-7: 48px;
+  --space-8: 64px;
+  --space-9: 96px;
+  --r-checkbox: 5px;
+  --r-row: 9px;
+  --r-button: 10px;
+  --r-panel: 20px;
+  --font: -apple-system, BlinkMacSystemFont, "SF Pro Text", Inter, system-ui, sans-serif;
+  --mono: ui-monospace, "SF Mono", Menlo, monospace;
+  --ease-out: cubic-bezier(.22,1,.36,1);
+  --ease-spring: cubic-bezier(.34,1.45,.64,1);
+}
+
+/* Reserved. Do not enable until the owner decides to ship dark mode.
+@media (prefers-color-scheme: dark) {
+  :root {
+    --ground-base: #0E1120;
+    --ground-glow-blue: #6E8CFF42;
+    --ground-glow-violet: #B982FF33;
+    --ground-glow-cyan: #50C8E61F;
+    --surface-panel: #1A1E30B8;
+    --surface-window: #171A2AE6;
+    --surface-side: #20243A;
+    --row-hover: #262B44;
+    --separator: #2E3450;
+    --text-primary: #EEF0F8;
+    --text-secondary: #A3A9BE;
+    --accent: #3A5BEF;
+    --accent-hi: #5F7DFF;
+    --accent-text: #93A6FF;
+    --accent-tint: #252E5E;
+    --focus-ring: #93A6FF;
+    --checkbox-edge: #5D6480;
+    --icon-placeholder: #2A2F48;
+    --success: #3FB950;
+    --warning: #E3B341;
+    --warning-tint: #3A2F12;
+    --danger: #FF6B6B;
+    --danger-tint: #3D1A1E;
+    --destructive: #D92D2D;
+    --disabled: #2E3450;
+    --disabled-text: #6E748C;
+  }
+}
+*/
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation: none !important; transition-duration: 120ms !important; }
+}

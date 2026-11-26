@@ -51,16 +51,16 @@ notarize() {
 }
 
 if [[ "$input" == *.app ]]; then
-  ditto "$input" "$work/Settlein.app"
+  ditto "$input" "$work/SettleIn.app"
 else
   ditto "$input" "$work/src"
   (cd "$work/src" && xcodegen generate --quiet)
-  xcodebuild -project "$work/src/Settlein.xcodeproj" -scheme Settlein \
+  xcodebuild -project "$work/src/SettleIn.xcodeproj" -scheme SettleIn \
     -configuration Release -derivedDataPath "$work/derived" \
     CODE_SIGNING_ALLOWED=NO build
-  ditto "$work/derived/Build/Products/Release/Settlein.app" "$work/Settlein.app"
+  ditto "$work/derived/Build/Products/Release/SettleIn.app" "$work/SettleIn.app"
 fi
-app="$work/Settlein.app"
+app="$work/SettleIn.app"
 
 codesign --force --options runtime --timestamp --sign "$identity" "$app"
 codesign --verify --strict --verbose=2 "$app"
@@ -71,16 +71,16 @@ xcrun stapler staple "$app"
 xcrun stapler validate "$app"
 
 mkdir "$work/dmg-root"
-ditto "$app" "$work/dmg-root/Settlein.app"
-hdiutil create -volname "Settlein" -srcfolder "$work/dmg-root" -ov -format UDZO "$work/Settlein.dmg"
-codesign --force --timestamp --sign "$identity" "$work/Settlein.dmg"
-notarize "$work/Settlein.dmg"
-xcrun stapler staple "$work/Settlein.dmg"
-xcrun stapler validate "$work/Settlein.dmg"
+ditto "$app" "$work/dmg-root/SettleIn.app"
+hdiutil create -volname "SettleIn" -srcfolder "$work/dmg-root" -ov -format UDZO "$work/SettleIn.dmg"
+codesign --force --timestamp --sign "$identity" "$work/SettleIn.dmg"
+notarize "$work/SettleIn.dmg"
+xcrun stapler staple "$work/SettleIn.dmg"
+xcrun stapler validate "$work/SettleIn.dmg"
 
 spctl -a -vv "$app"
-spctl -a -t open --context context:primary-signature -vv "$work/Settlein.dmg"
+spctl -a -t open --context context:primary-signature -vv "$work/SettleIn.dmg"
 
-rm -rf "$out/Settlein.app" "$out/Settlein.dmg"
-mv "$app" "$out/Settlein.app"
-mv "$work/Settlein.dmg" "$out/Settlein.dmg"
+rm -rf "$out/SettleIn.app" "$out/SettleIn.dmg"
+mv "$app" "$out/SettleIn.app"
+mv "$work/SettleIn.dmg" "$out/SettleIn.dmg"

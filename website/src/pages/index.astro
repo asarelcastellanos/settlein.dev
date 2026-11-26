@@ -12,21 +12,28 @@ const total = groups.reduce((sum, group) => sum + group.apps.length, 0);
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="color-scheme" content="light dark" />
-    <link rel="icon" href="data:," />
-    <title>Settlein. Set up a new Mac in one go.</title>
+    <meta name="color-scheme" content="light" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="icon" href="/favicon.ico" sizes="48x48" />
+    <link rel="icon" href="/favicon-32.png" type="image/png" sizes="32x32" />
+    <link rel="icon" href="/favicon-16.png" type="image/png" sizes="16x16" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <meta property="og:image" content="https://settlein.dev/og-image.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <title>SettleIn. Set up a new Mac in one go.</title>
     <meta
       name="description"
-      content="Tick the Mac apps you want, download Settlein, and approve the list."
+      content="Tick the Mac apps you want, download SettleIn, and approve the list."
     />
   </head>
   <body>
     <main class="page">
       <header class="intro">
-        <h1>Settlein</h1>
+        <h1>SettleIn</h1>
         <p>
-          Settlein installs the Mac apps you tick, in one go, on a new Mac. Tick apps, download
-          Settlein, approve the list.
+          SettleIn installs the Mac apps you tick, in one go, on a new Mac. Tick apps, download
+          SettleIn, approve the list.
         </p>
       </header>
 
@@ -74,7 +81,7 @@ const total = groups.reduce((sum, group) => sum + group.apps.length, 0);
         disabled
         data-handoff-target={DOWNLOAD_HANDOFF_PLACEHOLDER}
       >
-        Download Settlein
+        Download SettleIn
       </button>
     </div>
 

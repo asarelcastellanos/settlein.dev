@@ -7,7 +7,7 @@ from urllib.parse import parse_qs, urlparse
 
 ROOT = os.path.join(os.path.dirname(os.path.abspath(__file__)), "build")
 FILES = {
-    "/Settlein.dmg": ("Settlein.dmg", "application/x-apple-diskimage"),
+    "/SettleIn.dmg": ("SettleIn.dmg", "application/x-apple-diskimage"),
 }
 EXAMPLE_APPS = "iterm2,rectangle,obsidian"
 VALID = re.compile(r"[a-z0-9-]+(,[a-z0-9-]+)*")
@@ -27,15 +27,15 @@ class Handler(http.server.BaseHTTPRequestHandler):
         if url.path == "/":
             if apps is None:
                 body = (
-                    "<!doctype html><title>Settlein test download</title>"
+                    "<!doctype html><title>SettleIn test download</title>"
                     "<h1>Choose a selection</h1>"
                     f'<p><a href="/?apps={EXAMPLE_APPS}">Example: {EXAMPLE_APPS}</a></p>'
                 ).encode()
             else:
                 body = (
-                    "<!doctype html><title>Settlein test download</title>"
+                    "<!doctype html><title>SettleIn test download</title>"
                     f"<h1>Selection: {apps}</h1>"
-                    f'<p><a href="/Settlein.dmg?apps={apps}">Download disk image</a></p>'
+                    f'<p><a href="/SettleIn.dmg?apps={apps}">Download disk image</a></p>'
                 ).encode()
             self.send(200, "text/html; charset=utf-8", body)
             return

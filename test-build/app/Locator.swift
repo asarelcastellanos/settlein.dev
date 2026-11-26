@@ -61,7 +61,7 @@ func diskImagePath(forVolumeAt volume: String) -> (path: String?, note: String) 
 
 func spotlightCandidates() -> (paths: [String], note: String) {
     let home = NSHomeDirectory()
-    let result = runTool("/usr/bin/mdfind", ["-onlyin", home, #"kMDItemWhereFroms == "*Settlein*"c"#])
+    let result = runTool("/usr/bin/mdfind", ["-onlyin", home, #"kMDItemWhereFroms == "*SettleIn*"c"#])
     guard result.status == 0 else { return ([], "mdfind failed: \(result.output.prefix(200))") }
     let paths = result.output.split(separator: "\n").map(String.init)
     return (paths, "mdfind returned \(paths.count) paths")
@@ -71,7 +71,7 @@ func downloadsCandidates() -> (paths: [String], note: String) {
     let folder = NSHomeDirectory() + "/Downloads"
     do {
         let names = try FileManager.default.contentsOfDirectory(atPath: folder)
-        let hits = names.filter { $0.range(of: #"^Settlein( \([0-9]+\))?\.dmg$"#, options: .regularExpression) != nil }.sorted()
+        let hits = names.filter { $0.range(of: #"^SettleIn( \([0-9]+\))?\.dmg$"#, options: .regularExpression) != nil }.sorted()
         return (hits.map { folder + "/" + $0 }, "listed \(names.count) entries in \(folder)")
     } catch {
         return ([], "cannot list \(folder): \(error.localizedDescription)")
