@@ -20,7 +20,7 @@ func describeFile(_ path: String) -> [String] {
 func buildLocateReport() -> String {
     var lines: [String] = []
     let bundle = Bundle.main.bundleURL
-    lines.append("Settlein test build report (S1, S2)")
+    lines.append("SettleIn test build report (S1, S2)")
     lines.append("date: \(ISO8601DateFormatter().string(from: Date()))")
     lines.append("macOS: \(ProcessInfo.processInfo.operatingSystemVersionString)")
     lines.append("user: \(NSUserName())")
@@ -96,7 +96,7 @@ func buildLocateReport() -> String {
 
 func reportFileURL(stamp: String) -> URL {
     let folder = FileManager.default.homeDirectoryForCurrentUser
-        .appendingPathComponent("Library/Logs/SettleinTestBuild")
+        .appendingPathComponent("Library/Logs/SettleInTestBuild")
     try? FileManager.default.createDirectory(at: folder, withIntermediateDirectories: true)
     return folder.appendingPathComponent("report-\(stamp).txt")
 }

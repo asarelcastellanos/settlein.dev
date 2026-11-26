@@ -5,11 +5,11 @@
 	<key>CFBundleIdentifier</key>
 	<string>dev.settlein.testbuild</string>
 	<key>CFBundleName</key>
-	<string>Settlein Test</string>
+	<string>SettleIn Test</string>
 	<key>CFBundleDisplayName</key>
-	<string>Settlein Test</string>
+	<string>SettleIn Test</string>
 	<key>CFBundleExecutable</key>
-	<string>SettleinTest</string>
+	<string>SettleInTest</string>
 	<key>CFBundlePackageType</key>
 	<string>APPL</string>
 	<key>CFBundleShortVersionString</key>

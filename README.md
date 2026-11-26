@@ -1,6 +1,6 @@
-# Settlein
+# SettleIn
 
-Settlein sets up a new Mac. You open settlein.dev, tick the apps you want and download Settlein. Settlein shows the list, waits for your approval, then downloads, verifies and installs every app. It needs no Terminal and no visits to vendor websites. It also removes the apps it installed, with their leftovers.
+SettleIn sets up a new Mac. You open settlein.dev, tick the apps you want and download SettleIn. SettleIn shows the list, waits for your approval, then downloads, verifies and installs every app. It needs no Terminal and no visits to vendor websites. It also removes the apps it installed, with their leftovers.
 
 The repository holds the Mac app (Swift), the website (HTML, CSS and JavaScript) and the app catalog.
 
