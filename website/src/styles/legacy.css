@@ -1,0 +1,30 @@
+:root {
+  color-scheme: light;
+
+  --font-body: system-ui, -apple-system, "Segoe UI", sans-serif;
+
+  --color-page: #f5f5f7;
+  --color-surface: #ffffff;
+  --color-sunken: #ececf0;
+  --color-text: #1d1d1f;
+  --color-muted: #5c5c61;
+  --color-line: #8e8e93;
+  --color-accent: #0050c8;
+  --color-on-accent: #ffffff;
+  --color-focus: #0050c8;
+
+  --radius-s: 6px;
+  --radius-m: 10px;
+  --radius-l: 14px;
+
+  --tile-size: 3.5rem;
+  --content-width: 72rem;
+  --bar-height: 5rem;
+  --target-min: 1.5rem;
+}
+
+@media (pointer: coarse) {
+  :root {
+    --target-min: 2.75rem;
+  }
+}

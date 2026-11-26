@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>SettleIn Mac app: A4 Installed list: record unreadable</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+.lt{--win:rgba(255,255,255,.86);--side:#F4F6FB;--sep:#DCE1EE;--text:#1A1D2B;--text2:#545A6E;--accent:#3A5BEF;--accent-hi:#5F7DFF;--accent-text:#3048D6;--tint:#E3E8FF;--ok:#1A7F37;--warn:#8A5A00;--warn-tint:#FFF4DC;--bad:#C4161C;--bad-tint:#FDE8E8;--ph:#E1E5F1;--btn:#FFFFFF;--glass:linear-gradient(180deg,rgba(255,255,255,.80),rgba(244,246,255,.58));--glass-shadow:inset 0 1px 0 rgba(255,255,255,.95),0 0 0 .5px rgba(20,30,80,.14),0 14px 36px rgba(20,30,80,.20);--wall:radial-gradient(700px 500px at 10% 0%,rgba(110,140,255,.45),transparent 70%),radial-gradient(700px 500px at 95% 15%,rgba(185,130,255,.38),transparent 70%),radial-gradient(800px 600px at 60% 110%,rgba(80,200,230,.28),transparent 70%),#E8ECF6}
+.dk{--win:rgba(26,30,46,.90);--side:#1E2338;--sep:#2E3550;--text:#F2F4FB;--text2:#A7AEC6;--accent:#4361EE;--accent-hi:#6A84FF;--accent-text:#9AAEFF;--tint:#24306A;--ok:#3FB950;--warn:#D29922;--warn-tint:#3A2E12;--bad:#FF6B6B;--bad-tint:#3D1A20;--ph:#2A3250;--btn:#2A3048;--glass:linear-gradient(180deg,rgba(70,82,130,.55),rgba(28,35,60,.55));--glass-shadow:inset 0 1px 0 rgba(255,255,255,.18),0 0 0 .5px rgba(0,0,0,.5),0 14px 36px rgba(0,0,0,.55);--wall:radial-gradient(700px 500px at 10% 0%,rgba(70,100,255,.40),transparent 70%),radial-gradient(700px 500px at 95% 15%,rgba(150,80,230,.32),transparent 70%),radial-gradient(800px 600px at 60% 110%,rgba(40,170,200,.20),transparent 70%),#0E1222}
+.b{font-family:-apple-system,BlinkMacSystemFont,"SF Pro Text",Inter,system-ui,sans-serif;-webkit-font-smoothing:antialiased;width:1440px;height:780px;display:flex;color:var(--text)}
+.desk{flex:1;display:grid;place-items:center;background:var(--wall)}
+.win{position:relative;width:900px;height:620px;border-radius:16px;overflow:hidden;background:var(--win);box-shadow:0 0 0 1px var(--sep),0 30px 80px rgba(20,30,80,.28);backdrop-filter:blur(40px) saturate(180%);-webkit-backdrop-filter:blur(40px) saturate(180%);display:flex;flex-direction:column}
+.tb{height:44px;flex:none;display:flex;align-items:center;padding:0 14px;border-bottom:1px solid var(--sep);position:relative}
+.tb .t{position:absolute;left:0;right:0;text-align:center;font-size:13px;font-weight:600;display:flex;justify-content:center;align-items:center;gap:6px;pointer-events:none}
+.hd{padding:26px 32px 16px;display:flex;flex-direction:column;gap:6px}
+.hd h1{margin:0;font-size:26px;line-height:32px;font-weight:700;letter-spacing:-0.02em}
+.hd p{margin:0;font-size:14px;line-height:20px;color:var(--text2)}
+.list{flex:1;min-height:0;overflow:hidden;padding:0 32px 100px}
+.sect{margin:14px 0 6px;font-size:12px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;color:var(--text2)}
+.row{display:flex;align-items:center;gap:14px;min-height:52px;padding:6px 0;border-top:1px solid var(--sep)}
+.row:first-child{border-top:0}
+.ico{width:34px;height:34px;border-radius:22.37%;background:var(--ph);color:var(--text2);display:grid;place-items:center;font-size:11px;font-weight:700;flex:none}
+.nm{flex:1;min-width:0;display:flex;flex-direction:column;gap:2px}
+.nm b{font-size:15px;font-weight:600}
+.nm span{font-size:13px;line-height:18px;color:var(--text2)}
+.st{display:inline-flex;align-items:center;gap:6px;font-size:13px;font-weight:600;white-space:nowrap}
+.bar{height:4px;border-radius:2px;background:var(--sep);overflow:hidden;margin-top:6px;width:220px}.bar i{display:block;height:100%;background:var(--accent);border-radius:2px}
+.glass{position:absolute;left:16px;right:16px;bottom:16px;min-height:60px;box-sizing:border-box;padding:10px 10px 10px 18px;border-radius:20px;display:flex;align-items:center;gap:12px;background:var(--glass);box-shadow:var(--glass-shadow);backdrop-filter:blur(30px) saturate(200%);-webkit-backdrop-filter:blur(30px) saturate(200%)}
+.glass .msg{flex:1;min-width:0;font-size:13px;line-height:18px;color:var(--text2)}
+.bt{display:inline-flex;align-items:center;justify-content:center;gap:6px;min-height:36px;padding:0 16px;border-radius:10px;border:0;font:inherit;font-size:14px;font-weight:600;white-space:nowrap;cursor:default}
+.bt.p{color:#FFF;background:linear-gradient(180deg,var(--accent-hi),var(--accent));box-shadow:inset 0 1px 0 rgba(255,255,255,.35),0 4px 12px rgba(58,91,239,.30)}
+.bt.s{color:var(--text);background:var(--btn);box-shadow:0 0 0 1px var(--sep),0 1px 2px rgba(20,30,80,.06)}
+.bt.d{color:#FFF;background:#D92D2D;box-shadow:inset 0 1px 0 rgba(255,255,255,.25)}
+.bt.sm{min-height:30px;padding:0 12px;font-size:13px}
+.ex{font-size:11px;color:var(--text2);border-bottom:1px dashed var(--text2)}
+.dim{position:absolute;inset:44px 0 0 0;background:rgba(10,15,40,.22)}
+.sheet{position:absolute;top:calc(50% + 22px);left:50%;transform:translate(-50%,-50%);width:480px;box-sizing:border-box;padding:24px;border-radius:16px;background:var(--win);box-shadow:0 0 0 1px var(--sep),0 24px 60px rgba(10,15,40,.30);backdrop-filter:blur(40px);-webkit-backdrop-filter:blur(40px);display:flex;flex-direction:column;gap:14px}
+.sheet h2{margin:0;font-size:18px;line-height:24px;font-weight:700}
+.sheet p{margin:0;font-size:13px;line-height:19px;color:var(--text2)}
+.sheet .acts{display:flex;justify-content:flex-end;gap:10px;margin-top:4px}
+.paths{display:flex;flex-direction:column;gap:4px;padding:10px 12px;border-radius:10px;background:var(--side);font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:11.5px;line-height:17px;color:var(--text)}
+.sys{border:1.5px dashed var(--text2);border-radius:12px;padding:14px;font-size:12px;line-height:17px;color:var(--text2);text-align:center}
+.center{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;text-align:center;padding:0 80px 60px}
+.center h1{margin:0;font-size:24px;line-height:30px;font-weight:700}
+.center p{margin:0;font-size:14px;line-height:21px;color:var(--text2);max-width:440px}
+.pk{flex:1;min-height:0;overflow:hidden;padding:4px 24px 100px;columns:3 230px;column-gap:28px;position:relative}
+.pcat{break-inside:avoid;margin:0 0 14px;display:flex;flex-direction:column;gap:1px}
+.phd{display:flex;align-items:center;gap:10px;min-height:30px;padding:2px 8px;font-size:13px;font-weight:700}
+.phd .sa{margin-left:auto;font-size:12px;font-weight:600;color:var(--accent-text)}
+.prow{display:flex;align-items:center;gap:10px;min-height:30px;padding:2px 8px;border-radius:8px;font-size:13.5px;font-weight:500}
+.prow.on{background:var(--tint)}
+.cbx{width:16px;height:16px;border-radius:4px;border:1.5px solid #A9B0C6;background:#FFFFFF;display:grid;place-items:center;flex:none;color:transparent;box-sizing:border-box}
+.prow.on .cbx,.phd.on .cbx{background:var(--accent);border-color:var(--accent);color:#FFFFFF}
+.pico{width:22px;height:22px;border-radius:22.37%;background:var(--ph);color:var(--text2);display:grid;place-items:center;font-size:8px;font-weight:700;flex:none}
+.prow.inst{color:var(--text2)}
+.prow.inst .tag{margin-left:auto;font-size:11px;font-weight:600;color:var(--ok);display:inline-flex;align-items:center;gap:4px}
+.banner{margin:0 24px 8px;padding:10px 14px;border-radius:12px;background:var(--tint);font-size:13px;line-height:19px;display:flex;gap:10px;align-items:center}
+.notes{width:400px;flex:none;box-sizing:border-box;padding:32px 30px;background:#F7F8FC;border-left:1px solid #DCE1EE;color:#1A1D2B;display:flex;flex-direction:column;gap:14px;overflow:hidden}
+.notes .id{font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:#3048D6}
+.notes h2{margin:0;font-size:22px;line-height:28px;font-weight:800;letter-spacing:-0.015em}
+.notes h3{margin:6px 0 0;font-size:12px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;color:#545A6E}
+.notes p,.notes li{margin:0;font-size:13px;line-height:19px;color:#2B2F40}
+.notes ul{margin:0;padding-left:16px;display:flex;flex-direction:column;gap:5px}
+.notes code{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:12px;background:#E9ECF5;border-radius:4px;padding:0 3px}
+.prop{font-size:12px;line-height:17px;padding:8px 10px;border-left:3px solid #D29922;background:#FFF7E3;color:#5A3E00}
+</style>
+</helmet>
+<div class="b lt" style="height: 780px">
+<div class="desk"><div class="win"><div class="tb"><span aria-hidden="true" style="display: flex; gap: 8px"><span style="width: 12px; height: 12px; border-radius: 50%; background: #FF5F57; box-shadow: inset 0 0 0 .5px #E0443E"></span><span style="width: 12px; height: 12px; border-radius: 50%; background: #FEBC2E; box-shadow: inset 0 0 0 .5px #DEA123"></span><span style="width: 12px; height: 12px; border-radius: 50%; background: #28C840; box-shadow: inset 0 0 0 .5px #1AAB29"></span></span><span class="t"><span aria-hidden="true" style="width: 16px; height: 16px; display: grid; place-items: center; flex: none"><svg width="20" height="20" viewBox="0 0 1024 1024" aria-hidden="true" style="flex: none; display: block; margin: -2px"><defs><linearGradient id="tbg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#5B7BFF"></stop><stop offset="1" stop-color="#8A5CF0"></stop></linearGradient><linearGradient id="tsh" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FFFFFF" stop-opacity=".38"></stop><stop offset="1" stop-color="#FFFFFF" stop-opacity="0"></stop></linearGradient><linearGradient id="ttr" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FFFFFF" stop-opacity=".5"></stop><stop offset="1" stop-color="#FFFFFF" stop-opacity="0"></stop></linearGradient></defs><rect x="100" y="112" width="824" height="824" rx="185" fill="#000" opacity=".18"></rect><rect x="100" y="100" width="824" height="824" rx="185" fill="url(#tbg)"></rect><g transform="translate(0 -55)"><path d="M300 604 L512 526 L724 604 L512 682 Z" fill="#FFFFFF" stroke="#FFFFFF" stroke-width="14" stroke-linejoin="round"></path><path d="M326 604 L512 536 L698 604 L512 672 Z" fill="#0B1030" fill-opacity=".30"></path><g transform="translate(328 430) rotate(-28) scale(1)"><rect x="-64" y="-56" width="128" height="128" rx="30" fill="#0B1030" fill-opacity="0.16"></rect><rect x="-64" y="-64" width="128" height="128" rx="30" fill="#FFFFFF" fill-opacity="1"></rect></g><g transform="translate(512 330) rotate(0) scale(1)"><rect x="-64" y="-56" width="128" height="128" rx="30" fill="#0B1030" fill-opacity="0.16"></rect><rect x="-64" y="-64" width="128" height="128" rx="30" fill="#FFFFFF" fill-opacity="1"></rect></g><g transform="translate(696 430) rotate(28) scale(1)"><rect x="-64" y="-56" width="128" height="128" rx="30" fill="#0B1030" fill-opacity="0.16"></rect><rect x="-64" y="-64" width="128" height="128" rx="30" fill="#FFFFFF" fill-opacity="1"></rect></g><path d="M300 604 L512 682 L512 862 L300 784 Z" fill="#FFFFFF" stroke="#FFFFFF" stroke-width="14" stroke-linejoin="round"></path><path d="M724 604 L512 682 L512 862 L724 784 Z" fill="#FFFFFF" stroke="#FFFFFF" stroke-width="14" stroke-linejoin="round"></path><path d="M724 604 L512 682 L512 862 L724 784 Z" fill="#0B1030" fill-opacity=".09"></path></g><rect x="100" y="100" width="824" height="412" rx="185" fill="url(#tsh)"></rect><rect x="101.5" y="101.5" width="821" height="821" rx="183.5" fill="none" stroke="#FFFFFF" stroke-opacity=".28" stroke-width="3"></rect></svg></span>SettleIn</span></div><div class="center"><span style="width: 64px; height: 64px; border-radius: 50%; display: grid; place-items: center; background: var(--warnTint, #FFF4DC); color: #8A5A00; font-size: 30px; font-weight: 800">!</span><h1>Can’t read the list of installed apps</h1><p>SettleIn’s record of what it installed is missing or damaged. Your apps are still installed.</p><div style="display: flex; gap: 10px; margin-top: 6px"><span class="bt s">Show in Finder</span><span class="bt p">Try again</span></div></div></div></div>
+<aside class="notes"><span class="id">A4</span><h2>Error</h2><h3>What it shows</h3><ul><li>The install record can’t be read (deleted, damaged, or no permission).</li><li>Says plainly that nothing was removed.</li><li>Apps installed before can still be removed by hand in Finder.</li></ul><h3>Build it in SwiftUI</h3><ul><li>If JSON decoding fails, rename the file to <code>installs.damaged.json</code> and start a fresh record, so Try again does not loop.</li><li>Show in Finder reveals the Application Support folder with <code>NSWorkspace.shared.activateFileViewerSelecting</code>.</li><li>Never guess which apps SettleIn installed (C28): an unreadable record means an empty list, not a scan.</li></ul><p class=prop><b>Proposal, owner decides.</b> Proposal: the brief doesn’t describe this case.</p></aside>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1440,"height":780}}'>
+class Component extends DCLogic {
+  renderVals() { return {}; }
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,687 @@
+{
+  "v": 3,
+  "createdOnFiles": {
+    "v": 1,
+    "at": "2026-11-25T04:35:00Z"
+  },
+  "title": "SettleIn design",
+  "launch": {
+    "view": "canvas",
+    "page": "mac"
+  },
+  "pages": [
+    {
+      "id": "framework",
+      "name": "Design framework"
+    },
+    {
+      "id": "website",
+      "name": "Website"
+    },
+    {
+      "id": "brand",
+      "name": "Brand"
+    },
+    {
+      "id": "mobile",
+      "name": "Mobile"
+    },
+    {
+      "id": "mac",
+      "name": "Mac app"
+    },
+    {
+      "id": "handoff",
+      "name": "Handoff"
+    }
+  ],
+  "boards": {
+    "Main.dc.html": {
+      "x": 0,
+      "y": 0,
+      "w": 1440,
+      "h": 4300,
+      "page": "framework",
+      "title": "Design framework v1.0 (light ships, dark reserved)"
+    },
+    "Catalog.dc.html": {
+      "x": 0,
+      "y": 0,
+      "w": 1440,
+      "h": 1280,
+      "page": "website",
+      "expand": "fill",
+      "is_interactive": true,
+      "title": "W1 Home: hero and app picker"
+    },
+    "W2-link.dc.html": {
+      "x": 1520,
+      "y": 0,
+      "w": 1440,
+      "h": 1280,
+      "page": "website",
+      "expand": "fill",
+      "is_interactive": true,
+      "title": "W2 Home opened from a link, one unknown app"
+    },
+    "After.dc.html": {
+      "x": 3040,
+      "y": 0,
+      "w": 1440,
+      "h": 1300,
+      "page": "website",
+      "expand": "fill",
+      "is_interactive": true,
+      "title": "W3 After the download click"
+    },
+    "Icons.dc.html": {
+      "x": 0,
+      "y": 0,
+      "w": 1600,
+      "h": 2500,
+      "page": "brand",
+      "title": "B1 App icon, final"
+    },
+    "IconExplorations.dc.html": {
+      "x": 1700,
+      "y": 0,
+      "w": 1600,
+      "h": 5100,
+      "page": "brand",
+      "title": "B2 Icon explorations: colourways, light colours, motion"
+    },
+    "Releases.dc.html": {
+      "x": 0,
+      "y": 2500,
+      "w": 1440,
+      "h": 1500,
+      "page": "website",
+      "expand": "fill",
+      "title": "Release notes at launch",
+      "is_interactive": true
+    },
+    "Verify.dc.html": {
+      "x": 1520,
+      "y": 2500,
+      "w": 1440,
+      "h": 2250,
+      "page": "website",
+      "expand": "fill",
+      "title": "How apps are verified"
+    },
+    "Privacy.dc.html": {
+      "x": 3040,
+      "y": 2500,
+      "w": 1440,
+      "h": 1500,
+      "page": "website",
+      "expand": "fill",
+      "title": "What SettleIn sends"
+    },
+    "Catalog-m.dc.html": {
+      "x": 0,
+      "y": 0,
+      "w": 375,
+      "h": 4200,
+      "page": "mobile",
+      "title": "Home on a phone",
+      "is_interactive": true
+    },
+    "Catalog-m-picked.dc.html": {
+      "x": 455,
+      "y": 0,
+      "w": 375,
+      "h": 4200,
+      "page": "mobile",
+      "title": "Home on a phone, apps picked",
+      "is_interactive": true
+    },
+    "Verify-m.dc.html": {
+      "x": 910,
+      "y": 0,
+      "w": 375,
+      "h": 3300,
+      "page": "mobile",
+      "title": "How apps are verified, phone",
+      "is_interactive": true
+    },
+    "Releases-example.dc.html": {
+      "x": 4560,
+      "y": 2500,
+      "w": 1440,
+      "h": 3000,
+      "page": "website",
+      "expand": "fill",
+      "is_interactive": true,
+      "title": "Release notes later: every entry type (example)"
+    },
+    "Decisions.dc.html": {
+      "x": 0,
+      "y": 0,
+      "w": 1440,
+      "h": 4200,
+      "page": "handoff",
+      "title": "Owner decisions (also in DECISIONS.md)"
+    },
+    "Privacy-m.dc.html": {
+      "x": 1365,
+      "y": 0,
+      "w": 375,
+      "h": 2400,
+      "page": "mobile",
+      "title": "What SettleIn sends, phone",
+      "is_interactive": false
+    },
+    "Releases-m.dc.html": {
+      "x": 1820,
+      "y": 0,
+      "w": 375,
+      "h": 2600,
+      "page": "mobile",
+      "title": "Release notes, phone",
+      "is_interactive": true
+    },
+    "M-Flow.dc.html": {
+      "x": 0,
+      "y": 0,
+      "w": 1600,
+      "h": 1350,
+      "page": "mac",
+      "title": "Mac app: the whole flow"
+    },
+    "M-Menu.dc.html": {
+      "x": 0,
+      "y": 1650,
+      "w": 1440,
+      "h": 780,
+      "page": "mac",
+      "title": "A0 Menu bar"
+    },
+    "M-D1.dc.html": {
+      "x": 0,
+      "y": 2850,
+      "w": 1440,
+      "h": 780,
+      "page": "mac",
+      "title": "D1 Disk image window"
+    },
+    "M-P1a.dc.html": {
+      "x": 0,
+      "y": 4050,
+      "w": 1440,
+      "h": 780,
+      "page": "mac",
+      "title": "A7 Pick apps"
+    },
+    "M-P1c.dc.html": {
+      "x": 1520,
+      "y": 4050,
+      "w": 1440,
+      "h": 780,
+      "page": "mac",
+      "title": "A7 Pick apps: nothing ticked"
+    },
+    "M-P1d.dc.html": {
+      "x": 3040,
+      "y": 4050,
+      "w": 1440,
+      "h": 780,
+      "page": "mac",
+      "title": "A7 Pick apps: loading the catalog"
+    },
+    "M-A2a.dc.html": {
+      "x": 0,
+      "y": 5250,
+      "w": 1440,
+      "h": 780,
+      "page": "mac",
+      "title": "A2 Installing: opens straight into this"
+    },
+    "M-A2b.dc.html": {
+      "x": 1520,
+      "y": 5250,
+      "w": 1440,
+      "h": 780,
+      "page": "mac",
+      "title": "A2 Installing: the two refusal reasons"
+    },
+    "M-A2c.dc.html": {
+      "x": 3040,
+      "y": 5250,
+      "w": 1440,
+      "h": 780,
+      "page": "mac",
+      "title": "A2 Installing: cancel"
+    },
+    "M-A2d.dc.html": {
+      "x": 4560,
+      "y": 5250,
+      "w": 1440,
+      "h": 780,
+      "page": "mac",
+      "title": "A2 Installing: change selection"
+    },
+    "M-A2e.dc.html": {
+      "x": 0,
+      "y": 6150,
+      "w": 1440,
+      "h": 780,
+      "page": "mac",
+      "title": "A2 Nothing to install"
+    },
+    "M-A3a.dc.html": {
+      "x": 0,
+      "y": 7350,
+      "w": 1440,
+      "h": 780,
+      "page": "mac",
+      "title": "A3 Finished: mixed result"
+    },
+    "M-A3b.dc.html": {
+      "x": 1520,
+      "y": 7350,
+      "w": 1440,
+      "h": 780,
+      "page": "mac",
+      "title": "A3 Finished: all installed"
+    },
+    "M-A3c.dc.html": {
+      "x": 3040,
+      "y": 7350,
+      "w": 1440,
+      "h": 780,
+      "page": "mac",
+      "title": "A3 Finished: everything refused"
+    },
+    "M-A4a.dc.html": {
+      "x": 0,
+      "y": 8550,
+      "w": 1440,
+      "h": 780,
+      "page": "mac",
+      "title": "A4 Installed list"
+    },
+    "M-A4b.dc.html": {
+      "x": 1520,
+      "y": 8550,
+      "w": 1440,
+      "h": 780,
+      "page": "mac",
+      "title": "A4 Installed list: empty"
+    },
+    "M-A4c.dc.html": {
+      "x": 3040,
+      "y": 8550,
+      "w": 1440,
+      "h": 780,
+      "page": "mac",
+      "title": "A4 Installed list: loading"
+    },
+    "M-A4d.dc.html": {
+      "x": 4560,
+      "y": 8550,
+      "w": 1440,
+      "h": 780,
+      "page": "mac",
+      "title": "A4 Installed list: record unreadable"
+    },
+    "M-A5a.dc.html": {
+      "x": 0,
+      "y": 9750,
+      "w": 1440,
+      "h": 780,
+      "page": "mac",
+      "title": "A5 Uninstall: confirm"
+    },
+    "M-A5b.dc.html": {
+      "x": 1520,
+      "y": 9750,
+      "w": 1440,
+      "h": 780,
+      "page": "mac",
+      "title": "A5 Uninstall: installer-package app"
+    },
+    "M-A5c.dc.html": {
+      "x": 3040,
+      "y": 9750,
+      "w": 1440,
+      "h": 780,
+      "page": "mac",
+      "title": "A5 Uninstall: macOS password prompt (system)"
+    },
+    "M-A5d.dc.html": {
+      "x": 4560,
+      "y": 9750,
+      "w": 1440,
+      "h": 780,
+      "page": "mac",
+      "title": "A5 Uninstall: removing"
+    },
+    "M-A5e.dc.html": {
+      "x": 0,
+      "y": 10650,
+      "w": 1440,
+      "h": 780,
+      "page": "mac",
+      "title": "A5 Uninstall: removed"
+    },
+    "M-A5f.dc.html": {
+      "x": 1520,
+      "y": 10650,
+      "w": 1440,
+      "h": 780,
+      "page": "mac",
+      "title": "A5 Uninstall: password prompt cancelled"
+    },
+    "M-A5g.dc.html": {
+      "x": 3040,
+      "y": 10650,
+      "w": 1440,
+      "h": 780,
+      "page": "mac",
+      "title": "A5 Uninstall: removal failed"
+    },
+    "M-A5h.dc.html": {
+      "x": 4560,
+      "y": 10650,
+      "w": 1440,
+      "h": 780,
+      "page": "mac",
+      "title": "A5 Uninstall: standard user, installer-package app"
+    },
+    "M-A6a.dc.html": {
+      "x": 0,
+      "y": 11850,
+      "w": 1440,
+      "h": 780,
+      "page": "mac",
+      "title": "A6 Catalog unreachable: offline"
+    },
+    "M-A6b.dc.html": {
+      "x": 1520,
+      "y": 11850,
+      "w": 1440,
+      "h": 780,
+      "page": "mac",
+      "title": "A6 Catalog unreachable: site error"
+    },
+    "M-A6c.dc.html": {
+      "x": 3040,
+      "y": 11850,
+      "w": 1440,
+      "h": 780,
+      "page": "mac",
+      "title": "A6 Catalog unreachable: retrying"
+    },
+    "Web-States.dc.html": {
+      "x": 0,
+      "y": 5700,
+      "w": 1440,
+      "h": 2750,
+      "page": "website",
+      "title": "Website states: empty, loading, error, success",
+      "is_interactive": false
+    }
+  },
+  "order": [
+    "Main.dc.html",
+    "Catalog.dc.html",
+    "W2-link.dc.html",
+    "After.dc.html",
+    "Icons.dc.html",
+    "IconExplorations.dc.html",
+    "Releases.dc.html",
+    "Verify.dc.html",
+    "Privacy.dc.html",
+    "Catalog-m.dc.html",
+    "Catalog-m-picked.dc.html",
+    "Verify-m.dc.html",
+    "Releases-example.dc.html",
+    "Decisions.dc.html",
+    "Privacy-m.dc.html",
+    "Releases-m.dc.html",
+    "M-Flow.dc.html",
+    "M-Menu.dc.html",
+    "M-D1.dc.html",
+    "M-P1a.dc.html",
+    "M-P1c.dc.html",
+    "M-P1d.dc.html",
+    "M-A2a.dc.html",
+    "M-A2b.dc.html",
+    "M-A2c.dc.html",
+    "M-A2d.dc.html",
+    "M-A2e.dc.html",
+    "M-A3a.dc.html",
+    "M-A3b.dc.html",
+    "M-A3c.dc.html",
+    "M-A4a.dc.html",
+    "M-A4b.dc.html",
+    "M-A4c.dc.html",
+    "M-A4d.dc.html",
+    "M-A5a.dc.html",
+    "M-A5b.dc.html",
+    "M-A5c.dc.html",
+    "M-A5d.dc.html",
+    "M-A5e.dc.html",
+    "M-A5f.dc.html",
+    "M-A5g.dc.html",
+    "M-A5h.dc.html",
+    "M-A6a.dc.html",
+    "M-A6b.dc.html",
+    "M-A6c.dc.html",
+    "Web-States.dc.html"
+  ],
+  "notes": {
+    "fwTitle": {
+      "x": 0,
+      "y": -300,
+      "text": "SettleIn design framework",
+      "kind": "title1",
+      "maxW": 1440,
+      "page": "framework"
+    },
+    "webTitle": {
+      "x": 0,
+      "y": -300,
+      "text": "Website (light only)",
+      "kind": "title1",
+      "maxW": 4480,
+      "page": "website"
+    },
+    "q4": {
+      "x": 1520,
+      "y": 1420,
+      "w": 440,
+      "size": "m",
+      "fill": "orange",
+      "page": "website",
+      "text": "PROPOSAL, open question 4. A link that names an app the catalog no longer holds still opens cleanly: known apps are ticked, and a quiet one-line notice says how many were left out, with a Dismiss button. No error state. Owner decides; the alternative is to ignore it silently as the spec says today."
+    },
+    "q2": {
+      "x": 3040,
+      "y": 1420,
+      "w": 440,
+      "size": "m",
+      "fill": "orange",
+      "page": "website",
+      "text": "PROPOSAL, open question 2. W3 is one simple page: the download has started, how to open it, the apps that travel with it, and Change selection or Download again. The page can't tell whether SettleIn is already installed, so one quiet line covers that case (it opens by itself; the browser may ask to Allow)."
+    },
+    "dock": {
+      "x": 0,
+      "y": 1420,
+      "w": 440,
+      "size": "m",
+      "fill": "blue",
+      "page": "website",
+      "text": "Scroll story: the hero window plays the demo on a loop (Choose, Verify, Uninstall); its floating selection bar shows only during Choose. Scrolling down, it crossfades into the live picker and zooms to fill the screen, leaving 20 px around it so it still reads as an app. A 'Your turn' header tells you what to do; the floating glossy bar holds the count and Download SettleIn. Open full window to scroll."
+    },
+    "filters": {
+      "x": 480,
+      "y": 1420,
+      "w": 440,
+      "size": "m",
+      "fill": "blue",
+      "page": "website",
+      "text": "No category sidebar: all 44 apps sit in five columns under their category headings. Rows and icons size to the screen height so the list fills the app above the floating bar."
+    },
+    "github": {
+      "x": 960,
+      "y": 1420,
+      "w": 440,
+      "size": "m",
+      "fill": "orange",
+      "page": "website",
+      "text": "GitHub mark: the header and footer use GitHub's official mark from their Octicons package (MIT licensed), as GitHub allows for linking to a GitHub repository. Footer: brand line, Star on GitHub, three link columns (SettleIn, Open source, Trust) and a line saying SettleIn is not affiliated with Apple."
+    },
+    "brandTitle": {
+      "x": 0,
+      "y": -300,
+      "text": "SettleIn brand",
+      "kind": "title1",
+      "maxW": 3300,
+      "page": "brand"
+    },
+    "lightOnly": {
+      "x": 3520,
+      "y": 1420,
+      "w": 440,
+      "size": "m",
+      "fill": "orange",
+      "page": "website",
+      "text": "OWNER DECISION: the website is light only. This replaces spec claim C10 (follow the system light or dark appearance); update the spec and DESIGN.md to match. The Mac app still follows the system appearance."
+    },
+    "footTitle": {
+      "x": 0,
+      "y": 2200,
+      "text": "Footer pages",
+      "kind": "title1",
+      "maxW": 6000,
+      "page": "website"
+    },
+    "placeholders": {
+      "x": 0,
+      "y": 4900,
+      "w": 440,
+      "size": "m",
+      "fill": "orange",
+      "page": "website",
+      "text": "Placeholders to fill in: [VERSION] and [RELEASE DATE] on Release notes, and every GitHub link (#). 'Suggest an app' in the footer goes straight to an outside form (Google Forms or similar); add its address when it exists."
+    },
+    "mobTitle": {
+      "x": 0,
+      "y": -300,
+      "text": "Mobile",
+      "kind": "title1",
+      "maxW": 2270,
+      "page": "mobile"
+    },
+    "mobNote": {
+      "x": 2275,
+      "y": 0,
+      "w": 440,
+      "size": "m",
+      "fill": "blue",
+      "page": "mobile",
+      "text": "You can't download a Mac app on a phone, so mobile is about saving the list. The hero shows the animated icon instead of the demo window, the picker is one column with category Select all, and the floating bar offers Copy link instead of Download. The link opens the same ticked list on a Mac."
+    },
+    "relNote": {
+      "x": 6080,
+      "y": 2500,
+      "w": 440,
+      "size": "m",
+      "fill": "blue",
+      "page": "website",
+      "text": "Release notes are one timeline with three kinds of entry. App update: a new SettleIn version (New, Improved, Fixed, Security); it also shows in Sparkle's update window. Catalog change: apps added, removed or changed on settlein.dev; reaches people without an app update. Notice: something people should know now, such as an app paused after failing a check. Tabs filter the timeline; RSS lets people follow it."
+    },
+    "macD1": {
+      "x": 0,
+      "y": 2590,
+      "text": "D1 Disk image",
+      "kind": "title1",
+      "maxW": 5920,
+      "page": "mac"
+    },
+    "macA2": {
+      "x": 0,
+      "y": 4990,
+      "text": "A2 Installing",
+      "kind": "title1",
+      "maxW": 5920,
+      "page": "mac"
+    },
+    "macA3": {
+      "x": 0,
+      "y": 7090,
+      "text": "A3 Finished",
+      "kind": "title1",
+      "maxW": 5920,
+      "page": "mac"
+    },
+    "macA4": {
+      "x": 0,
+      "y": 8290,
+      "text": "A4 Installed list",
+      "kind": "title1",
+      "maxW": 5920,
+      "page": "mac"
+    },
+    "macA5": {
+      "x": 0,
+      "y": 9490,
+      "text": "A5 Uninstall",
+      "kind": "title1",
+      "maxW": 5920,
+      "page": "mac"
+    },
+    "macA6": {
+      "x": 0,
+      "y": 11590,
+      "text": "A6 Catalog unreachable",
+      "kind": "title1",
+      "maxW": 5920,
+      "page": "mac"
+    },
+    "macTitle": {
+      "x": 0,
+      "y": -300,
+      "text": "SettleIn for Mac",
+      "kind": "title1",
+      "maxW": 1600,
+      "page": "mac"
+    },
+    "macDecision": {
+      "x": 1700,
+      "y": 0,
+      "w": 440,
+      "size": "m",
+      "fill": "orange",
+      "page": "mac",
+      "text": "OWNER DECISIONS: (1) No confirmation screen: whenever SettleIn opens with a selection (from the download or a settlein.dev link) it starts installing straight away, with Cancel and Change selection always in reach. Replaces C18 and screen A1. (2) Picking happens inside the app (A7) for Add apps, Change selection and first open with nothing installed. Replaces C16's open-the-website step. Full list: Handoff page."
+    },
+    "macA7": {
+      "x": 0,
+      "y": 3790,
+      "text": "A7 Pick apps (in the app)",
+      "kind": "title1",
+      "maxW": 5920,
+      "page": "mac"
+    },
+    "handTitle": {
+      "x": 0,
+      "y": -300,
+      "text": "Handoff",
+      "kind": "title1",
+      "maxW": 1440,
+      "page": "handoff"
+    },
+    "macA0": {
+      "x": 0,
+      "y": 1390,
+      "text": "Menu bar",
+      "kind": "title1",
+      "maxW": 5920,
+      "page": "mac"
+    }
+  },
+  "designSystems": []
+}

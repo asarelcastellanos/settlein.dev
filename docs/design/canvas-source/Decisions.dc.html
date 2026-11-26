@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>SettleIn owner decisions</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+.dec h1{margin:0 0 8px;font-size:44px;line-height:50px;font-weight:800;letter-spacing:-0.03em}
+.dec h2{margin:36px 0 4px;padding-top:24px;border-top:1px solid #DCE1EE;font-size:24px;line-height:30px;font-weight:800;letter-spacing:-0.015em}
+.dec p{margin:0;font-size:16px;line-height:25px;color:#545A6E;max-width:980px}
+.dec ol,.dec ul{margin:8px 0 0;padding-left:28px;display:flex;flex-direction:column;gap:10px;max-width:1080px}
+.dec li{font-size:15px;line-height:23px;color:#1A1D2B}
+.dec li.sub{counter-increment:list-item 0;list-style:circle;margin-left:22px;margin-top:-4px;font-size:14px;color:#2B2F40}
+.dec li ul{margin-top:6px;gap:4px}
+.dec code{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:13px;background:#E9ECF5;border-radius:4px;padding:0 4px}
+</style>
+</helmet>
+<div class="dec" style="width: 1440px; box-sizing: border-box; padding: 64px 80px 80px; display: flex; flex-direction: column; gap: 10px; font-family: -apple-system, BlinkMacSystemFont, Inter, system-ui, sans-serif; color: #1A1D2B; background: #F7F8FC">
+<h1>SettleIn: owner decisions for implementation</h1>
+<p>Read this before the design brief (README.md) and the canvas. Where this file and the brief disagree, this file wins. Each decision says what it replaces so the spec can be updated.</p>
+<p>Status key: <strong>Decided</strong> means the owner chose it. <strong>Proposal</strong> means the designer suggested it and the owner has not overruled it; build it, but keep it easy to change.</p>
+<h2>Product</h2>
+<ol start="1">
+<li><strong style="color: #1A7F37">Decided. The name is SettleIn</strong> (capital I), everywhere: UI, wordmark, file name <code>SettleIn.dmg</code>. Domain stays <code>settlein.dev</code>.</li>
+<li><strong style="color: #1A7F37">Decided. App icon: concept A, "Unpacked".</strong> Three white tiles thrown out of an open white box, on the blue-violet gradient (#5B7BFF to #8A5CF0). Final artwork: canvas page Brand, board B1. No checkmarks on the tiles.</li>
+<li><strong style="color: #1A7F37">Decided. Animated icon</strong> (tiles pop out of the box, 0.12 s apart) plays once in these places only: website header on page load, disk image window, first launch, Finished screen. Everywhere else the icon is still. Reduce Motion shows the still icon.</li>
+</ol>
+<h2>Website (settlein.dev)</h2>
+<ol start="4">
+<li><strong style="color: #1A7F37">Decided. Light only. No dark mode.</strong> Replaces C10 (follow the system appearance). No theme switch.</li>
+<li><strong style="color: #1A7F37">Decided. Background:</strong> pale blue-lavender base (#EEF1F8) with soft blue, violet and cyan glows ("aurora"). Not plain white.</li>
+<li><strong style="color: #1A7F37">Decided. Home page is a scroll story.</strong></li>
+<li class="sub">The hero has the headline on two lines ("Your new Mac," / "Settled In."), one subhead ("SettleIn installs every app, all in one go."), and three lines that highlight in step with a looping demo window: "Select from a curated set." / "We verify the signature." / "Uninstall whenever you want."</li>
+<li class="sub">Scrolling zooms the demo window into a full-screen app picker (20 px inset, rounded) titled "Pick the apps for your Mac."</li>
+
+<li><strong style="color: #1A7F37">Decided. The picker:</strong></li>
+<li class="sub">All 44 apps in four columns grouped by category, with square checkboxes.</li>
+<li class="sub">No category sidebar. Each category has a checkbox that is ticked only when the whole category is ticked, plus a "Select all" / "Deselect all" label. The page also has Select all and Deselect all buttons.</li>
+
+<li><strong style="color: #1A7F37">Decided. Floating glossy bar</strong> inside the picker: the ticked apps' icons, the count, and "Download SettleIn", which appears only after the first tick.</li>
+<li><strong style="color: #1A7F37">Decided. No pills</strong> anywhere. Nav links are plain text with an underline on hover. The GitHub link uses GitHub's official mark (from Primer Octicons, MIT licensed).</li>
+<li><strong style="color: #1A7F37">Decided. Mobile:</strong> you can't download a Mac app on a phone, so the bar offers "Copy link" instead of Download. The demo window is replaced by the animated icon, and the picker becomes one column.</li>
+<li><strong style="color: #1A7F37">Decided. After the download click (W3):</strong> a simple page with "Your download has started.", the list of apps in the download, "Change selection" and "Download again", and one line for people who already have SettleIn. Answers open question 2.</li>
+<li><strong style="color: #1A7F37">Decided. Footer:</strong></li>
+<li class="sub">Release notes; Source code, Report a problem, Suggest an app (an outside form, Google Forms or similar); How apps are verified; What SettleIn sends.</li>
+<li class="sub">No MIT license page or link, and no Suggest an app page.</li>
+<li class="sub">Bottom line: "© 2026 SettleIn contributors" and "Not affiliated with Apple. App names and icons belong to their owners."</li>
+
+<li><strong style="color: #1A7F37">Decided. Footer pages</strong> are open sections on the background (icon, heading, short stacked sentences). No white panels.</li>
+<li><strong style="color: #1A7F37">Decided. Release notes are one timeline</strong> with three entry types, filterable: App update (versioned, ships through Sparkle), Catalog change (apps added, removed or changed on settlein.dev; no app update needed), and Notice (for example an app paused after failing a check).</li>
+<li><strong style="color: #8A5A00">Proposal. Unknown app in a link:</strong> known apps are ticked, and a one-line dismissible notice says how many were left out. Open question 4.</li>
+</ol>
+<h2>Mac app</h2>
+<ol start="16">
+<li><strong style="color: #1A7F37">Decided. Light only.</strong> Force it with <code>.preferredColorScheme(.light)</code> on the root view.</li>
+<li><strong style="color: #1A7F37">Decided. No confirmation screen.</strong> Whenever SettleIn opens with a selection, it starts downloading and installing straight away. The selection can come from the downloaded disk image or from a settlein.dev link. Replaces C18 (download nothing until the person approves) and removes screen A1.</li>
+<li><strong style="color: #1A7F37">Decided. The Installing screen always offers Cancel and Change selection.</strong></li>
+<li class="sub">Cancel: the app in progress finishes, waiting apps are skipped, installed apps stay.</li>
+<li class="sub">Change selection: the app in progress finishes, then Pick apps opens with the same list ticked.</li>
+
+<li><strong style="color: #1A7F37">Decided. Picking happens inside the app (screen A7, Pick apps).</strong> It's the same layout as the website picker. Installed apps are marked and can't be ticked, and the bar says "Install N apps". It opens from Add apps on the installed list, from Change selection, and when SettleIn opens with nothing installed and no selection. Replaces C16's "open settlein.dev in the browser" and A4's Add apps link.</li>
+<li><strong style="color: #1A7F37">Decided. Launch logic:</strong></li>
+<li class="sub">opened with a selection → Installing</li>
+<li class="sub">no selection and nothing installed → Pick apps</li>
+<li class="sub">otherwise → Installed list (A4)</li>
+
+<li><strong style="color: #1A7F37">Decided. Pop-ups are centred panels over a dimmed window,</strong> not <code>.sheet</code> (macOS sheets drop from the title bar). One reusable overlay is used for Uninstall, Cancel and Change selection. Esc cancels.</li>
+<li><strong style="color: #1A7F37">Decided. Look:</strong> the same style as the website's full-screen picker. Translucent window, traffic lights, rows of 52 pt, icons of 34 pt, accent #3A5BEF, and the glossy bottom bar via <code>.glassEffect</code> on macOS 26 and 27.</li>
+<li><strong style="color: #8A5A00">Proposal. Installer-package apps</strong> (Zoom, Microsoft Teams, Google Drive, OneDrive, Tailscale, TeamViewer) get their own "Check in Apple's Installer" group on the Finished screen, because SettleIn can't see whether the person finished. Open question 3.</li>
+<li><strong style="color: #8A5A00">Proposal. Standard user removing an installer-package app</strong> sees an explanation (needs an administrator) instead of a password prompt they can't complete. Open question 5.</li>
+<li><strong style="color: #8A5A00">Proposal. Uninstall moves files to the Trash</strong>, so mistakes are recoverable. It still deletes only paths the catalog lists (C31).</li>
+<li><strong style="color: #8A5A00">Proposal. Disk image window:</strong> the SettleIn icon, an Applications shortcut, and the cue "Drag SettleIn to Applications, then open it." No Terminal command.</li>
+</ol>
+<h2>Added in the hand-off (25 November 2026)</h2>
+<ol start="27">
+<li><strong style="color: #1A7F37">Decided. Dark tokens are reserved, not shipped.</strong> DESIGN.md and the framework board list a dark value for every colour, so dark mode can be added later. Decisions 4 and 16 still stand: light only.</li>
+<li><strong style="color: #8A5A00">Proposal. Menu bar</strong> (board A0).</li>
+<li class="sub">SettleIn menu: About SettleIn, Check for Updates…, Hide, Hide Others, Quit.</li>
+<li class="sub">Apps menu: Pick Apps… ⌘N, Installed Apps ⌘1, Change Selection… ⌘E, Cancel the Rest… ⌘.</li>
+<li class="sub">Help menu: How SettleIn Checks Apps, What SettleIn Sends, Report a Problem…, settlein.dev.</li>
+<li><strong style="color: #8A5A00">Proposal. New states</strong> (STATES.md and the Website states board).</li>
+<li class="sub">A4 loading and record unreadable; W3 download didn’t start; phone link copied and couldn’t copy; JavaScript turned off.</li>
+<li class="sub">A7 loading is decided as drawn, because it follows the A6 pattern.</li>
+<li><strong style="color: #8A5A00">Proposal. Checkbox border #7E869E</strong> instead of #A9B0C6, to meet the 3:1 contrast rule for controls (ACCESSIBILITY.md, A-1). The boards still show the old value.</li>
+<li><strong style="color: #1A7F37">Fixed in copy.</strong> Release notes no longer say “Review the list in SettleIn, then approve”, and What SettleIn sends says “the apps you pick”, not “the apps you approve”. Both followed decision 17.</li>
+</ol>
+<h2>Rules that still hold from the brief</h2>
+<ul>
+<li>The catalog comes only from settlein.dev (C5).</li>
+<li>Refuse downloads without a valid Developer ID signature or Apple notarization, or with a SHA-256 mismatch, and name the app and the reason (C22, C23).</li>
+<li>Keep the quarantine attribute on every installed app (C24).</li>
+<li>Copy apps install with no password prompt, into <code>/Applications</code> for admins and <code>~/Applications</code> for standard users (C20).</li>
+<li>Send no data about the person or the Mac (C27).</li>
+<li>During uninstall, touch only catalog-listed paths (C31).</li>
+<li>The website shows no ads and sets no cookies (C11, C13).</li>
+</ul>
+<h2>Placeholders still to fill</h2>
+<ul>
+<li>Release notes: [VERSION] and [RELEASE DATE].</li>
+<li>Every GitHub link, and the address of the Suggest an app form.</li>
+<li>Favicon: done (assets/web/).</li>
+<li>The cookieless analytics vendor named on What SettleIn sends.</li>
+</ul>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1440,"height":3300}}'>
+class Component extends DCLogic {
+  renderVals() { return {}; }
+}
+</script>
+</body>
+</html>
