@@ -1,12 +1,6 @@
 import AppKit
 import SwiftUI
 
-func announce(_ text: String) {
-    var message = AttributedString(text)
-    message.accessibilitySpeechAnnouncementPriority = .low
-    AccessibilityNotification.Announcement(message).post()
-}
-
 private func showInstaller() {
     Task { _ = try? await NSWorkspace.shared.openApplication(at: Installer.installerApp, configuration: NSWorkspace.OpenConfiguration()) }
 }
