@@ -98,6 +98,7 @@ final class AppModel {
     private var goal: Goal = .launch
     private(set) var hasRecord = false
     var panel: RunPanel?
+    private(set) var firstLaunch = false
     private(set) var panelOpener: RunPanel = .cancel
     private var recordUnreadable = false
 
@@ -108,15 +109,23 @@ final class AppModel {
 
     func launch() async {
         recordUnreadable = false
+        if !UserDefaults.standard.bool(forKey: "hasLaunchedBefore") {
+            UserDefaults.standard.set(true, forKey: "hasLaunchedBefore")
+            firstLaunch = true
+        }
         await open(.launch)
     }
 
     func openPick(ticked: [String] = []) {
+        firstLaunch = false
         if case .pick = screen { return }
         Task { await open(.pick(ticked)) }
     }
 
-    func openInstalled() { Task { await open(.installed) } }
+    func openInstalled() {
+        firstLaunch = false
+        Task { await open(.installed) }
+    }
 
     func retry() async {
         screen = .unreachable(.retrying)

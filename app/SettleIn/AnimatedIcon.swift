@@ -2,6 +2,7 @@ import SwiftUI
 
 struct AnimatedIcon: View {
     let size: CGFloat
+    var animated = true
 
     @Environment(\.accessibilityReduceMotion) private var reduceMotion
     @State private var played = false
@@ -18,7 +19,7 @@ struct AnimatedIcon: View {
         Tile(centre: CGPoint(x: 696, y: 430), angle: 28, start: CGSize(width: -184, height: 174)),
     ]
 
-    private var shown: Bool { played || reduceMotion }
+    private var shown: Bool { played || reduceMotion || !animated }
 
     var body: some View {
         ZStack(alignment: .topLeading) {
@@ -43,9 +44,9 @@ struct AnimatedIcon: View {
         .rotationEffect(.degrees(shown ? tile.angle : 0))
         .scaleEffect(shown ? 1 : 0.25)
         .offset(shown ? .zero : tile.start)
-        .animation(reduceMotion ? nil : .spring(response: 0.55, dampingFraction: 0.62).delay(delay), value: shown)
+        .animation(reduceMotion || !animated ? nil : .spring(response: 0.55, dampingFraction: 0.62).delay(delay), value: shown)
         .opacity(shown ? 1 : 0)
-        .animation(reduceMotion ? nil : .easeOut(duration: 0.135).delay(delay), value: shown)
+        .animation(reduceMotion || !animated ? nil : .easeOut(duration: 0.135).delay(delay), value: shown)
         .position(x: tile.centre.x, y: tile.centre.y - 55)
     }
 }

@@ -43,7 +43,7 @@ struct RootView: View {
         case .unreachable(let kind):
             UnreachableView(kind: kind) { Task { await model.retry() } }
         case .pick(let pick):
-            PickView(pick: pick, back: model.hasRecord ? { model.openInstalled() } : nil, install: model.installTicked)
+            PickView(pick: pick, showIcon: model.firstLaunch, back: model.hasRecord ? { model.openInstalled() } : nil, install: model.installTicked)
         case .installed(let content):
             InstalledView(content: content, addApps: { model.openPick() }, retry: { Task { await model.launch() } })
         case .installing(let run):

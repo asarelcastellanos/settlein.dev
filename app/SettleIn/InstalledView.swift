@@ -48,7 +48,7 @@ struct InstalledView: View {
             title: "Nothing installed yet",
             detail: "Pick the apps you want and SettleIn installs them for you."
         ) {
-            AnimatedIcon(size: 122)
+            AnimatedIcon(size: 122, animated: false)
         } buttons: {
             Button("Pick apps", action: addApps).buttonStyle(PrimaryButtonStyle()).focusRing().keyboardShortcut(.defaultAction)
         }
