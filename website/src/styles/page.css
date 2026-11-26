@@ -466,7 +466,8 @@ html:not(.js) .after-failed {
   .tabs button {
     flex: 1 1 0;
     min-width: 0;
-    padding: 0 4px;
+    padding: 0 2px;
+    overflow-wrap: anywhere;
     text-align: center;
   }
 }
