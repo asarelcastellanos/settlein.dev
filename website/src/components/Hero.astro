@@ -1,0 +1,138 @@
+---
+const choose = [
+  ["firefox", "Firefox"],
+  ["google-chrome", "Google Chrome"],
+  ["slack", "Slack"],
+  ["discord", "Discord"],
+  ["visual-studio-code", "Visual Studio Code"],
+  ["docker-desktop", "Docker Desktop"],
+  ["zoom", "Zoom"],
+  ["spotify", "Spotify"],
+];
+const five = [
+  ["firefox", "Firefox"],
+  ["slack", "Slack"],
+  ["visual-studio-code", "Visual Studio Code"],
+  ["zoom", "Zoom"],
+  ["spotify", "Spotify"],
+];
+const icon = (token) => `/icons/${token}-128.png`;
+---
+
+<div class="stage">
+  <div class="pin">
+    <div class="hero">
+      <div class="hero-copy">
+        <picture>
+          <source media="(prefers-reduced-motion: reduce)" srcset="/settlein-icon.svg" />
+          <img class="hero-icon" src="/settlein-icon-animated.svg" width="96" height="96" alt="" />
+        </picture>
+        <h1><span>Your new Mac,</span><span>Settled In.</span></h1>
+        <p class="lede">SettleIn installs every app, all in one go.</p>
+        <div class="steps" id="steps" data-step="0">
+          <span class="mark" aria-hidden="true"></span>
+          <ul>
+            <li class="on">Select from a curated set.</li>
+            <li>We verify the signature.</li>
+            <li>Uninstall whenever you want.</li>
+          </ul>
+        </div>
+        <div class="hero-actions">
+          <a class="text-link" href="#picker">
+            <span>Choose your apps</span>
+            <svg width="14" height="14" viewBox="0 0 16 16" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"
+              ><path d="M8 2v12M3 9l5 5 5-5"></path></svg
+            >
+          </a>
+          <button class="text-link quiet play js-only" id="play" type="button">Pause demo</button>
+        </div>
+      </div>
+
+      <div class="slot" id="slot">
+        <div class="zoomwin window" id="zoomwin">
+          <div class="demo-layer" id="demo" aria-hidden="true">
+            <div class="titlebar">
+              <div class="lights"><i></i><i></i><i></i></div>
+              <div class="name">
+                <img src="/favicon-32.png" width="16" height="16" alt="" />
+                <span>SettleIn</span>
+              </div>
+            </div>
+            <div class="scenes">
+              <div class="scene on" data-scene="0">
+                <h3>Choose your apps</h3>
+                <div class="d-grid">
+                  {
+                    choose.map(([token, name]) => (
+                      <div class="d-row" data-token={token}>
+                        <span class="d-box" />
+                        <img src={icon(token)} width="28" height="28" alt="" />
+                        <span>{name}</span>
+                      </div>
+                    ))
+                  }
+                </div>
+                <div class="d-bar" id="d-bar">
+                  <div class="d-slots" id="d-slots">
+                    <i class="d-slot empty"></i><i class="d-slot empty"></i><i class="d-slot empty"></i>
+                  </div>
+                  <span id="d-count">0 apps selected</span>
+                  <span class="d-btn">Download SettleIn</span>
+                </div>
+              </div>
+
+              <div class="scene" data-scene="1">
+                <div class="d-head">
+                  <h3>Installing 5 apps</h3>
+                  <span class="sub" id="d-done">0 of 5 done</span>
+                </div>
+                <div class="d-track"><i id="d-fill" style="transform:scaleX(0)"></i></div>
+                <div class="d-split">
+                  <ul class="d-list" id="d-install">
+                    {
+                      five.map(([token, name]) => (
+                        <li data-token={token}>
+                          <img src={icon(token)} width="28" height="28" alt="" />
+                          <span>{name}</span>
+                          <span class="st">Waiting</span>
+                          <span class="d-mini"><i style="transform:scaleX(0)"></i></span>
+                        </li>
+                      ))
+                    }
+                  </ul>
+                  <div class="d-check" id="d-check">
+                    <h4>Checking <span id="d-who">Firefox</span></h4>
+                    <p>Developer ID signature</p>
+                    <p>Notarized by Apple</p>
+                    <p>SHA-256 matches the catalog</p>
+                  </div>
+                </div>
+              </div>
+
+              <div class="scene" data-scene="2">
+                <h3>Installed by SettleIn</h3>
+                <p class="sub">Uninstall removes the app and its leftovers.</p>
+                <ul class="d-list d-un" id="d-un">
+                  {
+                    five.map(([token, name]) => (
+                      <li data-token={token}>
+                        <img src={icon(token)} width="28" height="28" alt="" />
+                        <span>
+                          {name}
+                          <small>{token === "zoom" ? "Removing asks for your admin password" : "Installed by SettleIn"}</small>
+                        </span>
+                        <span class="d-ub">Uninstall</span>
+                        <span class="d-mini"><i style="transform:scaleX(0)"></i></span>
+                      </li>
+                    ))
+                  }
+                </ul>
+              </div>
+            </div>
+          </div>
+          <div class="twin" id="twin" aria-hidden="true"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

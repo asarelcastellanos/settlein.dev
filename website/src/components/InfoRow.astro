@@ -1,0 +1,13 @@
+---
+import Icon from "./Icon.astro";
+
+const { icon, title } = Astro.props;
+---
+
+<section class="info-row">
+  <span class="info-icon"><Icon name={icon} /></span>
+  <h2>{title}</h2>
+  <div class="info-body">
+    <slot />
+  </div>
+</section>
