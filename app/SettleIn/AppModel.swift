@@ -138,7 +138,7 @@ final class AppModel {
     }
 
     var canAsk: Bool {
-        if case .installing(let run) = screen { return !run.finished && run.stop == nil && !run.nothingToInstall }
+        if case .installing(let run) = screen { return panel == nil && !run.finished && run.stop == nil && !run.nothingToInstall }
         return false
     }
 
