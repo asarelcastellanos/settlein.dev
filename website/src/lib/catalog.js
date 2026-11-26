@@ -60,3 +60,27 @@ export function loadCatalog() {
     apps,
   }));
 }
+
+export function loadCatalogStats() {
+  const catalog = readJson(catalogPath);
+  if (!catalog || !Array.isArray(catalog.apps) || catalog.apps.length === 0) {
+    fail(`${catalogPath} has no "apps" array with entries`);
+  }
+  const categories = new Map();
+  let installer = 0;
+  let checksummed = 0;
+  for (const app of catalog.apps) {
+    categories.set(app.category, (categories.get(app.category) ?? 0) + 1);
+    if (app.installerType === "pkg") installer += 1;
+    if (typeof app.sha256 === "string" && app.sha256) checksummed += 1;
+  }
+  const total = catalog.apps.length;
+  return {
+    total,
+    categories: [...categories],
+    copied: total - installer,
+    installer,
+    checksummed,
+    unchecked: total - checksummed,
+  };
+}

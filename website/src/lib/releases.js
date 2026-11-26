@@ -1,3 +1,7 @@
+import { loadCatalogStats } from "./catalog.js";
+
+const stats = loadCatalogStats();
+
 export const entryKinds = {
   app: { label: "App update" },
   catalog: { label: "Catalog change" },
@@ -50,29 +54,19 @@ export const releaseEntries = [
     date: "[RELEASE DATE]",
     iso: "",
     title: "The launch catalog",
-    lede: "44 apps in 9 categories. Catalog changes reach SettleIn the next time it opens; no app update needed.",
+    lede: `${stats.total} apps in ${stats.categories.length} categories. Catalog changes reach SettleIn the next time it opens; no app update needed.`,
     groups: [
       {
         heading: "Categories",
-        items: [
-          "Browsers · 3",
-          "Communication · 5",
-          "Developer tools · 9",
-          "Media · 6",
-          "Creative · 4",
-          "Productivity and storage · 4",
-          "Games · 2",
-          "Security · 2",
-          "Utilities · 9",
-        ],
+        items: stats.categories.map(([name, count]) => `${name} · ${count}`),
       },
       {
         heading: "Install type",
-        items: ["38 copy straight to Applications", "6 open in Apple’s Installer"],
+        items: [`${stats.copied} copy straight to Applications`, `${stats.installer} open in Apple’s Installer`],
       },
       {
         heading: "Checksums",
-        items: ["40 have a published checksum", "4 rely on signature and notarization"],
+        items: [`${stats.checksummed} have a published checksum`, `${stats.unchecked} rely on signature and notarization`],
       },
     ],
   },
