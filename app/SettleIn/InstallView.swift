@@ -361,7 +361,7 @@ struct FinishedView: View {
     private var content: some View {
         if onlyInstalled {
             VStack(spacing: SISpace.s3) {
-                AnimatedIcon(size: 96)
+                AnimatedIcon(size: 120)
                 Text(title)
                     .font(.system(size: 26, weight: .bold)).tracking(-0.52)
                     .foregroundStyle(Color.SI.textPrimary)
