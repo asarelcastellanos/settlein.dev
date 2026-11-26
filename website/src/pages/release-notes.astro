@@ -1,0 +1,103 @@
+---
+import Page from "../layouts/Page.astro";
+import Icon from "../components/Icon.astro";
+import { entryKinds, tabs, releaseEntries } from "../lib/releases.js";
+import { RELEASES_URL } from "../lib/site.js";
+---
+
+<Page
+  title="Release notes. SettleIn"
+  description="What changed in the SettleIn app and in the catalog of apps, newest first."
+>
+  <div class="page-head">
+    <h1>Release notes</h1>
+    <p>
+      Two things change: the SettleIn app, which updates itself, and the catalog of apps on settlein.dev,
+      which changes without an app update. Both are listed here, newest first.
+    </p>
+  </div>
+
+  <div class="tabs js-only" role="group" aria-label="Show">
+    {
+      tabs.map((tab) => (
+        <button type="button" data-filter={tab.id} aria-pressed={tab.id === "all" ? "true" : "false"}>
+          {tab.label}
+        </button>
+      ))
+    }
+  </div>
+
+  <div class="entries" id="entries">
+    {
+      releaseEntries.map((entry) => (
+        <article class="entry" data-kind={entry.kind}>
+          <div class="entry-when">
+            <span class={`entry-kind kind-${entry.kind}`}>
+              {entry.kind === "app" && <img src="/settlein-icon.svg" width="18" height="18" alt="" />}
+              {entry.kind === "catalog" && <Icon name="list" size={18} />}
+              {entry.kind === "notice" && <Icon name="warning" size={18} />}
+              {entryKinds[entry.kind].label}
+            </span>
+            {entry.iso ? (
+              <time class="entry-date" datetime={entry.iso}>
+                {entry.date}
+              </time>
+            ) : (
+              <span class="entry-date">{entry.date}</span>
+            )}
+          </div>
+          <div class="entry-body">
+            <h2>{entry.title}</h2>
+            <p class="entry-lede">{entry.lede}</p>
+            {entry.groups && (
+              <div class="entry-groups">
+                {entry.groups.map((group) => (
+                  <div>
+                    <h3>{group.heading}</h3>
+                    <ul>
+                      {group.items.map((item) => (
+                        <li>{item}</li>
+                      ))}
+                    </ul>
+                  </div>
+                ))}
+              </div>
+            )}
+          </div>
+        </article>
+      ))
+    }
+    <p class="entries-empty" id="entries-empty" role="status" hidden>
+      Nothing here yet.<br />Notices appear when an app is paused or changed for safety.
+    </p>
+  </div>
+
+  <p class="entries-foot">
+    App updates also show inside SettleIn when they arrive. <a href={RELEASES_URL} target="_blank" rel="noopener"
+      >All releases on GitHub<span class="sr-only"> (opens GitHub)</span></a
+    >
+  </p>
+
+  <script>
+    const buttons = Array.from(document.querySelectorAll(".tabs button"));
+    const entries = Array.from(document.querySelectorAll(".entry"));
+    const empty = document.getElementById("entries-empty");
+
+    function show(filter) {
+      let shown = 0;
+      for (const entry of entries) {
+        const match = filter === "all" || entry.dataset.kind === filter;
+        entry.hidden = !match;
+        if (match) shown += 1;
+      }
+      for (const button of buttons) {
+        button.setAttribute("aria-pressed", String(button.dataset.filter === filter));
+      }
+      empty.hidden = shown !== 0;
+    }
+
+    for (const button of buttons) {
+      button.addEventListener("click", () => show(button.dataset.filter));
+    }
+  </script>
+</Page>

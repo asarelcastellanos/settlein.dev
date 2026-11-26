@@ -1,0 +1,99 @@
+---
+import { AFTER_DOWNLOAD_PATH } from "../lib/site.js";
+
+const { groups, total } = Astro.props;
+---
+
+<section class="picker window" id="picker" aria-labelledby="picker-title">
+  <div class="picker-head">
+    <h2 id="picker-title">Pick the apps for your Mac.</h2>
+    <div class="head-actions js-only">
+      <button class="btn" id="select-all" type="button">Select all</button>
+      <button class="btn" id="deselect-all" type="button" disabled>Deselect all</button>
+    </div>
+  </div>
+  <p class="phone-intro">
+    SettleIn runs on a Mac. Pick your apps here, copy the link, and open it on your Mac.
+  </p>
+  <div class="notice" id="notice" role="status"></div>
+  <noscript>
+    <p class="nojs">
+      Turn on JavaScript to pick apps here, or download SettleIn and pick inside the app.
+    </p>
+  </noscript>
+
+  <div class="catalog" role="group" aria-label={`Catalog, ${total} apps`}>
+    {
+      groups.map((group) => (
+        <fieldset class="cat">
+          <legend class="cat-head">
+            <input
+              class="sq cat-box js-only"
+              type="checkbox"
+              id={`catbox-${group.id}`}
+              data-cat={group.id}
+              aria-label={`Select all in ${group.category}`}
+            />
+            <h3>{group.category}</h3>
+            <label class="cat-toggle js-only" for={`catbox-${group.id}`}>
+              Select all
+            </label>
+          </legend>
+          <ul>
+            {group.apps.map((app, index) => (
+              <li>
+                <label class="row">
+                  <input class="sq" type="checkbox" name="app" value={app.token} data-name={app.name} />
+                  <img
+                    class="icon"
+                    src={`/icons/${app.token}-128.png`}
+                    width="28"
+                    height="28"
+                    alt=""
+                    loading={group.first && index < 12 ? "eager" : "lazy"}
+                    decoding="async"
+                  />
+                  <span>{app.name}</span>
+                </label>
+              </li>
+            ))}
+          </ul>
+        </fieldset>
+      ))
+    }
+  </div>
+
+  <div class="bar js-only" role="region" aria-label="Selection">
+    <div class="slots" id="slots" aria-hidden="true"></div>
+    <div class="tally" id="tally">
+      <strong id="count" aria-live="polite">0 apps selected</strong>
+      <small class="hint-desk">Tick an app above to start</small>
+      <small class="hint-phone">Tick apps, then copy the link for your Mac</small>
+    </div>
+    <div class="bar-actions">
+      <button
+        class="btn-primary download"
+        id="download"
+        type="button"
+        hidden
+        data-after-download={AFTER_DOWNLOAD_PATH}
+      >
+        <svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"
+          ><path d="M8 2v8.5M4.5 7.2 8 10.7l3.5-3.5M2.5 13.5h11"></path></svg
+        >
+        <span>Download SettleIn</span>
+      </button>
+      <button class="btn-primary copy-btn" id="copy" type="button" hidden>
+        <svg class="tick" width="16" height="16" viewBox="0 0 16 16" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" hidden
+          ><path d="m3 8.5 3.2 3.2L13 4.8"></path></svg
+        >
+        <span id="copy-label">Copy link</span>
+      </button>
+    </div>
+  </div>
+  <p class="sr-only" id="copy-status" role="status"></p>
+  <div class="copy-fail" id="copy-fail" hidden>
+    <p>Couldn’t copy. Press and hold the link to copy it.</p>
+    <input id="copy-field" type="text" readonly aria-label="Link to this selection" />
+  </div>
+</section>

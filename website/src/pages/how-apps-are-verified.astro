@@ -1,0 +1,55 @@
+---
+import Page from "../layouts/Page.astro";
+import InfoRow from "../components/InfoRow.astro";
+
+const unpublished = ["Google Chrome", "Spotify", "Google Drive", "AnyDesk"];
+const installers = ["Zoom", "Microsoft Teams", "Google Drive", "OneDrive", "Tailscale", "TeamViewer"];
+---
+
+<Page
+  title="How SettleIn checks every app"
+  description="SettleIn checks the signature, notarization and checksum of every app before it installs."
+>
+  <div class="page-head">
+    <h1>How SettleIn checks every app</h1>
+    <p>
+      Every app comes straight from its own developer, and SettleIn checks it before it installs. If a
+      check fails, SettleIn refuses that app and tells you which one and why.
+    </p>
+  </div>
+  <div class="info-list">
+    <InfoRow icon="pen" title="Developer ID signature">
+      <p>Every download must be signed with a valid Developer ID.</p>
+      <p>A missing or broken signature means SettleIn refuses the app.</p>
+    </InfoRow>
+    <InfoRow icon="shield" title="Apple notarization">
+      <p>Apple must have notarized the download.</p>
+      <p>If it hasn’t, SettleIn refuses it.</p>
+    </InfoRow>
+    <InfoRow icon="hash" title="Checksum">
+      <p>When the catalog lists a SHA-256 checksum, the download must match it exactly.</p>
+      <p>These apps publish no checksum, so they rely on the signature and notarization checks:</p>
+      <ul class="chips">
+        {unpublished.map((name) => <li>{name}</li>)}
+      </ul>
+    </InfoRow>
+    <InfoRow icon="lock" title="macOS checks again">
+      <p>SettleIn keeps the quarantine flag on every app it installs.</p>
+      <p>That way macOS runs its own check the first time you open each one.</p>
+    </InfoRow>
+    <InfoRow icon="box" title="Installers stay Apple’s">
+      <p>These apps come as installer packages.</p>
+      <p>SettleIn checks them, then opens them in Apple’s Installer for you to click through:</p>
+      <ul class="chips">
+        {installers.map((name) => <li>{name}</li>)}
+      </ul>
+    </InfoRow>
+    <InfoRow icon="list" title="One source for the list">
+      <p>The app reads its catalog only from <span class="domain">settlein.dev</span>.</p>
+    </InfoRow>
+    <InfoRow icon="trash" title="Clean removal">
+      <p>When you uninstall an app, SettleIn deletes only the files the catalog lists for it.</p>
+      <p>Removing an installer-package app asks for your admin password once.</p>
+    </InfoRow>
+  </div>
+</Page>

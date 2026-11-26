@@ -43,3 +43,4 @@
 | [0039](0039-website-and-app-are-light-only.md) | Website and app are light only | accepted |
 | [0040](0040-install-record-and-launch-inputs.md) | Install record and launch inputs | accepted |
 | [0041](0041-app-fetches-catalog-icons-from-settlein-dev.md) | App fetches catalog icons from settlein.dev | accepted |
+| [0042](0042-after-download-page-checks-the-download-itself.md) | The after-download page checks the download itself | accepted |
