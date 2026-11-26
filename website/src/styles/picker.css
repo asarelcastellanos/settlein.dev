@@ -44,7 +44,8 @@
   margin: var(--space-4) 24px 0;
   padding: 6px 8px 6px 14px;
   border-radius: var(--r-row);
-  background: var(--accent-tint);
+  background: var(--warning-tint);
+  color: var(--warning);
   font-size: 14px;
   line-height: 20px;
 }
