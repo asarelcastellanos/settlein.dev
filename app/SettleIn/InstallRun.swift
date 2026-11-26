@@ -33,6 +33,7 @@ final class InstallRun {
     let skipped: [CatalogApp]
     let folder: URL
     private(set) var finished = false
+    var recordFailed = false
 
     init(toInstall: [CatalogApp], skipped: [CatalogApp], folder: URL = Installer.destination()) {
         items = toInstall.map { RunItem(app: $0, state: .waiting) }

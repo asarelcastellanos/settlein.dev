@@ -39,7 +39,7 @@ enum InstallRecord {
         }
     }
 
-    static func add(_ apps: [CatalogApp], on date: Date = Date()) {
+    static func add(_ apps: [CatalogApp], on date: Date = Date()) throws {
         guard !apps.isEmpty else { return }
         var entries: [InstallEntry] = []
         if case .entries(let existing) = read() { entries = existing }
@@ -49,7 +49,7 @@ enum InstallRecord {
         let encoder = JSONEncoder()
         encoder.dateEncodingStrategy = .iso8601
         encoder.outputFormatting = [.prettyPrinted, .sortedKeys]
-        try? FileManager.default.createDirectory(at: folder, withIntermediateDirectories: true)
-        try? encoder.encode(entries).write(to: file, options: .atomic)
+        try FileManager.default.createDirectory(at: folder, withIntermediateDirectories: true)
+        try encoder.encode(entries).write(to: file, options: .atomic)
     }
 }

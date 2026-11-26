@@ -1,5 +1,6 @@
 import Foundation
 import Observation
+import os
 
 enum Destination: Equatable {
     case pick
@@ -159,8 +160,14 @@ final class AppModel {
         screen = .installing(run)
         Task {
             await run.start()
-            recordUnreadable = false
-            InstallRecord.add(run.items.filter { $0.state == .done || $0.state == .waitingInInstaller }.map(\.app))
+            do {
+                try InstallRecord.add(run.items.filter { $0.state == .done || $0.state == .waitingInInstaller }.map(\.app))
+                recordUnreadable = false
+            } catch {
+                Logger(subsystem: "dev.settlein.SettleIn", category: "record")
+                    .error("Could not save the install record: \(error.localizedDescription, privacy: .public)")
+                run.recordFailed = true
+            }
         }
     }
 

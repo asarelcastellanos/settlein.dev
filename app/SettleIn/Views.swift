@@ -120,6 +120,10 @@ struct FinishedView: View {
     var body: some View {
         VStack(alignment: .leading, spacing: 12) {
             Text(summary).font(.title2)
+            if run.recordFailed {
+                Text("SettleIn couldn’t save its record of these apps. They won’t be listed under Installed by SettleIn. Make sure SettleIn’s folder can be written to.")
+                    .foregroundStyle(Color.SI.warning)
+            }
             List {
                 section("Installed in \(run.folder.path)", installed.map { ($0.name, nil) })
                 section("Opened in Apple's Installer", waiting.map { ($0.name, "Verified. SettleIn cannot tell whether you finished the install") })
