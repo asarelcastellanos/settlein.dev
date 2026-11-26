@@ -142,7 +142,7 @@ final class AppModel {
             if case .pick(let list) = goal { preset = list }
             screen = .pick(PickSelection(catalog: catalog, ticked: preset))
         case .installed:
-            if record == .unreadable { screen = .installed(.unreadable) } else { screen = .installed(content(record)) }
+            screen = .installed(content(record))
         }
     }
 
