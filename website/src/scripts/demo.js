@@ -10,6 +10,7 @@ export function initDemo() {
   const play = document.getElementById("play");
   const rows = Array.from(document.querySelectorAll(".d-row"));
   const bar = document.getElementById("d-bar");
+  const dSlots = document.getElementById("d-slots");
   const dCount = document.getElementById("d-count");
   const dDone = document.getElementById("d-done");
   const dFill = document.getElementById("d-fill");
@@ -18,6 +19,10 @@ export function initDemo() {
   const installRows = Array.from(document.querySelectorAll("#d-install li"));
   const unRows = Array.from(document.querySelectorAll("#d-un li"));
   const tickOrder = ["firefox", "slack", "visual-studio-code", "zoom", "spotify"];
+  const slotSrc = new Map(
+    rows.map((row) => [row.dataset.token, row.querySelector("img").getAttribute("src")]),
+  );
+  let slotCount = -1;
   let frame = 0;
   let timer = 0;
   let running = false;
@@ -30,6 +35,30 @@ export function initDemo() {
 
   function setMini(el, ratio) {
     el.querySelector(".d-mini i").style.transform = `scaleX(${ratio})`;
+  }
+
+  function renderSlots(n) {
+    if (n === slotCount) return;
+    const grow = n === slotCount + 1 && n > 0;
+    slotCount = n;
+    dSlots.replaceChildren();
+    if (n === 0) {
+      for (let i = 0; i < 3; i += 1) {
+        const empty = document.createElement("i");
+        empty.className = "d-slot empty";
+        dSlots.append(empty);
+      }
+      return;
+    }
+    tickOrder.slice(0, n).forEach((token, i) => {
+      const img = document.createElement("img");
+      img.className = grow && i === n - 1 ? "d-slot pop" : "d-slot";
+      img.src = slotSrc.get(token);
+      img.width = 32;
+      img.height = 32;
+      img.alt = "";
+      dSlots.append(img);
+    });
   }
 
   function render() {
@@ -45,6 +74,7 @@ export function initDemo() {
       row.classList.toggle("on", index !== -1 && index < n);
     });
     dCount.textContent = `${n} ${n === 1 ? "app" : "apps"} selected`;
+    renderSlots(n);
     bar.classList.toggle("has", n > 0);
     bar.classList.toggle("press", f === 8);
 
