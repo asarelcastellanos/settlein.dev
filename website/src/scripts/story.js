@@ -1,5 +1,7 @@
 const QUERY = "(min-width: 900px) and (min-height: 640px) and (prefers-reduced-motion: no-preference)";
-const RUN = 1.2;
+const COPY_END = 0.12;
+const ZOOM_START = 0.12;
+const ZOOM_END = 0.6;
 
 const clamp = (value) => Math.min(1, Math.max(0, value));
 const ease = (t) => (t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2);
@@ -78,20 +80,20 @@ export function initStory() {
 
   function paint() {
     if (!geo) return;
-    const e = ease(z);
+    const e = ease(clamp((z - ZOOM_START) / (ZOOM_END - ZOOM_START)));
     const s = geo.scale + (1 - geo.scale) * e;
     win.style.transform = `translate(${(geo.x - 20) * (1 - e)}px, ${(geo.y - 20) * (1 - e)}px) scale(${s})`;
-    const fade = clamp(z / 0.2);
+    const fade = clamp((z - ZOOM_START) / (ZOOM_END - ZOOM_START));
     twin.style.opacity = String(fade);
     demo.style.opacity = String(1 - fade);
-    const away = clamp(z / 0.5);
+    const away = clamp(z / COPY_END);
     copy.style.opacity = String(1 - away);
     copy.style.transform = `translateX(${-40 * away}px)`;
     setLive(z >= 1);
   }
 
   function aim() {
-    target = clamp((window.scrollY - stage.offsetTop) / (RUN * window.innerHeight));
+    target = clamp((window.scrollY - stage.offsetTop) / window.innerHeight);
     if (!frameId) frameId = requestAnimationFrame(step);
   }
 
@@ -115,7 +117,7 @@ export function initStory() {
     root.classList.add("story-on");
     syncTwin();
     measure();
-    z = target = clamp((window.scrollY - stage.offsetTop) / (RUN * window.innerHeight));
+    z = target = clamp((window.scrollY - stage.offsetTop) / window.innerHeight);
     paint();
   }
 

@@ -295,7 +295,7 @@ html:not(.js) .js-only {
 }
 
 html.story-on .stage {
-  height: 220vh;
+  height: 200vh;
 }
 
 html.story-on .pin {
