@@ -17,6 +17,7 @@ export function initStory() {
   const twin = document.getElementById("twin");
   const copy = document.querySelector(".hero-copy");
   const picker = document.getElementById("picker");
+  const bar = picker.querySelector(".bar");
   let geo = null;
   let z = 0;
   let target = 0;
@@ -78,6 +79,22 @@ export function initStory() {
     if (!on) syncTwin();
   }
 
+  function hold() {
+    if (!live) {
+      picker.style.removeProperty("transform");
+      bar.style.removeProperty("transform");
+      return;
+    }
+    const lift = window.scrollY - stage.offsetTop - window.innerHeight;
+    if (lift < 0) {
+      picker.style.transform = `translateY(${lift}px)`;
+      bar.style.transform = `translateY(${-lift}px)`;
+    } else {
+      picker.style.removeProperty("transform");
+      bar.style.removeProperty("transform");
+    }
+  }
+
   function paint() {
     if (!geo) return;
     const e = ease(clamp((z - ZOOM_START) / (ZOOM_END - ZOOM_START)));
@@ -89,7 +106,8 @@ export function initStory() {
     const away = clamp(z / COPY_END);
     copy.style.opacity = String(1 - away);
     copy.style.transform = `translateX(${-40 * away}px)`;
-    setLive(z >= 1);
+    setLive(z >= ZOOM_END);
+    hold();
   }
 
   function aim() {
@@ -125,6 +143,8 @@ export function initStory() {
     root.classList.remove("story-on");
     live = false;
     picker.classList.remove("live");
+    picker.style.removeProperty("transform");
+    bar.style.removeProperty("transform");
     pin.classList.remove("gone");
     for (const el of [win, demo, twin, copy, slot]) el.removeAttribute("style");
     twin.replaceChildren();
@@ -136,7 +156,8 @@ export function initStory() {
   }
 
   window.addEventListener("scroll", () => {
-    if (root.classList.contains("story-on")) aim();
+    if (!root.classList.contains("story-on")) return;
+    aim();
   }, { passive: true });
   window.addEventListener("resize", () => {
     if (root.classList.contains("story-on")) {
@@ -147,6 +168,7 @@ export function initStory() {
   picker.addEventListener("focusin", (event) => {
     if (!root.classList.contains("story-on") || z >= 1) return;
     const focused = event.target;
+    if (live && !focused.matches(":focus-visible")) return;
     reveal();
     focused.scrollIntoView({ block: "nearest" });
   });
