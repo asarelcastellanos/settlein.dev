@@ -97,7 +97,6 @@
   gap: 28px;
   margin-bottom: var(--space-2);
   border-bottom: 1px solid var(--separator);
-  overflow-x: auto;
 }
 
 .tabs button {
@@ -461,9 +460,14 @@ html:not(.js) .after-failed {
   }
 
   .tabs {
-    flex-wrap: wrap;
-    gap: 0 20px;
-    overflow-x: visible;
+    gap: 0;
+  }
+
+  .tabs button {
+    flex: 1 1 0;
+    min-width: 0;
+    padding: 0 4px;
+    text-align: center;
   }
 }
 
