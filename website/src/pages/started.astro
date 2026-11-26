@@ -8,8 +8,8 @@ for (const group of loadCatalog()) for (const app of group.apps) names[app.token
 ---
 
 <Page
-  title="Your download has started. SettleIn"
-  description="SettleIn is downloading. Change your selection or download again."
+  title="Your SettleIn download"
+  description="Your SettleIn download. Change your selection or download again."
 >
   <section class="after" id="after" data-state="checking" data-download={DOWNLOAD_PATH}>
     <img class="after-icon" src="/settlein-icon.svg" width="108" height="108" alt="" />
@@ -42,8 +42,9 @@ for (const group of loadCatalog()) for (const app of group.apps) names[app.token
     </div>
 
     <noscript>
-      <h1>Your download has started.</h1>
-      <p><a class="btn-primary" href={DOWNLOAD_PATH}>Download again</a></p>
+      <h1>Downloading needs JavaScript.</h1>
+      <p class="after-plain">SettleIn puts your choices in the download address with JavaScript. Turn it on, or pick your apps again.</p>
+      <p><a class="btn-primary" href="/#picker">Back to the home page</a></p>
     </noscript>
   </section>
 

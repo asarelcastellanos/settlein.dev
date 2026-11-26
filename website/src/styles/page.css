@@ -470,3 +470,11 @@ html:not(.js) .after-failed {
     padding-top: 96px;
   }
 }
+
+.after-plain {
+  max-width: 46ch;
+  margin: 0;
+  color: var(--text-secondary);
+  font-size: 18px;
+  line-height: 28px;
+}
