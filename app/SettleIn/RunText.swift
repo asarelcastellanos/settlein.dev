@@ -15,6 +15,9 @@ enum RunText {
         }
         if reason.hasPrefix("Signature check failed.") {
             if reason.contains("not notarized") { return "The download isn’t notarized by Apple." + installed }
+            if reason.hasSuffix(Verify.notarizationUnconfirmed) {
+                return "SettleIn couldn’t confirm with Apple that this download is notarized. Check your connection and try again." + (short ? "" : " Nothing was installed.")
+            }
             if reason.hasSuffix("It is not signed") {
                 return "The download isn’t signed by its developer." + (short ? "" : " Nothing was installed.")
             }

@@ -8,6 +8,13 @@ enum Verify {
     and certificate leaf[field.1.2.840.113635.100.6.1.13] exists and notarized
     """
 
+    static let developerID = """
+    anchor apple generic and certificate 1[field.1.2.840.113635.100.6.2.6] exists \
+    and certificate leaf[field.1.2.840.113635.100.6.1.13] exists
+    """
+
+    static let notarizationUnconfirmed = "SettleIn could not confirm with Apple that the app is notarized"
+
     static func sha256(of file: URL) throws -> String {
         let handle = try FileHandle(forReadingFrom: file)
         defer { try? handle.close() }
@@ -32,7 +39,12 @@ enum Verify {
               let requirement else {
             return "The signature check could not start"
         }
-        let result = SecStaticCodeCheckValidityWithErrors(code, flags, requirement, nil)
-        return result == errSecSuccess ? nil : "It does not have a valid Developer ID signature with Apple notarization"
+        if SecStaticCodeCheckValidityWithErrors(code, flags, requirement, nil) == errSecSuccess { return nil }
+        var plain: SecRequirement?
+        if SecRequirementCreateWithString(developerID as CFString, [], &plain) == errSecSuccess, let plain,
+           SecStaticCodeCheckValidityWithErrors(code, flags, plain, nil) == errSecSuccess {
+            return notarizationUnconfirmed
+        }
+        return "It does not have a valid Developer ID signature with Apple notarization"
     }
 }
