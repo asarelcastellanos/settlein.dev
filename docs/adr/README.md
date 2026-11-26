@@ -25,10 +25,13 @@
 | [0021](0021-uninstall-never-touches-user-file-folders.md) | Uninstall never touches user file folders | accepted |
 | [0022](0022-daily-job-commits-catalog-to-a-data-branch.md) | Daily job commits the catalog to a data branch | accepted |
 | [0023](0023-designer-returns-figma-and-design-md.md) | Designer returns Figma and DESIGN.md | superseded by [0033](0033-final-design-handoff-replaces-the-figma-plan.md) |
+| [0024](0024-app-shell-structure-and-dev-inputs.md) | App shell structure and development inputs | accepted |
 | [0025](0025-selection-names-apps-by-homebrew-token.md) | The selection names apps by Homebrew token | accepted |
 | [0026](0026-bundle-app-icons-in-the-repo.md) | Bundle app icons in the repo | accepted |
 | [0027](0027-settlein-opens-to-the-installed-list.md) | Settlein opens to the installed list | superseded by [0035](0035-pick-apps-inside-the-app.md) |
 | [0028](0028-release-script-signs-after-an-unsigned-build.md) | Release script signs after an unsigned build | accepted |
+| [0029](0029-copy-app-install-pipeline.md) | Copy app install pipeline | accepted |
+| [0030](0030-pkg-install-pipeline.md) | Pkg install pipeline | accepted |
 | [0031](0031-extract-icons-from-vendor-downloads-with-a-script.md) | Extract icons from vendor downloads with a script | accepted |
 | [0032](0032-reject-symlinked-icon-files-in-every-archive-kind.md) | Reject symlinked icon files in every archive kind | accepted |
 | [0033](0033-final-design-handoff-replaces-the-figma-plan.md) | Final design handoff replaces the Figma plan | accepted |
