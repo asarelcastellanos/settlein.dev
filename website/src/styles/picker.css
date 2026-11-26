@@ -470,3 +470,16 @@ html:not(.js) .cat-head {
     animation: none;
   }
 }
+
+html:not(.js) .row {
+  grid-template-columns: 28px 1fr;
+  cursor: default;
+}
+
+html:not(.js) .row:hover {
+  background: transparent;
+}
+
+html:not(.js) .row .sq {
+  display: none;
+}
