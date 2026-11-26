@@ -106,6 +106,7 @@ struct BarProgressStyle: ProgressViewStyle {
 enum RowStyle {
     case running
     case finished
+    case finishedPlain
     case nothing
 }
 
@@ -170,10 +171,12 @@ struct RunRow: View {
         switch item.state {
         case .verifying: Color.SI.accentTint
         case .waitingInInstaller, .opening: Color.SI.warningTint
-        case .refused: Color.SI.dangerTint
+        case .refused: style == .finishedPlain ? .clear : Color.SI.dangerTint
         default: .clear
         }
     }
+
+    private var finished: Bool { style == .finished || style == .finishedPlain }
 
     private var detail: String? {
         switch item.state {
@@ -182,18 +185,18 @@ struct RunRow: View {
         case .downloading(nil): "Downloading"
         case .verifying: "Checking signature and notarization"
         case .installing: "Installing in Applications"
-        case .done: style == .finished ? nil : "Installed in Applications"
-        case .refused(let reason): RunText.refusal(reason, short: style == .finished)
+        case .done: finished ? nil : "Installed in Applications"
+        case .refused(let reason): RunText.refusal(reason, short: finished)
         case .opening: "Opening in Apple’s Installer"
         case .waitingInInstaller:
-            style == .finished ? "SettleIn opened its installer. It can’t tell if you finished." : "Finish the steps in Apple’s Installer, then come back"
+            finished ? "SettleIn opened its installer. It can’t tell if you finished." : "Finish the steps in Apple’s Installer, then come back"
         case .alreadyInstalled:
             switch style {
             case .running: "Already on this Mac. Left as is."
-            case .finished: "Left as is"
+            case .finished, .finishedPlain: "Left as is"
             case .nothing: "Already on this Mac"
             }
-        case .cancelled: style == .finished ? "Cancelled" : "Cancelled. Not installed."
+        case .cancelled: finished ? "Cancelled" : "Cancelled. Not installed."
         }
     }
 
@@ -394,7 +397,7 @@ struct FinishedView: View {
                     group("Check in Apple’s Installer", waiting)
                     group("Already on this Mac", already)
                     group("Not installed", cancelled)
-                    group("Refused", refused)
+                    group(allRefused ? nil : "Refused", refused)
                 }
                 .padding(.horizontal, SISpace.s6)
                 .padding(.top, SISpace.s5)
@@ -414,16 +417,18 @@ struct FinishedView: View {
     }
 
     @ViewBuilder
-    private func group(_ title: String, _ rows: [RunItem]) -> some View {
+    private func group(_ title: String?, _ rows: [RunItem]) -> some View {
         if !rows.isEmpty {
             VStack(alignment: .leading, spacing: SISpace.s1) {
-                Text("\(title.uppercased()) · \(rows.count)")
-                    .font(.system(size: 12, weight: .bold))
-                    .tracking(0.6)
-                    .foregroundStyle(Color.SI.textSecondary)
-                    .accessibilityAddTraits(.isHeader)
-                Divider().overlay(SeparatorStyle())
-                RunList(items: rows, style: .finished)
+                if let title {
+                    Text("\(title.uppercased()) · \(rows.count)")
+                        .font(.system(size: 12, weight: .bold))
+                        .tracking(0.6)
+                        .foregroundStyle(Color.SI.textSecondary)
+                        .accessibilityAddTraits(.isHeader)
+                    Divider().overlay(SeparatorStyle())
+                }
+                RunList(items: rows, style: title == nil ? .finishedPlain : .finished)
             }
             .padding(.top, SISpace.s1)
         }
