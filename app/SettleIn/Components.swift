@@ -33,6 +33,7 @@ struct WindowGround: View {
 }
 
 struct FocusRing: ViewModifier {
+    var radius: CGFloat = SIRadius.button + 2
     @FocusState private var focused: Bool
 
     func body(content: Content) -> some View {
@@ -40,7 +41,7 @@ struct FocusRing: ViewModifier {
             .focusEffectDisabled()
             .focused($focused)
             .overlay(
-                RoundedRectangle(cornerRadius: SIRadius.button + 2)
+                RoundedRectangle(cornerRadius: radius)
                     .stroke(Color.SI.focusRing, lineWidth: 2)
                     .padding(-3)
                     .opacity(focused ? 1 : 0)
@@ -50,7 +51,11 @@ struct FocusRing: ViewModifier {
 }
 
 extension View {
-    func focusRing() -> some View { modifier(FocusRing()) }
+    func focusRing(radius: CGFloat = SIRadius.button + 2) -> some View { modifier(FocusRing(radius: radius)) }
+}
+
+struct FlatButtonStyle: ButtonStyle {
+    func makeBody(configuration: Configuration) -> some View { configuration.label }
 }
 
 struct PrimaryButtonStyle: ButtonStyle {

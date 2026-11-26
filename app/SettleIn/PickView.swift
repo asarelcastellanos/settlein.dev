@@ -31,9 +31,10 @@ struct PickView: View {
             VStack(alignment: .leading, spacing: SISpace.s2) {
                 if let back {
                     Button(action: back) { Text("‹ Installed apps") }
-                        .buttonStyle(.plain)
+                        .buttonStyle(FlatButtonStyle())
                         .font(.system(size: 14, weight: .semibold))
                         .foregroundStyle(Color.SI.accentText)
+                        .focusRing(radius: SIRadius.checkbox + 2)
                 }
                 ScreenHeading(title: "Pick apps", detail: "Apps already on this Mac are marked Installed.")
             }
@@ -67,7 +68,8 @@ struct CategorySection: View {
                     }
                     .contentShape(Rectangle())
                 }
-                .buttonStyle(.plain)
+                .buttonStyle(FlatButtonStyle())
+                .focusRing(radius: SIRadius.row + 2)
                 .accessibilityLabel("\(allOn ? "Deselect all" : "Select all") in \(category)")
                 .accessibilityAddTraits(allOn ? .isSelected : [])
             }
@@ -97,7 +99,8 @@ struct PickRow: View {
                 .accessibilityValue("Installed")
         } else {
             Button(action: toggle) { rowContent }
-                .buttonStyle(.plain)
+                .buttonStyle(FlatButtonStyle())
+                .focusRing(radius: SIRadius.row + 2)
                 .onHover { hovering = $0 }
                 .accessibilityElement(children: .combine)
                 .accessibilityValue(isOn ? "Ticked" : "Not ticked")

@@ -135,6 +135,7 @@ struct FinishedView: View {
             HStack {
                 Spacer()
                 Button("Done") { NSApplication.shared.terminate(nil) }
+                    .focusRing()
                     .keyboardShortcut(.defaultAction)
             }
         }
