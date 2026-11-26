@@ -123,6 +123,12 @@ a {
   outline: none;
 }
 
+@media (pointer: coarse) {
+  .app {
+    padding-top: calc(var(--target-min) + var(--space-1));
+  }
+}
+
 .icon {
   display: block;
   width: var(--tile-size);
