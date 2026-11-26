@@ -197,3 +197,24 @@ struct StatusBadge: View {
             .accessibilityHidden(true)
     }
 }
+
+struct AccentSpinner: View {
+    @Environment(\.accessibilityReduceMotion) private var reduceMotion
+    @State private var turning = false
+
+    var body: some View {
+        ZStack {
+            Circle().stroke(Color.SI.accent.opacity(0.18), lineWidth: 2)
+            Circle()
+                .trim(from: 0, to: 0.28)
+                .stroke(Color.SI.accent, style: StrokeStyle(lineWidth: 2, lineCap: .round))
+                .rotationEffect(.degrees(turning ? 360 : 0))
+        }
+        .frame(width: 16, height: 16)
+        .onAppear {
+            guard !reduceMotion else { return }
+            withAnimation(.linear(duration: 0.9).repeatForever(autoreverses: false)) { turning = true }
+        }
+        .accessibilityHidden(true)
+    }
+}

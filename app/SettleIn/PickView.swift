@@ -206,7 +206,7 @@ struct PickLoadingView: View {
                     VStack(alignment: .leading, spacing: SISpace.s1) {
                         ScreenHeading(title: "Pick apps", detail: nil)
                         HStack(spacing: SISpace.s2) {
-                            ProgressView().controlSize(.small).tint(Color.SI.accent)
+                            AccentSpinner()
                             Text("Loading the catalog from settlein.dev…")
                                 .font(.system(size: 15))
                                 .foregroundStyle(Color.SI.textSecondary)
