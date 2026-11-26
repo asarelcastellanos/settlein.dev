@@ -259,6 +259,10 @@ Full text on the boards: `screenshots/website/Verify.png` and `Privacy.png`. Sen
 - Report a problem
 - Done
 
+### A3 Finished: error line (added in the build)
+
+- SettleIn couldn’t save its record of these apps. They won’t be listed under Installed by SettleIn. Make sure SettleIn’s folder can be written to.
+
 ### A4 Installed list
 
 - Installed by SettleIn
