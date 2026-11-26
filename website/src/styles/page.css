@@ -327,7 +327,7 @@ html:not(.js) .after-failed {
   padding: 18px 22px 10px;
   border-radius: 20px;
   background: var(--surface-window);
-  box-shadow: 0 0 0 1px var(--separator), 0 18px 48px rgb(20 30 80 / 0.14);
+  box-shadow: var(--e-window);
   text-align: left;
 }
 
