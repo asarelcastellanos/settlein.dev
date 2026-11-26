@@ -193,7 +193,11 @@ struct LoadingShell<Content: View>: View {
 }
 
 struct PickLoadingView: View {
-    private let widths: [[CGFloat]] = [[0.5, 0.7, 0.42], [0.55, 0.75, 0.42, 0.6], [0.5, 0.7, 0.4, 0.62]]
+    private let widths: [[[CGFloat]]] = [
+        [[0.5, 0.7, 0.42], [0.5, 0.7, 0.42, 0.62]],
+        [[0.55, 0.75, 0.42, 0.6], [0.5, 0.7, 0.4]],
+        [[0.55, 0.75, 0.42, 0.6], [0.5, 0.7]]
+    ]
 
     var body: some View {
         LoadingShell {
@@ -210,18 +214,22 @@ struct PickLoadingView: View {
                     }
                     HStack(alignment: .top, spacing: SISpace.s6) {
                         ForEach(0..<3, id: \.self) { column in
-                            VStack(alignment: .leading, spacing: SISpace.s1) {
-                                Capsule().fill(Color.SI.rowHover).frame(width: 110, height: 10).frame(height: 36)
-                                ForEach(widths[column].indices, id: \.self) { row in
-                                    HStack(spacing: SISpace.s3) {
-                                        RoundedRectangle(cornerRadius: SIRadius.checkbox).fill(Color.white)
-                                            .overlay(RoundedRectangle(cornerRadius: SIRadius.checkbox).stroke(SeparatorStyle()))
-                                            .frame(width: 18, height: 18)
-                                        RoundedRectangle(cornerRadius: 8).fill(Color.SI.iconPlaceholder).frame(width: 34, height: 34)
-                                        Capsule().fill(Color.SI.rowHover).frame(width: 150 * widths[column][row], height: 8)
-                                        Spacer()
+                            VStack(alignment: .leading, spacing: SISpace.s5) {
+                                ForEach(widths[column].indices, id: \.self) { section in
+                                    VStack(alignment: .leading, spacing: SISpace.s1) {
+                                        Capsule().fill(Color.SI.rowHover).frame(width: 110, height: 10).frame(height: 36)
+                                        ForEach(widths[column][section].indices, id: \.self) { row in
+                                            HStack(spacing: SISpace.s3) {
+                                                RoundedRectangle(cornerRadius: SIRadius.checkbox).fill(Color.white)
+                                                    .overlay(RoundedRectangle(cornerRadius: SIRadius.checkbox).stroke(SeparatorStyle()))
+                                                    .frame(width: 18, height: 18)
+                                                RoundedRectangle(cornerRadius: 8).fill(Color.SI.iconPlaceholder).frame(width: 34, height: 34)
+                                                Capsule().fill(Color.SI.rowHover).frame(width: 150 * widths[column][section][row], height: 8)
+                                                Spacer()
+                                            }
+                                            .frame(height: 52)
+                                        }
                                     }
-                                    .frame(height: 52)
                                 }
                             }
                             .frame(maxWidth: .infinity)
