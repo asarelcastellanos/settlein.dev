@@ -38,7 +38,7 @@ struct InstalledView: View {
                     .font(.system(size: 14))
                     .foregroundStyle(Color.SI.textSecondary)
                 Spacer()
-                Button("Add apps", action: addApps).buttonStyle(PrimaryButtonStyle())
+                Button("Add apps", action: addApps).buttonStyle(PrimaryButtonStyle()).focusRing()
             }
         }
     }
@@ -53,7 +53,7 @@ struct InstalledView: View {
                 .frame(width: 122, height: 122)
                 .accessibilityHidden(true)
         } buttons: {
-            Button("Pick apps", action: addApps).buttonStyle(PrimaryButtonStyle()).keyboardShortcut(.defaultAction)
+            Button("Pick apps", action: addApps).buttonStyle(PrimaryButtonStyle()).focusRing().keyboardShortcut(.defaultAction)
         }
     }
 
@@ -70,8 +70,8 @@ struct InstalledView: View {
                 .accessibilityHidden(true)
         } buttons: {
             Button("Show in Finder") { NSWorkspace.shared.activateFileViewerSelecting([InstallRecord.folder]) }
-                .buttonStyle(SecondaryButtonStyle())
-            Button("Try again", action: retry).buttonStyle(PrimaryButtonStyle()).keyboardShortcut(.defaultAction)
+                .buttonStyle(SecondaryButtonStyle()).focusRing()
+            Button("Try again", action: retry).buttonStyle(PrimaryButtonStyle()).focusRing().keyboardShortcut(.defaultAction)
         }
     }
 }
@@ -99,7 +99,7 @@ struct InstalledRowView: View {
                     .accessibilityLabel("Removing asks for your admin password")
             }
             Button("Uninstall") {}
-                .buttonStyle(SecondaryButtonStyle())
+                .buttonStyle(SecondaryButtonStyle()).focusRing()
                 .disabled(true)
         }
         .frame(height: 68)

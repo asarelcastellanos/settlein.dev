@@ -32,6 +32,27 @@ struct WindowGround: View {
     }
 }
 
+struct FocusRing: ViewModifier {
+    @FocusState private var focused: Bool
+
+    func body(content: Content) -> some View {
+        content
+            .focusEffectDisabled()
+            .focused($focused)
+            .overlay(
+                RoundedRectangle(cornerRadius: SIRadius.button + 2)
+                    .stroke(Color.SI.focusRing, lineWidth: 2)
+                    .padding(-3)
+                    .opacity(focused ? 1 : 0)
+                    .allowsHitTesting(false)
+            )
+    }
+}
+
+extension View {
+    func focusRing() -> some View { modifier(FocusRing()) }
+}
+
 struct PrimaryButtonStyle: ButtonStyle {
     @Environment(\.isEnabled) private var enabled
 

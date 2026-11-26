@@ -33,7 +33,7 @@ struct InstalledLoadingView: View {
                 GlassBar {
                     Text("Checking…").font(.system(size: 14)).foregroundStyle(Color.SI.textSecondary)
                     Spacer()
-                    Button("Add apps") {}.buttonStyle(PrimaryButtonStyle()).disabled(true)
+                    Button("Add apps") {}.buttonStyle(PrimaryButtonStyle()).focusRing().disabled(true)
                 }
             }
         }

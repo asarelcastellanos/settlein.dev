@@ -38,8 +38,8 @@ struct PickView: View {
                 ScreenHeading(title: "Pick apps", detail: "Apps already on this Mac are marked Installed.")
             }
             Spacer()
-            Button("Select all") { pick.selectAll() }.buttonStyle(SecondaryButtonStyle())
-            Button("Deselect all") { pick.deselectAll() }.buttonStyle(SecondaryButtonStyle())
+            Button("Select all") { pick.selectAll() }.buttonStyle(SecondaryButtonStyle()).focusRing()
+            Button("Deselect all") { pick.deselectAll() }.buttonStyle(SecondaryButtonStyle()).focusRing()
         }
     }
 }
@@ -170,7 +170,7 @@ struct PickBar: View {
             Spacer()
             if count > 0 {
                 Button(action: install) { Text("Install \(count) \(count == 1 ? "app" : "apps")") }
-                    .buttonStyle(PrimaryButtonStyle())
+                    .buttonStyle(PrimaryButtonStyle()).focusRing()
                     .keyboardShortcut(.defaultAction)
             }
         }

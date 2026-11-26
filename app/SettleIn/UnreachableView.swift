@@ -16,8 +16,8 @@ struct UnreachableView: View {
                 StatusBadge(symbol: "icloud.slash", tint: Color.SI.textSecondary, background: Color.SI.surfaceSide)
             }
         } buttons: {
-            Button("Close") { NSApplication.shared.terminate(nil) }.buttonStyle(SecondaryButtonStyle())
-            Button("Try again", action: retry).buttonStyle(PrimaryButtonStyle()).keyboardShortcut(.defaultAction)
+            Button("Close") { NSApplication.shared.terminate(nil) }.buttonStyle(SecondaryButtonStyle()).focusRing()
+            Button("Try again", action: retry).buttonStyle(PrimaryButtonStyle()).focusRing().keyboardShortcut(.defaultAction)
                 .disabled(kind == .retrying)
         }
     }
