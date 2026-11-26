@@ -1,5 +1,5 @@
 ---
-import { DOWNLOAD_HANDOFF_PLACEHOLDER } from "../lib/handoff.js";
+import { AFTER_DOWNLOAD_PATH } from "../lib/site.js";
 
 const { groups, total } = Astro.props;
 ---
@@ -76,7 +76,7 @@ const { groups, total } = Astro.props;
         id="download"
         type="button"
         hidden
-        data-handoff-target={DOWNLOAD_HANDOFF_PLACEHOLDER}
+        data-after-download={AFTER_DOWNLOAD_PATH}
       >
         <svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"
           ><path d="M8 2v8.5M4.5 7.2 8 10.7l3.5-3.5M2.5 13.5h11"></path></svg

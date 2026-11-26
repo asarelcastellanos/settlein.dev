@@ -1,0 +1,131 @@
+---
+import Page from "../layouts/Page.astro";
+import { loadCatalog } from "../lib/catalog.js";
+import { DOWNLOAD_PATH } from "../lib/site.js";
+
+const names = {};
+for (const group of loadCatalog()) for (const app of group.apps) names[app.token] = app.name;
+---
+
+<Page
+  title="Your download has started. SettleIn"
+  description="SettleIn is downloading. Change your selection or download again."
+>
+  <section class="after" id="after" data-state="checking" data-download={DOWNLOAD_PATH}>
+    <img class="after-icon" src="/settlein-icon.svg" width="108" height="108" alt="" />
+
+    <div class="after-started">
+      <h1 id="started-title" tabindex="-1">Your download has started.</h1>
+      <div class="after-list">
+        <div class="after-list-head">
+          <h2>Apps in this download</h2>
+          <span id="after-count"></span>
+        </div>
+        <ul id="after-apps"></ul>
+      </div>
+      <div class="after-actions">
+        <a class="btn" id="change" href="/#picker">Change selection</a>
+        <a class="btn-primary" id="again" href={DOWNLOAD_PATH}>Download again</a>
+      </div>
+      <p class="after-note">
+        Already have SettleIn? It opens by itself with this list. If your browser asks, choose Allow.
+      </p>
+    </div>
+
+    <div class="after-failed" role="alert">
+      <h1>The download didn’t start.</h1>
+      <p>settlein.dev didn’t answer.</p>
+      <p>Your choices are saved in this page’s address.</p>
+      <div class="after-actions">
+        <button class="btn-primary" id="retry" type="button">Try again</button>
+      </div>
+    </div>
+
+    <noscript>
+      <h1>Your download has started.</h1>
+      <p><a class="btn-primary" href={DOWNLOAD_PATH}>Download again</a></p>
+    </noscript>
+  </section>
+
+  <script define:vars={{ names }}>
+    const root = document.getElementById("after");
+    const list = document.getElementById("after-apps");
+    const count = document.getElementById("after-count");
+    const again = document.getElementById("again");
+    const change = document.getElementById("change");
+    const retry = document.getElementById("retry");
+    const downloadPath = root.dataset.download;
+    const heading = document.getElementById("started-title");
+
+    const tokens = [
+      ...new Set((new URLSearchParams(location.search).get("apps") ?? "").split(",").filter(Boolean)),
+    ].filter((token) => Object.hasOwn(names, token));
+
+    if (tokens.length === 0) {
+      location.replace("/");
+    } else {
+      const joined = tokens.join(",");
+      const downloadUrl = `${downloadPath}?apps=${encodeURIComponent(joined).replaceAll("%2C", ",")}`;
+      again.href = downloadUrl;
+      change.href = `/?apps=${joined}#picker`;
+      count.textContent = String(tokens.length);
+      for (const token of tokens) {
+        const item = document.createElement("li");
+        const icon = document.createElement("img");
+        icon.src = `/icons/${token}-128.png`;
+        icon.width = 30;
+        icon.height = 30;
+        icon.alt = "";
+        const label = document.createElement("span");
+        label.textContent = names[token];
+        item.append(icon, label);
+        list.append(item);
+      }
+
+      let busy = false;
+
+      async function start() {
+        if (busy) return;
+        busy = true;
+        retry.disabled = true;
+        again.setAttribute("aria-disabled", "true");
+        let ok = false;
+        try {
+          const response = await fetch(downloadUrl, {
+            method: "HEAD",
+            cache: "no-store",
+            signal: AbortSignal.timeout(10000),
+          });
+          ok = response.ok;
+        } catch {
+          ok = false;
+        }
+        if (ok) {
+          const link = document.createElement("a");
+          link.href = downloadUrl;
+          link.download = "";
+          link.hidden = true;
+          document.body.append(link);
+          link.click();
+          link.remove();
+        }
+        const before = root.dataset.state;
+        root.dataset.state = ok ? "started" : "failed";
+        busy = false;
+        retry.disabled = false;
+        again.removeAttribute("aria-disabled");
+        if (!ok) retry.focus();
+        else if (before === "failed") {
+          heading.focus();
+        }
+      }
+
+      again.addEventListener("click", (event) => {
+        event.preventDefault();
+        start();
+      });
+      retry.addEventListener("click", start);
+      start();
+    }
+  </script>
+</Page>

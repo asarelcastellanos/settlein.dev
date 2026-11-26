@@ -180,9 +180,7 @@ export function initPicker() {
   copy.addEventListener("click", copyLink);
   download.addEventListener("click", () => {
     const list = ticked().map((box) => box.value);
-    const target = new URL(download.dataset.handoffTarget, location.href);
-    target.searchParams.set("apps", list.join(","));
-    location.href = target.href;
+    location.href = `${download.dataset.afterDownload}?apps=${list.join(",")}`;
   });
   window.addEventListener("pageshow", (event) => {
     if (event.persisted) readAddress(false);
