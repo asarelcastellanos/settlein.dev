@@ -1,5 +1,5 @@
 ---
-status: accepted
+status: superseded by [ADR-0035](0035-pick-apps-inside-the-app.md)
 date: 2026-11-24
 ---
 # 0027. Settlein opens to the installed list

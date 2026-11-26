@@ -1,5 +1,5 @@
 ---
-status: accepted
+status: superseded by [ADR-0033](0033-final-design-handoff-replaces-the-figma-plan.md)
 date: 2026-11-24
 ---
 # 0023. Designer returns Figma and DESIGN.md

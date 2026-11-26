@@ -7,7 +7,7 @@
 | [0003](0003-curated-catalog-on-homebrew-cask-data.md) | Curated catalog on Homebrew Cask data | accepted |
 | [0004](0004-uninstall-only-what-settlein-installed.md) | Uninstall only what Settlein installed | accepted |
 | [0005](0005-copy-apps-and-open-pkg-installers.md) | Copy apps and open pkg installers | accepted |
-| [0006](0006-website-is-the-only-catalog-interface.md) | The website is the only catalog interface | accepted |
+| [0006](0006-website-is-the-only-catalog-interface.md) | The website is the only catalog interface | superseded by [0035](0035-pick-apps-inside-the-app.md) |
 | [0007](0007-free-and-open-source.md) | Free and open source | accepted |
 | [0008](0008-swift-and-swiftui-for-the-mac-app.md) | Swift and SwiftUI for the Mac app | accepted |
 | [0009](0009-selection-lives-in-the-url.md) | The selection lives in the URL | accepted |
@@ -24,7 +24,14 @@
 | [0020](0020-catalog-generator-in-node-under-catalog.md) | Catalog generator in Node under catalog | accepted |
 | [0021](0021-uninstall-never-touches-user-file-folders.md) | Uninstall never touches user file folders | accepted |
 | [0022](0022-daily-job-commits-catalog-to-a-data-branch.md) | Daily job commits the catalog to a data branch | accepted |
-| [0023](0023-designer-returns-figma-and-design-md.md) | Designer returns Figma and DESIGN.md | accepted |
+| [0023](0023-designer-returns-figma-and-design-md.md) | Designer returns Figma and DESIGN.md | superseded by [0033](0033-final-design-handoff-replaces-the-figma-plan.md) |
 | [0025](0025-selection-names-apps-by-homebrew-token.md) | The selection names apps by Homebrew token | accepted |
 | [0026](0026-bundle-app-icons-in-the-repo.md) | Bundle app icons in the repo | accepted |
-| [0027](0027-settlein-opens-to-the-installed-list.md) | Settlein opens to the installed list | accepted |
+| [0027](0027-settlein-opens-to-the-installed-list.md) | Settlein opens to the installed list | superseded by [0035](0035-pick-apps-inside-the-app.md) |
+| [0033](0033-final-design-handoff-replaces-the-figma-plan.md) | Final design handoff replaces the Figma plan | accepted |
+| [0034](0034-install-starts-without-a-confirmation-screen.md) | Install starts without a confirmation screen | accepted |
+| [0035](0035-pick-apps-inside-the-app.md) | Pick apps inside the app | accepted |
+| [0036](0036-uninstall-moves-files-to-the-trash.md) | Uninstall moves files to the Trash | accepted |
+| [0037](0037-standard-users-cannot-remove-pkg-apps.md) | Standard users cannot remove pkg apps | accepted |
+| [0038](0038-rename-the-app-to-settlein-with-a-capital-i.md) | Rename the app to SettleIn with a capital I | accepted |
+| [0039](0039-website-and-app-are-light-only.md) | Website and app are light only | accepted |
