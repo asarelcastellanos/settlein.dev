@@ -1,7 +1,7 @@
 import { execFileSync } from "node:child_process";
 import { createHash } from "node:crypto";
-import { closeSync, existsSync, mkdirSync, mkdtempSync, openSync, readFileSync, readSync, readdirSync, renameSync, rmSync, writeFileSync } from "node:fs";
-import { dirname, join, resolve } from "node:path";
+import { closeSync, existsSync, lstatSync, mkdirSync, mkdtempSync, openSync, readFileSync, readSync, readdirSync, realpathSync, renameSync, rmSync, writeFileSync } from "node:fs";
+import { basename, dirname, join, relative, resolve, sep } from "node:path";
 import { fileURLToPath } from "node:url";
 
 const root = resolve(dirname(fileURLToPath(import.meta.url)), "..");
@@ -153,13 +153,31 @@ function plistValue(plist, key) {
   }
 }
 
+function checkedPath(bundle, parts) {
+  let current = bundle;
+  for (const part of parts) {
+    current = join(current, part);
+    let stat;
+    try {
+      stat = lstatSync(current);
+    } catch {
+      return null;
+    }
+    if (stat.isSymbolicLink()) throw new Error(`${relative(bundle, current)} in ${basename(bundle)} is a symlink`);
+  }
+  const realBundle = realpathSync(bundle);
+  const real = realpathSync(current);
+  if (!real.startsWith(realBundle + sep)) throw new Error(`${relative(bundle, current)} in ${basename(bundle)} resolves outside the app`);
+  return real;
+}
+
 function render(bundle, work, token) {
-  const iconFile = plistValue(join(bundle, "Contents/Info.plist"), "CFBundleIconFile");
-  const resources = join(bundle, "Contents/Resources");
+  const plist = checkedPath(bundle, ["Contents", "Info.plist"]);
+  const iconFile = plist ? plistValue(plist, "CFBundleIconFile") : null;
   let source = null;
   if (iconFile) {
     const name = iconFile.endsWith(".icns") ? iconFile : `${iconFile}.icns`;
-    if (existsSync(join(resources, name))) source = join(resources, name);
+    source = checkedPath(bundle, ["Contents", "Resources", ...name.split("/")]);
   }
   if (!source) {
     const thumbDir = join(work, "thumb");
