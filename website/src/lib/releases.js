@@ -1,7 +1,7 @@
 export const entryKinds = {
-  app: { label: "App update", filter: "app" },
-  catalog: { label: "Catalog change", filter: "catalog" },
-  notice: { label: "Notice", filter: "notice" },
+  app: { label: "App update" },
+  catalog: { label: "Catalog change" },
+  notice: { label: "Notice" },
 };
 
 export const tabs = [
