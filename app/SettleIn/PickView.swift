@@ -150,7 +150,7 @@ struct PickBar: View {
                         AppTile(name: tickedApps[index].name, token: tickedApps[index].token, size: 42)
                     } else {
                         RoundedRectangle(cornerRadius: 10)
-                            .strokeBorder(Color.SI.checkboxEdge.opacity(0.5), style: StrokeStyle(lineWidth: 1, dash: [3, 3]))
+                            .strokeBorder(PlaceholderEdgeStyle(), style: StrokeStyle(lineWidth: 1, dash: [3, 3]))
                             .frame(width: 42, height: 42)
                     }
                 }
@@ -213,7 +213,7 @@ struct PickLoadingView: View {
                                 ForEach(widths[column].indices, id: \.self) { row in
                                     HStack(spacing: SISpace.s3) {
                                         RoundedRectangle(cornerRadius: SIRadius.checkbox).fill(Color.white)
-                                            .overlay(RoundedRectangle(cornerRadius: SIRadius.checkbox).stroke(Color.SI.separator))
+                                            .overlay(RoundedRectangle(cornerRadius: SIRadius.checkbox).stroke(SeparatorStyle()))
                                             .frame(width: 18, height: 18)
                                         RoundedRectangle(cornerRadius: 8).fill(Color.SI.iconPlaceholder).frame(width: 34, height: 34)
                                         Capsule().fill(Color.SI.rowHover).frame(width: 150 * widths[column][row], height: 8)
@@ -233,7 +233,7 @@ struct PickLoadingView: View {
                     HStack(spacing: SISpace.s2) {
                         ForEach(0..<3, id: \.self) { _ in
                             RoundedRectangle(cornerRadius: 10)
-                                .strokeBorder(Color.SI.checkboxEdge.opacity(0.5), style: StrokeStyle(lineWidth: 1, dash: [3, 3]))
+                                .strokeBorder(PlaceholderEdgeStyle(), style: StrokeStyle(lineWidth: 1, dash: [3, 3]))
                                 .frame(width: 42, height: 42)
                         }
                     }

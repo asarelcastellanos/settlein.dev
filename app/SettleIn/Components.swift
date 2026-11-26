@@ -12,6 +12,12 @@ struct CheckboxEdgeStyle: ShapeStyle {
     }
 }
 
+struct PlaceholderEdgeStyle: ShapeStyle {
+    func resolve(in environment: EnvironmentValues) -> some ShapeStyle {
+        environment.colorSchemeContrast == .increased ? Color.SI.textPrimary : Color.SI.checkboxEdge.opacity(0.5)
+    }
+}
+
 struct WindowGround: View {
     @Environment(\.accessibilityReduceTransparency) private var reduceTransparency
 
@@ -121,7 +127,8 @@ struct GlassBar<Content: View>: View {
             .background {
                 if reduceTransparency {
                     RoundedRectangle(cornerRadius: SIRadius.panel)
-                        .fill(Color.white)
+                        .fill(Color.SI.groundBase)
+                        .overlay(Color.SI.surfaceWindow, in: RoundedRectangle(cornerRadius: SIRadius.panel))
                         .overlay(RoundedRectangle(cornerRadius: SIRadius.panel).stroke(SeparatorStyle(), lineWidth: 1))
                 }
             }
