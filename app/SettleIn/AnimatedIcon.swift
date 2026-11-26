@@ -37,8 +37,8 @@ struct AnimatedIcon: View {
     private func tile(_ tile: Tile, index: Int) -> some View {
         let delay = 0.12 * Double(index)
         return ZStack {
-            RoundedRectangle(cornerRadius: 30).fill(Color.black.opacity(0.16)).offset(y: 8)
-            RoundedRectangle(cornerRadius: 30).fill(Color.white)
+            RoundedRectangle(cornerRadius: 30).fill(Color.SI.textPrimary.opacity(0.16)).offset(y: 8)
+            RoundedRectangle(cornerRadius: 30).fill(Color.SI.surfaceWindow)
         }
         .frame(width: 128, height: 128)
         .rotationEffect(.degrees(shown ? tile.angle : 0))
