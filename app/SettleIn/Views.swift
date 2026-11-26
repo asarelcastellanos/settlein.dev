@@ -5,12 +5,15 @@ struct SettleInApp: App {
     @State private var model = AppModel()
 
     var body: some Scene {
-        WindowGroup {
+        Window("SettleIn", id: "main") {
             RootView(model: model)
-                .frame(minWidth: 520, minHeight: 360)
+                .frame(minWidth: 720, minHeight: 520)
                 .preferredColorScheme(.light)
-                .task { await model.load() }
+                .containerBackground(for: .window) { WindowGround() }
+                .task { await model.launch() }
         }
+        .defaultSize(width: 1100, height: 700)
+        .commands { SettleInCommands(model: model) }
     }
 }
 
@@ -19,95 +22,21 @@ struct RootView: View {
 
     var body: some View {
         switch model.screen {
-        case .loading:
-            ProgressView("Reading the catalog")
-        case .unreachable(let reason):
-            UnreachableView(reason: reason) { Task { await model.load() } }
-        case .nothingSelected:
-            MessageView(title: "Nothing selected", detail: "Choose apps on settlein.dev, then open SettleIn again.")
-        case .confirm(let rows):
-            ConfirmationView(rows: rows, approve: model.approve)
-        case .allInstalled:
-            MessageView(title: "Nothing to install", detail: "Every selected app is already installed.")
+        case .loading(let destination):
+            switch destination {
+            case .pick: PickLoadingView()
+            case .installed: InstalledLoadingView()
+            case .installing: Color.clear
+            }
+        case .unreachable(let kind):
+            UnreachableView(kind: kind) { Task { await model.retry() } }
+        case .pick(let pick):
+            PickView(pick: pick, back: model.hasRecord ? { model.openInstalled() } : nil, install: model.installTicked)
+        case .installed(let content):
+            InstalledView(content: content, addApps: { model.openPick() }, retry: { Task { await model.launch() } })
         case .installing(let run):
             InstallView(run: run)
-                .task { await run.start() }
         }
-    }
-}
-
-struct ConfirmationView: View {
-    let rows: [Row]
-    let approve: () -> Void
-
-    private var installCount: Int { rows.filter { !$0.installed }.count }
-
-    var body: some View {
-        VStack(alignment: .leading, spacing: 12) {
-            Text("Install \(installCount) \(installCount == 1 ? "app" : "apps")?")
-                .font(.title2)
-            Text("Nothing downloads until you approve.")
-                .foregroundStyle(.secondary)
-            List(rows) { AppRowView(row: $0) }
-            HStack {
-                Spacer()
-                Button("Cancel") { NSApplication.shared.terminate(nil) }
-                    .keyboardShortcut(.cancelAction)
-                Button("Approve", action: approve)
-                    .keyboardShortcut(.defaultAction)
-            }
-        }
-        .padding()
-    }
-}
-
-struct AppRowView: View {
-    let row: Row
-
-    var body: some View {
-        HStack {
-            VStack(alignment: .leading) {
-                Text(row.app.name)
-                Text(status).font(.caption).foregroundStyle(.secondary)
-            }
-            Spacer()
-            if row.installed {
-                Label("Already installed", systemImage: "checkmark.circle")
-            }
-        }
-    }
-
-    private var status: String {
-        if row.installed { return "Already installed, will skip" }
-        return row.app.installerType == .pkg ? "Opens Apple's Installer" : "Will install"
-    }
-}
-
-struct UnreachableView: View {
-    let reason: String
-    let retry: () -> Void
-
-    var body: some View {
-        VStack(spacing: 12) {
-            Text("Cannot reach the catalog").font(.title2)
-            Text(reason).foregroundStyle(.secondary).multilineTextAlignment(.center)
-            Button("Try again", action: retry).keyboardShortcut(.defaultAction)
-        }
-        .padding()
-    }
-}
-
-struct MessageView: View {
-    let title: String
-    let detail: String
-
-    var body: some View {
-        VStack(spacing: 12) {
-            Text(title).font(.title2)
-            Text(detail).foregroundStyle(.secondary)
-            Button("Close") { NSApplication.shared.terminate(nil) }.keyboardShortcut(.defaultAction)
-        }
-        .padding()
     }
 }
 
