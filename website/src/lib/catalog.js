@@ -3,7 +3,7 @@ import { resolve } from "node:path";
 
 const catalogPath = resolve(process.cwd(), "../catalog/catalog.json");
 const iconDir = resolve(process.cwd(), "public/icons");
-const iconSizes = [128, 256];
+const iconSizes = JSON.parse(readFileSync(resolve(process.cwd(), "../catalog/icon-sizes.json"), "utf8"));
 
 function readJson(path) {
   let text;

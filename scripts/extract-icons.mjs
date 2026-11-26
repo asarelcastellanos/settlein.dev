@@ -8,7 +8,7 @@ const root = resolve(dirname(fileURLToPath(import.meta.url)), "..");
 const catalogPath = resolve(process.argv[2] ?? join(root, "catalog/catalog.json"));
 const outDir = resolve(process.argv[3] ?? join(root, "website/public/icons"));
 const only = process.argv.slice(4);
-const sizes = [128, 256];
+const sizes = JSON.parse(readFileSync(join(root, "catalog/icon-sizes.json"), "utf8"));
 
 function run(cmd, args, options = {}) {
   return execFileSync(cmd, args, { encoding: "utf8", stdio: ["pipe", "pipe", "pipe"], maxBuffer: 64 * 1024 * 1024, ...options });
