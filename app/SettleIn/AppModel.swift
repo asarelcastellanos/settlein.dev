@@ -161,8 +161,9 @@ final class AppModel {
         Task {
             await run.start()
             do {
-                try InstallRecord.add(run.items.filter { $0.state == .done || $0.state == .waitingInInstaller }.map(\.app))
-                recordUnreadable = false
+                let installed = run.items.filter { $0.state == .done || $0.state == .waitingInInstaller }.map(\.app)
+                try InstallRecord.add(installed)
+                if !installed.isEmpty { recordUnreadable = false }
             } catch {
                 Logger(subsystem: "dev.settlein.SettleIn", category: "record")
                     .error("Could not save the install record: \(error.localizedDescription, privacy: .public)")
