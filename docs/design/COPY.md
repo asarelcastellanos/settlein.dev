@@ -276,6 +276,7 @@ Full text on the boards: `screenshots/website/Verify.png` and `Privacy.png`. Sen
 - Nothing was installed  *(title when no app was installed, for example after Cancel)*
 - NOT INSTALLED · [N]  *(group for apps skipped by Cancel)*
 - Cancelled
+- [N] cancelled  *(part of the subtitle when Cancel skipped apps)*
 
 ### A4 Installed list
 
