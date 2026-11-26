@@ -22,7 +22,7 @@ The look is "Quiet and Mac-native". The website is one page with a grid of app i
 
 On a later visit with Settlein installed, the person ticks apps on the site and clicks the same button. Settlein opens by link and shows the confirmation screen with those apps ([C17](#c17)). The browser asks the person to allow the first open.
 
-When Settlein opens with no selection, it opens settlein.dev in the default browser ([C16](#c16)).
+When Settlein opens with no selection and has installed nothing, it opens settlein.dev in the default browser. Once it has installed an app, opening it shows the installed list instead ([C16](#c16)).
 
 To uninstall, the person opens the list of apps Settlein installed and uses the control beside an app. Settlein removes the app and its leftovers.
 
@@ -97,11 +97,11 @@ Wireframe: [app-03-finished.html](wireframes/app-03-finished.html)
 
 Wireframe: [app-04-installed-list.html](wireframes/app-04-installed-list.html)
 
-- Purpose. Show the apps Settlein installed and let the person remove them.
-- Content. A list of apps Settlein installed, each with an uninstall control. It shows no app that the person installed by hand.
+- Purpose. Show the apps Settlein installed and let the person remove them. This is the screen a person sees when they open Settlein from Applications after it has installed something ([C16](#c16)).
+- Content. A list of apps Settlein installed, each with an uninstall control. It shows no app that the person installed by hand. An "Add apps" button that opens settlein.dev.
 - States. Empty list. A list with copy and pkg apps. A pkg app should signal that removal asks for the admin password.
-- Actions. Uninstall one app.
-- Claims. [C28](#c28).
+- Actions. Uninstall one app. Add apps.
+- Claims. [C16](#c16), [C28](#c28).
 
 ### A5 Uninstall
 
@@ -217,9 +217,9 @@ Example of a color token table with placeholder values.
 
 ## Open questions for the owner
 
-We have not settled these. Design a sensible answer, and mark it in Figma so we can change it.
+We have not settled questions 2 to 5. Design a sensible answer, and mark it in Figma so we can change it.
 
-1. How does a person reach the installed list (A4)? Opening Settlein with no selection sends them to the website ([C16](#c16)). The list needs another way in, such as a menu bar item, a link on A3 or a link on the website.
+1. Settled. Opening Settlein after it has installed an app shows the installed list (A4), with an "Add apps" button that opens settlein.dev (decision ADR-0027, [C16](#c16)).
 2. What does W3 show after the download click? The spec says nothing about it.
 3. What should the app do while a pkg app waits in Apple's Installer? Settlein cannot tell whether the person finished or cancelled (decision ADR-0005, copy apps are copied and pkg apps open in Apple's Installer), so A2 and A3 may need a state for "check the result".
 4. What does a person see when a link names an app the catalog no longer holds (decision ADR-0009, the selection lives in the page address)? W2 ignores it for now.
@@ -271,7 +271,7 @@ When a person with apps ticked clicks the download button on a Mac that has neve
 
 ### C16
 
-When Settlein opens with no selection, it shall open settlein.dev in the default browser.
+When Settlein opens with no selection and has installed no app, it shall open settlein.dev in the default browser. When it has installed at least one app, it shall show the installed list with a button that opens settlein.dev.
 
 ### C17
 
