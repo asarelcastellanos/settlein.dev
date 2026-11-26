@@ -91,13 +91,17 @@ final class AppModel {
     private var catalog: [CatalogApp] = []
     private var goal: Goal = .launch
     private(set) var hasRecord = false
+    private var recordUnreadable = false
 
     var canNavigate: Bool {
         if case .installing(let run) = screen { return run.finished }
         return true
     }
 
-    func launch() async { await open(.launch) }
+    func launch() async {
+        recordUnreadable = false
+        await open(.launch)
+    }
 
     func openPick(ticked: [String] = []) {
         if case .pick = screen { return }
@@ -118,7 +122,8 @@ final class AppModel {
 
     private func open(_ goal: Goal) async {
         self.goal = goal
-        let record = InstallRecord.read()
+        var record = InstallRecord.read()
+        if record == .unreadable { recordUnreadable = true } else if recordUnreadable { record = .unreadable }
         hasRecord = record != .entries([])
         let tokens: [String]
         if case .launch = goal { tokens = Selection.current() } else { tokens = [] }
@@ -154,6 +159,7 @@ final class AppModel {
         screen = .installing(run)
         Task {
             await run.start()
+            recordUnreadable = false
             InstallRecord.add(run.items.filter { $0.state == .done || $0.state == .waitingInInstaller }.map(\.app))
         }
     }
