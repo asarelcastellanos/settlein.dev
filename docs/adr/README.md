@@ -28,6 +28,8 @@
 | [0025](0025-selection-names-apps-by-homebrew-token.md) | The selection names apps by Homebrew token | accepted |
 | [0026](0026-bundle-app-icons-in-the-repo.md) | Bundle app icons in the repo | accepted |
 | [0027](0027-settlein-opens-to-the-installed-list.md) | Settlein opens to the installed list | superseded by [0035](0035-pick-apps-inside-the-app.md) |
+| [0031](0031-extract-icons-from-vendor-downloads-with-a-script.md) | Extract icons from vendor downloads with a script | accepted |
+| [0032](0032-reject-symlinked-icon-files-in-every-archive-kind.md) | Reject symlinked icon files in every archive kind | accepted |
 | [0033](0033-final-design-handoff-replaces-the-figma-plan.md) | Final design handoff replaces the Figma plan | accepted |
 | [0034](0034-install-starts-without-a-confirmation-screen.md) | Install starts without a confirmation screen | accepted |
 | [0035](0035-pick-apps-inside-the-app.md) | Pick apps inside the app | accepted |
