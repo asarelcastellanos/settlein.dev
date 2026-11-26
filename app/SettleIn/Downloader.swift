@@ -41,7 +41,7 @@ final class DownloadDelegate: NSObject, URLSessionDataDelegate, @unchecked Senda
         _ session: URLSession, dataTask: URLSessionDataTask, didReceive response: URLResponse
     ) async -> URLSession.ResponseDisposition {
         guard let http = response as? HTTPURLResponse, http.statusCode == 200 else {
-            refusal = Refusal(reason: "The vendor's server did not return the file")
+            refusal = Refusal(reason: "The vendor’s server did not return the file")
             return .cancel
         }
         expected = response.expectedContentLength

@@ -41,4 +41,6 @@
 | [0037](0037-standard-users-cannot-remove-pkg-apps.md) | Standard users cannot remove pkg apps | accepted |
 | [0038](0038-rename-the-app-to-settlein-with-a-capital-i.md) | Rename the app to SettleIn with a capital I | accepted |
 | [0039](0039-website-and-app-are-light-only.md) | Website and app are light only | accepted |
+| [0040](0040-install-record-and-launch-inputs.md) | Install record and launch inputs | accepted |
+| [0041](0041-app-fetches-catalog-icons-from-settlein-dev.md) | App fetches catalog icons from settlein.dev | accepted |
 | [0042](0042-after-download-page-checks-the-download-itself.md) | The after-download page checks the download itself | accepted |

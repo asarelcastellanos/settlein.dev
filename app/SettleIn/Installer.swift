@@ -68,7 +68,7 @@ enum Installer {
             _ = try await NSWorkspace.shared.open([target], withApplicationAt: installerApp, configuration: NSWorkspace.OpenConfiguration())
         } catch {
             try? fileManager.removeItem(at: kept)
-            throw Refusal(reason: "SettleIn could not open the package in Apple's Installer. \(error.localizedDescription)")
+            throw Refusal(reason: "SettleIn could not open the package in Apple’s Installer. \(error.localizedDescription)")
         }
     }
 

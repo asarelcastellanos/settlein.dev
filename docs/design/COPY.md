@@ -212,6 +212,13 @@ Full text on the boards: `screenshots/website/Verify.png` and `Privacy.png`. Sen
 - Keep installing
 - Change selection
 
+### A2 Installing: extra strings (added in the build)
+
+- Installing in Applications
+- Opening in Apple’s Installer
+- You can keep using your Mac.  *(subtitle before any app is done)*
+- Cancelled. Not installed.
+
 ### A2 Nothing to install
 
 - Nothing to install
@@ -258,6 +265,18 @@ Full text on the boards: `screenshots/website/Verify.png` and `Privacy.png`. Sen
 - This usually clears up when the developer fixes their download.
 - Report a problem
 - Done
+
+### A3 Finished: error line (added in the build)
+
+- SettleIn couldn’t save its record of these apps. They won’t be listed under Installed by SettleIn. Make sure SettleIn’s folder can be written to.
+
+### A3 Finished: extra strings (added in the build)
+
+- [N] apps opened in Apple’s Installer  *(title when only installer-package apps were opened)*
+- Nothing was installed  *(title when no app was installed, for example after Cancel)*
+- NOT INSTALLED · [N]  *(group for apps skipped by Cancel)*
+- Cancelled
+- [N] cancelled  *(part of the subtitle when Cancel skipped apps)*
 
 ### A4 Installed list
 
