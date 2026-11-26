@@ -2,7 +2,7 @@
 status: accepted
 date: 2026-11-25
 ---
-# 0040. The after-download page checks the download itself
+# 0042. The after-download page checks the download itself
 
 Accepted by default, not reviewed by the owner.
 
