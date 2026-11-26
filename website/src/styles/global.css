@@ -334,7 +334,3 @@ html.story-on #picker:not(.live) {
   opacity: 0;
   pointer-events: none;
 }
-
-html.story-on #picker.live .bar {
-  transform: translateY(calc(-1 * var(--lift, 0px)));
-}

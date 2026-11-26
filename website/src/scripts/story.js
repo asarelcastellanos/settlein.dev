@@ -17,6 +17,7 @@ export function initStory() {
   const twin = document.getElementById("twin");
   const copy = document.querySelector(".hero-copy");
   const picker = document.getElementById("picker");
+  const bar = picker.querySelector(".bar");
   let geo = null;
   let z = 0;
   let target = 0;
@@ -81,16 +82,16 @@ export function initStory() {
   function hold() {
     if (!live) {
       picker.style.removeProperty("transform");
-      picker.style.removeProperty("--lift");
+      bar.style.removeProperty("transform");
       return;
     }
     const lift = window.scrollY - stage.offsetTop - window.innerHeight;
     if (lift < 0) {
       picker.style.transform = `translateY(${lift}px)`;
-      picker.style.setProperty("--lift", `${lift}px`);
+      bar.style.transform = `translateY(${-lift}px)`;
     } else {
       picker.style.removeProperty("transform");
-      picker.style.removeProperty("--lift");
+      bar.style.removeProperty("transform");
     }
   }
 
@@ -143,7 +144,7 @@ export function initStory() {
     live = false;
     picker.classList.remove("live");
     picker.style.removeProperty("transform");
-    picker.style.removeProperty("--lift");
+    bar.style.removeProperty("transform");
     pin.classList.remove("gone");
     for (const el of [win, demo, twin, copy, slot]) el.removeAttribute("style");
     twin.replaceChildren();
@@ -156,7 +157,6 @@ export function initStory() {
 
   window.addEventListener("scroll", () => {
     if (!root.classList.contains("story-on")) return;
-    hold();
     aim();
   }, { passive: true });
   window.addEventListener("resize", () => {
