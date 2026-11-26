@@ -10,6 +10,21 @@ const outDir = resolve(process.argv[3] ?? join(root, "website/public/icons"));
 const only = process.argv.slice(4);
 const sizes = JSON.parse(readFileSync(join(root, "catalog/icon-sizes.json"), "utf8"));
 
+const stuckMounts = [];
+
+function detach(mountPoint) {
+  try {
+    run("hdiutil", ["detach", mountPoint]);
+  } catch {
+    try {
+      run("hdiutil", ["detach", "-force", mountPoint]);
+    } catch {
+      stuckMounts.push(mountPoint);
+      throw new Error(`could not detach ${mountPoint}`);
+    }
+  }
+}
+
 function run(cmd, args, options = {}) {
   return execFileSync(cmd, args, { encoding: "utf8", stdio: ["pipe", "pipe", "pipe"], maxBuffer: 64 * 1024 * 1024, ...options });
 }
@@ -187,15 +202,7 @@ async function processApp(app, scratch) {
     for (const [temp, target] of staged) renameSync(temp, target);
     return { name: app.name, sourceUrl: app.downloadUrl, version: app.version, sha256, bundle: bundleName };
   } finally {
-    if (mountPoint) {
-      try {
-        run("hdiutil", ["detach", mountPoint]);
-      } catch {
-        try {
-          run("hdiutil", ["detach", "-force", mountPoint]);
-        } catch {}
-      }
-    }
+    if (mountPoint) detach(mountPoint);
     rmSync(work, { recursive: true, force: true });
   }
 }
@@ -219,7 +226,7 @@ try {
     }
   }
 } finally {
-  rmSync(scratch, { recursive: true, force: true });
+  if (!stuckMounts.length) rmSync(scratch, { recursive: true, force: true });
 }
 
 const sorted = Object.fromEntries(Object.entries(manifest.icons).sort(([a], [b]) => a.localeCompare(b)));
