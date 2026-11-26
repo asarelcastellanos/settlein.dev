@@ -156,17 +156,19 @@ struct PickBar: View {
                 }
             }
             .accessibilityHidden(true)
-            Text("\(count) \(count == 1 ? "app" : "apps") selected")
-                .font(.system(size: 15, weight: .semibold))
-                .foregroundStyle(count == 0 ? Color.SI.textSecondary : Color.SI.textPrimary)
-                .accessibilityLabel(count == 0 ? "0 apps selected. Tick apps to install them" : "\(count) \(count == 1 ? "app" : "apps") selected")
+            VStack(alignment: .leading, spacing: 0) {
+                Text("\(count) \(count == 1 ? "app" : "apps") selected")
+                    .font(.system(size: 15, weight: .semibold))
+                    .foregroundStyle(count == 0 ? Color.SI.textSecondary : Color.SI.textPrimary)
+                if count == 0 {
+                    Text("Tick apps to install them")
+                        .font(.system(size: 13))
+                        .foregroundStyle(Color.SI.textSecondary)
+                }
+            }
+            .accessibilityElement(children: .combine)
             Spacer()
-            if count == 0 {
-                Text("Tick apps to install them")
-                    .font(.system(size: 14))
-                    .foregroundStyle(Color.SI.textSecondary)
-                    .accessibilityHidden(true)
-            } else {
+            if count > 0 {
                 Button(action: install) { Text("Install \(count) \(count == 1 ? "app" : "apps")") }
                     .buttonStyle(PrimaryButtonStyle())
                     .keyboardShortcut(.defaultAction)
