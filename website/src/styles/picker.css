@@ -117,11 +117,16 @@
 }
 
 .cat {
-  break-inside: avoid;
+  min-width: 0;
   margin: 0 0 var(--space-5);
+  padding: 0;
+  border: 0;
+  break-inside: avoid;
 }
 
 .cat-head {
+  box-sizing: border-box;
+  width: 100%;
   display: grid;
   grid-template-columns: 18px 1fr auto;
   align-items: center;

@@ -25,8 +25,8 @@ const { groups, total } = Astro.props;
   <div class="catalog" role="group" aria-label={`Catalog, ${total} apps`}>
     {
       groups.map((group) => (
-        <section class="cat" role="group" aria-labelledby={`category-${group.id}`}>
-          <div class="cat-head">
+        <fieldset class="cat">
+          <legend class="cat-head">
             <input
               class="sq cat-box js-only"
               type="checkbox"
@@ -34,11 +34,11 @@ const { groups, total } = Astro.props;
               data-cat={group.id}
               aria-label={`Select all in ${group.category}`}
             />
-            <h3 id={`category-${group.id}`}>{group.category}</h3>
+            <h3>{group.category}</h3>
             <label class="cat-toggle js-only" for={`catbox-${group.id}`}>
               Select all
             </label>
-          </div>
+          </legend>
           <ul>
             {group.apps.map((app, index) => (
               <li>
@@ -58,7 +58,7 @@ const { groups, total } = Astro.props;
               </li>
             ))}
           </ul>
-        </section>
+        </fieldset>
       ))
     }
   </div>
