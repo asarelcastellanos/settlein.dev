@@ -276,6 +276,7 @@ Full text on the boards: `screenshots/website/Verify.png` and `Privacy.png`. Sen
 - Nothing was installed  *(title when no app was installed, for example after Cancel)*
 - NOT INSTALLED · [N]  *(group for apps skipped by Cancel)*
 - Cancelled
+- SettleIn couldn’t confirm with Apple that this download is notarized. Check your connection and try again.  *(refusal line when the app has a Developer ID signature but the notarization lookup failed)*
 - [N] cancelled  *(part of the subtitle when Cancel skipped apps)*
 
 ### A4 Installed list
