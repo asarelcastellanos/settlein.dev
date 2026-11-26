@@ -240,7 +240,7 @@ html:not(.js) .cat-head {
   margin: var(--space-4) 12px 0;
   padding: 12px 14px;
   border-radius: var(--r-panel);
-  background: linear-gradient(180deg, rgb(255 255 255 / 0.86), rgb(244 246 255 / 0.7));
+  background: linear-gradient(180deg, rgb(255 255 255 / 0.78), rgb(244 246 255 / 0.55));
   -webkit-backdrop-filter: blur(30px) saturate(200%);
   backdrop-filter: blur(30px) saturate(200%);
   box-shadow:
