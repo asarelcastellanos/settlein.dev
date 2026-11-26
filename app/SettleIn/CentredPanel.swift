@@ -60,7 +60,6 @@ struct CentredPanel<Content: View>: View {
     var body: some View {
         ZStack {
             Color(.sRGB, red: 10 / 255, green: 15 / 255, blue: 40 / 255, opacity: 0.22)
-                .ignoresSafeArea()
                 .onTapGesture {}
             VStack(alignment: .leading, spacing: SISpace.s3) { content }
                 .padding(SISpace.s5)

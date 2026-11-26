@@ -1,5 +1,6 @@
 import Foundation
 import Observation
+import SwiftUI
 
 enum ItemState: Equatable {
     case waiting
@@ -10,6 +11,8 @@ enum ItemState: Equatable {
     case refused(String)
     case opening
     case waitingInInstaller
+    case alreadyInstalled
+    case cancelled
 
     var isActive: Bool {
         switch self {
@@ -26,19 +29,35 @@ struct RunItem: Identifiable {
     var id: String { app.id }
 }
 
+enum RunStop {
+    case cancel
+    case change
+}
+
 @MainActor
 @Observable
 final class InstallRun {
     private(set) var items: [RunItem]
-    let skipped: [CatalogApp]
     let folder: URL
     private(set) var finished = false
+    private(set) var stop: RunStop?
     var recordFailed = false
 
-    init(toInstall: [CatalogApp], skipped: [CatalogApp], folder: URL = Installer.destination()) {
-        items = toInstall.map { RunItem(app: $0, state: .waiting) }
-        self.skipped = skipped
+    init(apps: [CatalogApp], folder: URL = Installer.destination()) {
+        items = apps.map { RunItem(app: $0, state: Installed.isInstalled($0) ? .alreadyInstalled : .waiting) }
         self.folder = folder
+    }
+
+    var nothingToInstall: Bool { items.allSatisfy { $0.state == .alreadyInstalled } }
+
+    var retryTokens: [String] {
+        items.filter { $0.state != .done && $0.state != .waitingInInstaller }.map(\.app.token)
+    }
+
+    func requestStop(_ request: RunStop) {
+        guard !finished, stop == nil else { return }
+        stop = request
+        for index in items.indices where items[index].state == .waiting { items[index].state = .cancelled }
     }
 
     var settled: Int {
@@ -48,21 +67,32 @@ final class InstallRun {
     func start() async {
         guard !finished else { return }
         Installer.removeStalePackages()
-        for index in items.indices {
+        for index in items.indices where items[index].state == .waiting {
             let app = items[index].app
             items[index].state = .downloading(nil)
             do {
                 try await Installer.install(app, into: folder) { [weak self] step in
                     Task { @MainActor in self?.update(index, step) }
                 }
-                items[index].state = app.installerType == .pkg ? .waitingInInstaller : .done
+                conclude(index, app.installerType == .pkg ? .waitingInInstaller : .done)
             } catch let refusal as Refusal {
-                items[index].state = .refused(refusal.reason)
+                conclude(index, .refused(refusal.reason))
             } catch {
-                items[index].state = .refused("SettleIn could not finish. \(error.localizedDescription)")
+                conclude(index, .refused("SettleIn could not finish. \(error.localizedDescription)"))
             }
         }
         finished = true
+    }
+
+    private func conclude(_ index: Int, _ state: ItemState) {
+        items[index].state = state
+        let name = items[index].app.name
+        switch state {
+        case .done: announce("\(name), Done")
+        case .refused(let reason): announce("\(name), Refused. \(RunText.refusal(reason, short: false))")
+        case .waitingInInstaller: announce("\(name). Finish the steps in Apple’s Installer, then come back")
+        default: break
+        }
     }
 
     private func update(_ index: Int, _ step: InstallStep) {

@@ -8,6 +8,11 @@ enum Destination: Equatable {
     case installing
 }
 
+enum RunPanel: Hashable {
+    case cancel
+    case change
+}
+
 enum UnreachableKind: Equatable {
     case offline
     case siteError
@@ -92,6 +97,9 @@ final class AppModel {
     private var catalog: [CatalogApp] = []
     private var goal: Goal = .launch
     private(set) var hasRecord = false
+    var panel: RunPanel?
+    private(set) var firstLaunch = false
+    private(set) var panelOpener: RunPanel = .cancel
     private var recordUnreadable = false
 
     var canNavigate: Bool {
@@ -101,15 +109,23 @@ final class AppModel {
 
     func launch() async {
         recordUnreadable = false
+        if !UserDefaults.standard.bool(forKey: "hasLaunchedBefore") {
+            UserDefaults.standard.set(true, forKey: "hasLaunchedBefore")
+            firstLaunch = true
+        }
         await open(.launch)
     }
 
     func openPick(ticked: [String] = []) {
+        firstLaunch = false
         if case .pick = screen { return }
         Task { await open(.pick(ticked)) }
     }
 
-    func openInstalled() { Task { await open(.installed) } }
+    func openInstalled() {
+        firstLaunch = false
+        Task { await open(.installed) }
+    }
 
     func retry() async {
         screen = .unreachable(.retrying)
@@ -118,7 +134,24 @@ final class AppModel {
 
     func installTicked() {
         guard case .pick(let pick) = screen else { return }
-        begin(pick.tickedApps, skipped: [])
+        begin(pick.tickedApps)
+    }
+
+    var canAsk: Bool {
+        if case .installing(let run) = screen { return panel == nil && !run.finished && run.stop == nil && !run.nothingToInstall }
+        return false
+    }
+
+    func ask(_ request: RunPanel) {
+        guard canAsk else { return }
+        panelOpener = request
+        panel = request
+    }
+
+    func confirm(_ request: RunPanel) {
+        panel = nil
+        guard case .installing(let run) = screen else { return }
+        run.requestStop(request == .cancel ? .cancel : .change)
     }
 
     private func open(_ goal: Goal) async {
@@ -145,7 +178,7 @@ final class AppModel {
         let resolved = Selection.resolve(tokens, in: catalog)
         switch Self.destination(goal, hasSelection: !resolved.isEmpty, record: record) {
         case .installing:
-            begin(resolved.filter { !Installed.isInstalled($0) }, skipped: resolved.filter { Installed.isInstalled($0) })
+            begin(resolved)
         case .pick:
             var preset: [String] = []
             if case .pick(let list) = goal { preset = list }
@@ -155,11 +188,13 @@ final class AppModel {
         }
     }
 
-    private func begin(_ toInstall: [CatalogApp], skipped: [CatalogApp]) {
-        let run = InstallRun(toInstall: toInstall, skipped: skipped)
+    private func begin(_ apps: [CatalogApp]) {
+        let run = InstallRun(apps: apps)
         screen = .installing(run)
+        panel = nil
         Task {
             await run.start()
+            panel = nil
             do {
                 let installed = run.items.filter { $0.state == .done || $0.state == .waitingInInstaller }.map(\.app)
                 try InstallRecord.add(installed)
@@ -168,6 +203,9 @@ final class AppModel {
                 Logger(subsystem: "dev.settlein.SettleIn", category: "record")
                     .error("Could not save the install record: \(error.localizedDescription, privacy: .public)")
                 run.recordFailed = true
+            }
+            if run.stop == .change, case .installing(let current) = screen, current === run {
+                openPick(ticked: run.retryTokens)
             }
         }
     }

@@ -2,6 +2,7 @@ import SwiftUI
 
 struct PickView: View {
     let pick: PickSelection
+    let showIcon: Bool
     let back: (() -> Void)?
     let install: () -> Void
 
@@ -36,7 +37,10 @@ struct PickView: View {
                         .foregroundStyle(Color.SI.accentText)
                         .focusRing(radius: SIRadius.checkbox + 2)
                 }
-                ScreenHeading(title: "Pick apps", detail: "Apps already on this Mac are marked Installed.")
+                HStack(spacing: SISpace.s3) {
+                    if showIcon { AnimatedIcon(size: 48) }
+                    ScreenHeading(title: "Pick apps", detail: "Apps already on this Mac are marked Installed.")
+                }
             }
             Spacer()
             Button("Select all") { pick.selectAll() }.buttonStyle(SecondaryButtonStyle()).focusRing()
