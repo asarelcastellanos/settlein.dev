@@ -27,12 +27,12 @@ struct SettleInCommands: Commands {
                 .keyboardShortcut("1")
                 .disabled(!model.canNavigate)
             Divider()
-            Button("Change Selection…") {}
+            Button("Change Selection…") { model.ask(.change) }
                 .keyboardShortcut("e")
-                .disabled(true)
-            Button("Cancel the Rest…") {}
+                .disabled(!model.canAsk)
+            Button("Cancel the Rest…") { model.ask(.cancel) }
                 .keyboardShortcut(".")
-                .disabled(true)
+                .disabled(!model.canAsk)
         }
         CommandGroup(replacing: .help) {
             Button("How SettleIn Checks Apps") { open("https://settlein.dev/verify") }

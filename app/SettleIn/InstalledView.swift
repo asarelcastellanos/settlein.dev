@@ -48,10 +48,7 @@ struct InstalledView: View {
             title: "Nothing installed yet",
             detail: "Pick the apps you want and SettleIn installs them for you."
         ) {
-            Image(nsImage: NSApplication.shared.applicationIconImage)
-                .resizable()
-                .frame(width: 122, height: 122)
-                .accessibilityHidden(true)
+            AnimatedIcon(size: 122)
         } buttons: {
             Button("Pick apps", action: addApps).buttonStyle(PrimaryButtonStyle()).focusRing().keyboardShortcut(.defaultAction)
         }
