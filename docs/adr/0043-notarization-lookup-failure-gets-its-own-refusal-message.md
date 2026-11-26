@@ -18,7 +18,7 @@ ADR-0029 checks each staged bundle against a requirement that ends in `notarized
 
 ## Decision outcome
 
-Chosen option: "Keep the requirement and the refusal, and split the diagnosis", because C22 and C23 still demand a notarized app and an unconfirmed notarization must not install.
+Chosen option: "Keep the requirement and the refusal, and split the diagnosis", because C22 still demands a notarized app and an unconfirmed notarization must not install.
 
 When the full requirement fails, `Verify.signatureProblem` checks the same bundle against the Developer ID requirement without `notarized`. If that passes, it returns "SettleIn could not confirm with Apple that the app is notarized", which the run text shows as a connection problem with a retry hint. If it fails too, the old Developer ID message stays. A seal failure and an unsigned bundle keep their messages and order. The install policy does not change. This refines ADR-0029.
 
