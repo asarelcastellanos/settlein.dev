@@ -2,7 +2,7 @@ This log records the cause of each closed review finding, so a cause that repeat
 
 | Date | Finding | Cause | PR | Check |
 | --- | --- | --- | --- | --- |
-| 2026-11-24 | [#21](https://github.com/asarelcastellanos/settlein.dev/issues/21) | new file type added to only one of the lists a script checks | [#20](https://github.com/asarelcastellanos/settlein.dev/pull/20) | |
+| 2026-11-24 | [#21](https://github.com/asarelcastellanos/settlein.dev/issues/21) | new file type added to only one of the lists a script checks | [#20](https://github.com/asarelcastellanos/settlein.dev/pull/20) | AGENTS.md rule: keep each list in one place |
 | 2026-11-24 | [#22](https://github.com/asarelcastellanos/settlein.dev/issues/22) | docs describe the common case instead of the code's actual logic | [#20](https://github.com/asarelcastellanos/settlein.dev/pull/20) | |
 | 2026-11-24 | [#26](https://github.com/asarelcastellanos/settlein.dev/issues/26) | check reads a broader source than the decision names | [#25](https://github.com/asarelcastellanos/settlein.dev/pull/25) | |
 | 2026-11-24 | [#27](https://github.com/asarelcastellanos/settlein.dev/issues/27) | silent fallback or default hides a failed precondition | [#25](https://github.com/asarelcastellanos/settlein.dev/pull/25) | AGENTS.md rule: stop on a failed precondition |
@@ -44,3 +44,10 @@ This log records the cause of each closed review finding, so a cause that repeat
 | 2026-11-24 | [#79](https://github.com/asarelcastellanos/settlein.dev/issues/79) | partial output left behind after a failed step | [#75](https://github.com/asarelcastellanos/settlein.dev/pull/75) | AGENTS.md rule: temp file and rename |
 | 2026-11-24 | [#84](https://github.com/asarelcastellanos/settlein.dev/issues/84) | safety filter incomplete for untrusted upstream data | [#83](https://github.com/asarelcastellanos/settlein.dev/pull/83) | AGENTS.md rule: treat outside data as untrusted |
 | 2026-11-24 | [#85](https://github.com/asarelcastellanos/settlein.dev/issues/85) | cleanup matches more than the step created | [#83](https://github.com/asarelcastellanos/settlein.dev/pull/83) | |
+| 2026-11-25 | [#87](https://github.com/asarelcastellanos/settlein.dev/issues/87) | status text not refreshed after the work it describes changed | [#86](https://github.com/asarelcastellanos/settlein.dev/pull/86) |  |
+| 2026-11-25 | [#88](https://github.com/asarelcastellanos/settlein.dev/issues/88) | dead code left after a refactor | [#86](https://github.com/asarelcastellanos/settlein.dev/pull/86) |  |
+| 2026-11-25 | [#89](https://github.com/asarelcastellanos/settlein.dev/issues/89) | new file type added to only one of the lists a script checks | [#86](https://github.com/asarelcastellanos/settlein.dev/pull/86) | AGENTS.md rule: keep each list in one place |
+| 2026-11-25 | [#90](https://github.com/asarelcastellanos/settlein.dev/issues/90) | silent fallback or default hides a failed precondition | [#86](https://github.com/asarelcastellanos/settlein.dev/pull/86) | AGENTS.md rule: stop on a failed precondition |
+| 2026-11-25 | [#91](https://github.com/asarelcastellanos/settlein.dev/issues/91) | partial output left behind after a failed step | [#86](https://github.com/asarelcastellanos/settlein.dev/pull/86) | AGENTS.md rule: temp file and rename |
+| 2026-11-25 | [#92](https://github.com/asarelcastellanos/settlein.dev/issues/92) | safety filter incomplete for untrusted upstream data | [#86](https://github.com/asarelcastellanos/settlein.dev/pull/86) | AGENTS.md rule: treat outside data as untrusted |
+| 2026-11-25 | [#93](https://github.com/asarelcastellanos/settlein.dev/issues/93) | layout overlap hidden by placeholder content | [#86](https://github.com/asarelcastellanos/settlein.dev/pull/86) |  |
